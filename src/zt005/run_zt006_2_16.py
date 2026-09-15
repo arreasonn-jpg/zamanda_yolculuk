@@ -8,7 +8,7 @@ from .cyl_quadrature import EINSTEIN_GREEN_FACTOR
 from .cyl_quadrature import quadrature_integral_many
 from .spatial_gr import inverse_trace_reverse
 from .metric_validation import metric_invariants,timelike_check,causality_margin
-OUT=Path('zt006_2_16_results.json')
+OUT=Path('results/exploratory/zt006_2_16_results.json')
 
 def obs():
     return np.array([[0.,0.,0.],[.25,0,0],[.5,0,0],[0,.25,0],[0,0,.5],[.75,0,0]])

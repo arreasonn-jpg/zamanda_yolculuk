@@ -5,7 +5,7 @@ import numpy as np
 from .model import ActiveCylinder,Backpack,Drive
 from .robust_convergence import sample_points,field_T,robust_compare,wire_distance
 
-OUT=Path("zt006_2_8_results.json")
+OUT=Path("results/exploratory/zt006_2_8_results.json")
 
 def main():
     ap=argparse.ArgumentParser()

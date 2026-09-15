@@ -11,7 +11,7 @@ from .validated_stress_energy import em_stress_energy
 from .cyl_quadrature import cylindrical_midpoints, quadrature_integral_many
 from .spatial_gr import inverse_trace_reverse
 
-OUT = Path("zt006_2_1_results.json")
+OUT=Path("results/exploratory/zt006_2_1_results.json")
 G = 6.67430e-11
 C = 299792458.0
 

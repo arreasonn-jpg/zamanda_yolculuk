@@ -5,7 +5,7 @@ import numpy as np
 from .model import ActiveCylinder,Backpack,Drive
 from .local_conditioning import field_values,local_conditioning
 
-OUT=Path("zt006_2_6_results.json")
+OUT=Path("results/exploratory/zt006_2_6_results.json")
 
 def sample_points(cyl,n=300,seed=321):
     rng=np.random.default_rng(seed); pts=[]

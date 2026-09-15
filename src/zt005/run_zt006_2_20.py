@@ -4,7 +4,7 @@ import numpy as np
 from .model import ActiveCylinder,Backpack,Drive
 from .external_green_validation import external_observers,compute_external_metric,component_errors
 
-OUT=Path("zt006_2_20_results.json")
+OUT=Path("results/exploratory/zt006_2_20_results.json")
 
 def main():
     ap=argparse.ArgumentParser()

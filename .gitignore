@@ -1,0 +1,16 @@
+# Python build/runtime cruft
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# Editor/OS noise
+.vscode/
+.idea/
+.DS_Store
+
+# Local scratch; exploratory outputs stay opt-in via results/exploratory
+*.local

@@ -8,8 +8,8 @@ from .geometry import build_sources, check_source_envelope
 from .maxwell import vector_potential, biot_savart, curl_on_regular_grid, divergence_on_regular_grid
 from .metrics import rel_l2, rms, max_abs
 
-OUT=Path("zt005_results")
-OUT.mkdir(exist_ok=True)
+OUT=Path("results/exploratory/zt005_results")
+OUT.mkdir(parents=True, exist_ok=True)
 
 def grid(cyl,nx=25,ny=17,nz=25):
     x=np.linspace(-cyl.radius_m,cyl.radius_m,nx)
