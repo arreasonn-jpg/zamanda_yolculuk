@@ -1,0 +1,46 @@
+{
+  "segment_convergence": [
+    {
+      "segments": 32,
+      "relative_L2_error": 0.005030707224245114
+    },
+    {
+      "segments": 64,
+      "relative_L2_error": 0.0012553812133292682
+    },
+    {
+      "segments": 128,
+      "relative_L2_error": 0.0003137017086110117
+    },
+    {
+      "segments": 256,
+      "relative_L2_error": 7.841645065176255e-05
+    },
+    {
+      "segments": 512,
+      "relative_L2_error": 1.9603551606904378e-05
+    }
+  ],
+  "grid_convergence": [
+    {
+      "grid_n": 17,
+      "grid_spacing_m": 0.0225,
+      "relative_L2_error_curlA_axis": 0.0023470681981912606
+    },
+    {
+      "grid_n": 25,
+      "grid_spacing_m": 0.015,
+      "relative_L2_error_curlA_axis": 0.0010442050722635344
+    },
+    {
+      "grid_n": 41,
+      "grid_spacing_m": 0.009,
+      "relative_L2_error_curlA_axis": 0.0003778418095267187
+    },
+    {
+      "grid_n": 61,
+      "grid_spacing_m": 0.006,
+      "relative_L2_error_curlA_axis": 0.0001699710285728879
+    }
+  ]
+}
