@@ -1,0 +1,632 @@
+{
+  "stage": "ZT-006.2.21",
+  "mode": "full",
+  "runtime_s": 21.045753955841064,
+  "overall_pass": true,
+  "gate_1_current_normalization": {
+    "pass": true,
+    "audits": {
+      "G1": {
+        "geometry": "G1",
+        "current_spec": {
+          "I_parent": 100.0,
+          "I_parent_peak": 100.0,
+          "I_parent_rms": 70.71067811865474,
+          "I_total": 600.0,
+          "I_total_peak": 600.0,
+          "I_total_rms": 424.2640687119284,
+          "I_peak": 100.0,
+          "I_rms": 70.71067811865474,
+          "n_turns": 6
+        },
+        "n_resolutions_tested": 5,
+        "max_resolution_discrepancy": 3.410605131648481e-13,
+        "all_pass": true,
+        "evaluations": [
+          {
+            "nr": 1,
+            "nphi": 6,
+            "subfilaments_per_turn": 6,
+            "total_subfilaments": 36,
+            "calculated_total_current": 600.0000000000001,
+            "current_residual": 1.1368683772161603e-13,
+            "pass": true
+          },
+          {
+            "nr": 2,
+            "nphi": 8,
+            "subfilaments_per_turn": 16,
+            "total_subfilaments": 96,
+            "calculated_total_current": 600.0000000000001,
+            "current_residual": 1.1368683772161603e-13,
+            "pass": true
+          },
+          {
+            "nr": 3,
+            "nphi": 10,
+            "subfilaments_per_turn": 30,
+            "total_subfilaments": 180,
+            "calculated_total_current": 599.9999999999998,
+            "current_residual": 2.2737367544323206e-13,
+            "pass": true
+          },
+          {
+            "nr": 4,
+            "nphi": 12,
+            "subfilaments_per_turn": 48,
+            "total_subfilaments": 288,
+            "calculated_total_current": 600.0000000000005,
+            "current_residual": 4.547473508864641e-13,
+            "pass": true
+          },
+          {
+            "nr": 5,
+            "nphi": 16,
+            "subfilaments_per_turn": 80,
+            "total_subfilaments": 480,
+            "calculated_total_current": 599.9999999999998,
+            "current_residual": 2.2737367544323206e-13,
+            "pass": true
+          }
+        ]
+      },
+      "G2": {
+        "geometry": "G2",
+        "current_spec": {
+          "I_parent": 100.0,
+          "I_parent_peak": 100.0,
+          "I_parent_rms": 70.71067811865474,
+          "I_total": 400.0,
+          "I_total_peak": 400.0,
+          "I_total_rms": 282.84271247461896,
+          "I_peak": 100.0,
+          "I_rms": 70.71067811865474,
+          "n_turns": 4
+        },
+        "n_resolutions_tested": 5,
+        "max_resolution_discrepancy": 2.2737367544323206e-13,
+        "all_pass": true,
+        "evaluations": [
+          {
+            "nr": 1,
+            "nphi": 6,
+            "subfilaments_per_turn": 6,
+            "total_subfilaments": 24,
+            "calculated_total_current": 400.00000000000006,
+            "current_residual": 5.684341886080802e-14,
+            "pass": true
+          },
+          {
+            "nr": 2,
+            "nphi": 8,
+            "subfilaments_per_turn": 16,
+            "total_subfilaments": 64,
+            "calculated_total_current": 400.00000000000006,
+            "current_residual": 5.684341886080802e-14,
+            "pass": true
+          },
+          {
+            "nr": 3,
+            "nphi": 10,
+            "subfilaments_per_turn": 30,
+            "total_subfilaments": 120,
+            "calculated_total_current": 399.99999999999983,
+            "current_residual": 1.7053025658242404e-13,
+            "pass": true
+          },
+          {
+            "nr": 4,
+            "nphi": 12,
+            "subfilaments_per_turn": 48,
+            "total_subfilaments": 192,
+            "calculated_total_current": 400.0000000000003,
+            "current_residual": 2.8421709430404007e-13,
+            "pass": true
+          },
+          {
+            "nr": 5,
+            "nphi": 16,
+            "subfilaments_per_turn": 80,
+            "total_subfilaments": 320,
+            "calculated_total_current": 399.99999999999983,
+            "current_residual": 1.7053025658242404e-13,
+            "pass": true
+          }
+        ]
+      },
+      "G3": {
+        "geometry": "G3",
+        "current_spec": {
+          "I_parent": 100.0,
+          "I_parent_peak": 100.0,
+          "I_parent_rms": 70.71067811865474,
+          "I_total": 200.0,
+          "I_total_peak": 200.0,
+          "I_total_rms": 141.42135623730948,
+          "I_peak": 100.0,
+          "I_rms": 70.71067811865474,
+          "n_turns": 2
+        },
+        "n_resolutions_tested": 5,
+        "max_resolution_discrepancy": 1.1368683772161603e-13,
+        "all_pass": true,
+        "evaluations": [
+          {
+            "nr": 1,
+            "nphi": 6,
+            "subfilaments_per_turn": 6,
+            "total_subfilaments": 12,
+            "calculated_total_current": 200.00000000000003,
+            "current_residual": 2.842170943040401e-14,
+            "pass": true
+          },
+          {
+            "nr": 2,
+            "nphi": 8,
+            "subfilaments_per_turn": 16,
+            "total_subfilaments": 32,
+            "calculated_total_current": 200.00000000000003,
+            "current_residual": 2.842170943040401e-14,
+            "pass": true
+          },
+          {
+            "nr": 3,
+            "nphi": 10,
+            "subfilaments_per_turn": 30,
+            "total_subfilaments": 60,
+            "calculated_total_current": 199.99999999999991,
+            "current_residual": 8.526512829121202e-14,
+            "pass": true
+          },
+          {
+            "nr": 4,
+            "nphi": 12,
+            "subfilaments_per_turn": 48,
+            "total_subfilaments": 96,
+            "calculated_total_current": 200.00000000000014,
+            "current_residual": 1.4210854715202004e-13,
+            "pass": true
+          },
+          {
+            "nr": 5,
+            "nphi": 16,
+            "subfilaments_per_turn": 80,
+            "total_subfilaments": 160,
+            "calculated_total_current": 199.99999999999991,
+            "current_residual": 8.526512829121202e-14,
+            "pass": true
+          }
+        ]
+      },
+      "G4": {
+        "geometry": "G4",
+        "current_spec": {
+          "I_parent": 100.0,
+          "I_parent_peak": 100.0,
+          "I_parent_rms": 70.71067811865474,
+          "I_total": 300.0,
+          "I_total_peak": 300.0,
+          "I_total_rms": 212.1320343559642,
+          "I_peak": 100.0,
+          "I_rms": 70.71067811865474,
+          "n_turns": 3
+        },
+        "n_resolutions_tested": 5,
+        "max_resolution_discrepancy": 1.7053025658242404e-13,
+        "all_pass": true,
+        "evaluations": [
+          {
+            "nr": 1,
+            "nphi": 6,
+            "subfilaments_per_turn": 6,
+            "total_subfilaments": 18,
+            "calculated_total_current": 300.00000000000006,
+            "current_residual": 5.684341886080802e-14,
+            "pass": true
+          },
+          {
+            "nr": 2,
+            "nphi": 8,
+            "subfilaments_per_turn": 16,
+            "total_subfilaments": 48,
+            "calculated_total_current": 300.00000000000006,
+            "current_residual": 5.684341886080802e-14,
+            "pass": true
+          },
+          {
+            "nr": 3,
+            "nphi": 10,
+            "subfilaments_per_turn": 30,
+            "total_subfilaments": 90,
+            "calculated_total_current": 299.9999999999999,
+            "current_residual": 1.1368683772161603e-13,
+            "pass": true
+          },
+          {
+            "nr": 4,
+            "nphi": 12,
+            "subfilaments_per_turn": 48,
+            "total_subfilaments": 144,
+            "calculated_total_current": 300.0000000000002,
+            "current_residual": 2.2737367544323206e-13,
+            "pass": true
+          },
+          {
+            "nr": 5,
+            "nphi": 16,
+            "subfilaments_per_turn": 80,
+            "total_subfilaments": 240,
+            "calculated_total_current": 299.9999999999999,
+            "current_residual": 1.1368683772161603e-13,
+            "pass": true
+          }
+        ]
+      }
+    }
+  },
+  "gate_2_dual_green_solvers": {
+    "pass": true,
+    "comparison": {
+      "pass": true,
+      "eps_tol": 0.01,
+      "tensor_rel_err": 0.002740000899988402,
+      "h00_rel_err": 0.0012224505480705116,
+      "h00_abs_err": 3.2117236861070387e-46,
+      "h0i_abs_err": 0.0,
+      "h0i_rel_err": 0.0,
+      "hij_rel_err": 0.0028387415389845507,
+      "h_A_frobenius": 8.131991792921555e-43,
+      "h_B_frobenius": 8.141003754382716e-43
+    }
+  },
+  "gate_3_green_convergence": {
+    "pass": true,
+    "convergence_study": {
+      "geometry": "G1",
+      "source_type": "benchmark",
+      "grid_series": [
+        12,
+        16,
+        20,
+        28,
+        36
+      ],
+      "node_counts": {
+        "12": 3456,
+        "16": 8192,
+        "20": 16000,
+        "28": 43904,
+        "36": 93312
+      },
+      "consecutive_steps": [
+        {
+          "from_N": 12,
+          "to_N": 16,
+          "from_nodes": 3456,
+          "to_nodes": 8192,
+          "max_h00_rel": 0.017644396342745127,
+          "max_h0i_abs": 0.0,
+          "max_h0i_rel": 0.0,
+          "max_hij_rel": 0.017632754498833707,
+          "max_tensor_rel": 0.017633999840820973,
+          "per_observer": [
+            {
+              "h00_rel": 0.017644396342745127,
+              "h00_abs": 4.551637547253162e-45,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.017632754498833707,
+              "hij_abs": 1.3144740037232218e-44,
+              "tensor_rel": 0.017633999840820973,
+              "observer": "center"
+            },
+            {
+              "h00_rel": 0.015070306171803561,
+              "h00_abs": 3.4000125599865366e-45,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.015116259128435859,
+              "hij_abs": 9.854910565266011e-45,
+              "tensor_rel": 0.015111351182037523,
+              "observer": "interior_radial"
+            },
+            {
+              "h00_rel": 0.010872615848531395,
+              "h00_abs": 1.963822889442444e-45,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.011238151030122738,
+              "hij_abs": 5.873791300847495e-45,
+              "tensor_rel": 0.01119972317271266,
+              "observer": "interior_axial"
+            },
+            {
+              "h00_rel": 0.0026268988762582165,
+              "h00_abs": 3.049786499656072e-46,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.005915807764811414,
+              "hij_abs": 2.0000281315530947e-45,
+              "tensor_rel": 0.005659772534223053,
+              "observer": "near_edge"
+            },
+            {
+              "h00_rel": 2.0660108610464764e-08,
+              "h00_abs": 8.448199760097284e-52,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 2.486112845514809e-08,
+              "hij_abs": 2.963385214051683e-51,
+              "tensor_rel": 2.445280195776686e-08,
+              "observer": "exterior"
+            }
+          ]
+        },
+        {
+          "from_N": 16,
+          "to_N": 20,
+          "from_nodes": 8192,
+          "to_nodes": 16000,
+          "max_h00_rel": 0.008160214838296018,
+          "max_h0i_abs": 0.0,
+          "max_h0i_rel": 0.0,
+          "max_hij_rel": 0.008152885833728144,
+          "max_tensor_rel": 0.008153669942563776,
+          "per_observer": [
+            {
+              "h00_rel": 0.008160214838296018,
+              "h00_abs": 2.1223692000567553e-45,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.008152885833728144,
+              "hij_abs": 6.127614991368338e-45,
+              "tensor_rel": 0.008153669942563776,
+              "observer": "center"
+            },
+            {
+              "h00_rel": 0.006960269000131342,
+              "h00_abs": 1.5813130154347477e-45,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.006977732915722687,
+              "hij_abs": 4.580873081166868e-45,
+              "tensor_rel": 0.006975867196444989,
+              "observer": "interior_radial"
+            },
+            {
+              "h00_rel": 0.004918843685754088,
+              "h00_abs": 8.928382615714857e-46,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.005089026994212034,
+              "hij_abs": 2.67308253211833e-45,
+              "tensor_rel": 0.005071144412121559,
+              "observer": "interior_axial"
+            },
+            {
+              "h00_rel": 0.0010267465846605902,
+              "h00_abs": 1.1932611172413297e-46,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.0027089886398891827,
+              "hij_abs": 9.170250049547803e-46,
+              "tensor_rel": 0.0025837938068951124,
+              "observer": "near_edge"
+            },
+            {
+              "h00_rel": 1.2281622476038379e-11,
+              "h00_abs": 5.02212268160061e-55,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 1.7230698999046543e-11,
+              "hij_abs": 2.053856836556156e-54,
+              "tensor_rel": 1.6778489516471637e-11,
+              "observer": "exterior"
+            }
+          ]
+        },
+        {
+          "from_N": 20,
+          "to_N": 28,
+          "from_nodes": 16000,
+          "to_nodes": 43904,
+          "max_h00_rel": 0.0071211802267078005,
+          "max_h0i_abs": 0.0,
+          "max_h0i_rel": 0.0,
+          "max_hij_rel": 0.007114260721943593,
+          "max_tensor_rel": 0.007115001067635445,
+          "per_observer": [
+            {
+              "h00_rel": 0.0071211802267078005,
+              "h00_abs": 1.8654133161001222e-45,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.007114260721943593,
+              "hij_abs": 5.385249804668626e-45,
+              "tensor_rel": 0.007115001067635445,
+              "observer": "center"
+            },
+            {
+              "h00_rel": 0.006034054033553307,
+              "h00_abs": 1.3792071834928906e-45,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.006047721712659395,
+              "hij_abs": 3.994371061597213e-45,
+              "tensor_rel": 0.006046261362568597,
+              "observer": "interior_radial"
+            },
+            {
+              "h00_rel": 0.004240555338300389,
+              "h00_abs": 7.72997469849132e-46,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.00439037562695109,
+              "hij_abs": 2.3159926904878975e-45,
+              "tensor_rel": 0.004374638471130872,
+              "observer": "interior_axial"
+            },
+            {
+              "h00_rel": 0.0008068059689148542,
+              "h00_abs": 9.384083374669306e-47,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.0023554638642185365,
+              "hij_abs": 7.981747460185403e-46,
+              "tensor_rel": 0.0022432225007889784,
+              "observer": "near_edge"
+            },
+            {
+              "h00_rel": 1.3879190331572737e-14,
+              "h00_abs": 5.675389933409361e-58,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 1.673772443122841e-14,
+              "hij_abs": 1.9950954835537333e-57,
+              "tensor_rel": 1.6460134879936504e-14,
+              "observer": "exterior"
+            }
+          ]
+        },
+        {
+          "from_N": 28,
+          "to_N": 36,
+          "from_nodes": 43904,
+          "to_nodes": 93312,
+          "max_h00_rel": 0.0029516472307121655,
+          "max_h0i_abs": 0.0,
+          "max_h0i_rel": 0.0,
+          "max_hij_rel": 0.0029486969464621077,
+          "max_tensor_rel": 0.0029490126169885306,
+          "per_observer": [
+            {
+              "h00_rel": 0.0029516472307121655,
+              "h00_abs": 7.75481293609245e-46,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.0029486969464621077,
+              "hij_abs": 2.238654496499096e-45,
+              "tensor_rel": 0.0029490126169885306,
+              "observer": "center"
+            },
+            {
+              "h00_rel": 0.002495120427159972,
+              "h00_abs": 5.7173765820181024e-46,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.0025004303749887775,
+              "hij_abs": 1.655595389471304e-45,
+              "tensor_rel": 0.002499862983573674,
+              "observer": "interior_radial"
+            },
+            {
+              "h00_rel": 0.0017422817655569555,
+              "h00_abs": 3.1814935861940077e-46,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.0018048128432455205,
+              "hij_abs": 9.537410831660502e-46,
+              "tensor_rel": 0.0017982462807498642,
+              "observer": "interior_axial"
+            },
+            {
+              "h00_rel": 0.0003105527527374531,
+              "h00_abs": 3.6132085614791843e-47,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 0.0009712646957376763,
+              "hij_abs": 3.292572427640254e-46,
+              "tensor_rel": 0.0009241793490021218,
+              "observer": "near_edge"
+            },
+            {
+              "h00_rel": 7.280487559894642e-14,
+              "h00_abs": 2.97709050892877e-57,
+              "h0i_abs": 0.0,
+              "h0i_rel": 0.0,
+              "hij_rel": 1.9006285854238904e-14,
+              "hij_abs": 2.2655024117958666e-57,
+              "tensor_rel": 2.968710874146979e-14,
+              "observer": "exterior"
+            }
+          ]
+        }
+      ],
+      "final_step": {
+        "from_N": 28,
+        "to_N": 36,
+        "from_nodes": 43904,
+        "to_nodes": 93312,
+        "max_h00_rel": 0.0029516472307121655,
+        "max_h0i_abs": 0.0,
+        "max_h0i_rel": 0.0,
+        "max_hij_rel": 0.0029486969464621077,
+        "max_tensor_rel": 0.0029490126169885306,
+        "per_observer": [
+          {
+            "h00_rel": 0.0029516472307121655,
+            "h00_abs": 7.75481293609245e-46,
+            "h0i_abs": 0.0,
+            "h0i_rel": 0.0,
+            "hij_rel": 0.0029486969464621077,
+            "hij_abs": 2.238654496499096e-45,
+            "tensor_rel": 0.0029490126169885306,
+            "observer": "center"
+          },
+          {
+            "h00_rel": 0.002495120427159972,
+            "h00_abs": 5.7173765820181024e-46,
+            "h0i_abs": 0.0,
+            "h0i_rel": 0.0,
+            "hij_rel": 0.0025004303749887775,
+            "hij_abs": 1.655595389471304e-45,
+            "tensor_rel": 0.002499862983573674,
+            "observer": "interior_radial"
+          },
+          {
+            "h00_rel": 0.0017422817655569555,
+            "h00_abs": 3.1814935861940077e-46,
+            "h0i_abs": 0.0,
+            "h0i_rel": 0.0,
+            "hij_rel": 0.0018048128432455205,
+            "hij_abs": 9.537410831660502e-46,
+            "tensor_rel": 0.0017982462807498642,
+            "observer": "interior_axial"
+          },
+          {
+            "h00_rel": 0.0003105527527374531,
+            "h00_abs": 3.6132085614791843e-47,
+            "h0i_abs": 0.0,
+            "h0i_rel": 0.0,
+            "hij_rel": 0.0009712646957376763,
+            "hij_abs": 3.292572427640254e-46,
+            "tensor_rel": 0.0009241793490021218,
+            "observer": "near_edge"
+          },
+          {
+            "h00_rel": 7.280487559894642e-14,
+            "h00_abs": 2.97709050892877e-57,
+            "h0i_abs": 0.0,
+            "h0i_rel": 0.0,
+            "hij_rel": 1.9006285854238904e-14,
+            "hij_abs": 2.2655024117958666e-57,
+            "tensor_rel": 2.968710874146979e-14,
+            "observer": "exterior"
+          }
+        ]
+      },
+      "acceptance": {
+        "pass_h00": true,
+        "pass_hij": true,
+        "pass_h0i": true,
+        "h00_rel": 0.0029516472307121655,
+        "h00_threshold": 0.01,
+        "hij_rel": 0.0029486969464621077,
+        "hij_threshold": 0.01,
+        "h0i_abs": 0.0,
+        "solver_b_validation": {},
+        "overall_pass": true
+      }
+    }
+  }
+}
