@@ -5,8 +5,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from .convergence import benchmark_single_loop
 
-OUT=Path("zt005_1_results")
-OUT.mkdir(exist_ok=True)
+OUT=Path("results/exploratory/zt005_1_results")
+OUT.mkdir(parents=True, exist_ok=True)
 
 def main():
     data=benchmark_single_loop()

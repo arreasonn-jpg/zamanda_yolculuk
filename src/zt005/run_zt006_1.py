@@ -9,7 +9,7 @@ from .batch_curl import curlA_batch, vector_potential_batch
 from .validated_stress_energy import em_stress_energy
 from .spatial_gr import spatial_hbar_from_source, inverse_trace_reverse, proper_time_proxy
 
-OUT=Path("zt006_1_results.json")
+OUT=Path("results/exploratory/zt006_1_results.json")
 
 def sample_uniform_cylinder(cyl,n,seed=0):
     rng=np.random.default_rng(seed)

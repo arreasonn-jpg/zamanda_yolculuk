@@ -5,7 +5,7 @@ import numpy as np
 from .model import ActiveCylinder,Backpack,Drive
 from .finite_wire_convergence import convergence_rows
 
-OUT=Path("zt006_2_14_results.json")
+OUT=Path("results/exploratory/zt006_2_14_results.json")
 
 def sample_points(cyl,n=120,seed=111):
     rng=np.random.default_rng(seed); pts=[]

@@ -9,7 +9,7 @@ from .pointwise_curl import curl_point_4
 from .validated_stress_energy import em_stress_energy
 from .stress_energy_conditioning import componentwise_errors,field_error_components
 
-OUT=Path("zt006_2_7_results.json")
+OUT=Path("results/exploratory/zt006_2_7_results.json")
 
 def sample_points(cyl,n=300,seed=321):
     rng=np.random.default_rng(seed); pts=[]

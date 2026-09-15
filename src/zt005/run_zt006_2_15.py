@@ -5,7 +5,7 @@ import numpy as np
 from .model import ActiveCylinder,Backpack,Drive
 from .area_weighted_finite_wire import build_area_weighted_groups
 
-OUT=Path("zt006_2_15_results.json")
+OUT=Path("results/exploratory/zt006_2_15_results.json")
 
 def sample_points(cyl,n=100,seed=515):
     rng=np.random.default_rng(seed); pts=[]
