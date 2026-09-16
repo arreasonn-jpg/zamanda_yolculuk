@@ -1,0 +1,128 @@
+{
+  "title": "Master 22-Gate Validation Report",
+  "scientific_maturity_score": "6.0/10",
+  "backward_time_travel_pipeline_score": "3.0/10",
+  "runtime_s": 9.025405168533325,
+  "all_pass": true,
+  "n_gates": 22,
+  "n_passed": 22,
+  "gates": {
+    "Ak\u0131m normalizasyonu": {
+      "pass": true,
+      "max_discrepancy": 3.410605131648481e-13,
+      "I_parent": 100.0,
+      "I_total": 600.0
+    },
+    "Green convergence": {
+      "pass": true,
+      "final_h00_rel": 0.008160214838296018,
+      "final_hij_rel": 0.008152885833728144,
+      "final_h0i_abs": 0.0
+    },
+    "Ba\u011f\u0131ms\u0131z Green solver": {
+      "pass": true,
+      "tensor_rel_error": 0.0049319840507274625,
+      "h00_rel_error": 0.003734327556207114
+    },
+    "T_munu conservation": {
+      "pass": true,
+      "max_rel_residual": 0.007871912039988826,
+      "status": "PASS"
+    },
+    "Gauge validation": {
+      "pass": true,
+      "max_rel_residual": 0.11192605633755966
+    },
+    "Einstein residual": {
+      "pass": true,
+      "residual_frobenius": 0.0,
+      "classification": "linearized metric perturbation solver"
+    },
+    "MQS validity monitor": {
+      "pass": true,
+      "ka": 0.020958450219516818,
+      "status": "MQS VALID"
+    },
+    "Uncertainty budget": {
+      "pass": true,
+      "total_uncertainty": 9.019890633200069e-49,
+      "relative_uncertainty_percent": 0.4555500319798015,
+      "formatted_result": "h = (1.980000e-46 +/- 9.019891e-49) [rel: 0.46%]"
+    },
+    "Retarded Einstein": {
+      "pass": true,
+      "h_shape": [
+        2,
+        1,
+        4,
+        4
+      ],
+      "h00_sample": 9.236580014903766e-44
+    },
+    "Metric -> Christoffel": {
+      "pass": true,
+      "christoffel_error": 2.106430585513408e-10
+    },
+    "Curvature": {
+      "pass": true,
+      "ricci_vacuum_residual": 7.43941227510092e-08,
+      "einstein_vacuum_residual": 4.223595978080502e-08
+    },
+    "Schwarzschild/Kerr benchmark": {
+      "pass": true,
+      "schwarzschild_orbit_drift": 1.1102230246251565e-16,
+      "kerr_orbit_drift": 2.1221913115709858e-11
+    },
+    "G\u00f6del/Tipler benchmark": {
+      "pass": true,
+      "godel_ctc_behavior": true,
+      "tipler_ctc_behavior": true
+    },
+    "Geodesic solver": {
+      "pass": true,
+      "minkowski_norm_drift": 0.0,
+      "schwarzschild_norm_drift": 1.1102230246251565e-16
+    },
+    "Proper-time solver": {
+      "pass": true,
+      "delta_t_s": 1.0,
+      "delta_tau_s": 1.0000000000000002
+    },
+    "Causal classifier": {
+      "pass": true,
+      "timelike_classification": "timelike",
+      "spacelike_classification": "spacelike"
+    },
+    "CTC search": {
+      "pass": true,
+      "ctc_detected_in_godel": true,
+      "ctc_radius_found": 0.9333333333333333
+    },
+    "Negative coordinate-time loop testi": {
+      "pass": true,
+      "achieved_dt": -1.5,
+      "target_dt": -1.0
+    },
+    "Earth rotation/orbit mapping": {
+      "pass": true,
+      "orbital_displacement_m": 29784.73548736587,
+      "spin_displacement_m": 351.5258355588684
+    },
+    "Human worldline proxy": {
+      "pass": true,
+      "mass_kg": 75.0,
+      "height_m": 1.75
+    },
+    "Tidal-force test": {
+      "pass": true,
+      "acceleration_g": 0.0,
+      "verdict": "PASS: Tidal forces are structurally survivable for a human subject."
+    },
+    "Energy-to-CTC scan": {
+      "pass": true,
+      "I_CTC_A": 7.106690545187014e+24,
+      "E_CTC_J": 6.868686868686869e+43,
+      "energy_gap_decades": 45.70333480973847
+    }
+  }
+}
