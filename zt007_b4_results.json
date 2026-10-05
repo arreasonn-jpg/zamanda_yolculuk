@@ -1,0 +1,63 @@
+{
+  "stage": "ZT-007B.4",
+  "mode": "quick",
+  "data": {
+    "EM": {
+      "name": "EM field (Path A)",
+      "parameter_name": "Current I (A)",
+      "parameter_device": 100.0,
+      "parameter_required": 1.0330164352090469e+22,
+      "gap": 1.0330164352090469e+20,
+      "rho_device": 0.0005,
+      "rho_required": 5.335614777060035e+36,
+      "rho_gap": 1.067122955412007e+40,
+      "uses_exotic": 0.0,
+      "physically_allowed": 1.0,
+      "note": "Energy-density gap ~10^41"
+    },
+    "Kerr": {
+      "name": "Kerr frame dragging",
+      "parameter_name": "Angular momentum J (kg m^2/s)",
+      "parameter_device": 1.7264940221451053e-21,
+      "parameter_required": 6.732954607500545e+20,
+      "gap": 3.899784488761274e+41,
+      "uses_exotic": 0.0,
+      "physically_allowed": 1.0,
+      "note": "Requires astrophysical J scale"
+    },
+    "Tipler": {
+      "name": "Tipler cylinder",
+      "parameter_name": "Density rho (kg/m^3)",
+      "parameter_device": 10000.0,
+      "parameter_required": 6.732954607500545e+23,
+      "gap": 6.732954607500545e+19,
+      "uses_exotic": 0.0,
+      "physically_allowed": 0.0,
+      "note": "Requires infinite cylinder (Hawking 1992)"
+    },
+    "Wormhole": {
+      "name": "Morris-Thorne wormhole",
+      "parameter_name": "Exotic density |rho| (J/m^3)",
+      "parameter_device": 433375257.48258436,
+      "parameter_required": 2.889272332033454e+49,
+      "gap": 6.666906525344406e+40,
+      "uses_exotic": 1.0,
+      "physically_allowed": 1.0,
+      "note": "Only classical-GR-consistent CTC mechanism"
+    }
+  },
+  "log_gaps": {
+    "EM": 40.02821446233027,
+    "Kerr": 41.591040607557815,
+    "Tipler": 19.828205686534115,
+    "Wormhole": 40.82392436605826
+  },
+  "best_allowed": {
+    "mechanism": "EM",
+    "gap": 1.0330164352090469e+20
+  },
+  "best_overall": {
+    "mechanism": "Tipler",
+    "gap": 6.732954607500545e+19
+  }
+}

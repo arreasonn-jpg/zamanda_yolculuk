@@ -1,0 +1,15 @@
+{
+  "stage": "ZT-008.2",
+  "mode": "quick",
+  "power_breakdown_W": {
+    "coil_joule": 149.99999999999994,
+    "driver_loss": 26.470588235294116,
+    "control": 3.0,
+    "safety": 1.0
+  },
+  "total_power_W": 180.47058823529406,
+  "runtime_min": 66.49282920469363,
+  "thermal_steady_default_C": 205.47058823529406,
+  "required_hA_W_per_K": 12.031372549019604,
+  "heat_flux_W_per_m2": 1253.2679738562085
+}

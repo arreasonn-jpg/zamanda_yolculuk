@@ -1,0 +1,117 @@
+{
+  "stage": "ZT-008.4",
+  "mode": "quick",
+  "sensors": [
+    {
+      "name": "3-axis B-field (Hall)",
+      "quantity": "B",
+      "range": "0 - 10 mT",
+      "sample_rate_Hz": 10000,
+      "accuracy_pct": 1.0,
+      "interface": "SPI",
+      "quantity_bytes": 6,
+      "purpose": "Primary field measurement"
+    },
+    {
+      "name": "3-axis E-field (capacitive)",
+      "quantity": "E",
+      "range": "0 - 100 V/m",
+      "sample_rate_Hz": 10000,
+      "accuracy_pct": 5.0,
+      "interface": "analog (ADC)",
+      "quantity_bytes": 6,
+      "purpose": "Field consistency check"
+    },
+    {
+      "name": "Coil current (Hall, DC-AC)",
+      "quantity": "I",
+      "range": "0 - 200 A",
+      "sample_rate_Hz": 100000,
+      "accuracy_pct": 0.5,
+      "interface": "analog (ADC)",
+      "quantity_bytes": 4,
+      "purpose": "Safety + field scaling"
+    },
+    {
+      "name": "Coil temperature (NTC)",
+      "quantity": "T",
+      "range": "-40 to 150 C",
+      "sample_rate_Hz": 10,
+      "accuracy_pct": 1.0,
+      "interface": "analog (ADC)",
+      "quantity_bytes": 4,
+      "purpose": "Thermal safety"
+    },
+    {
+      "name": "Battery voltage / current",
+      "quantity": "V_bat, I_bat",
+      "range": "0 - 60 V, -50 to +50 A",
+      "sample_rate_Hz": 100,
+      "accuracy_pct": 0.5,
+      "interface": "I2C (BMS)",
+      "quantity_bytes": 8,
+      "purpose": "Power management"
+    },
+    {
+      "name": "IMU (9-axis)",
+      "quantity": "a, omega, mag",
+      "range": "\u00b116 g, \u00b12000 dps",
+      "sample_rate_Hz": 1000,
+      "accuracy_pct": 0.1,
+      "interface": "SPI",
+      "quantity_bytes": 18,
+      "purpose": "Motion + safety"
+    },
+    {
+      "name": "Reference clock (TCXO + GNSS)",
+      "quantity": "t",
+      "range": "atomic-disciplined",
+      "sample_rate_Hz": 1,
+      "accuracy_pct": 1e-10,
+      "interface": "UART + PPS",
+      "quantity_bytes": 8,
+      "purpose": "Time synchronization (critical)"
+    },
+    {
+      "name": "Ambient environment (T, P, RH)",
+      "quantity": "T_amb, P, RH",
+      "range": "-40 to 85 C, 30-110 kPa, 0-100%",
+      "sample_rate_Hz": 1,
+      "accuracy_pct": 2.0,
+      "interface": "I2C",
+      "quantity_bytes": 6,
+      "purpose": "Environmental baseline"
+    }
+  ],
+  "telemetry": {
+    "raw_bytes_per_s": 538854,
+    "compressed_bytes_per_s": 377197,
+    "raw_MB_per_hour": 1939.8744
+  },
+  "logging_capacity_GB_per_8h": 10.8632736,
+  "time_sync": {
+    "local_clock": {
+      "type": "TCXO",
+      "accuracy_ppm": 1.0,
+      "drift_per_hour_us": 3600.0,
+      "note": "Drifts fast - not sufficient alone"
+    },
+    "gnss_disciplined": {
+      "type": "GNSS-disciplined TCXO",
+      "accuracy_ppb": 10.0,
+      "drift_per_hour_ns": 36.0,
+      "note": "Requires GNSS lock - outdoor use"
+    },
+    "atomic_portable": {
+      "type": "Chip-scale atomic clock (CSAC)",
+      "accuracy_ppb": 0.01,
+      "drift_per_hour_ns": 0.036,
+      "note": "Best for indoor / mobile use"
+    },
+    "external_reference": {
+      "type": "NTP/PTP over WiFi to lab clock",
+      "accuracy_us": 1.0,
+      "note": "Fallback / reference only"
+    }
+  }
+}

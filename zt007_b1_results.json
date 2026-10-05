@@ -1,0 +1,8 @@
+{
+  "stage": "ZT-007B.1",
+  "mode": "quick",
+  "device_J": 1.7264940221451053e-21,
+  "J_earth": 5.86e+33,
+  "required_J_gps_level": 673295460750054.5,
+  "required_current_A": 6.244825448930718e+19
+}

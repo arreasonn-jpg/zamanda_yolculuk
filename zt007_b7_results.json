@@ -1,0 +1,102 @@
+{
+  "stage": "ZT-007B.7",
+  "mode": "quick",
+  "mechanisms": [
+    {
+      "name": "EM field (device)",
+      "key": "EM",
+      "param_name": "Current I (A)",
+      "param_device": 100.0,
+      "param_required": 1.0364229195999901e+22,
+      "gap": 1.0364229195999902e+20,
+      "rho_device": 0.0005,
+      "rho_required": 5.370862341360838e+36,
+      "rho_gap": 1.0741724682721676e+40,
+      "exotic": false,
+      "physically_allowed": true,
+      "reference": "This work"
+    },
+    {
+      "name": "Kerr frame dragging",
+      "key": "Kerr",
+      "param_name": "Angular momentum J (kg m^2/s)",
+      "param_device": 1.73e-21,
+      "param_required": 6.73e+26,
+      "gap": 3.890173410404625e+47,
+      "rho_device": 5.1864095234e-13,
+      "rho_required": 2.0176032423400003e+35,
+      "rho_gap": 3.890173410404625e+47,
+      "exotic": false,
+      "physically_allowed": true,
+      "reference": "Kerr 1963; Lense-Thirring 1918"
+    },
+    {
+      "name": "Tipler cylinder",
+      "key": "Tipler",
+      "param_name": "Density rho (kg/m^3)",
+      "param_device": 10000.0,
+      "param_required": 6.732954607500545e+23,
+      "gap": 6.732954607500545e+19,
+      "rho_device": 8.987551787368175e+20,
+      "rho_required": 6.051277821691032e+40,
+      "rho_gap": 6.732954607500545e+19,
+      "exotic": false,
+      "physically_allowed": false,
+      "reference": "Tipler 1974; Hawking 1992"
+    },
+    {
+      "name": "Morris-Thorne wormhole",
+      "key": "Wormhole",
+      "param_name": "Exotic |rho| (J/m^3)",
+      "param_device": 433375257.48258436,
+      "param_required": 2.889272332033454e+49,
+      "gap": 6.666906525344406e+40,
+      "rho_device": 433375257.48258436,
+      "rho_required": 2.889272332033454e+49,
+      "rho_gap": 6.666906525344406e+40,
+      "exotic": true,
+      "physically_allowed": true,
+      "reference": "Morris-Thorne 1988; Ford-Roman 1995"
+    },
+    {
+      "name": "Alcubierre warp drive",
+      "key": "Alcubierre",
+      "param_name": "Exotic |rho| (J/m^3)",
+      "param_device": 433375257.48258436,
+      "param_required": 2.163957059330057e+57,
+      "gap": 4.993263971506306e+48,
+      "rho_device": 433375257.48258436,
+      "rho_required": 2.163957059330057e+57,
+      "rho_gap": 4.993263971506306e+48,
+      "exotic": true,
+      "physically_allowed": true,
+      "reference": "Alcubierre 1994; Pfenning-Ford 1997"
+    },
+    {
+      "name": "Godel rotating universe",
+      "key": "Godel",
+      "param_name": "Density rho (kg/m^3)",
+      "param_device": 1000.0,
+      "param_required": 8.324264687446118e+25,
+      "gap": 8.324264687446117e+22,
+      "rho_device": 8.987551787368176e+19,
+      "rho_required": 7.481475997018215e+42,
+      "rho_gap": 8.324264687446117e+22,
+      "exotic": false,
+      "physically_allowed": true,
+      "reference": "Godel 1949"
+    }
+  ],
+  "closest_allowed": {
+    "key": "EM",
+    "gap": 1.0364229195999902e+20
+  },
+  "closest_overall": {
+    "key": "Tipler",
+    "gap": 6.732954607500545e+19
+  },
+  "log_gaps_range": [
+    19.828205686534115,
+    48.698384525866494
+  ]
+}

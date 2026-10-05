@@ -1,0 +1,85 @@
+{
+  "stage": "ZT-009.3",
+  "mode": "quick",
+  "envelope": {
+    "max_height_m": 0.45,
+    "max_width_m": 0.32,
+    "max_depth_m": 0.15,
+    "max_coil_radius_m": 0.1
+  },
+  "thermal": {
+    "max_temp_C": 40,
+    "ambient_C": 25,
+    "copper_density_A_per_mm2": 10,
+    "cooled_copper_A_per_mm2": 100,
+    "superconductor_A_per_mm2": 1000
+  },
+  "power": {
+    "battery_wh": 200,
+    "min_runtime_min": 30
+  },
+  "tiers": [
+    {
+      "name": "Baseline (copper, 100 A)",
+      "I_A": 100,
+      "R_m": 0.07,
+      "eta": 0.85,
+      "N_stages": 1,
+      "Q_factor": 1,
+      "cooling": "passive",
+      "cost": "low",
+      "tr_level": 6,
+      "h00": 2.0076388888888895e-48,
+      "rel_to_base": 0.34027777777777785,
+      "gap_log10": 40.49924042900334
+    },
+    {
+      "name": "Advanced (cooled copper, 500 A)",
+      "I_A": 500,
+      "R_m": 0.09,
+      "eta": 0.92,
+      "N_stages": 4,
+      "Q_factor": 100,
+      "cooling": "liquid",
+      "cost": "medium",
+      "tr_level": 6,
+      "h00": 1.4368235294117647e-43,
+      "rel_to_base": 24352.941176470587,
+      "gap_log10": 35.64452259719398
+    },
+    {
+      "name": "Best-case (superconducting HTS)",
+      "I_A": 10000,
+      "R_m": 0.1,
+      "eta": 0.99,
+      "N_stages": 10,
+      "Q_factor": 10000.0,
+      "cooling": "cryogenic",
+      "cost": "high",
+      "tr_level": 8,
+      "h00": 4.772058823529413e-38,
+      "rel_to_base": 8088235294.117649,
+      "gap_log10": 30.1232202401486
+    }
+  ],
+  "best_case": {
+    "name": "Best-case (superconducting HTS)",
+    "I_A": 10000,
+    "R_m": 0.1,
+    "eta": 0.99,
+    "N_stages": 10,
+    "Q_factor": 10000.0,
+    "cooling": "cryogenic",
+    "cost": "high",
+    "tr_level": 8,
+    "h00": 4.772058823529413e-38,
+    "rel_to_base": 8088235294.117649,
+    "gap_log10": 30.1232202401486
+  },
+  "extrapolation": {
+    "I_needed_A": 1.1524182309190875e+19,
+    "R_needed_m": 115241823091908.75,
+    "N_needed": 1.1524182309190876e+16,
+    "Q_needed": 1.3280677789546795e+34
+  }
+}

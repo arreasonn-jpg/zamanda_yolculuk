@@ -1,0 +1,18 @@
+{
+  "stage": "ZT-007B.2",
+  "mode": "quick",
+  "c2_over_2G": 6.732954607500545e+26,
+  "materials": {
+    "Water": 1000.0,
+    "Steel": 7900.0,
+    "Lead": 11000.0,
+    "Osmium (densest metal)": 22600.0,
+    "Earth core": 11000.0,
+    "Sun core": 150000.0,
+    "White dwarf": 1000000000.0,
+    "Nuclear saturation": 2.3e+17,
+    "Neutron star core": 5e+17,
+    "Quark-gluon plasma": 1e+18,
+    "Planck density": 5.2e+96
+  }
+}

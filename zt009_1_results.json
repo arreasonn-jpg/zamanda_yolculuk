@@ -1,0 +1,41 @@
+{
+  "stage": "ZT-009.1",
+  "mode": "quick",
+  "h00_baseline": 5.9e-48,
+  "h00_target_1s_per_year": 6.33761756280579e-08,
+  "gap_log10": 40.03107401693661,
+  "sensitivity": {
+    "I": {
+      "S": 2.1000000000000014,
+      "name": "Current (A)",
+      "base": 100.0
+    },
+    "R": {
+      "S": 2.1000000000000014,
+      "name": "Coil radius (m)",
+      "base": 0.12
+    },
+    "f": {
+      "S": 0.0,
+      "name": "Frequency (Hz)",
+      "base": 1000000.0
+    },
+    "eta": {
+      "S": 1.0000000000000004,
+      "name": "Efficiency",
+      "base": 0.85
+    },
+    "D": {
+      "S": -0.9090909090909092,
+      "name": "Region diameter (m)",
+      "base": 2.0
+    }
+  },
+  "ranking": [
+    "I",
+    "R",
+    "eta",
+    "D",
+    "f"
+  ]
+}

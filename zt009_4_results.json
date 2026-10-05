@@ -1,0 +1,20 @@
+{
+  "stage": "ZT-009.4",
+  "mode": "quick",
+  "figures": [
+    "paper_figures\\fig1_unified_mechanisms.png",
+    "paper_figures\\fig2_em_scaling.png",
+    "paper_figures\\fig3_best_case_tiers.png",
+    "paper_figures\\fig4_monte_carlo.png",
+    "paper_figures\\fig5_sensitivity_tornado.png",
+    "paper_figures\\fig6_backpack_layout.png"
+  ],
+  "figure_descriptions": {
+    "fig1": "6 mechanisms unified bar chart",
+    "fig2": "EM-induced metric perturbation scaling",
+    "fig3": "Best-case engineering scenarios",
+    "fig4": "Monte Carlo uncertainty histogram",
+    "fig5": "Sensitivity tornado chart",
+    "fig6": "Backpack component layout"
+  }
+}

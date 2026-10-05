@@ -1,0 +1,172 @@
+{
+  "stage": "ZT-008.1",
+  "mode": "quick",
+  "envelope_cm": [
+    45.0,
+    32.0,
+    15.0
+  ],
+  "components": [
+    {
+      "name": "EM coil array (6 loops)",
+      "dims_cm": [
+        12.0,
+        12.0,
+        12.0
+      ],
+      "mass_kg": 2.5,
+      "position_frac": [
+        0.1,
+        0.5,
+        0.5
+      ],
+      "category": "field"
+    },
+    {
+      "name": "HV driver + resonant tank",
+      "dims_cm": [
+        10.0,
+        8.0,
+        6.0
+      ],
+      "mass_kg": 1.2,
+      "position_frac": [
+        0.35,
+        0.3,
+        0.5
+      ],
+      "category": "power"
+    },
+    {
+      "name": "Power module (battery + BMS)",
+      "dims_cm": [
+        12.0,
+        10.0,
+        5.0
+      ],
+      "mass_kg": 2.0,
+      "position_frac": [
+        0.6,
+        0.5,
+        0.5
+      ],
+      "category": "power"
+    },
+    {
+      "name": "Control MCU (ESP32-S3)",
+      "dims_cm": [
+        6.0,
+        4.0,
+        1.5
+      ],
+      "mass_kg": 0.05,
+      "position_frac": [
+        0.8,
+        0.4,
+        0.5
+      ],
+      "category": "control"
+    },
+    {
+      "name": "SBC (Raspberry Pi CM4)",
+      "dims_cm": [
+        8.0,
+        6.0,
+        2.0
+      ],
+      "mass_kg": 0.15,
+      "position_frac": [
+        0.8,
+        0.7,
+        0.5
+      ],
+      "category": "control"
+    },
+    {
+      "name": "EM field sensors",
+      "dims_cm": [
+        4.0,
+        3.0,
+        1.0
+      ],
+      "mass_kg": 0.05,
+      "position_frac": [
+        0.5,
+        0.15,
+        0.3
+      ],
+      "category": "sensor"
+    },
+    {
+      "name": "Thermal + IMU sensors",
+      "dims_cm": [
+        4.0,
+        3.0,
+        1.0
+      ],
+      "mass_kg": 0.05,
+      "position_frac": [
+        0.5,
+        0.85,
+        0.3
+      ],
+      "category": "sensor"
+    },
+    {
+      "name": "Safety relay + e-stop",
+      "dims_cm": [
+        5.0,
+        4.0,
+        3.0
+      ],
+      "mass_kg": 0.3,
+      "position_frac": [
+        0.9,
+        0.5,
+        0.5
+      ],
+      "category": "safety"
+    },
+    {
+      "name": "Cooling + thermal paths",
+      "dims_cm": [
+        30.0,
+        2.0,
+        1.0
+      ],
+      "mass_kg": 0.4,
+      "position_frac": [
+        0.5,
+        0.5,
+        0.85
+      ],
+      "category": "thermal"
+    },
+    {
+      "name": "Structure + mounting frame",
+      "dims_cm": [
+        44.0,
+        31.0,
+        14.0
+      ],
+      "mass_kg": 1.5,
+      "position_frac": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "category": "structure"
+    }
+  ],
+  "total_mass_kg": 8.2,
+  "category_mass": {
+    "field": 2.5,
+    "power": 3.2,
+    "control": 0.2,
+    "sensor": 0.1,
+    "safety": 0.3,
+    "thermal": 0.4,
+    "structure": 1.5
+  },
+  "fit_ok": true
+}

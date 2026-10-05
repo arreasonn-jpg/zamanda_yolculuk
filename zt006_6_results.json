@@ -1,0 +1,22 @@
+{
+  "stage": "ZT-006.6",
+  "mode": "quick",
+  "results": {
+    "G1": {
+      "T_0phi_max": 0.0,
+      "h_0phi_max": 0.0
+    },
+    "G2": {
+      "T_0phi_max": 0.0,
+      "h_0phi_max": 0.0
+    },
+    "G3": {
+      "T_0phi_max": 0.0,
+      "h_0phi_max": 0.0
+    },
+    "G4": {
+      "T_0phi_max": 0.0,
+      "h_0phi_max": 0.0
+    }
+  }
+}

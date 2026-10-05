@@ -1,0 +1,31 @@
+{
+  "stage": "ZT-006.5",
+  "mode": "quick",
+  "n_phi": 8,
+  "results": {
+    "G1": {
+      "g_tt_origin": -1.0,
+      "U_t_final": 1.0,
+      "norm_mean": -1.0,
+      "norm_var": 0.0
+    },
+    "G2": {
+      "g_tt_origin": -1.0,
+      "U_t_final": 1.0,
+      "norm_mean": -1.0,
+      "norm_var": 0.0
+    },
+    "G3": {
+      "g_tt_origin": -1.0,
+      "U_t_final": 1.0,
+      "norm_mean": -1.0,
+      "norm_var": 0.0
+    },
+    "G4": {
+      "g_tt_origin": -1.0,
+      "U_t_final": 1.0,
+      "norm_mean": -1.0,
+      "norm_var": 0.0
+    }
+  }
+}

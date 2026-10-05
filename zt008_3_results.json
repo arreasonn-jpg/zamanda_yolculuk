@@ -1,0 +1,144 @@
+{
+  "stage": "ZT-008.3",
+  "mode": "quick",
+  "fault_modes": [
+    {
+      "id": "F01",
+      "component": "Coil overcurrent",
+      "cause": "Driver failure / short circuit",
+      "severity": "high",
+      "detection": "Hall current sensor > 150 A",
+      "mitigation": "Hardware relay cutoff < 10 ms",
+      "layer": "hardware"
+    },
+    {
+      "id": "F02",
+      "component": "Coil overtemperature",
+      "cause": "Cooling failure / excessive duty cycle",
+      "severity": "high",
+      "detection": "Thermistor > 70 C",
+      "mitigation": "MCU cutoff + thermal fuse (T > 85 C)",
+      "layer": "hardware + thermal"
+    },
+    {
+      "id": "F03",
+      "component": "Battery overvoltage / overcurrent",
+      "cause": "BMS failure / short",
+      "severity": "high",
+      "detection": "BMS monitoring",
+      "mitigation": "BMS cutoff + fuse",
+      "layer": "hardware"
+    },
+    {
+      "id": "F04",
+      "component": "MCU firmware hang",
+      "cause": "Software bug / EMI",
+      "severity": "medium",
+      "detection": "Hardware watchdog timer (500 ms)",
+      "mitigation": "Reset MCU -> default SAFE state",
+      "layer": "hardware"
+    },
+    {
+      "id": "F05",
+      "component": "Communication loss (BLE/WiFi)",
+      "cause": "Radio interference / app crash",
+      "severity": "low",
+      "detection": "Timeout > 3 s (firmware) OR dead-man relay open",
+      "mitigation": "Firmware auto-shutdown + hardware dead-man relay (requires periodic heartbeat pulse)",
+      "layer": "firmware + hardware"
+    },
+    {
+      "id": "F06",
+      "component": "Mechanical enclosure breach",
+      "cause": "Drop / impact",
+      "severity": "medium",
+      "detection": "IMU spike > 5g (firmware) OR mechanical shock switch trips at > 10g",
+      "mitigation": "Firmware auto-shutdown + mechanical shock switch hardwired to coil relay",
+      "layer": "firmware + mechanical"
+    },
+    {
+      "id": "F07",
+      "component": "EMI interference with sensors",
+      "cause": "Field resonance coupling",
+      "severity": "medium",
+      "detection": "Sensor consistency check",
+      "mitigation": "Shielded sensor paths",
+      "layer": "hardware"
+    },
+    {
+      "id": "F08",
+      "component": "Operator unauthorized start",
+      "cause": "App compromise / accidental trigger",
+      "severity": "high",
+      "detection": "Two-factor: app + physical key",
+      "mitigation": "Physical key required for ARM",
+      "layer": "mechanical + firmware"
+    }
+  ],
+  "cutoff_chain": [
+    {
+      "name": "BMS cutoff",
+      "trigger": "Battery OV/OC/OT",
+      "response_ms": 20,
+      "redundant": false
+    },
+    {
+      "name": "Current limit relay",
+      "trigger": "I_coil > 150 A",
+      "response_ms": 8,
+      "redundant": true
+    },
+    {
+      "name": "Thermal fuse",
+      "trigger": "T_coil > 85 C",
+      "response_ms": 1000,
+      "redundant": true
+    },
+    {
+      "name": "MCU interlock",
+      "trigger": "Firmware state != RUN",
+      "response_ms": 5,
+      "redundant": true
+    },
+    {
+      "name": "Physical E-stop",
+      "trigger": "Manual button",
+      "response_ms": 2,
+      "redundant": true
+    },
+    {
+      "name": "Watchdog reset",
+      "trigger": "MCU hang > 500 ms",
+      "response_ms": 500,
+      "redundant": true
+    }
+  ],
+  "state_machine": {
+    "OFF": {
+      "ARM": "ARMED",
+      "\u2192": "SAFE"
+    },
+    "ARMED": {
+      "START": "RUN",
+      "ABORT": "OFF",
+      "\u2192": "SAFE"
+    },
+    "RUN": {
+      "STOP": "ARMED",
+      "ABORT": "OFF",
+      "FAULT": "SAFE",
+      "\u2192": "SAFE"
+    },
+    "SAFE": {
+      "RESET": "OFF",
+      "\u2192": "OFF"
+    }
+  },
+  "worst_case_response_ms": 1000,
+  "redundancy": {
+    "total": 6,
+    "redundant": 5,
+    "single_point": 1
+  },
+  "issues": []
+}

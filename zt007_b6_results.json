@@ -1,0 +1,8 @@
+{
+  "stage": "ZT-007B.6",
+  "mode": "quick",
+  "ctc_coefficient": 0.6232252401402304,
+  "omega_required_1m": 186838226.62927994,
+  "rho_required_1m": 8.324264687446118e+25,
+  "mass_required_1m_solar": 0.00017531423277368396
+}

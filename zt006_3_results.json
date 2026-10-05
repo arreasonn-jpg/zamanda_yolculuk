@@ -1,0 +1,51 @@
+{
+  "stage": "ZT-006.3",
+  "mode": "quick",
+  "einstein_factor": 4.1532948856899435e-43,
+  "results": {
+    "G1": [
+      {
+        "Nr": 40,
+        "Nz": 80,
+        "h_00_center": 5.938975945240434e-48,
+        "h_00_max": 2.6155520543094475e-47,
+        "dtau_dt_center": 1.0,
+        "delta_tau_over_t_center": 0.0,
+        "delta_tau_seconds_per_year": 0.0
+      }
+    ],
+    "G2": [
+      {
+        "Nr": 40,
+        "Nz": 80,
+        "h_00_center": 1.2364013551516097e-49,
+        "h_00_max": 2.4929178238900304e-49,
+        "dtau_dt_center": 1.0,
+        "delta_tau_over_t_center": 0.0,
+        "delta_tau_seconds_per_year": 0.0
+      }
+    ],
+    "G3": [
+      {
+        "Nr": 40,
+        "Nz": 80,
+        "h_00_center": 2.0313013402498336e-49,
+        "h_00_max": 5.704132159427712e-49,
+        "dtau_dt_center": 1.0,
+        "delta_tau_over_t_center": 0.0,
+        "delta_tau_seconds_per_year": 0.0
+      }
+    ],
+    "G4": [
+      {
+        "Nr": 40,
+        "Nz": 80,
+        "h_00_center": 9.364264228560588e-49,
+        "h_00_max": 4.521059006636227e-48,
+        "dtau_dt_center": 1.0,
+        "delta_tau_over_t_center": 0.0,
+        "delta_tau_seconds_per_year": 0.0
+      }
+    ]
+  }
+}

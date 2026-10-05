@@ -1,0 +1,55 @@
+{
+  "stage": "ZT-006.3.1",
+  "mode": "quick",
+  "einstein_factor": 4.1532948856899435e-43,
+  "results": {
+    "G1": [
+      {
+        "Nr": 40,
+        "Nz": 80,
+        "h_00_center": 5.938975945240434e-48,
+        "h_00_max": 2.6155520543094475e-47,
+        "delta_tau_over_t_center": 2.969487972620217e-48,
+        "delta_tau_over_t_max": 1.3077760271547237e-47,
+        "delta_tau_per_year_center_s": 9.370991364475976e-41,
+        "delta_tau_per_year_max_s": 4.127027275453791e-40
+      }
+    ],
+    "G2": [
+      {
+        "Nr": 40,
+        "Nz": 80,
+        "h_00_center": 1.2364013551516097e-49,
+        "h_00_max": 2.4929178238900304e-49,
+        "delta_tau_over_t_center": 6.182006775758048e-50,
+        "delta_tau_over_t_max": 1.2464589119450152e-49,
+        "delta_tau_per_year_center_s": 1.9508929702666218e-42,
+        "delta_tau_per_year_max_s": 3.933525175959601e-42
+      }
+    ],
+    "G3": [
+      {
+        "Nr": 40,
+        "Nz": 80,
+        "h_00_center": 2.0313013402498336e-49,
+        "h_00_max": 5.704132159427712e-49,
+        "delta_tau_over_t_center": 1.0156506701249168e-49,
+        "delta_tau_over_t_max": 2.852066079713856e-49,
+        "delta_tau_per_year_center_s": 3.2051497587534076e-42,
+        "delta_tau_per_year_max_s": 9.000436051717799e-42
+      }
+    ],
+    "G4": [
+      {
+        "Nr": 40,
+        "Nz": 80,
+        "h_00_center": 9.364264228560588e-49,
+        "h_00_max": 4.521059006636227e-48,
+        "delta_tau_over_t_center": 4.682132114280294e-49,
+        "delta_tau_over_t_max": 2.2605295033181134e-48,
+        "delta_tau_per_year_center_s": 1.477568524096118e-41,
+        "delta_tau_per_year_max_s": 7.133688585391169e-41
+      }
+    ]
+  }
+}

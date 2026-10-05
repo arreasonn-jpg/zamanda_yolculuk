@@ -1,0 +1,332 @@
+{
+  "stage": "ZT-008.5",
+  "mode": "quick",
+  "tech_stack": [
+    {
+      "name": "Flutter (Dart)",
+      "platforms": [
+        "Android",
+        "iOS"
+      ],
+      "ble": "flutter_blue_plus",
+      "wifi": "http/websocket",
+      "usb": "usb_serial",
+      "score": 9,
+      "pros": [
+        "Single codebase",
+        "Mature BLE",
+        "Good UI perf"
+      ],
+      "cons": [
+        "Dart learning curve"
+      ],
+      "recommendation": "PRIMARY"
+    },
+    {
+      "name": "React Native (JS)",
+      "platforms": [
+        "Android",
+        "iOS"
+      ],
+      "ble": "react-native-ble-plx",
+      "wifi": "fetch/websocket",
+      "usb": "react-native-usb-serial",
+      "score": 7,
+      "pros": [
+        "JS ecosystem",
+        "Fast dev"
+      ],
+      "cons": [
+        "Bridge performance issues",
+        "USB immaturity"
+      ],
+      "recommendation": "FALLBACK"
+    },
+    {
+      "name": "Native (Kotlin + Swift)",
+      "platforms": [
+        "Android",
+        "iOS"
+      ],
+      "ble": "native APIs",
+      "wifi": "native",
+      "usb": "native",
+      "score": 10,
+      "pros": [
+        "Best perf",
+        "Full API access"
+      ],
+      "cons": [
+        "2x codebase",
+        "Slow dev"
+      ],
+      "recommendation": "NO (too slow)"
+    },
+    {
+      "name": "Progressive Web App (PWA)",
+      "platforms": [
+        "Web"
+      ],
+      "ble": "Web Bluetooth (limited)",
+      "wifi": "native",
+      "usb": "WebUSB (limited)",
+      "score": 5,
+      "pros": [
+        "No install"
+      ],
+      "cons": [
+        "Limited BLE",
+        "No USB on iOS"
+      ],
+      "recommendation": "NO (insufficient)"
+    }
+  ],
+  "screens": [
+    {
+      "name": "Splash",
+      "purpose": "Init + device discovery",
+      "state_data": [],
+      "actions": [
+        "scan",
+        "connect"
+      ]
+    },
+    {
+      "name": "Home / Dashboard",
+      "purpose": "Live telemetry view",
+      "state_data": [
+        "link_status",
+        "battery",
+        "power",
+        "temperature",
+        "coil_current"
+      ],
+      "actions": [
+        "arm",
+        "view_logs",
+        "settings"
+      ]
+    },
+    {
+      "name": "Target Selector",
+      "purpose": "Date/time/location input for temporal target",
+      "state_data": [
+        "target_date",
+        "target_time",
+        "target_lat",
+        "target_lon",
+        "delta_t"
+      ],
+      "actions": [
+        "validate",
+        "save_target"
+      ]
+    },
+    {
+      "name": "Simulation Preview",
+      "purpose": "Show predicted metric effect + safety state",
+      "state_data": [
+        "h_00_predicted",
+        "delta_tau_per_year",
+        "energy_required",
+        "safety_flags"
+      ],
+      "actions": [
+        "proceed_to_arm"
+      ]
+    },
+    {
+      "name": "Arm / Ready",
+      "purpose": "Two-factor authorization",
+      "state_data": [
+        "physical_key_present",
+        "app_auth_ok",
+        "interlock_status"
+      ],
+      "actions": [
+        "confirm_arm",
+        "abort"
+      ]
+    },
+    {
+      "name": "Run Monitor",
+      "purpose": "Live monitoring during operation",
+      "state_data": [
+        "elapsed_time",
+        "all_sensors",
+        "fault_flags",
+        "log_status"
+      ],
+      "actions": [
+        "emergency_stop",
+        "stop_normal"
+      ]
+    },
+    {
+      "name": "Post-Run Report",
+      "purpose": "Summary + data export",
+      "state_data": [
+        "run_id",
+        "duration",
+        "log_file",
+        "anomalies"
+      ],
+      "actions": [
+        "export_csv",
+        "share",
+        "upload_to_lab"
+      ]
+    },
+    {
+      "name": "Logs / History",
+      "purpose": "Browse past runs",
+      "state_data": [
+        "run_list",
+        "run_metadata"
+      ],
+      "actions": [
+        "view",
+        "delete",
+        "export"
+      ]
+    },
+    {
+      "name": "Settings",
+      "purpose": "Device + app configuration",
+      "state_data": [
+        "link_pref",
+        "sample_rate",
+        "clock_source",
+        "safety_limits"
+      ],
+      "actions": [
+        "save",
+        "reset"
+      ]
+    },
+    {
+      "name": "Help / Safety",
+      "purpose": "Instructions + emergency info",
+      "state_data": [],
+      "actions": [
+        "view_docs"
+      ]
+    }
+  ],
+  "ble_protocol": {
+    "service_uuid": "b7e0_0001_zt_svc",
+    "characteristics": [
+      {
+        "name": "Status",
+        "uuid": "b7e0_0002",
+        "access": "read + notify",
+        "size_bytes": 16,
+        "fields": [
+          "state",
+          "battery_pct",
+          "temperature_C",
+          "flags"
+        ]
+      },
+      {
+        "name": "Command",
+        "uuid": "b7e0_0003",
+        "access": "write",
+        "size_bytes": 8,
+        "commands": [
+          "ARM",
+          "START",
+          "STOP",
+          "ABORT",
+          "RESET",
+          "SET_TARGET",
+          "GET_STATUS"
+        ]
+      },
+      {
+        "name": "Telemetry_Stream",
+        "uuid": "b7e0_0004",
+        "access": "notify",
+        "size_bytes": 244,
+        "note": "BLE 5.0 max payload; sent at 1 Hz for summary"
+      },
+      {
+        "name": "Safety_Interlock",
+        "uuid": "b7e0_0005",
+        "access": "read",
+        "size_bytes": 8,
+        "fields": [
+          "hw_estop",
+          "watchdog_ok",
+          "relay_closed",
+          "thermal_ok"
+        ]
+      }
+    ]
+  },
+  "wifi_protocol": {
+    "rest_endpoints": [
+      {
+        "method": "GET",
+        "path": "/api/status",
+        "returns": "device state JSON"
+      },
+      {
+        "method": "GET",
+        "path": "/api/sensors",
+        "returns": "latest sensor values"
+      },
+      {
+        "method": "POST",
+        "path": "/api/arm",
+        "returns": "arm ack"
+      },
+      {
+        "method": "POST",
+        "path": "/api/start",
+        "returns": "run_id"
+      },
+      {
+        "method": "POST",
+        "path": "/api/stop",
+        "returns": "final summary"
+      },
+      {
+        "method": "POST",
+        "path": "/api/abort",
+        "returns": "immediate ack"
+      },
+      {
+        "method": "GET",
+        "path": "/api/logs",
+        "returns": "list of past runs"
+      },
+      {
+        "method": "GET",
+        "path": "/api/logs/{run_id}",
+        "returns": "log metadata"
+      },
+      {
+        "method": "GET",
+        "path": "/api/logs/{run_id}/csv",
+        "returns": "full CSV stream"
+      }
+    ],
+    "websocket": {
+      "endpoint": "ws://<device-ip>:8080/telemetry",
+      "rate_hz": 100,
+      "format": "protobuf or msgpack",
+      "note": "Raw sensor stream during RUN"
+    }
+  },
+  "app_states": [
+    "DISCONNECTED",
+    "DISCOVERING",
+    "CONNECTED",
+    "ARMING",
+    "ARMED",
+    "RUNNING",
+    "FAULT_HANDLING",
+    "POST_RUN"
+  ]
+}

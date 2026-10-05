@@ -1,0 +1,174 @@
+{
+  "stage": "ZT-008.6",
+  "mode": "quick",
+  "test_hierarchy": [
+    {
+      "level": "T0",
+      "name": "Simulation",
+      "description": "Numerical verification (ZT-006.x pipeline)",
+      "risk": "none",
+      "prerequisites": [],
+      "duration_h": 1,
+      "human_involved": false,
+      "gate_to_next": "All pipelines pass with rel_change < 1%"
+    },
+    {
+      "level": "T1",
+      "name": "Digital timestamp",
+      "description": "Digital electronics + reference clock only. Verify CSAC timing chain.",
+      "risk": "none",
+      "prerequisites": [
+        "T0"
+      ],
+      "duration_h": 4,
+      "human_involved": false,
+      "gate_to_next": "Clock drift < 1 ns/hour over 4 hours"
+    },
+    {
+      "level": "T2",
+      "name": "Shielded bench, low power",
+      "description": "Coil + driver, current < 1 A, no field above ambient. Validate control loop.",
+      "risk": "low",
+      "prerequisites": [
+        "T1"
+      ],
+      "duration_h": 8,
+      "human_involved": false,
+      "gate_to_next": "Control loop stable, no fault flags"
+    },
+    {
+      "level": "T3",
+      "name": "Bench with nominal power",
+      "description": "Coil at 100 A, 1 MHz. Full sensor suite active. Measure self-interference, thermal.",
+      "risk": "medium",
+      "prerequisites": [
+        "T2"
+      ],
+      "duration_h": 24,
+      "human_involved": false,
+      "gate_to_next": "Thermal < 40 C steady-state, EMI within limits"
+    },
+    {
+      "level": "T4",
+      "name": "Inorganic test object",
+      "description": "Place inert mass in active volume. Verify no anomalous effects (baseline for null hypothesis).",
+      "risk": "medium",
+      "prerequisites": [
+        "T3"
+      ],
+      "duration_h": 48,
+      "human_involved": false,
+      "gate_to_next": "Null result (no anomaly at >3 sigma)"
+    },
+    {
+      "level": "T5",
+      "name": "Biological model (non-human)",
+      "description": "Cell cultures or tissue samples. Verify safety envelope for biological matter.",
+      "risk": "high",
+      "prerequisites": [
+        "T4"
+      ],
+      "duration_h": 168,
+      "human_involved": false,
+      "gate_to_next": "Ethics committee + IRB approval"
+    },
+    {
+      "level": "T6",
+      "name": "Human test (LAST)",
+      "description": "Only after all levels pass, plus independent replication, plus legal/ethical review.",
+      "risk": "extreme",
+      "prerequisites": [
+        "T5",
+        "external_replication",
+        "ethics_committee",
+        "irb",
+        "insurance",
+        "regulatory"
+      ],
+      "duration_h": 24,
+      "human_involved": true,
+      "gate_to_next": "NONE - end of protocol"
+    }
+  ],
+  "data_validation": [
+    {
+      "criterion": "CSAC lock maintained",
+      "test": "no unlock events"
+    },
+    {
+      "criterion": "No safety faults",
+      "test": "fault_count == 0"
+    },
+    {
+      "criterion": "Temperature < 40 C",
+      "test": "max_T < 40"
+    },
+    {
+      "criterion": "Current within \u00b15%",
+      "test": "|I - I_target| / I_target < 0.05"
+    },
+    {
+      "criterion": "Sensor data continuous",
+      "test": "no gaps > 100 ms"
+    },
+    {
+      "criterion": "Data checksum valid",
+      "test": "checksum == computed"
+    }
+  ],
+  "failure_response": [
+    {
+      "failure": "Clock unlock",
+      "action": "Pause run, re-lock, restart from T1"
+    },
+    {
+      "failure": "Safety fault",
+      "action": "Full shutdown, root-cause analysis, restart from T2"
+    },
+    {
+      "failure": "Thermal limit",
+      "action": "Reduce duty cycle, re-verify T3 thermal model"
+    },
+    {
+      "failure": "Anomalous measurement",
+      "action": "Independent replication attempt; do NOT escalate"
+    },
+    {
+      "failure": "Data corruption",
+      "action": "Redo run; no partial credit"
+    }
+  ],
+  "human_gate": [
+    {
+      "layer": 1,
+      "name": "Physics",
+      "requirement": "T0-T5 all pass + external replication"
+    },
+    {
+      "layer": 2,
+      "name": "Engineering",
+      "requirement": "Hardware safety certified (SIL 2+)"
+    },
+    {
+      "layer": 3,
+      "name": "Biology",
+      "requirement": "Bio-model tests show no harm at 10x dose"
+    },
+    {
+      "layer": 4,
+      "name": "Ethics",
+      "requirement": "Ethics committee + IRB approval"
+    },
+    {
+      "layer": 5,
+      "name": "Legal",
+      "requirement": "Insurance + regulatory compliance"
+    },
+    {
+      "layer": 6,
+      "name": "Medical",
+      "requirement": "Medical team + emergency response plan"
+    }
+  ],
+  "total_planned_hours": 277
+}
