@@ -9,7 +9,7 @@ from .cyl_quadrature import cylindrical_midpoints
 from .gauss_cyl_quadrature import gauss_cylindrical_nodes,integrate_green_many,EINSTEIN_GREEN_FACTOR
 from .spatial_gr import inverse_trace_reverse
 
-OUT=Path("zt006_2_9_1_results.json")
+OUT=Path("results/exploratory/zt006_2_9_1_results.json")
 
 def metric(obs,pts,w,T):
     hbar=integrate_green_many(obs,pts,T,w,softening_m=0.0025)

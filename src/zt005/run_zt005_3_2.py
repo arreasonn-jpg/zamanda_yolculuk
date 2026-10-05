@@ -8,7 +8,7 @@ from .geometry import build_sources
 from .maxwell import vector_potential, biot_savart
 from .pointwise_curl import curl_point_2, curl_point_4
 
-OUT=Path("zt005_3_2_results.json")
+OUT=Path("results/exploratory/zt005_3_2_results.json")
 
 def sample_points(cyl, n_radial=6, n_z=7, n_phi=16, seed=0):
     rng=np.random.default_rng(seed)

@@ -9,7 +9,7 @@ from .cyl_quadrature import EINSTEIN_GREEN_FACTOR
 from .spatial_gr import inverse_trace_reverse
 from .singular_green import regularized_green_integral,exclusion_fraction
 
-OUT=Path("zt006_2_18_results.json")
+OUT=Path("results/exploratory/zt006_2_18_results.json")
 
 def main():
     ap=argparse.ArgumentParser()

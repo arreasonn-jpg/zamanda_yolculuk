@@ -7,7 +7,7 @@ from .model import ActiveCylinder, Backpack, Drive
 from .error_budget import validation_points, T_at_fixed_points, relative_tensor_l2, kernel_resolution_with_frozen_T, softening_sensitivity
 from .cyl_quadrature import cylindrical_midpoints
 
-OUT=Path("zt006_2_3_results.json")
+OUT=Path("results/exploratory/zt006_2_3_results.json")
 
 def main():
     ap=argparse.ArgumentParser()

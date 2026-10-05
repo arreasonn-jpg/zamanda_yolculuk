@@ -10,7 +10,7 @@ from .cyl_quadrature import cylindrical_midpoints,quadrature_integral_many,EINST
 from .spatial_gr import inverse_trace_reverse
 from .wire_regularization import min_distance_to_sources,regularization_report
 
-OUT=Path("zt006_2_4_results.json")
+OUT=Path("results/exploratory/zt006_2_4_results.json")
 
 def main():
     ap=argparse.ArgumentParser()

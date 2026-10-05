@@ -30,5 +30,5 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
-# Large arşiv (isteğe bağlı — GitHub'a koymak istersen bu satırı sil)
-# arxiv_submission_v2.zip
+# Local scratch; exploratory outputs stay opt-in via results/exploratory
+*.local

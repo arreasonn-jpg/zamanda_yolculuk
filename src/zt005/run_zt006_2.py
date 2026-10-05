@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from .model import ActiveCylinder,Backpack,Drive
 from .scaling_study import source_convergence,current_scaling
-OUT=Path('zt006_2_results.json')
+OUT=Path('results/exploratory/zt006_2_results.json')
 def main():
     cyl,b,drive=ActiveCylinder(),Backpack(),Drive(); res={'stage':'ZT-006.2','source_convergence':{},'current_scaling':{}}
     print('='*88); print('ZAMANDA YOLCULUK — ZT-006.2'); print('SOURCE CONVERGENCE + CURRENT SCALING'); print('='*88)

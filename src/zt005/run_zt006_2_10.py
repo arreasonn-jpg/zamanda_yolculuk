@@ -11,7 +11,7 @@ from .finite_wire_quadrature import min_distance_to_filament,masked_volume_integ
 from .spatial_gr import inverse_trace_reverse
 from .cyl_quadrature import EINSTEIN_GREEN_FACTOR
 
-OUT=Path("zt006_2_10_results.json")
+OUT=Path("results/exploratory/zt006_2_10_results.json")
 
 def main():
     ap=argparse.ArgumentParser()

@@ -7,7 +7,7 @@ from .batch_em_source import compute_T_batch
 from .cyl_quadrature import cylindrical_midpoints,quadrature_integral_many,EINSTEIN_GREEN_FACTOR
 from .spatial_gr import inverse_trace_reverse
 
-OUT=Path("zt006_2_2_results.json")
+OUT=Path("results/exploratory/zt006_2_2_results.json")
 
 def main():
     ap=argparse.ArgumentParser()

@@ -9,7 +9,7 @@ from .maxwell import vector_potential
 from .pointwise_curl import curl_point_4
 from .validated_stress_energy import em_stress_energy, summary, angular_momentum_density
 
-OUT=Path("zt005_4_results.json")
+OUT=Path("results/exploratory/zt005_4_results.json")
 
 def sample_points(cyl,n_radial=6,n_z=7,n_phi=16,seed=0):
     rng=np.random.default_rng(seed)

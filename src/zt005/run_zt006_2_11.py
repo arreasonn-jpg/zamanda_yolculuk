@@ -7,7 +7,7 @@ from .finite_wire_study import fields_at_points,field_stats
 from .validated_stress_energy import em_stress_energy
 from .source_conditioning import cancellation_metrics
 
-OUT=Path("zt006_2_11_results.json")
+OUT=Path("results/exploratory/zt006_2_11_results.json")
 
 def sample_points(cyl,n=160,seed=909):
     rng=np.random.default_rng(seed); pts=[]

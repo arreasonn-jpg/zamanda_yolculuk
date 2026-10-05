@@ -1,0 +1,142 @@
+{
+  "stage": "ZT-006.3",
+  "layer": "GR validation layer (phases 3/4/6 groundwork)",
+  "mode": "full",
+  "scope_note": "Known-answer validation only. No CTC or device conclusion is produced.",
+  "metric_sanity": {
+    "minkowski": {
+      "symmetric": true,
+      "lorentzian_signature": true,
+      "det": -1.0
+    },
+    "schwarzschild": {
+      "symmetric": true,
+      "lorentzian_signature": true,
+      "det": -1295.9999999999998
+    },
+    "kerr": {
+      "symmetric": true,
+      "lorentzian_signature": true,
+      "det": -10000.00000000001
+    },
+    "godel": {
+      "symmetric": true,
+      "lorentzian_signature": true,
+      "det": -119.51864726578388
+    },
+    "tipler_cylinder": {
+      "symmetric": true,
+      "lorentzian_signature": true,
+      "det": -2.25
+    },
+    "morris_thorne": {
+      "symmetric": true,
+      "lorentzian_signature": true,
+      "det": -1.0
+    }
+  },
+  "geodesic_norm_conservation": {
+    "schwarzschild_analytic": {
+      "norm0": -1.0000000000000002,
+      "norm_drift_rel": 3.2640556923979596e-14,
+      "pass": true
+    },
+    "kerr_numeric": {
+      "norm0": -1.0,
+      "norm_drift_rel": 6.382672168570025e-13,
+      "pass": true
+    },
+    "godel_numeric": {
+      "norm0": -1.0,
+      "norm_drift_rel": 9.568745795718314e-11,
+      "pass": true
+    },
+    "morris_thorne_numeric": {
+      "norm0": -1.0,
+      "norm_drift_rel": 0.0,
+      "pass": true
+    }
+  },
+  "schwarzschild_perihelion": {
+    "semi_major_axis_M": 49.11726534798491,
+    "eccentricity": 0.18562241369488128,
+    "measured_dphi_rad": 6.7230407930952385,
+    "predicted_1pn_rad": 6.680646499373058,
+    "rel_err": 0.00634583699738627,
+    "pass": true
+  },
+  "ctc_known_answer": {
+    "godel": {
+      "metric": "godel",
+      "ctc_radius_analytic": 0.881373587019543,
+      "r_inside": 0.4406867935097715,
+      "detected_inside": false,
+      "r_outside": 1.3220603805293145,
+      "detected_outside": true,
+      "agrees_with_analytic": true,
+      "inside": {
+        "overall": "spacelike",
+        "closed_covering_space": true,
+        "proper_time": 0.0,
+        "is_ctc_candidate": false
+      },
+      "outside": {
+        "overall": "timelike",
+        "closed_covering_space": true,
+        "proper_time": 22.087755217413147,
+        "is_ctc_candidate": true
+      }
+    },
+    "tipler": {
+      "metric": "tipler_cylinder_idealized",
+      "ctc_radius_analytic": 1.0,
+      "r_inside": 0.5,
+      "detected_inside": false,
+      "r_outside": 1.5,
+      "detected_outside": true,
+      "agrees_with_analytic": true,
+      "inside": {
+        "overall": "spacelike",
+        "closed_covering_space": true,
+        "proper_time": 0.0,
+        "is_ctc_candidate": false
+      },
+      "outside": {
+        "overall": "timelike",
+        "closed_covering_space": true,
+        "proper_time": 10.53722209656109,
+        "is_ctc_candidate": true
+      }
+    },
+    "negative": {
+      "minkowski": {
+        "is_ctc_candidate": false,
+        "overall": "spacelike",
+        "found": false
+      },
+      "schwarzschild_r6M": {
+        "is_ctc_candidate": false,
+        "overall": "spacelike",
+        "found": false
+      },
+      "morris_thorne_throat": {
+        "is_ctc_candidate": false,
+        "overall": "spacelike",
+        "found": false
+      },
+      "all_clean": true
+    }
+  },
+  "conservation_and_gauge": {
+    "conservation_max_rel": 0.007871912039988826,
+    "conservation_pass": true,
+    "lorenz_scaled_residual": 0.03052852200710853,
+    "lorenz_pass": true
+  },
+  "overall": {
+    "n_checks": 16,
+    "n_pass": 16,
+    "status": "PASS",
+    "runtime_s": 11.79
+  }
+}

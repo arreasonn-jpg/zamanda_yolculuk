@@ -1,0 +1,27 @@
+{
+  "stage": "ZT-005/006 device baseline (mirrors src/zt005/model.py)",
+  "active_cylinder": {
+    "radius_m": 1.0,
+    "height_m": 2.5
+  },
+  "backpack": {
+    "height_m": 0.45,
+    "width_m": 0.32,
+    "depth_m": 0.15,
+    "center_y_m": -1.075,
+    "policy": "HARD CONSTRAINT: any optimized geometry violating this envelope must be reported as FAIL (Phase 10 optimizer not yet implemented)"
+  },
+  "drive": {
+    "frequency_hz": 1.0e6,
+    "peak_current_a": 100.0
+  },
+  "regime": {
+    "wavelength_m_at_drive": 299.79,
+    "L_over_lambda": 0.0083,
+    "note": "magnetoquasistatic regime is defensible at this ratio; full-wave (ZT-007) required when frequency scans raise L/lambda"
+  },
+  "resonance": {
+    "status": "HYPOTHESIS",
+    "note": "no Q/omega0/L/C/R or modal model exists yet; resonance enhancement claims are prohibited until then (docs/assumptions.md A4)"
+  }
+}

@@ -9,7 +9,7 @@ from .pointwise_curl import curl_point_4
 from .validated_stress_energy import em_stress_energy
 from .linear_gr import hbar_instantaneous_from_source,characteristic_h_scale,proper_time_fractional_shift_from_h00
 
-OUT=Path("zt006_results.json")
+OUT=Path("results/exploratory/zt006_results.json")
 
 def sample_points(cyl,nr=5,nz=6,nphi=12,seed=0):
     rng=np.random.default_rng(seed)

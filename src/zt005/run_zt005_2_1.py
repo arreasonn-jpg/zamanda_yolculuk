@@ -35,7 +35,7 @@ def main():
                   f"dx={dx:.4e} m excluded(k=3)={100*k3['excluded_fraction']:.2f}% "
                   f"p01={k3['dmin_p01_m']:.4e} m")
         results["geometries"][name]=rows
-    Path("zt005_2_1_results.json").write_text(json.dumps(results,indent=2),encoding="utf-8")
+    Path("results/exploratory/zt005_2_1_results.json").write_text(json.dumps(results,indent=2),encoding="utf-8")
     print(f"Results written to zt005_2_1_results.json")
     print("SCIENTIFIC STATUS: diagnostic only; no GR/CTC conclusion.")
 
