@@ -1,3 +1,5 @@
+import pytest
+pytestmark = pytest.mark.slow
 """Official Acceptance Test: All 22 Scientific & Causal Pipeline Gates."""
 
 import json

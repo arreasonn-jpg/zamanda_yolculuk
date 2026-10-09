@@ -1,3 +1,5 @@
+import pytest
+pytestmark = pytest.mark.slow
 
 """ZT-006.6 tests - device gravitomagnetic field."""
 import numpy as np

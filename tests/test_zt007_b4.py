@@ -1,3 +1,5 @@
+import pytest
+pytestmark = pytest.mark.slow
 
 """ZT-007B.4 tests - unified comparison."""
 import numpy as np

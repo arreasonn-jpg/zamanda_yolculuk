@@ -1,3 +1,5 @@
+import pytest
+pytestmark = pytest.mark.slow
 """Lorenz-gauge consistency tests (ZT-006.3 critical item 4).
 
 The exact retarded solution of a CONSERVED source satisfies
