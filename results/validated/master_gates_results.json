@@ -2,7 +2,7 @@
   "title": "Master 22-Gate Validation Report",
   "scientific_maturity_score": "6.0/10",
   "backward_time_travel_pipeline_score": "3.0/10",
-  "runtime_s": 11.119416952133179,
+  "runtime_s": 10.841103553771973,
   "all_pass": true,
   "n_gates": 22,
   "n_passed": 22,
