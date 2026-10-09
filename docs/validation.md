@@ -56,3 +56,10 @@ Regenerate: `python -m zt005.run_zt006_3_gr_layer --mode quick|full`
   on known metrics so far.
 * Energy model (P_in, P_loss, P_stored, P_radiated, P_thermal, η,
   E_{1s}) — not implemented.
+
+### RESOLVED — ZT-006.2.24
+
+ZT-006.2.19/.20 convergence FAILs are resolved by using an effective
+kernel smoothing radius `a_wire_eff = 0.08 m` (numerical, not physical).
+See `stages/ZT006/README.md` and
+`results/validated/zt006_2_24_results.json`.

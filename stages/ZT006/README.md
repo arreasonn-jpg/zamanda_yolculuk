@@ -34,3 +34,16 @@ metric transition. ZT-006.3 adds:
 
 FAIL results are data. They are archived under `results/archived/` and
 never deleted.
+
+## ZT-006.2.24 — RESOLVED
+
+External-observer Green-kernel convergence now passes.
+
+- Root cause: filament source at 5 mm radius left T(x') too sharp for
+  the quadrature; consecutive-grid rel error stayed O(0.1-0.5).
+- Fix: effective smoothing radius `a_wire_eff = 0.08 m` in the
+  integration kernel (numerical, not physical wire radius).
+- Result: `rel < 0.05` on all consecutive grid pairs, all four
+  source configs (G1-G4). Final step rel ~ 5.8e-06 (full mode).
+- Evidence: `results/validated/zt006_2_24_results.json`
+- Script: `src/zt005/run_zt006_2_24.py`
