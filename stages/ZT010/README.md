@@ -28,3 +28,12 @@ Not a device. Numerical bound only.
 - Crossover: h = 1 (order-unity), current h = 1e-46 → **46 orders**.
 - Linear vs nonlinear ratio at h=1e-3: ~1e-6 (safe linear regime).
 - Status: skeleton only; full BSSN solver not implemented.
+
+## BSSN skeleton added
+
+- `src/zt005/bssn.py` — ADM/BSSN containers, constraint residuals,
+  Euler step, linear-regime check.
+- `tests/test_bssn.py` — 6 checks.
+- Status: skeleton only. No full BSSN evolution, no constraint damping.
+- Purpose: lay out the 3+1 variable structure so future work can plug
+  real RHS terms in `euler_step`.

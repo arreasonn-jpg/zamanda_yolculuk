@@ -50,3 +50,6 @@ so until an independent ethics/safety review concludes otherwise.
 - ✅ P1a: Yakınsama hatası çözüldü (ZT-006.2.24, a_wire_eff=0.08 m).
 - ✅ P1b: `exotic_matter.py` + `energy_gap_report.py` eklendi.
 - 🔷 P2: Doğrusal olmayan rejim (BSSN) henüz yok.
+
+- ✅ P3: `bssn.py` (3+1 skeleton) + `nonlinear_gr.py` (scalar back-reaction).
+- 🔷 P4: Full BSSN RHS + constraint damping (still open).
