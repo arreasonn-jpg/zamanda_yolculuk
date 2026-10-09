@@ -2,14 +2,14 @@
   "title": "Master 22-Gate Validation Report",
   "scientific_maturity_score": "6.0/10",
   "backward_time_travel_pipeline_score": "3.0/10",
-  "runtime_s": 9.025405168533325,
+  "runtime_s": 38.31291437149048,
   "all_pass": true,
   "n_gates": 22,
   "n_passed": 22,
   "gates": {
     "Ak\u0131m normalizasyonu": {
       "pass": true,
-      "max_discrepancy": 3.410605131648481e-13,
+      "max_discrepancy": 1.1368683772161603e-13,
       "I_parent": 100.0,
       "I_total": 600.0
     },
@@ -21,7 +21,7 @@
     },
     "Ba\u011f\u0131ms\u0131z Green solver": {
       "pass": true,
-      "tensor_rel_error": 0.0049319840507274625,
+      "tensor_rel_error": 0.004931984050727462,
       "h00_rel_error": 0.003734327556207114
     },
     "T_munu conservation": {

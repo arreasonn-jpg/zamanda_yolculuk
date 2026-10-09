@@ -6,6 +6,10 @@ from zt005.run_zt008_6 import (
     data_validation_criteria, failure_response, human_gate_requirements,
 )
 
+# Prevent pytest from collecting the imported helper
+test_hierarchy.__test__ = False
+
+
 
 def test_hierarchy_has_7_levels():
     h = test_hierarchy()

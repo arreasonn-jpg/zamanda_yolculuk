@@ -1,0 +1,22 @@
+=== COLLECT ===
+tests/validation/test_benchmark_suite.py::test_tipler
+tests/validation/test_benchmark_suite.py::test_full_benchmark_suite
+tests/validation/test_dual_green_solvers_crosscheck.py::test_dual_solvers_crosscheck
+
+299 tests collected in 0.91s
+
+=== RUN ===
+........................................................................ [ 24%]
+........................................................................ [ 48%]
+........................................................................ [ 72%]
+........................................................................ [ 96%]
+...........                                                              [100%]
+=============================== warnings summary ===============================
+tests/test_zt008_6.py::test_hierarchy
+  /home/erdem/zamanda_yolculuk/.venv/lib/python3.12/site-packages/_pytest/python.py:171: PytestReturnNotNoneWarning: Test functions should return None, but tests/test_zt008_6.py::test_hierarchy returned <class 'list'>.
+  Did you mean to use `assert` instead of `return`?
+  See https://docs.pytest.org/en/stable/how-to/assert.html#return-not-none for more information.
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+299 passed, 1 warning in 345.62s (0:05:45)

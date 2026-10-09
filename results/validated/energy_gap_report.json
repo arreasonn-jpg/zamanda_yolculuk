@@ -1,0 +1,65 @@
+{
+  "stage": "energy-gap-report-v1",
+  "constants": {
+    "c_m_per_s": 299792458.0,
+    "G_m3_kg_s2": 6.6743e-11,
+    "hbar_J_s": 1.054571817e-34
+  },
+  "current_device": {
+    "h_current": 1e-46,
+    "em_rho_max_J_per_m3": 1e-30
+  },
+  "targets": {
+    "h_target": 0.001,
+    "planck_energy_J": 1956000000.0,
+    "sun_total_energy_J": 1.78762405050753e+47
+  },
+  "exotic_vs_em": {
+    "casimir_d1um": {
+      "r_probe_m": 1e-06,
+      "em_rho_max_J_per_m3": 1e-30,
+      "exotic_rho_J_per_m3": -0.0004333752574825846,
+      "ratio_exotic_over_em": -4.333752574825845e+26,
+      "log10_ratio": 26.636864112693257
+    },
+    "morris_thorne_b0_1m": {
+      "r_probe_m": 1.0,
+      "em_rho_max_J_per_m3": 1e-30,
+      "exotic_rho_J_per_m3": -596148446.623224,
+      "ratio_exotic_over_em": -5.9614844662322395e+38,
+      "log10_ratio": 38.775354416656164
+    },
+    "tipler_1m_1e6rad_s": {
+      "r_probe_m": 1.0,
+      "em_rho_max_J_per_m3": 1e-30,
+      "exotic_rho_J_per_m3": -5.961484466232239e+20,
+      "ratio_exotic_over_em": -5.9614844662322385e+50,
+      "log10_ratio": 50.775354416656164
+    }
+  },
+  "energy_to_perturbation": {
+    "V=0.001_m3": {
+      "energy_J": 1.210255564338207e+39,
+      "log10_E": 39.08287708805395,
+      "ratio_to_planck": 6.187400635675905e+29,
+      "ratio_to_sun_total": 6.770190656109149e-09
+    },
+    "V=1.0_m3": {
+      "energy_J": 1.2102555643382065e+41,
+      "log10_E": 41.08287708805395,
+      "ratio_to_planck": 6.187400635675903e+31,
+      "ratio_to_sun_total": 6.770190656109146e-07
+    },
+    "V=1000.0_m3": {
+      "energy_J": 1.2102555643382058e+43,
+      "log10_E": 43.08287708805395,
+      "ratio_to_planck": 6.187400635675898e+33,
+      "ratio_to_sun_total": 6.770190656109142e-05
+    }
+  },
+  "h_gap_orders": {
+    "current_log10": -46.0,
+    "target_log10": -3.0,
+    "gap_orders": 43.0
+  }
+}

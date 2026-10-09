@@ -32,3 +32,19 @@ Thumbs.db
 
 # Local scratch; exploratory outputs stay opt-in via results/exploratory
 *.local
+
+# Sanal ortamlar
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Test/pytest
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Geçici / dev
+*.tmp
+*.bak
+scripts/dev/_*
