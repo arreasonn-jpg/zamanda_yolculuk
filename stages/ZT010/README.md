@@ -37,3 +37,10 @@ Not a device. Numerical bound only.
 - Status: skeleton only. No full BSSN evolution, no constraint damping.
 - Purpose: lay out the 3+1 variable structure so future work can plug
   real RHS terms in `euler_step`.
+
+## BSSN RHS added
+
+- `src/zt005/bssn_rhs.py` — conformal Christoffel, Ricci, constraint
+  damping (Z4c-inspired), RHS dict for `bssn.euler_step`.
+- `tests/test_bssn_rhs.py` — 7 checks (flat limits + damping signs).
+- Status: analytic pointwise RHS; grid + FD derivatives still external.

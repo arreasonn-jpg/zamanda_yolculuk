@@ -53,3 +53,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P3: `bssn.py` (3+1 skeleton) + `nonlinear_gr.py` (scalar back-reaction).
 - 🔷 P4: Full BSSN RHS + constraint damping (still open).
+
+- ✅ P4: BSSN RHS pointwise (Christoffel, Ricci, constraint damping).
+- 🔷 P5: Grid + finite-difference derivatives + constraint monitoring loop.
