@@ -23,3 +23,25 @@ $$a^i_{\rm tidal} = - c^2 R^{\hat{i}}{}_{\hat{0}\hat{j}\hat{0}} \xi^j$$
 - **Safety Gate Status**:
   * In the laboratory device field ($h \sim 10^{-46}$): tidal acceleration is $< 10^{-28}\text{ g}$ (**PASS**).
   * Near extreme gravitational curvature or black hole horizons: tidal forces trigger immediate **FAIL**.
+
+## Terminatör-5 laboratuvar koşulları — bilimsel değerlendirme
+
+Film (Terminator Genisys, 2015) TDE cihazı, canlı doku olmadan
+nesneleri "mikrodalgadaki folyo" gibi parçalıyor. Bilimsel karşılığı:
+
+- İndüktif ısınma + yüksek manyetik alan → malzeme bozunması.
+- İnsan dokusu ancak düşük iletkenlik + dielektrik ekranlama ile
+  korunabilir (filmde açıklanmıyor).
+
+**Gereken ek fizik (mevcut fizikle mümkün değil):**
+1. Makroskobik negatif enerji yoğunluğu kontrolü
+   (Casimir ölçeği ~10^-3 J/m³; CTC için gereken ~10^20+ J/m³).
+2. Doğrusal olmayan kütleçekim rejimi (h ≳ 10^-3).
+3. Kararlı solucan deliği/silindir topolojisi (NEC ihlali).
+4. Enerji ölçeği: 1 m³ hacimde h=10^-3 için ~1.21e41 J
+   (Güneş'in toplam enerjisinin ~7e-7'si).
+
+**Hesap:** `python -m zt005.energy_gap_report` (h-gap: 43 mertebe).
+
+**Sonuç:** Mevcut EM cihazı ile filmdeki laboratuvar koşulları
+arasında 43 mertebe enerji farkı var. Bu, yeni fizik gerektirir.
