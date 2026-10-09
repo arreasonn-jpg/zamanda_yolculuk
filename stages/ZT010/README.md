@@ -19,3 +19,12 @@
 h-gap: 43 orders of magnitude.
 
 Not a device. Numerical bound only.
+
+## Nonlinear GR skeleton added
+
+- `src/zt005/nonlinear_gr.py` — scalar source, second-order back-reaction,
+  linear→nonlinear crossover.
+- `tests/test_nonlinear_gr.py` — 5 checks.
+- Crossover: h = 1 (order-unity), current h = 1e-46 → **46 orders**.
+- Linear vs nonlinear ratio at h=1e-3: ~1e-6 (safe linear regime).
+- Status: skeleton only; full BSSN solver not implemented.

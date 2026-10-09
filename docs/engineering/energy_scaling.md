@@ -34,3 +34,9 @@ Stored in: `results/validated/energy_gap_report.json`
 3. Non-EM stress-energy sources
 
 None within current experimental reach.
+
+## 6. Linear → nonlinear crossover
+- Nonlinearity threshold: h ~ O(1)
+- Current h: 1e-46 → **46 orders** to nonlinear regime
+- At h = 1e-3, nonlinear/linear ratio ~ 1e-6 (safe linear)
+- Module: `src/zt005/nonlinear_gr.py`
