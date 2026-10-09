@@ -33,3 +33,34 @@ def dgtilde_from_grid(gtilde, h):
 
 
 __all__ = ["d_central", "dgtilde_from_grid"]
+
+
+def christoffel_from_grid(gtilde, h):
+    """Gamma[k,i,j] at each grid point from FD of gtilde."""
+    from .bssn_rhs import conformal_christoffel
+    dg = dgtilde_from_grid(gtilde, h)
+    Nx, Ny, Nz = gtilde.shape[:3]
+    G = np.zeros((Nx, Ny, Nz, 3, 3, 3))
+    for ix in range(Nx):
+        for iy in range(Ny):
+            for iz in range(Nz):
+                G[ix,iy,iz] = conformal_christoffel(gtilde[ix,iy,iz], dg[ix,iy,iz])
+    return G, dg
+
+
+def dG_from_grid(G, h):
+    """dG[...,k,i,j,l] = d_l Gamma^k_ij."""
+    Nx, Ny, Nz = G.shape[:3]
+    dG = np.zeros((Nx, Ny, Nz, 3, 3, 3, 3))
+    for k in range(3):
+        for i in range(3):
+            for j in range(3):
+                comp = G[..., k, i, j]
+                dx, dy, dz = d_central(comp, h)
+                dG[..., k, i, j, 0] = dx
+                dG[..., k, i, j, 1] = dy
+                dG[..., k, i, j, 2] = dz
+    return dG
+
+
+__all__ += ["christoffel_from_grid", "dG_from_grid"]

@@ -59,3 +59,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P5: Grid FD + evolution loop + constraint monitor.
 - 🔷 P6: RK4 time integration + full dG (Christoffel derivatives).
+
+- ✅ P6: RK4 + full dG (Christoffel derivatives into Ricci).
+- 🔷 P7: Kreiss-Oliger dissipation + boundary conditions.

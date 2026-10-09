@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 from .bssn import BSSN, euler_step, hamiltonian_constraint
 from .bssn_rhs import bssn_rhs
-from .bssn_grid import dgtilde_from_grid
+from .bssn_grid import dgtilde_from_grid, christoffel_from_grid, dG_from_grid
 
 
 def evolve_bssn(phi0, gtilde0, K0, Atilde0, h, dt, n_steps,
@@ -15,8 +15,8 @@ def evolve_bssn(phi0, gtilde0, K0, Atilde0, h, dt, n_steps,
     constraints = []
     for step in range(n_steps):
         dg = dgtilde_from_grid(gt, h)
-        # zero dG (skeleton: higher derivatives omitted)
-        dG = np.zeros((Nx, Ny, Nz, 3, 3, 3, 3))
+        G, _ = christoffel_from_grid(gt, h)
+        dG = dG_from_grid(G, h)
         for ix in range(Nx):
             for iy in range(Ny):
                 for iz in range(Nz):

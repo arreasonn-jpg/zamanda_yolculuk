@@ -52,3 +52,12 @@ Not a device. Numerical bound only.
 - `tests/test_bssn_evolve.py` — 4 checks (FD linear, Minkowski stationary,
   constraint recorded).
 - Status: pointwise Euler, no RK, no full dG (higher derivatives zero).
+
+## RK4 + full dG added
+
+- `src/zt005/bssn_rk4.py` — RK4 time integration.
+- `bssn_grid.christoffel_from_grid` + `dG_from_grid` — full Gamma and
+  its FD derivative fed into `ricci_tensor`.
+- `bssn_evolve.evolve_bssn` now uses full dG (no more zero dummy).
+- `tests/test_bssn_rk4.py` — 4 checks.
+- Status: RK4 stable on Minkowski; constraint norm bounded.
