@@ -44,3 +44,11 @@ Not a device. Numerical bound only.
   damping (Z4c-inspired), RHS dict for `bssn.euler_step`.
 - `tests/test_bssn_rhs.py` — 7 checks (flat limits + damping signs).
 - Status: analytic pointwise RHS; grid + FD derivatives still external.
+
+## BSSN evolution loop added
+
+- `src/zt005/bssn_grid.py` — central FD derivatives on uniform 3D grid.
+- `src/zt005/bssn_evolve.py` — Euler time loop + Hamiltonian constraint monitor.
+- `tests/test_bssn_evolve.py` — 4 checks (FD linear, Minkowski stationary,
+  constraint recorded).
+- Status: pointwise Euler, no RK, no full dG (higher derivatives zero).

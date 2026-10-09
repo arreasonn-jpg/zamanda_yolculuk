@@ -56,3 +56,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P4: BSSN RHS pointwise (Christoffel, Ricci, constraint damping).
 - 🔷 P5: Grid + finite-difference derivatives + constraint monitoring loop.
+
+- ✅ P5: Grid FD + evolution loop + constraint monitor.
+- 🔷 P6: RK4 time integration + full dG (Christoffel derivatives).
