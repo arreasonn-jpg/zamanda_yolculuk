@@ -74,3 +74,9 @@ Not a device. Numerical bound only.
 - `tests/test_bssn_benchmark.py` — 5 checks (flat gtilde, phi, alpha
   limits, Minkowski R=0, Schwarzschild R<1e-3).
 - Fix: conformal Ricci scalar coefficient (Δφ + |∇φ|²), not (Δφ + ½|∇φ|²).
+
+## Kerr + linear-regime cross-check added
+
+- `src/zt005/bssn_kerr.py` — Kerr BL lapse + 3-metric, horizon radius.
+- `src/zt005/bssn_linear_check.py` — hbar→metric, nonlinearity ratio.
+- `tests/test_bssn_kerr.py` — 6 checks.
