@@ -65,3 +65,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P7: Kreiss-Oliger dissipation + Sommerfeld boundary.
 - 🔷 P8: pytest markers for slow tests.
+
+- ✅ P-C1: BSSN benchmark (Schwarzschild isotropic, Ricci ~ 0).
+- 🔷 P-C2: Kerr benchmark + linear-regime cross-check with ZT-006.3.

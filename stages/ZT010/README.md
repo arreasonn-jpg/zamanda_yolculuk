@@ -66,3 +66,11 @@ Not a device. Numerical bound only.
 
 - `src/zt005/bssn_dissipation.py` — 6th-order Kreiss-Oliger + outflow BC.
 - `tests/test_bssn_dissipation.py` — 4 checks.
+
+## BSSN benchmark layer added
+
+- `src/zt005/bssn_benchmark.py` — Schwarzschild isotropic initial data
+  + conformal Ricci scalar via FD.
+- `tests/test_bssn_benchmark.py` — 5 checks (flat gtilde, phi, alpha
+  limits, Minkowski R=0, Schwarzschild R<1e-3).
+- Fix: conformal Ricci scalar coefficient (Δφ + |∇φ|²), not (Δφ + ½|∇φ|²).
