@@ -61,3 +61,8 @@ Not a device. Numerical bound only.
 - `bssn_evolve.evolve_bssn` now uses full dG (no more zero dummy).
 - `tests/test_bssn_rk4.py` — 4 checks.
 - Status: RK4 stable on Minkowski; constraint norm bounded.
+
+## KO dissipation + Sommerfeld BC added
+
+- `src/zt005/bssn_dissipation.py` — 6th-order Kreiss-Oliger + outflow BC.
+- `tests/test_bssn_dissipation.py` — 4 checks.

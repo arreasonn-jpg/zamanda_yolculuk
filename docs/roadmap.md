@@ -62,3 +62,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P6: RK4 + full dG (Christoffel derivatives into Ricci).
 - 🔷 P7: Kreiss-Oliger dissipation + boundary conditions.
+
+- ✅ P7: Kreiss-Oliger dissipation + Sommerfeld boundary.
+- 🔷 P8: pytest markers for slow tests.
