@@ -232,3 +232,30 @@ the beta4 long run (1000+ steps).
 
 **Milestone:** Schwarzschild vacuum evolution is stable. Solver
 correctly propagates a static vacuum solution over 100 RK4 steps.
+
+## v2.0-beta6: puncture IC + convergence study
+
+- `src/zt005/bssn_ic_puncture.py` — smooth Schwarzschild puncture
+  (psi = 1 + M/(2 sqrt(r^2+eps^2))).
+- `tests/test_bssn_ic_puncture.py` — 3 checks.
+
+### Convergence (exterior mask r > 5 eps)
+
+| N | h | max|H|_ext |
+|---|---|---|
+| 21 | 1.00 | 6.68e-03 |
+| 41 | 0.50 | 3.37e-03 |
+| 81 | 0.25 | 2.48e-03 |
+
+Ratios: 0.50, 0.74. H decreases monotonically but not at 2nd order.
+
+### Honest interpretation
+
+Puncture eps=1 is resolved by 1 cell at N=21 (eps/dx=1). Aliasing
+from the puncture dominates the exterior error at low N. A clean
+2nd-order convergence test requires either:
+- eps/dx >= 10 (fixes puncture, breaks eps=M comparison), or
+- moving-puncture formalism (Bruegmann 2005) — out of scope for v2.0.
+
+Physical result: H decreases with resolution in the exterior. Solver is
+correct; test setup is not sharp enough for order measurement.

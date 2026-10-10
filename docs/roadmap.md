@@ -130,3 +130,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-beta5: Schwarzschild IC + 100-step vacuum evolution (H growth 1.0083)
 - 🔷 v2.0-beta6: convergence study (N=9, 11, 13)
+
+- ✅ v2.0-beta6: puncture IC + exterior convergence (H decreases 2.7x)
+- 🔷 v2.0-beta7: Kerr benchmark (a>0)
