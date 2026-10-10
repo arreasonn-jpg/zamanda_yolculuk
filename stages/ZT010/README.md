@@ -367,3 +367,11 @@ gauge. This matches the gold-standard black-hole evolution setup.
 
 ### 50-step moving-puncture Schwarzschild (N=9, dt=5e-4)
 - H growth 1.0000, alpha_min 0.3333, B evolving.
+
+## v3.0-alpha4: SC regular-core module
+
+- `src/zt005/sc_core.py` — de Sitter interior + Schwarzschild exterior
+  with Israel junction surface density. Ricci and Kretschmann finite
+  at origin.
+- `tests/test_sc_core.py` — 7 checks.
+- Reference: Esa (2026), Schwarzschild Condensation (QCD-inspired BEC).

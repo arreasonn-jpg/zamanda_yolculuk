@@ -163,3 +163,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v3.0-alpha3: ADM mass module + moving-puncture long run
 - 🔷 v3.0-alpha4: SC regular-core simulation (de Sitter + Israel matching)
+
+- ✅ v3.0-alpha4: SC regular-core module (de Sitter + Israel junction)
+- 🔷 v3.0-alpha5: SC core as BSSN IC + evolution test
