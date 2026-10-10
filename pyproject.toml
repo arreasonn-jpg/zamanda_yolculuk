@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "zamanda-yolculuk-zt005-2"
-version = "1.0.0"
+version = "1.1.0"
 description = "Spacetime-manipulation hypothesis testing: MQS EM, stress-energy, retarded linearized GR, and known-metric/geodesic/CTC benchmarks"
 requires-python = ">=3.11"
 dependencies = ["numpy>=2.0", "scipy>=1.11", "matplotlib>=3.8", "pytest>=8"]
