@@ -173,3 +173,8 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v3.0-alpha6: rotating SC (a=0..0.5, growth 1.0000)
 - 🔷 v3.0-beta: consolidation + release
+
+## v4.0 roadmap
+- ✅ v4.0-alpha1: scalar field matter coupling (K ~ A^2, stable)
+- 🔷 v4.0-alpha2: SC condensate as matter source
+- 🔷 v4.0-alpha3: BSSN + SC core + matter (full integration)

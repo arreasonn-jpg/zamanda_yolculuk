@@ -412,3 +412,27 @@ model's claim of a non-singular, dynamically stable interior.
 | 0.5 | 2.334e-03 | 2.334e-03 | 1.0000 | 0.8612 | 2.3e-02 |
 
 Rotating SC regular core is BSSN-stable at a=0..0.5.
+
+## v4.0-alpha1: scalar field matter coupling
+
+- `src/zt005/matter_scalar.py` — Eulerian projections
+  (rho, S_i, S_ij, S) for real scalar field.
+- `src/zt005/bssn_rhs_matter.py` — BSSN RHS with matter source terms.
+- `src/zt005/bssn_rk4_matter.py` — RK4 on (metric + scalar).
+- `tests/test_matter_scalar.py` — 5 checks.
+- `tests/test_bssn_rk4_matter.py` — 3 checks.
+
+### 50-step Gaussian scalar on Minkowski (N=9, h=2.5, dt=5e-4)
+
+| A | Kmax@50 | Pimax@50 | finite |
+|---|---|---|---|
+| 1e-3 | 3.14e-07 | 3.10e-05 | True |
+| 1e-2 | 3.14e-05 | 3.10e-04 | True |
+
+- Linear growth in time (expected: scalar backreaction)
+- Quadratic scaling with A (K ~ A^2, from T ~ A^2)
+- No blow-up, all fields finite
+
+**Milestone:** First matter-coupled BSSN run. Scalar field source
+integrated into RHS. Stable at both linear (A=1e-3) and larger
+(A=1e-2) amplitudes.
