@@ -77,3 +77,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P11: 3D stability (small Gaussian, RK4, bounded constraint).
 - 🔷 P12: BSSN <-> retarded_hbar numeric cross-check.
+
+- ✅ P12: BSSN <-> retarded_hbar cross-check.
+- 🔷 P13: final "gap to Terminator-5" physics doc + v1.0 tag.

@@ -93,3 +93,9 @@ Not a device. Numerical bound only.
 - `src/zt005/bssn_stability.py` — Gaussian perturbation on Minkowski,
   evolve with RK4, constraint norm bounded.
 - `tests/test_bssn_stability.py` — 4 checks.
+
+## BSSN <-> retarded_hbar cross-check added
+
+- `src/zt005/bssn_crosscheck.py` — weak-field h ~ 4 phi, consistency
+  test against Newtonian 2M/r.
+- `tests/test_bssn_crosscheck.py` — 4 checks.
