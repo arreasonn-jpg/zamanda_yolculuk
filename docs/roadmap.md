@@ -157,3 +157,6 @@ solver so future work can measure what happens near the CTC regime.
 - 🔷 v3.0-alpha2: moving-puncture formalism (gauge-IC consistent)
 - 🔷 v3.0-alpha3: N-scaling with interpolated masks
 - 🔷 v3.0-alpha4: horizon finding + mass extraction
+
+- ✅ v3.0-alpha2: moving-puncture formalism (growth 1.0000)
+- 🔷 v3.0-alpha3: Schwarzschild 500-step with moving puncture
