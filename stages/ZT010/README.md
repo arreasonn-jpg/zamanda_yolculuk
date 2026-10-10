@@ -215,3 +215,20 @@ the beta4 long run (1000+ steps).
 - BC engaged: edge value constant (1.44e-11) as wave hits boundary.
 - BUT: H grows 21x — initial data (Gaussian phi) is constraint-violating.
 - Root cause: need constraint-satisfying IC.
+
+## v2.0-beta5: Schwarzschild IC + vacuum evolution
+
+- `src/zt005/bssn_ic.py` — Schwarzschild isotropic state.
+- `tests/test_bssn_ic.py` — 3 checks.
+
+### 100-step run (N=9, L=40, M=1, dt=5e-3)
+
+| Metric | Value |
+|---|---|
+| H0 mean | 1.0165e-03 (Schwarzschild'de beklenen FD error) |
+| H growth | **1.0083** |
+| alpha_min | 0.0099 (stabil) |
+| all finite | True |
+
+**Milestone:** Schwarzschild vacuum evolution is stable. Solver
+correctly propagates a static vacuum solution over 100 RK4 steps.

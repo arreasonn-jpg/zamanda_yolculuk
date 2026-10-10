@@ -127,3 +127,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-beta4: BC-engaged run (edge constant, BC works)
 - 🔷 v2.0-beta5: Schwarzschild isotropic constraint-satisfying IC
+
+- ✅ v2.0-beta5: Schwarzschild IC + 100-step vacuum evolution (H growth 1.0083)
+- 🔷 v2.0-beta6: convergence study (N=9, 11, 13)
