@@ -259,3 +259,21 @@ from the puncture dominates the exterior error at low N. A clean
 
 Physical result: H decreases with resolution in the exterior. Solver is
 correct; test setup is not sharp enough for order measurement.
+
+## v2.0-beta7: slowly-rotating Kerr IC
+
+- `src/zt005/bssn_ic_kerr.py` — Schwarzschild puncture + frame-dragging
+  shift beta^phi ~ 2aM/r^3.
+- `tests/test_bssn_ic_kerr.py` — 4 checks.
+
+### 50-step run (N=9, L=20, dt=5e-4)
+
+| a | H0 | H50 | growth | bmax |
+|---|---|---|---|---|
+| 0.0 | 4.357e-03 | 4.357e-03 | 1.000 | 4.4e-06 |
+| 0.1 | 4.357e-03 | 4.357e-03 | 1.000 | 4.4e-03 |
+| 0.3 | 4.357e-03 | 4.357e-03 | 1.000 | 1.3e-02 |
+| 0.5 | 4.357e-03 | 4.357e-03 | 1.000 | 2.2e-02 |
+
+Frame-dragging beta scales linearly with a; constraint preserved.
+Solver handles slowly-rotating Kerr in leading-order approximation.

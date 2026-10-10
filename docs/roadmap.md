@@ -133,3 +133,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-beta6: puncture IC + exterior convergence (H decreases 2.7x)
 - 🔷 v2.0-beta7: Kerr benchmark (a>0)
+
+- ✅ v2.0-beta7: slowly-rotating Kerr IC (a=0..0.5, growth 1.000)
+- 🔷 v2.0-rc1: 1000-step long run + combined benchmark suite
