@@ -95,3 +95,6 @@ so until an independent ethics/safety review concludes otherwise.
 - 🔷 v2.0-alpha5: long-run stability (1000+ steps)
 - 🔷 v2.0-beta: Schwarzschild + Kerr benchmarks
 - 🔷 v2.0: release
+
+- ✅ v2.0-alpha2: full dt_Gamma RHS
+- 🔷 v2.0-alpha3: 1+log lapse + Gamma-driver shift

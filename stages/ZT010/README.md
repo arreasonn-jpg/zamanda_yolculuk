@@ -117,3 +117,10 @@ Not a device. Numerical bound only.
 - `src/zt005/bssn_state.py` — `BSSNState` dataclass with phi, gtilde, K,
   Atilde, Gamma, alpha, beta; `minkowski_state(N)` helper.
 - `tests/test_bssn_state.py` — 4 checks.
+
+## v2.0-alpha2: full dt_Gamma RHS
+
+- `src/zt005/bssn_gamma.py` — conformal connection evolution
+  (-2 Atilde^ij d_j alpha + 2 alpha [G^i_jk Atilde^jk
+   - (2/3) gt^ij d_j K + 6 Atilde^ij d_j phi]).
+- `tests/test_bssn_gamma.py` — 3 checks (Minkowski zero, finite, linear scale).
