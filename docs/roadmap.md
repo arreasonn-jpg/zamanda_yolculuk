@@ -104,3 +104,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-alpha4: Z4c damping layer
 - 🔷 v2.0-alpha5: unified v2.0 driver + long-run stability
+
+- ✅ v2.0-alpha5: unified v2.0 driver + 40-step run
+- 🔷 v2.0-alpha6: Sommerfeld outflow BC in v2.0 driver
