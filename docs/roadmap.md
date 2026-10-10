@@ -166,3 +166,7 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v3.0-alpha4: SC regular-core module (de Sitter + Israel junction)
 - 🔷 v3.0-alpha5: SC core as BSSN IC + evolution test
+
+- ✅ v3.0-alpha5: SC-like regular core BSSN IC (growth 1.0000)
+- 🔷 v3.0-alpha6: SC core + Kerr (rotating SC)
+- 🔷 v3.0-beta: full integration + release

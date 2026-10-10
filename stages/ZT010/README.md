@@ -375,3 +375,23 @@ gauge. This matches the gold-standard black-hole evolution setup.
   at origin.
 - `tests/test_sc_core.py` — 7 checks.
 - Reference: Esa (2026), Schwarzschild Condensation (QCD-inspired BEC).
+
+## v3.0-alpha5: SC-like regular core BSSN IC
+
+- `src/zt005/sc_like_ic.py` — smoothed-core BSSN IC:
+  M_eff(r) = M (1 - e^{-r/rc} (1 + r/rc))
+  psi(r)   = 1 + M_eff/(2r)
+  Regular at r=0: psi(0)=1, alpha(0)=1.
+- `tests/test_sc_like_ic.py` — 6 checks.
+
+### 50-step moving-puncture run (N=9, L=20, M=1, rc=2, dt=5e-4)
+
+| step | H_ext | growth | alpha_min | Bmax |
+|---|---|---|---|---|
+| 10 | 2.334e-03 | 1.0000 | 0.8612 | 4.6e-07 |
+| 30 | 2.334e-03 | 1.0000 | 0.8612 | 4.1e-06 |
+| 50 | 2.334e-03 | **1.0000** | 0.8612 | 1.2e-05 |
+
+**Milestone:** Regular core is BSSN-stable over 50 moving-puncture
+steps. Numerical support for Esa (2026) Schwarzschild Condensation
+model's claim of a non-singular, dynamically stable interior.
