@@ -99,3 +99,9 @@ Not a device. Numerical bound only.
 - `src/zt005/bssn_crosscheck.py` — weak-field h ~ 4 phi, consistency
   test against Newtonian 2M/r.
 - `tests/test_bssn_crosscheck.py` — 4 checks.
+
+## Grid-aware full BSSN RHS (P-A1)
+
+- `src/zt005/bssn_rhs_grid.py` — full dphi/dgt/dK/dAtilde with FD
+  derivatives of phi (grad + Hessian) and Atilde wired in.
+- `tests/test_bssn_rhs_grid.py` — 4 checks.

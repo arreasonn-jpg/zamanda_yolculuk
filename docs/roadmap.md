@@ -80,3 +80,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P12: BSSN <-> retarded_hbar cross-check.
 - 🔷 P13: final "gap to Terminator-5" physics doc + v1.0 tag.
+
+- ✅ P-A1: grid-aware full BSSN RHS (Hessian phi + grad Atilde).
+- 🔷 P-A2: RK4 driver with grid RHS + long-run stability.
