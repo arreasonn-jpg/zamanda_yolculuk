@@ -83,3 +83,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P-A1: grid-aware full BSSN RHS (Hessian phi + grad Atilde).
 - 🔷 P-A2: RK4 driver with grid RHS + long-run stability.
+
+- ✅ P-A2: RK4 grid driver.
+- 🔷 P-A3: long-run stability (100+ steps).

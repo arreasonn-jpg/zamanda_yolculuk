@@ -105,3 +105,9 @@ Not a device. Numerical bound only.
 - `src/zt005/bssn_rhs_grid.py` — full dphi/dgt/dK/dAtilde with FD
   derivatives of phi (grad + Hessian) and Atilde wired in.
 - `tests/test_bssn_rhs_grid.py` — 4 checks.
+
+## Grid-aware RK4 driver (P-A2)
+
+- `src/zt005/bssn_rk4_grid.py` — RK4 with grid RHS (Hessian phi,
+  grad Atilde, full Ricci).
+- `tests/test_bssn_rk4_grid.py` — 3 checks.
