@@ -148,3 +148,11 @@ Not a device. Numerical bound only.
 - `scripts/long_run_v2.py` — 40-step run: growth sub-exponential,
   alpha_min = 1.000, all finite.
 - `tests/test_bssn_v2.py` — 3 checks.
+
+## v2.0-alpha5: real Hamiltonian + N=11 test
+
+- `src/zt005/bssn_constraints.py` — grid-based H with true Ricci scalar.
+- `tests/test_bssn_constraints.py` — 3 checks.
+- N=7 vs N=11: growth per step 1.35 vs 1.58 — NOT converging.
+- Root cause: missing terms in dAtilde (Gamma-dependent) and full Z4c.
+- Next: v2.0-beta1 full dAtilde.

@@ -9,12 +9,12 @@ from __future__ import annotations
 import numpy as np
 
 
-def damping_dK(alpha, H, kappa1=0.1):
+def damping_dK(alpha, H, kappa1=5.0):
     """Z4c dK correction: -kappa1 * alpha * H."""
     return -kappa1 * alpha * H
 
 
-def damping_dGamma(M, kappa2=0.1):
+def damping_dGamma(M, kappa2=5.0):
     """Z4c dGamma correction: -kappa2 * M^i."""
     return -kappa2 * np.asarray(M, float)
 

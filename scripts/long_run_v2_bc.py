@@ -9,11 +9,11 @@ h = L / (N - 1)
 s = minkowski_state(N)
 x = np.linspace(-L/2, L/2, N)
 X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
-s.phi = 1e-5 * np.exp(-(X**2 + Y**2 + Z**2) / 0.5)
+s.phi = 1e-2 * np.exp(-(X**2 + Y**2 + Z**2) / 0.5)
 
 norms = []
 t0 = time.time()
-for step in range(40):
+for step in range(20):
     phi_old = s.phi.copy()
     s = rk4_step_v2(s, h=h, dt=2e-5)
     # Apply Sommerfeld on outer faces

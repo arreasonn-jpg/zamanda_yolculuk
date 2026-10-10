@@ -110,3 +110,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-alpha5: unified v2.0 driver + 40-step run
 - 🔷 v2.0-alpha6: Sommerfeld outflow BC in v2.0 driver
+
+- ✅ v2.0-alpha5 + realH constraint grid
+- 🔷 v2.0-beta1: full dAtilde with Gamma terms
