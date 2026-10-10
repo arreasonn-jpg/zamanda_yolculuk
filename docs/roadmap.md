@@ -181,3 +181,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v4.0-alpha2: SC condensate as matter source (stable)
 - 🔷 v4.0-alpha3: BSSN + SC metric + SC matter (full integration)
+
+- ✅ v4.0-alpha3: BSSN + SC metric + SC matter (H growth 1.0000)
+- 🔷 v4.0-beta: consolidation + release

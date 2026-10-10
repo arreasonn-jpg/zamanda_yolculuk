@@ -457,3 +457,20 @@ integrated into RHS. Stable at both linear (A=1e-3) and larger
 
 **Milestone:** SC condensate matter field integrated with BSSN.
 Stable over 50 steps at physical (small) amplitudes.
+
+## v4.0-alpha3: full SC integration (metric + matter)
+
+- `src/zt005/sc_full_ic.py` — SC smoothed core + SC condensate field.
+- `tests/test_sc_full_ic.py` — 5 checks.
+
+### 50-step moving-puncture run (N=9, L=20, M=1, rc=2, dt=5e-4)
+
+| step | H_ext | growth | phimax | Kmax | alpha_min | finite |
+|---|---|---|---|---|---|---|
+| 10 | 2.334e-03 | 1.0000 | 1.00e-04 | 1.60e-04 | 0.8612 | True |
+| 30 | 2.334e-03 | 1.0000 | 1.00e-04 | 4.79e-04 | 0.8612 | True |
+| 50 | 2.334e-03 | **1.0000** | 1.00e-04 | 7.98e-04 | 0.8612 | True |
+
+**Strongest SC numerical support:** Regular metric + regular matter
+co-evolve stably. Hamiltonian constraint preserved to machine precision.
+Lapse bounded. Scalar field preserved. Backreaction linear.
