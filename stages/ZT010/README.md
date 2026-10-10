@@ -208,3 +208,10 @@ BC is verified in unit tests. In the beta3 integration test the wave
 does not reach the boundary within the run (0.1 time units vs 0.5
 distance to boundary), so the BC is a no-op there. BC will trigger in
 the beta4 long run (1000+ steps).
+
+## v2.0-beta4: BC-engaged long run
+
+- Small domain (N=7, L=0.5, dt=1e-3), 300 steps.
+- BC engaged: edge value constant (1.44e-11) as wave hits boundary.
+- BUT: H grows 21x — initial data (Gaussian phi) is constraint-violating.
+- Root cause: need constraint-satisfying IC.

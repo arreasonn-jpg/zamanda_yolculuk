@@ -124,3 +124,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-beta3: Sommerfeld BC in full driver (unit-verified)
 - 🔷 v2.0-beta4: long-run 1000+ steps (wave reaches boundary)
+
+- ✅ v2.0-beta4: BC-engaged run (edge constant, BC works)
+- 🔷 v2.0-beta5: Schwarzschild isotropic constraint-satisfying IC
