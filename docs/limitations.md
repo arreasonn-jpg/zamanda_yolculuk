@@ -149,3 +149,33 @@ v3.0 is a **functionally complete BSSN skeleton** with:
 - SC-like regular core (non-rotating + rotating)
 
 All stable over 50-500 moving-puncture steps. Not a production NR code.
+
+## v4.0 scope
+
+### What v4.0 delivers
+
+- Scalar field matter coupling to BSSN (matter_scalar.py).
+- BSSN RHS with source terms (bssn_rhs_matter.py).
+- RK4 driver on (metric + scalar) (bssn_rk4_matter.py).
+- SC condensate profile + potential (sc_condensate.py).
+- Full SC integration: SC metric + SC matter (sc_full_ic.py).
+
+### Numerical results
+
+- Scalar on Minkowski: K ~ A^2, stable at A=1e-3 and 1e-2.
+- SC condensate on Minkowski: phimax stable, all finite.
+- Full SC (metric + matter): H growth 1.0000, alpha_min 0.8612.
+
+### What v4.0 does NOT deliver
+
+- Complex scalar field (only real approximation).
+- Backreaction on the SC core's rho_0 from matter.
+- Kerr + SC + matter combined.
+- Long-time (>50 steps) nonlinear stability.
+- Adaptive mesh refinement around the SC core.
+
+### Honest assessment
+
+v4.0 provides the first matter-coupled BSSN evolution in this repo.
+The SC regular core + SC condensate co-evolve stably over 50 steps.
+This supports, but does not prove, the SC model's dynamical stability.

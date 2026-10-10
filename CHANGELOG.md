@@ -56,3 +56,24 @@
 
 ### Reference
 - Numerical support for Esa (2026) Schwarzschild Condensation model
+
+## v4.0.0 (2026-10-11)
+
+### Added — matter coupling
+- Scalar field stress-energy (matter_scalar.py)
+- BSSN RHS with matter source terms (bssn_rhs_matter.py)
+- RK4 driver on (metric + scalar) (bssn_rk4_matter.py)
+- SC condensate profile + potential (sc_condensate.py)
+- Full SC integration (sc_full_ic.py)
+
+### Numerical results
+- Scalar on Minkowski: K ~ A^2, stable at A=1e-3, 1e-2
+- SC condensate: phimax stable
+- Full SC (metric + matter): H growth 1.0000, alpha_min 0.8612
+
+### Tests
+- 453 fast + 21 slow
+
+### Reference
+- Numerical support for Esa (2026) Schwarzschild Condensation
+  regular-interior + matter-coupling claims

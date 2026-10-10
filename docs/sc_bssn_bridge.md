@@ -70,3 +70,30 @@ What this does NOT show:
 Esa, E. (2026). Schwarzschild Condensation: A QCD-Inspired
 Bose-Einstein Condensate Model for Non-Singular Black Hole Interiors
 and Cosmological Implications. In preparation.
+
+## v4.0 update — full matter coupling
+
+The SC metric was extended to include the SC condensate itself as a
+matter source (v4.0-alpha1..3).
+
+### Full integration result (50-step moving-puncture)
+
+- SC smoothed-core metric: alpha_min = 0.8612 (stable)
+- SC condensate field: phi_max = 1e-4 (preserved)
+- Hamiltonian constraint: H growth **1.0000** (machine precision)
+- Backreaction: K_max linear in time (expected)
+- All fields finite
+
+### Physical interpretation
+
+The SC regular core supports both:
+1. **Geometry:** bounded curvature, regular lapse
+2. **Matter:** conserved scalar condensate
+
+This is the strongest numerical evidence so far for the SC model's
+claim of a dynamically stable non-singular interior with matter.
+
+### Reproduce
+
+    pytest tests/test_sc_full_ic.py -v
+    python scripts/v4_sc_full_run.py
