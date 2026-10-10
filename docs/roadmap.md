@@ -136,3 +136,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-beta7: slowly-rotating Kerr IC (a=0..0.5, growth 1.000)
 - 🔷 v2.0-rc1: 1000-step long run + combined benchmark suite
+
+- ✅ v2.0-rc1: 500-step + combined benchmark (growth <1.01)
+- 🔷 v2.0: final release

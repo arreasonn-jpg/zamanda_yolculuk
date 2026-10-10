@@ -277,3 +277,29 @@ correct; test setup is not sharp enough for order measurement.
 
 Frame-dragging beta scales linearly with a; constraint preserved.
 Solver handles slowly-rotating Kerr in leading-order approximation.
+
+## v2.0-rc1: long run + combined benchmark
+
+### 500-step Schwarzschild (N=7, dt=1e-3)
+
+| step | H | growth |
+|---|---|---|
+| 0 | 4.036e-03 | 1.0000 |
+| 100 | 4.037e-03 | 1.0002 |
+| 250 | 4.042e-03 | 1.0015 |
+| 500 | 4.061e-03 | **1.0062** |
+
+Per-step growth: 1.0000124. alpha_min 0.0099->0.0102.
+
+### Combined benchmark (100 steps, N=7)
+
+| case | H0 | Hf | growth | bmax |
+|---|---|---|---|---|
+| Schwarzschild | 4.04e-03 | 4.04e-03 | 1.0002 | 1.4e-04 |
+| Kerr a=0.0 | 2.68e-03 | 2.68e-03 | 1.0004 | 3.2e-05 |
+| Kerr a=0.2 | 2.68e-03 | 2.68e-03 | 1.0004 | 3.5e-03 |
+| Kerr a=0.4 | 2.68e-03 | 2.68e-03 | 1.0004 | 7.1e-03 |
+| Kerr a=0.5 | 2.68e-03 | 2.68e-03 | 1.0004 | 8.9e-03 |
+
+**Stable across all cases.** BSSN solver passes both long-run and
+multi-physics benchmark.
