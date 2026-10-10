@@ -113,3 +113,8 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-alpha5 + realH constraint grid
 - 🔷 v2.0-beta1: full dAtilde with Gamma terms
+
+- ✅ v2.0-beta1: full physical Ricci -> stable BSSN (200-step H growth 1.0009)
+- 🔷 v2.0-beta2: shift vector evolution (beta != 0)
+- 🔷 v2.0-beta3: Sommerfeld BC in full driver
+- 🔷 v2.0-beta4: long-run 1000+ steps

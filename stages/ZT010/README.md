@@ -156,3 +156,22 @@ Not a device. Numerical bound only.
 - N=7 vs N=11: growth per step 1.35 vs 1.58 — NOT converging.
 - Root cause: missing terms in dAtilde (Gamma-dependent) and full Z4c.
 - Next: v2.0-beta1 full dAtilde.
+
+## v2.0-beta1: full physical Ricci + stable BSSN
+
+- `src/zt005/bssn_ricci_full.py` — physical 3-Ricci scalar of
+  g_ij = e^{4 phi} gtilde_ij, including phi-derivative terms.
+- `src/zt005/bssn_full.py` — full RHS with covariant Hessian and D^2 alpha.
+- `src/zt005/bssn_rk4_beta1.py` — RK4 driver with full RHS + real-H Z4c.
+
+### Result (200-step run, N=7, dt=1e-4)
+
+| Metric | Before (v2.0-alpha5) | After (v2.0-beta1) |
+|---|---|---|
+| H0 | 2.2e-12 (hayalet) | 6.08e-04 (fiziksel) |
+| growth / 200 steps | ~1e+2 | **1.0009** |
+| per-step growth | 1.585 | 1.0000045 |
+| alpha_min | 1.0000 | 1.0000 |
+
+Constraint is preserved to <0.1% over 200 RK4 steps. BSSN is now a
+functionally stable 3+1 solver at skeleton level (shift=0).
