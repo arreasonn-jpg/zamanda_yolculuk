@@ -151,3 +151,9 @@ so until an independent ethics/safety review concludes otherwise.
 
 v2.0 does NOT close the 43-order gap. It provides a stable non-linear
 solver so future work can measure what happens near the CTC regime.
+
+## v3.0 roadmap
+- ✅ v3.0-alpha1: full Kerr KS Cartesian IC (|a| <= M)
+- 🔷 v3.0-alpha2: moving-puncture formalism (gauge-IC consistent)
+- 🔷 v3.0-alpha3: N-scaling with interpolated masks
+- 🔷 v3.0-alpha4: horizon finding + mass extraction

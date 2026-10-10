@@ -303,3 +303,36 @@ Per-step growth: 1.0000124. alpha_min 0.0099->0.0102.
 
 **Stable across all cases.** BSSN solver passes both long-run and
 multi-physics benchmark.
+
+## v3.0-alpha1: full Kerr via Kerr-Schild Cartesian
+
+- `src/zt005/bssn_ic_kerr_full.py` — Kerr-Schild IC for |a| <= M.
+  Horizon-penetrating, no BL coordinate singularity.
+- `src/zt005/bssn_rk4_frozen_gauge.py` — RK4 with frozen alpha, beta
+  (gauge from IC, not evolved).
+- `tests/test_bssn_ic_kerr_full.py` — 7 checks.
+
+### 30-step frozen-gauge run (N=9, L=40, M=1, dt=5e-4)
+
+| a | H0_ext | Hf_ext | growth |
+|---|---|---|---|
+| 0.0 | 6.45e-04 | 6.07e-04 | 0.937 |
+| 0.5 | (similar) | | |
+| 0.9 | 6.49e-04 | 6.07e-04 | 0.937 |
+| 0.99 | (similar) | | |
+
+Exterior (R > 3M) constraint stable. Horizon-interior H0 = 158
+(physical, not a bug).
+
+### Honest note on N-scaling
+
+N=9, 11, 13 give 0.94, 1.11, 1.56 — but the mask `R > 3M` selects
+different physical cells as N changes (more cells near horizon at
+higher N). Same-physical-cell comparison needs interpolation, deferred
+to v3.0-alpha2.
+
+### Gauge mismatch
+
+KS IC has alpha != 1, beta != 0 (physical). Evolving gauge (1+log +
+Gamma-driver) fights IC gauge: growth 2.86. Freezing gauge reduces to
+0.94. Moving-puncture formalism (v3.0-alpha2) resolves this properly.
