@@ -50,3 +50,22 @@ If a limitation is not listed here, that is a documentation bug.
     carried into this repository.
 15. The ZT-006.2.19 raw FAIL artifact was never committed; its summary
     (0/20, per-grid percentages) is recorded in stages/ZT006/README.md.
+
+## BSSN skeleton scope (v1.1)
+
+The BSSN code is a **skeleton**, not a full numerical-relativity solver:
+
+- `Gamma^i` is not evolved as a state variable.
+- Lapse (`alpha`) and shift (`beta`) are fixed to (1, 0).
+- `dAtilde` omits the `Gamma`-dependent terms.
+- Long-run runs show slow sub-exponential constraint growth, consistent
+  with physical dispersion rather than numerical blow-up at this scale.
+
+Promoting this to a production BSSN solver would require:
+1. Evolving `Gamma^i` with its full RHS.
+2. Gauge conditions (1+log lapse, Gamma-driver shift).
+3. Constraint-damping (Z4c) tuning.
+4. Kreiss-Oliger dissipation wired into RK4 stages.
+5. Grid refinement / AMR.
+
+None of these are in scope for v1.x.
