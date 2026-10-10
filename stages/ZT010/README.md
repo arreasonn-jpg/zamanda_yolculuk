@@ -175,3 +175,36 @@ Not a device. Numerical bound only.
 
 Constraint is preserved to <0.1% over 200 RK4 steps. BSSN is now a
 functionally stable 3+1 solver at skeleton level (shift=0).
+
+## v2.0-beta2: shift evolution
+
+- `src/zt005/bssn_shift.py` — Lie derivatives along beta for all fields.
+- `src/zt005/bssn_rk4_beta2.py` — RK4 with shift evolution + gauge.
+- `tests/test_bssn_shift.py` — 3 checks.
+- `tests/test_bssn_rk4_beta2.py` — 3 checks.
+
+### 100-step run (N=7, dt=5e-5)
+
+| Metric | Value |
+|---|---|
+| H growth | **1.0001** |
+| alpha_min | 1.0000 |
+| beta_max | 2.3e-7 (linear growth) |
+| all finite | True |
+
+Shift evolves under Gamma-driver, constraint preserved.
+
+## v2.0-beta3: Sommerfeld BC wired into RK4
+
+- `src/zt005/bssn_bc.py` — sommerfeld_all for phi, K, alpha, gtilde,
+  Atilde, Gamma, beta.
+- `src/zt005/bssn_rk4_beta3.py` — RK4 driver with BC applied each step.
+- `tests/test_bssn_bc.py` — 3 checks.
+- `tests/test_bssn_rk4_beta3.py` — 3 checks.
+
+### Note on integration test
+
+BC is verified in unit tests. In the beta3 integration test the wave
+does not reach the boundary within the run (0.1 time units vs 0.5
+distance to boundary), so the BC is a no-op there. BC will trigger in
+the beta4 long run (1000+ steps).

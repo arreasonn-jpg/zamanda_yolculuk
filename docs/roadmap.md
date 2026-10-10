@@ -118,3 +118,9 @@ so until an independent ethics/safety review concludes otherwise.
 - 🔷 v2.0-beta2: shift vector evolution (beta != 0)
 - 🔷 v2.0-beta3: Sommerfeld BC in full driver
 - 🔷 v2.0-beta4: long-run 1000+ steps
+
+- ✅ v2.0-beta2: shift vector evolution (H growth 1.0001)
+- 🔷 v2.0-beta3: Sommerfeld BC in full driver
+
+- ✅ v2.0-beta3: Sommerfeld BC in full driver (unit-verified)
+- 🔷 v2.0-beta4: long-run 1000+ steps (wave reaches boundary)
