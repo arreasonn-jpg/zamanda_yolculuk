@@ -160,3 +160,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v3.0-alpha2: moving-puncture formalism (growth 1.0000)
 - 🔷 v3.0-alpha3: Schwarzschild 500-step with moving puncture
+
+- ✅ v3.0-alpha3: ADM mass module + moving-puncture long run
+- 🔷 v3.0-alpha4: SC regular-core simulation (de Sitter + Israel matching)

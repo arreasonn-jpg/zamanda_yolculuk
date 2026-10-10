@@ -359,3 +359,11 @@ Gamma-driver) fights IC gauge: growth 2.86. Freezing gauge reduces to
 
 **Perfect constraint preservation** over 50 steps with moving-puncture
 gauge. This matches the gold-standard black-hole evolution setup.
+
+## v3.0-alpha3: ADM mass + long run
+
+- `src/zt005/bssn_adm_mass.py` — approximate ADM mass from conformal phi.
+- `tests/test_bssn_adm_mass.py` — 2 checks (Minkowski zero, puncture order).
+
+### 50-step moving-puncture Schwarzschild (N=9, dt=5e-4)
+- H growth 1.0000, alpha_min 0.3333, B evolving.
