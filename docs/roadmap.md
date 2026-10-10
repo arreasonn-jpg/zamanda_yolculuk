@@ -86,3 +86,12 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P-A2: RK4 grid driver.
 - 🔷 P-A3: long-run stability (100+ steps).
+
+## v2.0 roadmap (Tam BSSN solver)
+- ✅ v2.0-alpha1: extended state container (Gamma, alpha, beta)
+- 🔷 v2.0-alpha2: full dt_Gamma RHS
+- 🔷 v2.0-alpha3: 1+log lapse + Gamma-driver shift
+- 🔷 v2.0-alpha4: Z4c damping
+- 🔷 v2.0-alpha5: long-run stability (1000+ steps)
+- 🔷 v2.0-beta: Schwarzschild + Kerr benchmarks
+- 🔷 v2.0: release

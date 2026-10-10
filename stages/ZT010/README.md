@@ -111,3 +111,9 @@ Not a device. Numerical bound only.
 - `src/zt005/bssn_rk4_grid.py` — RK4 with grid RHS (Hessian phi,
   grad Atilde, full Ricci).
 - `tests/test_bssn_rk4_grid.py` — 3 checks.
+
+## v2.0-alpha1: extended BSSN state
+
+- `src/zt005/bssn_state.py` — `BSSNState` dataclass with phi, gtilde, K,
+  Atilde, Gamma, alpha, beta; `minkowski_state(N)` helper.
+- `tests/test_bssn_state.py` — 4 checks.
