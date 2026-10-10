@@ -106,3 +106,46 @@ v2.0 is a **functionally stable BSSN skeleton**. It correctly evolves
 Schwarzschild and slowly-rotating Kerr initial data over hundreds of
 RK4 steps without constraint blow-up. It is not a production
 numerical-relativity code and does not attempt to be one.
+
+## v3.0 scope (final)
+
+### What v3.0 delivers
+
+- Full Kerr via Kerr-Schild Cartesian IC (|a| <= M, horizon-penetrating).
+- Moving-puncture gauge (Bruemann 2005) with auxiliary B^i field.
+- ADM mass extraction (volume-integrated form).
+- SC regular-core module (de Sitter + Israel junction).
+- SC-like smoothed-core BSSN IC (regular at origin).
+- Rotating SC core (frame-dragging shift).
+- BSSN <-> retarded_hbar cross-check.
+- All benchmarked with moving-puncture evolution.
+
+### Numerical results summary
+
+| Case | Setup | H growth |
+|---|---|---|
+| Schwarzschild isotropic | 500 steps | 1.0062 |
+| Schwarzschild puncture | 50 steps, moving-puncture | 1.0000 |
+| Kerr KS a=0..0.99 | 30-50 steps, frozen gauge | 0.94-1.00 |
+| Kerr slow a=0..0.5 | 50 steps, moving-puncture | 1.0000 |
+| SC smoothed core a=0 | 50 steps, moving-puncture | 1.0000 |
+| SC smoothed core a=0..0.5 | 50 steps, moving-puncture | 1.0000 |
+
+### What v3.0 does NOT deliver
+
+- Full Kerr a > 0.5 M with evolution (only a <= 0.5).
+- AMR / mesh refinement.
+- MPI parallelism.
+- Constraint-preserving BC (only Sommerfeld outflow).
+- Radiation extraction (Newman-Penrose).
+- Full de Sitter + Israel junction (approximated by smoothing).
+- Nonlinear stability over long times (>500 steps).
+
+### Honest assessment
+
+v3.0 is a **functionally complete BSSN skeleton** with:
+- Schwarzschild (isotropic + puncture)
+- Kerr (slow rotation, a <= 0.5 M)
+- SC-like regular core (non-rotating + rotating)
+
+All stable over 50-500 moving-puncture steps. Not a production NR code.

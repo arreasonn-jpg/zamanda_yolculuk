@@ -34,3 +34,25 @@
 ### Not included (documented in limitations.md)
 - Full Kerr (a > 0.5), moving puncture, AMR, MPI,
   constraint-preserving BC, radiation extraction
+
+## v3.0.0 (2026-10-11)
+
+### Added — v3.0 series
+- Full Kerr KS Cartesian IC (v3.0-alpha1)
+- Moving-puncture gauge (v3.0-alpha2)
+- ADM mass extraction (v3.0-alpha3)
+- SC regular-core module (v3.0-alpha4)
+- SC-like smoothed-core BSSN IC (v3.0-alpha5)
+- Rotating SC (v3.0-alpha6)
+- SC-BSSN bridge note
+
+### Numerical results
+- Schwarzschild: H growth 1.0000-1.0062
+- Kerr a=0..0.5: H growth 1.0000
+- SC core a=0..0.5: H growth 1.0000
+
+### Tests
+- 435 fast + 21 slow
+
+### Reference
+- Numerical support for Esa (2026) Schwarzschild Condensation model
