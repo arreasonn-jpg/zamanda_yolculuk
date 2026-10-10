@@ -129,3 +129,8 @@ Not a device. Numerical bound only.
 
 - `src/zt005/bssn_gauge.py` — 1+log lapse + Gamma-driver shift.
 - `tests/test_bssn_gauge.py` — 5 checks.
+
+## v2.0-alpha4: Z4c damping
+
+- `src/zt005/bssn_z4c.py` — damping_dK, damping_dGamma, damping_energy.
+- `tests/test_bssn_z4c.py` — 5 checks.
