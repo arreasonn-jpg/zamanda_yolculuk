@@ -80,3 +80,10 @@ Not a device. Numerical bound only.
 - `src/zt005/bssn_kerr.py` — Kerr BL lapse + 3-metric, horizon radius.
 - `src/zt005/bssn_linear_check.py` — hbar→metric, nonlinearity ratio.
 - `tests/test_bssn_kerr.py` — 6 checks.
+
+## Full BSSN RHS from ADM (partial) added
+
+- `src/zt005/bssn_rhs_full.py` — dt_gtilde, dt_phi, dt_K, dt_Atilde,
+  dt_Gamma, bssn_rhs_full (drop-in for euler_step).
+- `tests/test_bssn_rhs_full.py` — 6 checks.
+- Assumptions: alpha=1, beta=0; Atilde derivatives not yet wired in.

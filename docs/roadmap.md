@@ -71,3 +71,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P-C2: Kerr + linear-regime cross-check.
 - 🔷 P-C3: BSSN ↔ retarded_hbar numeric cross-check.
+
+- ✅ P10: Full BSSN RHS from ADM (lapse/shift fixed).
+- 🔷 P11: 3D stability + constraint-preserving BC.
