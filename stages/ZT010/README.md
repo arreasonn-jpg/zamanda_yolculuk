@@ -87,3 +87,9 @@ Not a device. Numerical bound only.
   dt_Gamma, bssn_rhs_full (drop-in for euler_step).
 - `tests/test_bssn_rhs_full.py` — 6 checks.
 - Assumptions: alpha=1, beta=0; Atilde derivatives not yet wired in.
+
+## 3D stability test added
+
+- `src/zt005/bssn_stability.py` — Gaussian perturbation on Minkowski,
+  evolve with RK4, constraint norm bounded.
+- `tests/test_bssn_stability.py` — 4 checks.

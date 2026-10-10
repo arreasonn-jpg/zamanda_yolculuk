@@ -74,3 +74,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ P10: Full BSSN RHS from ADM (lapse/shift fixed).
 - 🔷 P11: 3D stability + constraint-preserving BC.
+
+- ✅ P11: 3D stability (small Gaussian, RK4, bounded constraint).
+- 🔷 P12: BSSN <-> retarded_hbar numeric cross-check.
