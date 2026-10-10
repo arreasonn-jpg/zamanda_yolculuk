@@ -141,3 +141,10 @@ Not a device. Numerical bound only.
 - `scripts/long_run_v2.py` — 40-step run: growth sub-exponential,
   alpha_min = 1.000, all finite.
 - `tests/test_bssn_v2.py` — 3 checks.
+
+## v2.0-alpha5: unified driver
+
+- `src/zt005/bssn_v2.py` — RK4 step on BSSNState with Gamma + gauge + Z4c.
+- `scripts/long_run_v2.py` — 40-step run: growth sub-exponential,
+  alpha_min = 1.000, all finite.
+- `tests/test_bssn_v2.py` — 3 checks.
