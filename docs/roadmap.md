@@ -139,3 +139,15 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-rc1: 500-step + combined benchmark (growth <1.01)
 - 🔷 v2.0: final release
+
+## v2.0.x maintenance (in progress)
+
+- ✅ physics_gap_summary.md updated with BSSN results
+- ✅ README version table
+- 🔷 paper/main.tex: BSSN section (draft, not submitted)
+- 🔷 arXiv submission: ON HOLD (user decision)
+
+## v2.0 scope note
+
+v2.0 does NOT close the 43-order gap. It provides a stable non-linear
+solver so future work can measure what happens near the CTC regime.

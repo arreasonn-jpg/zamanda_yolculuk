@@ -14,6 +14,18 @@ The term "time machine" is avoided in technical layers by design: the
 correct description is **spacetime-manipulation hypothesis**. All CTC
 machinery in this repo is a known-answer benchmark, not a device claim.
 
+## Version status
+
+| Version | Highlights |
+|---|---|
+| v1.0.0 | Linearized GR, exotic matter models, energy gap report (43 orders) |
+| v2.0.0 | Full BSSN solver: Gamma + alpha + beta + gauge + Z4c + physical Ricci |
+|         | 500-step Schwarzschild: H growth 1.0062 |
+|         | Kerr a=0..0.5: growth 1.0004 |
+|         | 420 tests passing (400 fast + 20 slow) |
+
+See `docs/limitations.md` for v2.0 scope and what is NOT included.
+
 ## Repository layout
 
 ```
