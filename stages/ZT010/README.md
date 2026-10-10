@@ -436,3 +436,24 @@ Rotating SC regular core is BSSN-stable at a=0..0.5.
 **Milestone:** First matter-coupled BSSN run. Scalar field source
 integrated into RHS. Stable at both linear (A=1e-3) and larger
 (A=1e-2) amplitudes.
+
+## v4.0-alpha2: SC condensate as matter source
+
+- `src/zt005/sc_condensate.py` — SC order parameter profile
+  (Gaussian in de Sitter trap), V(phi) = 1/2 m^2 phi^2 + 1/4 g phi^4.
+- `tests/test_sc_condensate.py` — 5 checks.
+
+### 50-step run (N=9, L=20, dt=1e-6)
+
+| step | Kmax | phimax | Pimax | finite |
+|---|---|---|---|---|
+| 10 | 6.28e-18 | 1.00e-03 | 2.40e-09 | True |
+| 50 | 3.14e-17 | 1.00e-03 | 1.20e-08 | True |
+
+- phimax stable at 1e-3 (normalized SC profile)
+- Pimax grows linearly (potential-driven)
+- Kmax grows linearly (backreaction)
+- All finite, no blow-up
+
+**Milestone:** SC condensate matter field integrated with BSSN.
+Stable over 50 steps at physical (small) amplitudes.
