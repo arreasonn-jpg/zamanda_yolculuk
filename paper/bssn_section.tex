@@ -1,0 +1,72 @@
+\section{Non-linear BSSN extension}
+\label{sec:bssn}
+
+The linearized chain of Sec.~\ref{sec:method} gives a quantitative
+bound on the metric perturbation but cannot address the regime
+$h \gtrsim 10^{-3}$ where back-reaction dominates. To make that
+regime measurable in principle, we implemented a BSSN 3+1 solver.
+
+\subsection{Implementation}
+
+The extended state carries
+$\{\tilde\gamma_{ij}, \phi, K, \tilde A_{ij}, \tilde\Gamma^i, \alpha, \beta^i\}$.
+The evolution system includes:
+
+\begin{itemize}
+\item physical 3-Ricci scalar of
+      $g_{ij} = e^{4\phi}\tilde\gamma_{ij}$ (conformal $\phi$ terms included),
+\item covariant Hessian $D_iD_j\phi$ and $D^2\alpha$ in the RHS,
+\item $1{+}\log$ lapse and $\Gamma$-driver shift,
+\item Z4c-inspired constraint damping,
+\item RK4 integrator with central finite differences on a uniform grid,
+\item Sommerfeld outflow boundary conditions.
+\end{itemize}
+
+\subsection{Benchmarks}
+
+We evolve constraint-satisfying initial data for Schwarzschild
+(isotropic and puncture forms) and slowly-rotating Kerr
+($|a| \le 0.5\,M$) in the leading-order frame-dragging approximation.
+
+The diagnostic is the L$^2$ norm of the Hamiltonian constraint $H$
+across the grid. A stable solver must keep $H$ bounded.
+
+\subsection{Results}
+
+\begin{table}[h]
+\centering
+\caption{Long-run stability of the BSSN solver.}
+\label{tab:bssn}
+\begin{tabular}{lrr}
+\hline
+Case & Steps & $H_{\rm final}/H_0$ \\
+\hline
+Schwarzschild (isotropic, $N{=}7$) & 500 & $1.0062$ \\
+Schwarzschild (100-step check)      & 100 & $1.0002$ \\
+Kerr $a{=}0.0$                       & 100 & $1.0004$ \\
+Kerr $a{=}0.2$                       & 100 & $1.0004$ \\
+Kerr $a{=}0.4$                       & 100 & $1.0004$ \\
+Kerr $a{=}0.5$                       & 100 & $1.0004$ \\
+\hline
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:bssn} shows per-step constraint growth of
+$\approx 1.0000124$ for the 500-step Schwarzschild run, and
+$\lesssim 1.0005$ across all cases. All fields remain finite and the
+lapse minimum stays above $10^{-2}$.
+
+The frame-dragging shift scales linearly with $a$, as expected.
+
+\subsection{Limitations}
+
+The solver is a stable skeleton, not a production numerical-relativity
+code. It does not include: full Kerr ($a > 0.5\,M$), moving-puncture
+formalism, adaptive mesh refinement, MPI parallelism,
+constraint-preserving boundary conditions, or Newman--Penrose radiation
+extraction. These are documented in \texttt{docs/limitations.md}.
+
+Crucially, the BSSN extension does not close the 43-order gap between
+the current driven-EM device and any CTC-relevant scale. It provides a
+stable non-linear tool so that future work can measure what happens
+as the gap is artificially reduced.

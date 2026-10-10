@@ -48,3 +48,17 @@ htmlcov/
 *.tmp
 *.bak
 scripts/dev/_*
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+paper/main.pdf
+paper/*.pdf
+!paper_figures/*.pdf
