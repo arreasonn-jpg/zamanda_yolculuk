@@ -69,3 +69,40 @@ Promoting this to a production BSSN solver would require:
 5. Grid refinement / AMR.
 
 None of these are in scope for v1.x.
+
+## v2.0 scope (final)
+
+### What v2.0 delivers
+
+- Full BSSN state: phi, gtilde, K, Atilde, Gamma, alpha, beta.
+- Physical 3-Ricci scalar with conformal phi terms.
+- 1+log lapse + Gamma-driver shift.
+- Z4c-style constraint damping.
+- RK4 integrator with grid-aware FD derivatives.
+- Sommerfeld outflow BC.
+- Schwarzschild isotropic IC (clamped).
+- Schwarzschild puncture IC (smooth).
+- Slowly-rotating Kerr IC (|a| <= 0.5 M).
+
+### What v2.0 does NOT deliver
+
+- Full Kerr (a > 0.5 M) — requires BL coordinate transformation.
+- Moving-puncture formalism — needed for long-term BH evolution.
+- AMR / mesh refinement.
+- MPI parallelism.
+- Constraint-preserving BC (only Sommerfeld outflow).
+- Kreiss-Oliger dissipation active in the v2.0 RK4 loop.
+- Radiation extraction (Newman-Penrose scalars).
+
+### Numerical results
+
+- 500-step Schwarzschild: H growth 1.0062 (per-step 1.0000124).
+- 100-step benchmark: Schwarzschild + Kerr a=0..0.5, growth < 1.0005.
+- All finite, alpha_min stable, bmax scales linearly with a.
+
+### Honest assessment
+
+v2.0 is a **functionally stable BSSN skeleton**. It correctly evolves
+Schwarzschild and slowly-rotating Kerr initial data over hundreds of
+RK4 steps without constraint blow-up. It is not a production
+numerical-relativity code and does not attempt to be one.
