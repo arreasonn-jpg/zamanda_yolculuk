@@ -395,3 +395,20 @@ gauge. This matches the gold-standard black-hole evolution setup.
 **Milestone:** Regular core is BSSN-stable over 50 moving-puncture
 steps. Numerical support for Esa (2026) Schwarzschild Condensation
 model's claim of a non-singular, dynamically stable interior.
+
+## v3.0-alpha6: rotating SC
+
+- `src/zt005/sc_like_ic_kerr.py` — SC core + frame-dragging shift
+  beta^phi ~ 2 a M_eff / r^3.
+- `tests/test_sc_like_ic_kerr.py` — 5 checks.
+
+### 50-step run (N=9, L=20, M=1, rc=2)
+
+| a | H0 | Hf | growth | alpha_min | bmax |
+|---|---|---|---|---|---|
+| 0.0 | 2.334e-03 | 2.334e-03 | 1.0000 | 0.8612 | 7.2e-08 |
+| 0.1 | 2.334e-03 | 2.334e-03 | 1.0000 | 0.8612 | 4.5e-03 |
+| 0.3 | 2.334e-03 | 2.334e-03 | 1.0000 | 0.8612 | 1.4e-02 |
+| 0.5 | 2.334e-03 | 2.334e-03 | 1.0000 | 0.8612 | 2.3e-02 |
+
+Rotating SC regular core is BSSN-stable at a=0..0.5.
