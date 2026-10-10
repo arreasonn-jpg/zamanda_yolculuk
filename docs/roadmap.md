@@ -98,3 +98,6 @@ so until an independent ethics/safety review concludes otherwise.
 
 - ✅ v2.0-alpha2: full dt_Gamma RHS
 - 🔷 v2.0-alpha3: 1+log lapse + Gamma-driver shift
+
+- ✅ v2.0-alpha3: 1+log lapse + Gamma-driver shift
+- 🔷 v2.0-alpha4: Z4c constraint damping

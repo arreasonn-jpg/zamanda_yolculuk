@@ -124,3 +124,8 @@ Not a device. Numerical bound only.
   (-2 Atilde^ij d_j alpha + 2 alpha [G^i_jk Atilde^jk
    - (2/3) gt^ij d_j K + 6 Atilde^ij d_j phi]).
 - `tests/test_bssn_gamma.py` — 3 checks (Minkowski zero, finite, linear scale).
+
+## v2.0-alpha3: gauge evolution
+
+- `src/zt005/bssn_gauge.py` — 1+log lapse + Gamma-driver shift.
+- `tests/test_bssn_gauge.py` — 5 checks.
