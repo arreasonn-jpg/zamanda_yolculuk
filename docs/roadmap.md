@@ -207,3 +207,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.0-alpha4: refined scalar field (two-grid coupling)
 - 🔷 v6.0-alpha5: refined BSSN driver (metric + matter on two grids)
+
+- ✅ v6.0-alpha5: refined BSSN driver (two-grid coupling)
+- 🔷 v6.0-alpha6: refined PTUM run (tachyon backreaction with refinement)

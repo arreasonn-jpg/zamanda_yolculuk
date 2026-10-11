@@ -582,3 +582,15 @@ operators. Refined BSSN driver in v6.0-alpha4.
 - Verified: static Gaussian finite, zero stays zero, shapes preserved.
 
 Foundation for refined BSSN driver (v6.0-alpha5).
+
+## v6.0-alpha5: refined BSSN driver
+
+- `src/zt005/refinement_tensor.py` — tensor-aware prolongate/restrict
+  for BSSNState (all 7 fields).
+- `src/zt005/bssn_refined.py` — two-grid BSSN + scalar evolution.
+  Per step: coarse evolve -> prolongate to fine -> fine evolve ->
+  restrict to coarse interior.
+- `tests/test_bssn_refined.py` — 3 checks.
+
+Verified: Minkowski zero stays zero, small perturbation finite on
+both grids, shapes preserved.
