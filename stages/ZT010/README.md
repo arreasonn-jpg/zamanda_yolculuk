@@ -654,3 +654,23 @@ negative-energy reservoir.
 | 200 | -0.096 | 0.107 | 0.108 | True |
 
 Stable over 200 steps with refinement (v5.0 single-grid crashed ~100).
+
+## v6.0-alpha8: quantum inequality (Ford-Roman) diagnostic
+
+- `src/zt005/quantum_inequality.py` — Lorentzian sampling,
+  4D massless scalar bound: -3/(32 pi^2 tau^4)
+- `tests/test_quantum_inequality.py` — 7 checks
+
+### Use
+
+Given a time series rho(t) from PTUM evolution, checks whether the
+integrated negative energy density violates the Ford-Roman bound.
+
+A violation would indicate conflict with QFT; satisfaction means the
+classical PTUM result is at least compatible with quantum inequalities.
+
+### Note
+
+Ford-Roman bound here is for a massless scalar field. Our PTUM has
+massive fields with different scaling; this diagnostic is order-of-
+magnitude only. Refinement to massive-field bound is future work.

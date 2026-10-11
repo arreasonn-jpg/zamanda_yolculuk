@@ -216,3 +216,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.0-alpha7: restrict mask-aware; PTUM discharge identified as transient
 - 🔷 v6.0-beta: consolidate with transient-discharge interpretation
+
+- ✅ v6.0-alpha8: Ford-Roman quantum inequality diagnostic
+- 🔷 v6.0-alpha9: PTUM rho(t) sampled and tested against bound
