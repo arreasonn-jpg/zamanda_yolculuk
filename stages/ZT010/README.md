@@ -915,3 +915,10 @@ Complete numerical support for Esa (2026) SC paper:
 numerical result for the SC model: rotating regular core + condensate
 matter stable over 500 steps, constraint-preserving, at near-extremal
 spin a=0.9.
+
+## v6.4-alpha1: Kerr + SC + PTUM IC (foundation)
+
+- `src/zt005/kerr_sc_ptum_ic.py` — full stack IC: Kerr+SC metric +
+  SC condensate + PTUM fields.
+- `tests/test_kerr_sc_ptum_ic.py` — 6 checks.
+- `combined_diagnostics` reports rho split (SC vs PTUM).

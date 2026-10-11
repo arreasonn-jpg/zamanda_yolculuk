@@ -254,3 +254,7 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.3-alpha3: Kerr + SC 500-step (a=0.9, constraint improves)
 - 🔷 v6.3-beta: consolidation + release
+
+## v6.4 roadmap
+- ✅ v6.4-alpha1: Kerr + SC + PTUM IC
+- 🔷 v6.4-alpha2: full-stack evolution + 50-step test
