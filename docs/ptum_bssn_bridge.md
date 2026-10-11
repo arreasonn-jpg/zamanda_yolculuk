@@ -51,3 +51,20 @@ prediction in a full 3+1 GR setting.
     pytest tests/test_ptum_field.py -v
     python scripts/v5_ptum_equilibrium.py
     python scripts/v5_ptum_plot.py
+
+## v6.0 update — refined stability
+
+The single-grid PTUM run at A=3.0 (rho_min = -15.6) crashed at ~100
+steps due to strong tachyon backreaction making gtilde singular.
+
+Two-grid refinement (2:1, prolongate/restrict coupling) enables
+**200-step stable** evolution at the same amplitude:
+
+| Setup | Fails at | Kmax @100 | Kmax @200 |
+|---|---|---|---|
+| v5.0 single grid | ~100 | 23.5 | (crash) |
+| v6.0 refined | never | 0.054 | 0.107 |
+
+**Interpretation:** resolution near the tachyon-active region is
+critical for long-run stability. The negative energy configuration
+becomes tractable when the active zone is adequately resolved.

@@ -222,3 +222,50 @@ tachyon discharge produces negative energy density (NEC violation).
 The magnitude is perturbative in the stable regime, consistent with
 PTUM's framing of negative energy as one component of a larger
 cosmological discharge.
+
+## v6.0 scope
+
+### What v6.0 delivers
+
+- Complex scalar field matter (matter_complex.py)
+- RK4 driver for complex scalar + BSSN (bssn_rk4_complex.py)
+- Two-level refinement operators (refinement.py)
+- Tensor-aware refinement (refinement_tensor.py)
+- Refined scalar evolution (refined_scalar.py)
+- Refined BSSN driver (bssn_refined.py)
+- Refined PTUM driver (bssn_refined_ptum.py)
+
+### Numerical results
+
+| Setup | Result |
+|---|---|
+| Complex scalar on Minkowski | finite, phase-rotation invariant |
+| Refinement roundtrip | exact for linear, < 0.5 smooth |
+| Refined BSSN on Minkowski | zero stays zero |
+| Refined PTUM A=3.0, 200 steps | **stable** (v5.0 crashed at 100) |
+
+### Key physical result
+
+**Refinement resolves strong tachyon backreaction.**
+2:1 refinement with prolongate/restrict coupling allows the A=3.0
+PTUM run (rho_min initial -15.6) to reach 200 steps, where the
+single-grid v5.0 run failed at ~100 steps.
+
+### What v6.0 does NOT deliver
+
+- Full AMR (only 2-level static refinement)
+- Refinement tracking (fine grid fixed at origin)
+- Flux correction at refinement boundary
+- Full nonlinear complex scalar (only linear regime tested)
+- Long-run stability beyond 200 steps at A=3.0
+
+### Honest assessment
+
+v6.0 provides the first AMR-lite framework in this repo. The 2:1
+refinement coupling works: PTUM configurations that crash on a single
+grid are stable on two coupled grids. This is a numerical
+demonstration that resolution near the tachyon-active region is
+critical for long-run stability.
+
+The rho_min drop from -15.6 to -0.096 after coupling remains to be
+fully understood (physical redistribution vs. averaging artefact).

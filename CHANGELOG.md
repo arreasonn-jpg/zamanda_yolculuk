@@ -99,3 +99,26 @@
 ### Reference
 - Numerical validation of Esa (2026) PTUM tachyon discharge mechanism
 - Companion to SC numerical validation (v4.0)
+
+## v6.0.0 (2026-10-11)
+
+### Added — complex scalar + AMR-lite
+- Complex scalar matter (matter_complex.py, U(1) charge)
+- RK4 complex scalar + BSSN (bssn_rk4_complex.py)
+- Two-level refinement operators (refinement.py)
+- Tensor-aware refinement for BSSNState (refinement_tensor.py)
+- Refined scalar evolution (refined_scalar.py)
+- Refined BSSN driver (bssn_refined.py)
+- Refined PTUM driver (bssn_refined_ptum.py)
+
+### Key results
+- PTUM A=3.0 refined: 200-step stable (v5.0 single-grid crashed ~100)
+- Complex scalar: phase-rotation invariant, U(1) charge defined
+- Refinement operators: exact for linear, smooth roundtrip verified
+
+### Tests
+- 490 fast + 21 slow
+
+### Reference
+- AMR-lite resolution of PTUM backreaction instability
+- Numeric support for Esa (2026) SC + PTUM models
