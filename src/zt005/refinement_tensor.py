@@ -36,30 +36,39 @@ def prolongate_state(state_c, N_f, offset):
     return out
 
 
+def _restrict_into_scalar(f_f, out_c, N_c, offset):
+    """Restrict scalar fine -> coarse, overwriting only fully-covered cells."""
+    r = restrict(f_f, N_c, offset)
+    valid = ~np.isnan(r)
+    out_c[valid] = r[valid]
+    return out_c
+
+
+def _restrict_into_tensor(f_f, out_c, N_c, offset):
+    """Restrict tensor component fine -> coarse."""
+    r = restrict(f_f, N_c, offset)
+    valid = ~np.isnan(r)
+    out_c[valid] = r[valid]
+    return out_c
+
+
+
 def restrict_state_into(state_f, coarse_dict, N_c, offset):
-    """Restrict fine BSSN arrays into coarse dict in the fully-covered region."""
-    ox, oy, oz = offset
-    N_f = state_f.phi.shape[0]
-    half = N_f // 2
-    a, b = ox, ox + half - 1
-    sl = (slice(a, b+1), slice(a, b+1), slice(a, b+1))
-
-    coarse_dict["phi"][sl] = restrict(state_f.phi, N_c, offset)[sl]
-    coarse_dict["K"][sl] = restrict(state_f.K, N_c, offset)[sl]
-    coarse_dict["alpha"][sl] = restrict(state_f.alpha, N_c, offset)[sl]
-
-    # tensor fields: restrict each component
+    """Restrict fine BSSN arrays into coarse dict (fully-covered cells only)."""
+    _restrict_into_scalar(state_f.phi, coarse_dict["phi"], N_c, offset)
+    _restrict_into_scalar(state_f.K, coarse_dict["K"], N_c, offset)
+    _restrict_into_scalar(state_f.alpha, coarse_dict["alpha"], N_c, offset)
     for i in range(3):
         for j in range(3):
-            coarse_dict["gtilde"][..., i, j][sl] = restrict(
-                state_f.gtilde[..., i, j], N_c, offset)[sl]
-            coarse_dict["Atilde"][..., i, j][sl] = restrict(
-                state_f.Atilde[..., i, j], N_c, offset)[sl]
+            _restrict_into_tensor(state_f.gtilde[..., i, j],
+                                   coarse_dict["gtilde"][..., i, j], N_c, offset)
+            _restrict_into_tensor(state_f.Atilde[..., i, j],
+                                   coarse_dict["Atilde"][..., i, j], N_c, offset)
     for i in range(3):
-        coarse_dict["Gamma"][..., i][sl] = restrict(
-            state_f.Gamma[..., i], N_c, offset)[sl]
-        coarse_dict["beta"][..., i][sl] = restrict(
-            state_f.beta[..., i], N_c, offset)[sl]
+        _restrict_into_tensor(state_f.Gamma[..., i],
+                               coarse_dict["Gamma"][..., i], N_c, offset)
+        _restrict_into_tensor(state_f.beta[..., i],
+                               coarse_dict["beta"][..., i], N_c, offset)
     return coarse_dict
 
 

@@ -213,3 +213,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.0-alpha6: refined PTUM 200-step stable (v5.0 crash resolved)
 - 🔷 v6.0-beta: consolidation + release
+
+- ✅ v6.0-alpha7: restrict mask-aware; PTUM discharge identified as transient
+- 🔷 v6.0-beta: consolidate with transient-discharge interpretation

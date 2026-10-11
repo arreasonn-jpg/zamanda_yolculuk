@@ -623,3 +623,34 @@ requires further investigation.
 
 **Milestone:** First successful long-run PTUM evolution with
 refinement. 200 steps at the amplitude that crashed single-grid.
+
+## v6.0-alpha7: restrict mask-aware + PTUM discharge is transient
+
+### Restrict fix
+
+- `refinement.py`: restrict now returns NaN outside fine region.
+- `refinement_tensor.py`: mask-aware overwrite.
+- Tests updated for NaN masking.
+
+### Physical finding: tachyon activation is transient
+
+25 steps at A=3.0: Phi_c drops 3.0 -> 1.37. V(Phi) drives fuel to zero.
+New minimum: m_eff^2 = -0.88, psi_0 = 0.94, V_min ~ -0.19.
+
+rho_min drops from -15.6 to -0.096 because the tachyon minimum
+shallows as Phi decays.
+
+**Interpretation:** PTUM discharge is a TRANSIENT event, not a
+steady state. This is consistent with the PTUM model's framing:
+"discharge-based cosmological creation" — an event, not a permanent
+negative-energy reservoir.
+
+### 200-step refined run (A=3.0)
+
+| step | rho_min_c | Kmax_c | Kmax_f | finite |
+|---|---|---|---|---|
+| 25 | -0.096 | 0.013 | 0.014 | True |
+| 100 | -0.096 | 0.054 | 0.054 | True |
+| 200 | -0.096 | 0.107 | 0.108 | True |
+
+Stable over 200 steps with refinement (v5.0 single-grid crashed ~100).

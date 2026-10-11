@@ -50,30 +50,29 @@ def prolongate(f_coarse, N_fine, offset):
 def restrict(f_fine, N_coarse, offset):
     """Simple averaging restriction: fine -> coarse.
 
-    For each coarse cell (i,j,k), average the 8 fine cells that
-    correspond to it. Cells without fine coverage are filled with
-    the nearest fine value (fallback).
+    For each coarse cell (i,j,k) covered by the fine region, average
+    the 2x2x2 fine cells that correspond to it. Cells OUTSIDE the
+    fine region are filled with NaN — caller must not use them.
     """
     N_f = f_fine.shape[0]
     ox, oy, oz = offset
-    out = np.zeros((N_coarse, N_coarse, N_coarse))
-    for i in range(N_coarse):
-        for j in range(N_coarse):
-            for k in range(N_coarse):
-                # Fine indices covering coarse cell (i,j,k):
-                fi0 = 2*(i - ox); fi1 = fi0 + 1
-                fj0 = 2*(j - oy); fj1 = fj0 + 1
-                fk0 = 2*(k - oz); fk1 = fk0 + 1
-                # Fallback: nearest fine
-                fii = min(max(fi0, 0), N_f - 1)
-                fjj = min(max(fj0, 0), N_f - 1)
-                fkk = min(max(fk0, 0), N_f - 1)
-                if (0 <= fi0 < N_f - 1 and 0 <= fj0 < N_f - 1
-                        and 0 <= fk0 < N_f - 1):
-                    patch = f_fine[fi0:fi1+1, fj0:fj1+1, fk0:fk1+1]
-                    out[i,j,k] = patch.mean()
-                else:
-                    out[i,j,k] = f_fine[fii, fjj, fkk]
+    out = np.full((N_coarse, N_coarse, N_coarse), np.nan)
+    # Number of coarse cells fully covered: fine point 2*i corresponds to
+    # coarse index offset + i. Coverage requires 2*i + 1 < N_f, so
+    # i < (N_f - 1) / 2. Safe range: i in [0, (N_f-1)//2 - 1].
+    n_covered = (N_f - 1) // 2
+    for ii in range(n_covered):
+        for jj in range(n_covered):
+            for kk in range(n_covered):
+                i = ox + ii; j = oy + jj; k = oz + kk
+                if not (0 <= i < N_coarse and 0 <= j < N_coarse
+                        and 0 <= k < N_coarse):
+                    continue
+                fi0 = 2*ii; fi1 = fi0 + 1
+                fj0 = 2*jj; fj1 = fj0 + 1
+                fk0 = 2*kk; fk1 = fk0 + 1
+                patch = f_fine[fi0:fi1+1, fj0:fj1+1, fk0:fk1+1]
+                out[i,j,k] = patch.mean()
     return out
 
 

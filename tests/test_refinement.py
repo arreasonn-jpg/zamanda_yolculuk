@@ -11,7 +11,6 @@ def test_prolongate_constant():
 
 
 def test_prolongate_linear_exact():
-    """Linear f = 2X + 1: g[i,j,k] should = 2*(3+i/2)+1 = 7+i."""
     N0 = 11
     x = np.arange(N0, dtype=float)
     X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
@@ -26,7 +25,18 @@ def test_restrict_constant():
     N_f = 5
     f = np.ones((N_f, N_f, N_f)) * 3.0
     g = restrict(f, 11, (3, 3, 3))
-    assert g[4, 4, 4] == pytest.approx(3.0, abs=1e-12)
+    # Interior (masked) cell should be 3.0
+    assert g[3, 3, 3] == pytest.approx(3.0, abs=1e-12)
+    # Outside should be NaN
+    assert np.isnan(g[0, 0, 0])
+
+
+def test_restrict_nan_outside():
+    f = np.ones((5, 5, 5))
+    g = restrict(f, 11, (3, 3, 3))
+    n_valid = np.sum(~np.isnan(g))
+    assert n_valid > 0
+    assert n_valid < g.size
 
 
 def test_prolongate_shapes():
@@ -42,7 +52,6 @@ def test_restrict_shapes():
 
 
 def test_prolongate_smooth_roundtrip():
-    """Smooth f: prolongate + restrict ~= identity in fine region."""
     N0 = 21
     x = np.linspace(0, 1, N0)
     X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
@@ -50,8 +59,8 @@ def test_prolongate_smooth_roundtrip():
     offset = (8, 8, 8)
     g = prolongate(f, 5, offset)
     f_back = restrict(g, N0, offset)
-    # cells [8..10] fully covered by fine
-    a = offset[0]
-    b = offset[0] + 3
-    diff = np.abs(f_back[a:b, a:b, a:b] - f[a:b, a:b, a:b])
+    valid = ~np.isnan(f_back)
+    assert np.any(valid)
+    # Check interior cells where valid
+    diff = np.abs(f_back[valid] - f[valid])
     assert diff.max() < 0.5, f"max diff = {diff.max()}"

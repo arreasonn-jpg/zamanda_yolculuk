@@ -33,12 +33,9 @@ def _prolong_scalar(f_c, N_f, offset):
 
 
 def _restrict_into_scalar(f_f, out_c, N_c, offset):
-    ox, oy, oz = offset
-    N_f = f_f.shape[0]
-    half = N_f // 2
-    a, b = ox, ox + half - 1
-    sl = (slice(a, b+1), slice(a, b+1), slice(a, b+1))
-    out_c[sl] = restrict(f_f, N_c, offset)[sl]
+    r = restrict(f_f, N_c, offset)
+    valid = ~np.isnan(r)
+    out_c[valid] = r[valid]
 
 
 def evolve_refined_ptum(s_c, Phi_c, PiPhi_c, psi_c, Pipsi_c,
