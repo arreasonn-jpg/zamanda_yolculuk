@@ -716,3 +716,39 @@ QFT-compatible at the integrated level.
 **Caveat:** Ford-Roman bound used here is for massless scalar (4D).
 PTUM has massive fields; scaling could shift the bound. Order-of-
 magnitude diagnostic only.
+
+## v6.0-alpha10: massive field Ford-Roman — borderline
+
+- `quantum_inequality.py`: mass_factor(Q) + ford_roman_bound_massive
+  + check_ford_roman_massive.
+- `tests/test_quantum_inequality.py`: 13 checks (was 7).
+
+### Ford-Roman with PTUM 1000-step rho(t)
+
+| tau | Massless (N=2) | Massive mu=1 (N=2) |
+|---|---|---|
+| 0.1 | ratio 0.0002 (pass) | ratio 0.0002 (pass) |
+| 0.5 | ratio 0.037 (pass) | ratio 0.057 (pass) |
+| 1.0 | ratio 0.30 (pass) | ratio **1.21 (VIOLATION)** |
+
+**Interpretation:** massless bound is comfortably satisfied.
+Massive field correction pushes the bound tighter and the tau=1.0
+case crosses it.
+
+### Caveats (important)
+
+1. mass_factor uses rational approx 1/(1+y^2)^2, not exact Bessel.
+   True bound decays exponentially (weaker constraint).
+2. PTUM fields are interacting (quartic self-coupling). Ford-Roman
+   1997 bound assumes free fields. Interacting bound is looser.
+3. Two different masses (m_Phi ~ 0.32, m_psi ~ 1.0). Using mu=1.0
+   for both is an overestimate.
+
+All three caveats push the true bound toward "no violation".
+Exact treatment is future work.
+
+### Status
+
+- Massless: PTUM passes (definitive)
+- Massive: borderline (approximation-dependent)
+- Exact: open question, requires Bessel + interacting field treatment

@@ -222,3 +222,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.0-alpha9: 1000-step refined run + Ford-Roman passed (no violation)
 - 🔷 v6.0-beta: consolidate transient-discharge interpretation
+
+- ✅ v6.0-alpha10: massive Ford-Roman (borderline; caveats documented)
+- 🔷 v6.0-beta: consolidate; document open question on massive bound
