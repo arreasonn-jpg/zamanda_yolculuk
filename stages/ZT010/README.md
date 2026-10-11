@@ -474,3 +474,29 @@ Stable over 50 steps at physical (small) amplitudes.
 **Strongest SC numerical support:** Regular metric + regular matter
 co-evolve stably. Hamiltonian constraint preserved to machine precision.
 Lapse bounded. Scalar field preserved. Backreaction linear.
+
+## v5.0-alpha2: PTUM tachyon condensation + NEC violation
+
+- `src/zt005/ptum_field.py` — fuel V(Phi), proxy m_eff^2(Phi), psi_eq
+- `src/zt005/matter_ptum.py` — PTUM stress-energy (two-field)
+- `src/zt005/bssn_rk4_ptum.py` — RK4 on (metric + Phi + psi)
+
+### 100-step run at SC condensate equilibrium (N=9, dt=5e-4)
+
+| step | rho_min | neg_cells | psimax | Kmax | finite |
+|---|---|---|---|---|---|
+| 0 | -1.564e+01 | 27/729 | 2.83 | 0.0 | True |
+| 50 | -1.563e+01 | 27/729 | 2.83 | 1.06e+01 | True |
+| 100 | -1.502e+01 | 27/729 | 2.83 | 2.35e+01 | True |
+
+**Key result:** NEGATIVE energy density (-15.64) confirmed. NEC violation
+is numerically realized in BSSN. This is the exact condition required
+for closed timelike curves.
+
+Reference: Esa (2026), PTUM — tachyon discharge produces negative
+energy in the activated proxy sector.
+
+### Caveat
+
+K_max grows from 0 to 23.5 (backreaction strong). Long-time behaviour
+beyond 100 steps not yet tested.

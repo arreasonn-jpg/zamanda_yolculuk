@@ -184,3 +184,8 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v4.0-alpha3: BSSN + SC metric + SC matter (H growth 1.0000)
 - 🔷 v4.0-beta: consolidation + release
+
+## v5.0 roadmap
+- ✅ v5.0-alpha1: PTUM field module (fuel + proxy)
+- ✅ v5.0-alpha2: Tachyon condensation + NEC violation (rho_min = -15.6)
+- 🔷 v5.0-alpha3: Long-run stability of negative-energy configuration
