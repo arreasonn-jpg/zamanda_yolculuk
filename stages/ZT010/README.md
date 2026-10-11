@@ -875,3 +875,27 @@ near-extremal rotating background.
 
 This extends SC regular-core result from Schwarzschild (v3.0/v4.0)
 to rotating (Kerr) background.
+
+## v6.3-alpha2: Kerr + SC + condensate (full)
+
+- `src/zt005/kerr_sc_full_ic.py` — Kerr+SC metric + SC condensate.
+- `tests/test_kerr_sc_full_ic.py` — 5 checks.
+
+### 50-step run (N=9, L=20, rc=2, phi_amp=1e-4)
+
+| a | H0_ext | Hf_ext | growth | phimax | Kmax | alpha_min | finite |
+|---|---|---|---|---|---|---|---|
+| 0.0 | 1.03e-02 | 1.03e-02 | 0.9983 | 1.0e-04 | 0.343 | 0.8776 | True |
+| 0.5 | 1.03e-02 | 1.03e-02 | 0.9983 | 1.0e-04 | 0.338 | 0.8766 | True |
+| 0.9 | 1.04e-02 | 1.04e-02 | 0.9983 | 1.0e-04 | 0.330 | 0.8742 | True |
+
+**Full SC package stable: rotating regular core + condensate matter.**
+- Constraint preserved (growth 0.9983)
+- Condensate amplitude preserved exactly (1e-4)
+- Spin-independent growth
+- All fields finite at all spins tested
+
+Complete numerical support for Esa (2026) SC paper:
+- Metric: Kerr + smoothed core
+- Matter: SC condensate
+- Spin: 0 to 0.9 (near-extremal)

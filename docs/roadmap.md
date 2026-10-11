@@ -248,3 +248,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.3-alpha1: Kerr + SC regular core stable (50 steps, a=0..0.9)
 - 🔷 v6.3-beta: consolidation + v6.3.0 release
+
+- ✅ v6.3-alpha2: Kerr + SC + condensate full integration
+- 🔷 v6.3-beta: consolidation + v6.3.0 release
