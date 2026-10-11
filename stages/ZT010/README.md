@@ -922,3 +922,14 @@ spin a=0.9.
   SC condensate + PTUM fields.
 - `tests/test_kerr_sc_ptum_ic.py` — 6 checks.
 - `combined_diagnostics` reports rho split (SC vs PTUM).
+
+## paper-en-v6.3: English paper updated to v6.3 results
+
+- `paper/main_en.tex` — English full paper (8 pages)
+- `paper/bssn_section_en.tex` — BSSN section updated:
+  - Schwarzschild + Kerr benchmarks
+  - SC regular core (Schwarzschild + Kerr + condensate)
+  - PTUM tachyon discharge (single grid + refined + Kerr)
+  - Ford-Roman quantum inequality check
+  - Cross-scale structural parallel (SC ↔ PTUM)
+  - Limitations documented
