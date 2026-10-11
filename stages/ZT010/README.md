@@ -829,3 +829,23 @@ both flat and Kerr backgrounds.
 500-step stable at a=0.9 (near-extremal Kerr). Kmax grows linearly
 but bounded. Transient-discharge pattern preserved in curved
 background.
+
+## v6.2-alpha4: Kerr + PTUM 1000-step (a=0.9)
+
+- `scripts/v6_refined_kerr_ptum_1000.py`
+- Time series: `results/validated/v6_kerr_ptum_1000.npz`
+
+| step | rho_min | n_neg | Kmax_c | alpha_min | finite |
+|---|---|---|---|---|---|
+| 100 | -0.0992 | 3 | 0.089 | 0.8432 | True |
+| 500 | -0.0998 | 3 | 0.272 | 0.8432 | True |
+| 1000 | -0.1004 | 3 | 0.506 | 0.8432 | True |
+
+**1000-step stable at a=0.9 (near-extremal Kerr).**
+- Kmax linear: 0.089 -> 0.506 (5e-4/step, bounded)
+- alpha_min exactly constant: 0.8432
+- rho_min stable: -0.1
+- 3 negative cells persistent
+
+Transient-discharge pattern preserved over 1000 steps in curved,
+near-extremal rotating background.

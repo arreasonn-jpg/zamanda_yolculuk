@@ -242,3 +242,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.2-alpha3: refined Kerr + PTUM 500-step stable (a=0.9)
 - 🔷 v6.2-beta: consolidation + release
+
+- ✅ v6.2-alpha4: Kerr + PTUM 1000-step stable (a=0.9)
+- 🔷 v6.2-beta: consolidate (Kerr+PTUM as definitive PTUM-in-curved result)
