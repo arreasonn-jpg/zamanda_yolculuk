@@ -142,3 +142,25 @@
 
 ### Added — complex scalar + AMR-lite
 (see previous entry)
+
+## v6.1.0 (2026-10-11)
+
+### Added — framework documentation
+- docs/unified_framework.md (shared code, model-specific physics)
+- docs/tachyon_bridge.md (speculative cross-scale structural parallel)
+- src/zt005/phase_transition_common.py (shared potential formula)
+- tests/test_phase_transition_common.py (9 checks)
+
+### Status
+- Mathematical parallel: verified
+- Physical bridge: NOT established
+- Scale gap: 78 orders (unchanged)
+
+### Tests
+- ~530 fast + 21 slow
+
+### Honest boundary
+
+v6.1 does NOT claim SC and PTUM are unified. It documents shared
+infrastructure and a structural parallel, and explicitly identifies
+the open problem of cross-scale bridging.

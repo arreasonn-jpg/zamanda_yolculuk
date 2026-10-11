@@ -294,3 +294,36 @@ Caveats push toward "no violation"; exact treatment is future work.
 - Interacting-field quantum inequality
 - Tracked/moving refinement
 - Complex scalar + Kerr + PTUM combined
+
+## v6.1 scope
+
+### What v6.1 delivers
+
+- `docs/unified_framework.md` — shared infrastructure documentation
+  for SC and PTUM models
+- `docs/tachyon_bridge.md` — speculative cross-scale structural parallel
+- `src/zt005/phase_transition_common.py` — shared potential formula
+- `tests/test_phase_transition_common.py` — 9 checks
+
+### Status of the cross-scale bridge
+
+- Mathematical form: SHARED (verified)
+  - V(psi; C) = 1/2 m_eff^2(C) psi^2 + 1/4 lambda psi^4
+  - m_eff^2(C) = m^2 (1 - C/C_c)
+- Physical bridge: NOT established
+- Unification: NOT claimed
+- Scale gap: 78 orders of magnitude remains
+
+### What v6.1 does NOT deliver
+
+- A derivation connecting SC and PTUM
+- Any mechanism that bridges the 78-order scale gap
+- A unified single model
+- Numerical cross-scale simulation with shared physics
+
+### Honest assessment
+
+v6.1 provides organization and honest boundary-drawing. The two
+companion papers (SC, PTUM) share code and mathematical structure
+but are NOT unified. This is intentional: claiming unification
+without a derivation would be speculative overreach.
