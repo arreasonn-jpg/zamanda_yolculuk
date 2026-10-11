@@ -219,3 +219,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.0-alpha8: Ford-Roman quantum inequality diagnostic
 - 🔷 v6.0-alpha9: PTUM rho(t) sampled and tested against bound
+
+- ✅ v6.0-alpha9: 1000-step refined run + Ford-Roman passed (no violation)
+- 🔷 v6.0-beta: consolidate transient-discharge interpretation
