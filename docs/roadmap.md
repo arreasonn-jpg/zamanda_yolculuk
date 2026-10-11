@@ -192,3 +192,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v5.0-alpha3: diagnostics plot + long-run attempt (fails at ~100 steps)
 - 🔷 v5.0-beta: consolidation (document 100-step stability limit)
+
+- ✅ v5.0-alpha4: amplitude-dependent stability window identified
+- 🔷 v5.0-beta: consolidation (document stability window)
