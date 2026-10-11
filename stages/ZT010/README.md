@@ -552,3 +552,13 @@ dominant source.
 - rho_min < -5: backreaction drives gtilde singular
 
 This is a physical result, not a numerical artefact.
+
+## v6.0-alpha1..2: complex scalar field
+
+- `src/zt005/matter_complex.py` — complex scalar Psi = Psi_R + i Psi_I,
+  U(1) charge density, phase-rotation invariant rho.
+- `src/zt005/bssn_rk4_complex.py` — RK4 on (metric + 4 real fields).
+- `tests/test_matter_complex.py` — 6 checks.
+- `tests/test_bssn_rk4_complex.py` — 2 checks.
+
+Real limit recovers matter_scalar.py. Charge conservation implicit.

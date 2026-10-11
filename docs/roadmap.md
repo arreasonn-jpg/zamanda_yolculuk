@@ -195,3 +195,9 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v5.0-alpha4: amplitude-dependent stability window identified
 - 🔷 v5.0-beta: consolidation (document stability window)
+
+## v6.0 roadmap
+- ✅ v6.0-alpha1: complex scalar matter module
+- ✅ v6.0-alpha2: RK4 on complex scalar + BSSN
+- 🔷 v6.0-alpha3: constraint-preserving BC
+- 🔷 v6.0-alpha4: AMR-lite (nested grid)
