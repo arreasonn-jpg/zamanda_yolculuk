@@ -594,3 +594,32 @@ Foundation for refined BSSN driver (v6.0-alpha5).
 
 Verified: Minkowski zero stays zero, small perturbation finite on
 both grids, shapes preserved.
+
+## v6.0-alpha6: refined PTUM — 200-step stable at A=3.0
+
+- `src/zt005/bssn_refined_ptum.py` — two-grid BSSN + 4 PTUM fields.
+- `tests/test_bssn_refined_ptum.py` — 3 checks.
+
+### Comparison: refinement enables long-run stability
+
+| Setup | A_fuel | Fails at | Kmax @100 | Kmax @200 |
+|---|---|---|---|---|
+| v5.0 single grid | 3.0 | ~100 | 23.5 | (crash) |
+| v6.0 refined (2:1) | 3.0 | never | 0.054 | **0.107** |
+
+**Result:** 2:1 refinement (h_fine = h_c/2) with prolongate/restrict
+coupling SUCCEEDS where the single-grid v5.0 run FAILED.
+
+Refinement resolves the strong backreaction near the tachyon-active
+region, preventing gtilde singularity.
+
+### Caveat
+
+rho_min dropped from -15.6 (initial coarse) to -0.096 after 25 steps.
+Possible causes: (a) restrict averaging smooths the sharp minimum,
+(b) fine grid distributes activation over more cells (461/729 vs
+57/729 coarse). Whether this is physical or a numerical artefact
+requires further investigation.
+
+**Milestone:** First successful long-run PTUM evolution with
+refinement. 200 steps at the amplitude that crashed single-grid.

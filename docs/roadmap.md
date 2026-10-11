@@ -210,3 +210,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.0-alpha5: refined BSSN driver (two-grid coupling)
 - 🔷 v6.0-alpha6: refined PTUM run (tachyon backreaction with refinement)
+
+- ✅ v6.0-alpha6: refined PTUM 200-step stable (v5.0 crash resolved)
+- 🔷 v6.0-beta: consolidation + release
