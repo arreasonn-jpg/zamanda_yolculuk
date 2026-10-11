@@ -232,3 +232,7 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.1-alpha2: cross-scale phase transition bridge (speculative)
 - 🔷 v6.1-beta: consolidation
+
+## v6.2 roadmap
+- ✅ v6.2-alpha1: Kerr + PTUM IC + single-grid baseline (near-crash)
+- 🔷 v6.2-alpha2: refined Kerr + PTUM (2:1)

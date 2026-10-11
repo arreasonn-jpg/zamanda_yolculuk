@@ -773,3 +773,24 @@ Exact treatment is future work.
 established; unification is NOT claimed.
 
 The two models operate at a 78-order scale gap.
+
+## v6.2-alpha1: Kerr + PTUM IC (foundation)
+
+- `src/zt005/kerr_ptum_ic.py` — Kerr-Schild metric + PTUM fields.
+- `tests/test_kerr_ptum_ic.py` — 6 checks.
+
+### Finding: single-grid Kerr + PTUM A=3.0 crashes
+
+50-step run (N=9):
+| a | rho_min | Kmax | alpha_min | finite |
+|---|---|---|---|---|
+| 0.0 | -15.64 | 1.36e3 | 0.0007 | True (marginal) |
+| 0.5 | -15.64 | 1.34e3 | 0.0007 | True (marginal) |
+| 0.9 | -15.64 | 1.31e3 | 0.0007 | True (marginal) |
+
+Kmax ~ 10^3 indicates near-crash. Kerr KS IC already carries strong
+K near horizon; PTUM A=3.0 adds backreaction. Refinement needed.
+
+### Test fix
+
+KS coordinates have nonzero radial shift even at a=0.
