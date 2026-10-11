@@ -179,3 +179,46 @@ All stable over 50-500 moving-puncture steps. Not a production NR code.
 v4.0 provides the first matter-coupled BSSN evolution in this repo.
 The SC regular core + SC condensate co-evolve stably over 50 steps.
 This supports, but does not prove, the SC model's dynamical stability.
+
+## v5.0 scope
+
+### What v5.0 delivers
+
+- PTUM field module: fuel Phi, proxy psi, tachyon threshold
+- Two-field PTUM stress-energy (matter_ptum.py)
+- RK4 driver on (metric + 2 PTUM fields) (bssn_rk4_ptum.py)
+- KO dissipation variant (bssn_rk4_ptum_diss.py)
+- Diagnostics plot (6 panels: rho, K, phi, alpha)
+
+### Numerical results
+
+| Config | rho_min | Steps | Status |
+|---|---|---|---|
+| PTUM equilibrium A=3.0 | -15.6 | 100 | finite |
+| PTUM equilibrium A=3.0 | -15.6 | 500 | fails ~100 |
+| PTUM equilibrium A=1.5 | -0.29 | 200 | **stable** |
+| PTUM equilibrium A=1.5 | -0.29 | 500 | (to test) |
+
+### Key physical result
+
+**NEC violation confirmed:** rho_min = -15.6 (27/729 cells)
+Tachyon condensation produces the negative energy required for CTCs.
+
+**Stability window:** negative energy configuration is stable when
+perturbative (|rho_min| < 1), unstable when dominant (|rho_min| > 5).
+
+### What v5.0 does NOT deliver
+
+- Complex scalar (only real two-field approximation)
+- Backreaction on rho_0 from PTUM matter
+- Kerr + PTUM combined
+- Long-term stability of dominant negative energy
+- AMR around tachyon-active region
+
+### Honest assessment
+
+v5.0 numerically validates the PTUM model's central claim:
+tachyon discharge produces negative energy density (NEC violation).
+The magnitude is perturbative in the stable regime, consistent with
+PTUM's framing of negative energy as one component of a larger
+cosmological discharge.

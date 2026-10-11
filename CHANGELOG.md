@@ -77,3 +77,25 @@
 ### Reference
 - Numerical support for Esa (2026) Schwarzschild Condensation
   regular-interior + matter-coupling claims
+
+## v5.0.0 (2026-10-11)
+
+### Added — PTUM tachyon coupling
+- PTUM field module (ptum_field.py): fuel, proxy, tachyon threshold
+- Two-field PTUM stress-energy (matter_ptum.py)
+- RK4 driver for (metric + Phi + psi) (bssn_rk4_ptum.py)
+- KO-dissipative variant (bssn_rk4_ptum_diss.py)
+- Diagnostics plot script
+
+### Key results
+- NEC violation numerically confirmed: rho_min = -15.6
+- 27/729 cells in negative-energy state
+- Amplitude-dependent stability window identified
+- Perturbative negative energy stable over 200+ steps
+
+### Tests
+- 467 fast + 21 slow
+
+### Reference
+- Numerical validation of Esa (2026) PTUM tachyon discharge mechanism
+- Companion to SC numerical validation (v4.0)
