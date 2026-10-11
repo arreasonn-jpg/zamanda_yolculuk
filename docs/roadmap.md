@@ -258,3 +258,9 @@ solver so future work can measure what happens near the CTC regime.
 ## v6.4 roadmap
 - ✅ v6.4-alpha1: Kerr + SC + PTUM IC
 - 🔷 v6.4-alpha2: full-stack evolution + 50-step test
+
+## paper roadmap
+- ✅ EN paper updated to v6.3
+- ✅ TR scaffold + BSSN section
+- 🔷 TR Introduction + Method (done)
+- 🔷 TR Results, Discussion, Conclusion (pending)

@@ -933,3 +933,12 @@ spin a=0.9.
   - Ford-Roman quantum inequality check
   - Cross-scale structural parallel (SC ↔ PTUM)
   - Limitations documented
+
+## paper-bilingual: EN + TR scaffold + TR Introduction/Method
+
+- `paper/main_en.tex` — English full paper (7 pages)
+- `paper/main_tr.tex` — Turkish full paper (in progress, 9 pages)
+- `paper/bssn_section_en.tex` — updated to v6.3 (8 pages with section)
+- `paper/bssn_section_tr.tex` — Turkish translation of BSSN section
+- TR done: preamble, title, abstract, Introduction, Method
+- TR pending: Results, Discussion, Conclusion, Reproducibility
