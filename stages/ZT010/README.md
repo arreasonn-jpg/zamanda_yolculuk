@@ -815,3 +815,17 @@ all finite, spins a=0..0.9 stable.
 17,000x reduction in Kmax. The 2:1 prolongate/restrict coupling is
 not specific to one IC; it resolves strong tachyon backreaction in
 both flat and Kerr backgrounds.
+
+## v6.2-alpha3: refined Kerr + PTUM 500-step (a=0.9)
+
+- `scripts/v6_refined_kerr_ptum_long.py`
+
+| step | rho_min | Kmax_c | Kmax_f | finite |
+|---|---|---|---|---|
+| 100 | -9.923e-02 | 0.089 | 0.089 | True |
+| 300 | -9.939e-02 | 0.180 | 0.180 | True |
+| 500 | -9.953e-02 | 0.272 | 0.272 | True |
+
+500-step stable at a=0.9 (near-extremal Kerr). Kmax grows linearly
+but bounded. Transient-discharge pattern preserved in curved
+background.

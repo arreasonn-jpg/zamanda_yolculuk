@@ -327,3 +327,34 @@ v6.1 provides organization and honest boundary-drawing. The two
 companion papers (SC, PTUM) share code and mathematical structure
 but are NOT unified. This is intentional: claiming unification
 without a derivation would be speculative overreach.
+
+## v6.2 scope
+
+### What v6.2 delivers
+
+- Kerr + PTUM IC (kerr_ptum_ic.py)
+- Refined Kerr + PTUM IC builder (refined_kerr_ptum_ic.py)
+- Refined Kerr + PTUM 500-step stable at a=0.9
+
+### Numerical results
+
+| Setup | Single grid | Refined |
+|---|---|---|
+| PTUM flat A=3.0 | crash ~100 | 1000 stable |
+| Kerr + PTUM A=3.0 | near-crash ~50 | 500 stable |
+
+Kmax reduction: ~17,000x. Refinement generalizes to Kerr background.
+
+### What v6.2 does NOT deliver
+
+- Full Kerr a=1 (extremal)
+- Tracked/moving refinement
+- Radiation extraction
+- Full nonlinear complex scalar + Kerr + PTUM
+- Long-run (>1000 steps) Kerr + PTUM
+
+### Honest assessment
+
+v6.2 demonstrates that 2:1 refinement resolves strong tachyon
+backreaction in both flat (v6.0) and Kerr (v6.2) backgrounds.
+This is a general numerical technique, not IC-specific.

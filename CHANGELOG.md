@@ -164,3 +164,22 @@
 v6.1 does NOT claim SC and PTUM are unified. It documents shared
 infrastructure and a structural parallel, and explicitly identifies
 the open problem of cross-scale bridging.
+
+## v6.2.0 (2026-10-11)
+
+### Added — Kerr + PTUM
+- kerr_ptum_ic.py (Kerr-Schild + PTUM fields)
+- refined_kerr_ptum_ic.py (2-grid IC builder)
+- Refined Kerr + PTUM 500-step stable at a=0.9
+
+### Key results
+- Single-grid Kerr + PTUM A=3.0 crashes (Kmax ~ 1.4e3 at 50 steps)
+- Refined: 500 steps stable at a=0.9 (Kmax ~ 0.27)
+- ~17,000x Kmax reduction; refinement generalizes
+
+### Tests
+- ~540 fast + 21 slow
+
+### Reference
+- Refinement is a general solution for strong tachyon backreaction
+- Numeric support for PTUM in curved (Kerr) background
