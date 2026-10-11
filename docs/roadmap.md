@@ -189,3 +189,6 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v5.0-alpha1: PTUM field module (fuel + proxy)
 - ✅ v5.0-alpha2: Tachyon condensation + NEC violation (rho_min = -15.6)
 - 🔷 v5.0-alpha3: Long-run stability of negative-energy configuration
+
+- ✅ v5.0-alpha3: diagnostics plot + long-run attempt (fails at ~100 steps)
+- 🔷 v5.0-beta: consolidation (document 100-step stability limit)

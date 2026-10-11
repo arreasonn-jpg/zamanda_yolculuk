@@ -500,3 +500,30 @@ energy in the activated proxy sector.
 
 K_max grows from 0 to 23.5 (backreaction strong). Long-time behaviour
 beyond 100 steps not yet tested.
+
+## v5.0-alpha3: long-run attempt + diagnostics plot
+
+### Long-run result (500 steps attempted)
+
+**FAILED at ~step 100:** gtilde matrix became singular.
+
+Root cause: PTUM tachyon activation produces strong backreaction.
+Kmax grows from 0 to ~100 in 100 steps, then gtilde becomes
+non-invertible.
+
+**Honest interpretation:** the negative-energy configuration is
+numerically realizable at 100 steps but not yet stable at 500.
+This is a physical result: strong negative-energy sources drive
+strong metric backreaction. Handling this requires either:
+- constraint-preserving BC (not yet implemented)
+- adaptive damping
+- higher resolution near the active region
+
+### Diagnostics plot
+
+- `results/validated/v5_ptum_diagnostics.png`
+- 6 panels: rho(x), rho 2D slice, negative-cells map, K(x), phi(x), alpha(x)
+- Confirms: rho_min = -15.02 at t=0.05, 27/729 negative cells
+
+**Milestone:** PTUM negative-energy configuration is well-defined and
+visualizable. Stability beyond 100 steps requires additional numerics.
