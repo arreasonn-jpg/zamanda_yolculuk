@@ -236,3 +236,6 @@ solver so future work can measure what happens near the CTC regime.
 ## v6.2 roadmap
 - ✅ v6.2-alpha1: Kerr + PTUM IC + single-grid baseline (near-crash)
 - 🔷 v6.2-alpha2: refined Kerr + PTUM (2:1)
+
+- ✅ v6.2-alpha2: refined Kerr + PTUM stable (100 steps, a=0..0.9)
+- 🔷 v6.2-beta: consolidation + v6.2.0 release

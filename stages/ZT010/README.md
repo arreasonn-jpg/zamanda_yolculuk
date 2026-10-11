@@ -794,3 +794,24 @@ K near horizon; PTUM A=3.0 adds backreaction. Refinement needed.
 ### Test fix
 
 KS coordinates have nonzero radial shift even at a=0.
+
+## v6.2-alpha2: refined Kerr + PTUM (success)
+
+- `src/zt005/refined_kerr_ptum_ic.py` — 2-grid Kerr + PTUM IC builder.
+- `tests/test_refined_kerr_ptum_ic.py` — 4 checks.
+
+### 100-step refined run (N_c=N_f=9, 2:1)
+
+| a | rho_min_c | n_neg | Kmax_c | Kmax_f | finite |
+|---|---|---|---|---|---|
+| 0.0 | -9.928e-02 | 3 | 0.081 | 0.081 | True |
+| 0.5 | -9.926e-02 | 3 | 0.084 | 0.084 | True |
+| 0.9 | -9.922e-02 | 3 | 0.089 | 0.089 | True |
+
+**Refinement generalizes:** single-grid Kerr + PTUM A=3.0 crashed
+(Kmax ~ 1.4e3 at 50 steps). Refined grid: Kmax = 0.08 at 100 steps,
+all finite, spins a=0..0.9 stable.
+
+17,000x reduction in Kmax. The 2:1 prolongate/restrict coupling is
+not specific to one IC; it resolves strong tachyon backreaction in
+both flat and Kerr backgrounds.
