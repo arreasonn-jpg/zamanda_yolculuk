@@ -760,3 +760,16 @@ Exact treatment is future work.
 - Clarifies: shared code, model-specific physics, no unification claim.
 - Documents the 78-order scale gap between the two models.
 - Provides usage guide for extending to new models.
+
+## v6.1-alpha2: cross-scale phase transition bridge (speculative)
+
+- `src/zt005/phase_transition_common.py` — shared potential formula
+  V = 1/2 m_eff^2 psi^2 + 1/4 lambda psi^4
+  with m_eff^2 = m^2(1 - C/C_c).
+- `tests/test_phase_transition_common.py` — 9 checks.
+- `docs/tachyon_bridge.md` — documents the structural parallel.
+
+**Status:** mathematical form is shared; physical bridge is NOT
+established; unification is NOT claimed.
+
+The two models operate at a 78-order scale gap.
