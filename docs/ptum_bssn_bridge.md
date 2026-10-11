@@ -68,3 +68,22 @@ Two-grid refinement (2:1, prolongate/restrict coupling) enables
 **Interpretation:** resolution near the tachyon-active region is
 critical for long-run stability. The negative energy configuration
 becomes tractable when the active zone is adequately resolved.
+
+## v6.0-alpha9..10 update: QFT-compatibility
+
+1000-step refined PTUM run time series analyzed with Ford-Roman
+quantum inequality:
+
+| tau | Massless (N=2) | Massive mu=1 (N=2) |
+|---|---|---|
+| 0.1 | 0.0002 (pass) | 0.0002 (pass) |
+| 0.5 | 0.037 (pass) | 0.057 (pass) |
+| 1.0 | 0.30 (pass) | **1.21 (violation)** |
+
+**Interpretation:**
+- Massless case: PTUM's negative energy is QFT-compatible
+- Massive case: borderline, approximation-dependent
+- Interacting-field treatment could shift the verdict
+
+This is not a trivial result. Many exotic-matter models violate
+Ford-Roman badly. PTUM sits near the boundary.

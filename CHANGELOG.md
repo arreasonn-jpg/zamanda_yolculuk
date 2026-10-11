@@ -122,3 +122,23 @@
 ### Reference
 - AMR-lite resolution of PTUM backreaction instability
 - Numeric support for Esa (2026) SC + PTUM models
+
+## v6.0.1 (2026-10-11) — patch
+
+### Added
+- Quantum inequality diagnostic (Ford-Roman)
+- Massive field extension (rational approximation Q = 1/(1+y^2)^2)
+- 1000-step refined PTUM run + time series saved
+
+### Results
+- Massless Ford-Roman: PTUM passes (ratio max 0.30)
+- Massive Ford-Roman: borderline (ratio 1.21 at tau=1.0)
+- Caveats documented; exact treatment open
+
+### Tests
+- 504 fast + 21 slow
+
+## v6.0.0 (2026-10-11)
+
+### Added — complex scalar + AMR-lite
+(see previous entry)

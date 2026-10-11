@@ -269,3 +269,28 @@ critical for long-run stability.
 
 The rho_min drop from -15.6 to -0.096 after coupling remains to be
 fully understood (physical redistribution vs. averaging artefact).
+
+## v6.0 scope (updated with alpha10)
+
+### Added since v6.0 initial
+
+- Quantum inequality (Ford-Roman) diagnostic module
+- Massive field extension (rational approximation)
+- 1000-step refined PTUM run (results/validated/v6_long_ptum.npz)
+- Ford-Roman test result: massless passes, massive borderline
+
+### Ford-Roman status
+
+| Case | tau=1.0 ratio | Verdict |
+|---|---|---|
+| Massless, N=2 | 0.30 | pass |
+| Massive mu=1, N=2 | 1.21 | borderline |
+
+Caveats push toward "no violation"; exact treatment is future work.
+
+### Updated what v6.0 does NOT deliver
+
+- Exact Ford-Roman bound (Bessel functions for massive fields)
+- Interacting-field quantum inequality
+- Tracked/moving refinement
+- Complex scalar + Kerr + PTUM combined
