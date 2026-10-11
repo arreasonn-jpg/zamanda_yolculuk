@@ -752,3 +752,11 @@ Exact treatment is future work.
 - Massless: PTUM passes (definitive)
 - Massive: borderline (approximation-dependent)
 - Exact: open question, requires Bessel + interacting field treatment
+
+## v6.1-alpha1: unified framework document
+
+- `docs/unified_framework.md` — describes shared numerical
+  infrastructure behind SC and PTUM papers.
+- Clarifies: shared code, model-specific physics, no unification claim.
+- Documents the 78-order scale gap between the two models.
+- Provides usage guide for extending to new models.
