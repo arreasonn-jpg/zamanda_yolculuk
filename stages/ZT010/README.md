@@ -849,3 +849,29 @@ background.
 
 Transient-discharge pattern preserved over 1000 steps in curved,
 near-extremal rotating background.
+
+## v6.3-alpha1: Kerr + SC (rotating regular core)
+
+- `src/zt005/kerr_sc_ic.py` — Kerr-Schild + smoothed mass profile
+  M_eff(r) = M(1 - e^{-r/rc}(1 + r/rc)).
+- `tests/test_kerr_sc_ic.py` — 9 checks.
+
+### 50-step run (N=9, L=20, M=1)
+
+| rc | a | H0_ext | Hf_ext | growth | alpha_min | finite |
+|---|---|---|---|---|---|---|
+| 1.0 | 0.0 | 3.90e-03 | 3.88e-03 | 0.9970 | 0.798 | True |
+| 1.0 | 0.5 | 3.90e-03 | 3.88e-03 | 0.9970 | 0.795 | True |
+| 1.0 | 0.9 | 3.90e-03 | 3.89e-03 | 0.9970 | 0.788 | True |
+| 2.0 | 0.0 | 2.16e-03 | 2.15e-03 | 0.9993 | 0.878 | True |
+| 2.0 | 0.5 | 2.16e-03 | 2.15e-03 | 0.9994 | 0.877 | True |
+| 2.0 | 0.9 | 2.16e-03 | 2.16e-03 | 0.9994 | 0.874 | True |
+
+**Kerr + SC regular core is BSSN-stable.**
+- Constraint preserved (growth ~ 1.0, sometimes < 1)
+- Spin-dependent alpha_min (expected)
+- Near-extremal a=0.9 stable
+- All finite
+
+This extends SC regular-core result from Schwarzschild (v3.0/v4.0)
+to rotating (Kerr) background.
