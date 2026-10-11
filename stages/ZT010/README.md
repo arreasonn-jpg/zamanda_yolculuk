@@ -942,3 +942,10 @@ spin a=0.9.
 - `paper/bssn_section_tr.tex` — Turkish translation of BSSN section
 - TR done: preamble, title, abstract, Introduction, Method
 - TR pending: Results, Discussion, Conclusion, Reproducibility
+
+## paper-bilingual: TR paper complete
+
+- `paper/main_tr.tex` — complete Turkish paper (9 pages)
+- Sections verified: Giriş, Yöntem, Bulgular, BSSN sayısal uzantısı,
+  Tartışma, Sonuç, Yeniden üretilebilirlik
+- UTF-8 Turkish characters render correctly

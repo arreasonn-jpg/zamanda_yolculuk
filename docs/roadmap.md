@@ -264,3 +264,6 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ TR scaffold + BSSN section
 - 🔷 TR Introduction + Method (done)
 - 🔷 TR Results, Discussion, Conclusion (pending)
+
+- ✅ TR paper complete (all sections verified)
+- 🔷 Final arXiv packaging (both EN and TR)
