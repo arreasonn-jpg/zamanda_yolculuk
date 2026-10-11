@@ -204,3 +204,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.0-alpha3: two-level refinement operators
 - 🔷 v6.0-alpha4: refined BSSN driver (coarse + fine grid coupled)
+
+- ✅ v6.0-alpha4: refined scalar field (two-grid coupling)
+- 🔷 v6.0-alpha5: refined BSSN driver (metric + matter on two grids)

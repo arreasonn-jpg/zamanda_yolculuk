@@ -572,3 +572,13 @@ Real limit recovers matter_scalar.py. Charge conservation implicit.
 
 Foundation for AMR-lite: nested grids with interpolation/restriction
 operators. Refined BSSN driver in v6.0-alpha4.
+
+## v6.0-alpha4: refined scalar field
+
+- `src/zt005/refined_scalar.py` — two-grid scalar evolution with
+  prolongate/restrict coupling. Coarse RK4 -> prolongate to fine BC ->
+  fine RK4 -> restrict to coarse interior.
+- `tests/test_refined_scalar.py` — 3 checks.
+- Verified: static Gaussian finite, zero stays zero, shapes preserved.
+
+Foundation for refined BSSN driver (v6.0-alpha5).
