@@ -201,3 +201,6 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v6.0-alpha2: RK4 on complex scalar + BSSN
 - 🔷 v6.0-alpha3: constraint-preserving BC
 - 🔷 v6.0-alpha4: AMR-lite (nested grid)
+
+- ✅ v6.0-alpha3: two-level refinement operators
+- 🔷 v6.0-alpha4: refined BSSN driver (coarse + fine grid coupled)

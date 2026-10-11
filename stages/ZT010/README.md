@@ -562,3 +562,13 @@ This is a physical result, not a numerical artefact.
 - `tests/test_bssn_rk4_complex.py` — 2 checks.
 
 Real limit recovers matter_scalar.py. Charge conservation implicit.
+
+## v6.0-alpha3: two-level refinement (AMR-lite)
+
+- `src/zt005/refinement.py` — prolongate (coarse->fine trilinear),
+  restrict (fine->coarse averaging).
+- `tests/test_refinement.py` — 6 checks.
+- Verified: constant exact, linear exact, smooth roundtrip < 0.5.
+
+Foundation for AMR-lite: nested grids with interpolation/restriction
+operators. Refined BSSN driver in v6.0-alpha4.
