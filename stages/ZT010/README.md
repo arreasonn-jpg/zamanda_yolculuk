@@ -899,3 +899,19 @@ Complete numerical support for Esa (2026) SC paper:
 - Metric: Kerr + smoothed core
 - Matter: SC condensate
 - Spin: 0 to 0.9 (near-extremal)
+
+## v6.3-alpha3: Kerr + SC 500-step long run (a=0.9)
+
+- `scripts/v6_kerr_sc_long.py`
+- Time series: `results/validated/v6_kerr_sc_500.npz`
+
+| step | growth | phimax | Kmax | alpha_min | finite |
+|---|---|---|---|---|---|
+| 50 | 0.9983 | 1.0e-04 | 0.330 | 0.8742 | True |
+| 250 | 0.9915 | 9.98e-05 | 0.336 | 0.8742 | True |
+| 500 | **0.9823** | 9.93e-05 | 0.345 | 0.8742 | True |
+
+**Constraint IMPROVES over time** (H decreasing). This is the strongest
+numerical result for the SC model: rotating regular core + condensate
+matter stable over 500 steps, constraint-preserving, at near-extremal
+spin a=0.9.

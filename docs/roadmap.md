@@ -251,3 +251,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.3-alpha2: Kerr + SC + condensate full integration
 - 🔷 v6.3-beta: consolidation + v6.3.0 release
+
+- ✅ v6.3-alpha3: Kerr + SC 500-step (a=0.9, constraint improves)
+- 🔷 v6.3-beta: consolidation + release

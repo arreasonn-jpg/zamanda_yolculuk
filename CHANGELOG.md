@@ -183,3 +183,23 @@ the open problem of cross-scale bridging.
 ### Reference
 - Refinement is a general solution for strong tachyon backreaction
 - Numeric support for PTUM in curved (Kerr) background
+
+## v6.3.0 (2026-10-12)
+
+### Added — Kerr + SC
+- kerr_sc_ic.py (Kerr-Schild + smoothed M_eff)
+- kerr_sc_full_ic.py (metric + condensate)
+- 500-step run at a=0.9 stable (constraint improves)
+
+### Key results
+- Kerr + SC metric: growth 0.997-0.999 (50 steps, a=0..0.9)
+- Kerr + SC + condensate: 500 steps at a=0.9, growth 0.9823
+- Constraint IMPROVES over time
+- All fields finite throughout
+
+### Tests
+- ~537 fast + 21 slow
+
+### Reference
+- Extends SC paper's numerical support from static (v4.0) to
+  rotating (Kerr) background

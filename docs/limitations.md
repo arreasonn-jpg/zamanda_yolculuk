@@ -358,3 +358,36 @@ Kmax reduction: ~17,000x. Refinement generalizes to Kerr background.
 v6.2 demonstrates that 2:1 refinement resolves strong tachyon
 backreaction in both flat (v6.0) and Kerr (v6.2) backgrounds.
 This is a general numerical technique, not IC-specific.
+
+## v6.3 scope
+
+### What v6.3 delivers
+
+- Kerr-Schild + smoothed M_eff(r) = Kerr + SC regular core
+- Kerr + SC + SC condensate (full integration)
+- 500-step stable at a=0.9 (near-extremal)
+
+### Numerical results
+
+| Setup | Result |
+|---|---|
+| Kerr + SC (metric only, 50 steps) | growth 0.997-0.999 |
+| Kerr + SC + condensate (50 steps) | growth 0.9983 |
+| Kerr + SC + condensate (500 steps, a=0.9) | growth **0.9823** (improves) |
+
+Constraint IMPROVES over time in the 500-step run. All fields finite
+throughout.
+
+### What v6.3 does NOT deliver
+
+- Extremal Kerr (a=1) exact
+- Tracked/moving refinement for Kerr
+- Radiation extraction
+- Nonlinear stability beyond 500 steps
+- Full matter backreaction on M_eff
+
+### Honest assessment
+
+v6.3 extends SC regular-core result from static (v4.0) to rotating
+(Kerr) background. This is the strongest numerical support for the
+SC paper: metric + matter + spin all consistent.
