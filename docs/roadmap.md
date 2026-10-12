@@ -283,3 +283,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.5-alpha3: refined full stack A=3.0 (NEC violation, 100-step stable)
 - 🔷 v6.5-beta: consolidate + v6.5.0 release
+
+- ✅ v6.6-alpha1: complex scalar + PTUM driver (activation needs seed)
+- 🔷 v6.6-alpha2: psi seed + full activation test

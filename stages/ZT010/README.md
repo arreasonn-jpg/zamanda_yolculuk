@@ -1050,3 +1050,18 @@ Refinement enables A=3.0 full stack evolution (single grid crashed).
 - `paper/scripts/paper_fig7_fullstack.py` — generator
 - `bssn_section_en.tex` + `bssn_section_tr.tex`: fig7 included
 - Both papers compile clean (0 overfull)
+
+## v6.6-alpha1: complex scalar + PTUM driver
+
+- `src/zt005/bssn_rk4_complex_ptum.py` — RK4 on (metric + 4 complex + 4 PTUM)
+- `tests/test_bssn_rk4_complex_ptum.py` — 3 checks.
+
+### 30-step run
+
+| A_fuel | Kmax | Phimax | psimax | finite |
+|---|---|---|---|---|
+| 0.5 | 9.4e-04 | 0.5 | 0 | True |
+| 1.5 | 8.0e-03 | 1.5 | 0 | True |
+
+Complex scalar stable. PTUM activation requires seed (psi=0 is fixed
+point); psi seed deferred to next stage.
