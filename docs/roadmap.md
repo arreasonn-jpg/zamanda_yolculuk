@@ -292,3 +292,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.6-alpha3: refined complex+PTUM (driver ok; equilibrium psi broken)
 - 🔷 v6.6-beta: consolidate with noted limitation
+
+- ✅ v7.0-alpha1: refined complex+PTUM NEC violation stable
+- 🔷 v7.0-alpha2: consolidate as v7.0.0 release

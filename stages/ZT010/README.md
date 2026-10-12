@@ -1110,3 +1110,35 @@ v6.5-alpha3 (refined SC+PTUM A=3.0, rho_min = -0.099).
 
 Complex scalar in refined full stack is deferred to v7.0 (needs
 consistent psi initialization across grids).
+
+## v7.0-alpha1: refined complex+PTUM with NEC violation
+
+- `src/zt005/bssn_refined_complex_ptum_v2.py` — refined driver with
+  `restrict_matter` flag (default False).
+- `src/zt005/ptum_field.py` — added `psi_equilibrium_smooth`
+  (smoothstep regularization of activation threshold).
+- `tests/test_bssn_refined_complex_ptum_v2.py` — 3 checks.
+- `scripts/v7_refined_complex_ptum_run.py`
+
+### Key insight (root cause fixed)
+
+The v6.6-alpha3 failure was traced to two issues:
+1. Sharp psi_equilibrium at Phi=Phi_c created a Laplacian spike
+2. Restrict operation averaged down the Gaussian Phi peak by ~35%
+   per step (matter loss)
+
+Fix: (a) smoothstep regularization of psi_equilibrium;
+(b) one-way coupling (coarse matter evolves independently,
+`restrict_matter=False`).
+
+### 100-step run (A_fuel=3.0)
+
+| step | rho_min | n_neg | Kmax_c | Kmax_f | psimax | finite |
+|---|---|---|---|---|---|---|
+| 25 | -15.65 | 1 | 0.087 | 0.245 | 2.829 | True |
+| 100 | -15.67 | 1 | 0.087 | 0.245 | 2.830 | True |
+
+**First persistent NEC violation in refined complex+PTUM:**
+- rho_min = -15.67 (constant, no decay)
+- psimax = 2.83 (constant, equilibrium preserved)
+- Kmax bounded, alpha_min = 1.0

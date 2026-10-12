@@ -72,3 +72,27 @@ __all__ = [
     "V_fuel", "dV_fuel", "m_eff_squared", "Phi_critical",
     "V_proxy", "psi_equilibrium", "fuel_profile", "ptdm_equilibrium_check",
 ]
+
+
+def psi_equilibrium_smooth(Phi, m2=1.0, alpha=1.0, Eth=1.0, lam_psi=1.0,
+                            width=0.3):
+    """Smooth version of psi_equilibrium for use in evolution.
+
+    The sharp discontinuity in psi_equilibrium at Phi = Phi_c creates
+    a Laplacian spike that drives numerical instability. We use a
+    smoothstep transition of width `width` around Phi_c to regularize.
+    """
+    Phi = np.asarray(Phi, float)
+    meff2 = m2 * (1.0 - alpha * Phi**2 / Eth**2)
+    arg = np.where(meff2 < 0.0, -meff2 / lam_psi, 0.0)
+    psi_eq = np.sqrt(arg)
+    # Smooth transition: 0 for Phi < Phi_c - width, 1 for Phi > Phi_c + width
+    # smoothstep = 3 t^2 - 2 t^3
+    Phi_c = Eth / np.sqrt(alpha)
+    t = (Phi - (Phi_c - width)) / (2.0 * width)
+    t = np.clip(t, 0.0, 1.0)
+    smooth = 3.0 * t**2 - 2.0 * t**3
+    return psi_eq * smooth
+
+
+__all__ = list(__all__) + ["psi_equilibrium_smooth"]
