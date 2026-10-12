@@ -277,3 +277,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.5-alpha1: full stack 200-step long run (stable)
 - 🔷 v6.5-alpha2: refined full stack (2:1 grid + SC + PTUM)
+
+- ✅ v6.5-alpha2: refined full stack (100 steps, Kmax decreasing)
+- 🔷 v6.5-beta: consolidate + v6.5.0 release

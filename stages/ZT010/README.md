@@ -998,3 +998,21 @@ spin a=0.9.
 Full stack (Kerr+SC metric + condensate + PTUM) stable over 200
 steps at a=0.9. Constraint preserved, lapse constant, negative
 energy persistent at rho_min = -0.284.
+
+## v6.5-alpha2: refined full stack (Kerr+SC+PTUM, 100 steps)
+
+- `src/zt005/bssn_refined_sc_ptum.py` — 2-grid (coarse+fine) evolution
+  of BSSN + SC condensate + PTUM fields.
+- `tests/test_bssn_refined_sc_ptum.py` — 3 checks.
+
+### 100-step run (a=0.9)
+
+| step | rho_min | Kmax_c | Kmax_f | alpha_min | finite |
+|---|---|---|---|---|---|
+| 25 | 8.09e-10 | 0.080 | 0.080 | 0.8805 | True |
+| 100 | 8.09e-10 | 0.073 | 0.073 | 0.8805 | True |
+
+Kmax monotonically decreasing (constraint improving). Refinement
+stabilizes the full stack. PTUM activation weak at A_fuel=1.5
+(rho_min positive, small); larger A_fuel needed for NEC violation
+in this configuration.
