@@ -958,3 +958,11 @@ spin a=0.9.
   - main_en.tex, main_tr.tex
   - bssn_section_en.tex, bssn_section_tr.tex
   - refs.bib, figures/*.png (6 figures)
+
+## paper-fix: figure overflow resolved
+
+- Both EN and TR papers now compile with 0 overfull hbox
+- Fix: \resizebox{0.9\textwidth}{!}{\includegraphics{...}}
+- All figures use figure* (full width, two-column mode)
+- All wide tables use table* (full width)
+- EN: 10 pages, TR: 10 pages
