@@ -12,6 +12,7 @@
 \usepackage[protrusion=true,expansion=false]{microtype}
 \usepackage[turkish,english]{babel}
 \usepackage{authblk}
+\usepackage{placeins}
 \geometry{margin=2.5cm}
 
 \title{Makroskopik Zaman Genişlemesi Üzerine Birleşik Fizibilite Sınırları:\\Cihaz Ölçeğinde Altı Klasik-GR Mekanizmasının Karşılaştırmalı Analizi}
@@ -165,14 +166,13 @@ koordinat-zamanına oranı:
 burada zayıf alan açılımı $h_{00} \ll 1$ durumunda yıkıcı
 sadeleşmeyi önler.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig6_backpack_layout.png}
+\resizebox{0.9\textwidth}{!}{\includegraphics{figures/fig6_backpack_layout.png}}
 \caption{$45\times 32\times 15$~cm zarf içindeki sırt çantası bileşen
 yerleşimi. Nokta boyutu bileşen kütlesiyle ölçeklenir.}
 \label{fig:backpack}
-\end{figure}
-
+\end{figure*}
 \subsection{Doğrulama}
 \label{subsec:validation}
 
@@ -217,7 +217,7 @@ $\Delta\tau/\Delta t \sim 3\times 10^{-48}$ mertebesinde bir öz-zaman
 kaymasına karşılık gelir. Buna karşılık gelen yıllık zaman genişlemesi
 $\Delta\tau \sim 10^{-40}$~s'dir.
 
-\begin{table}[t]
+\begin{table*}[t]
 \centering
 \small
 \caption{Cihaz merkezinde EM kaynaklı metrik pertürbasyonu
@@ -235,7 +235,7 @@ G4 (hibrid)            & $9.36\times 10^{-49}$ & $<10^{-50}$ \\
 \bottomrule
 \end{tabular}
 }
-\end{table}
+\end{table*}
 
 Gravitomanyetik bileşen $h_{0i}$ dört geometrinin tamamında sıfırdır;
 çünkü ideal kayıpsız konfigürasyonda $\mathbf{E}\times\mathbf{B}$
@@ -281,30 +281,29 @@ bu hâlâ $1$~s/yıl hedefinin $10^{30}$ altındadır. En iyi durumdan
 ölçek ekstrapolasyonu ya $10^{19}$~A akım, ya $10^{14}$~m bobin
 yarıçapı, ya da $10^{34}$ mertebesinde bir $Q$ faktörü gerektirir.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig3_best_case_tiers.png}
+\resizebox{0.9\textwidth}{!}{\includegraphics{figures/fig3_best_case_tiers.png}}
 \caption{En iyi durum mühendislik kademeleri (temel bakır,
 soğutulmuş bakır, çok-aşamalı dizi ile süperiletken HTS). En agresif
 senaryo bile hedefin $10^{30}$ altında kalır.}
 \label{fig:tiers}
-\end{figure}
+\end{figure*}
 
 Şekil~\ref{fig:scaling} temelden gereken akıma kadar EM
 ölçeklenmesini, yıldırım, laboratuvar-darbeli mıknatıslar,
 astrofiziksel plazmalar ve magnetarlar için referans noktalarıyla
 birlikte gösterir.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig2_em_scaling.png}
+\resizebox{0.9\textwidth}{!}{\includegraphics{figures/fig2_em_scaling.png}}
 \caption{EM kaynaklı metrik pertürbasyonu $h_{00}$ ile sürüş akımı
 $I$ ilişkisi. Referans çizgileri yıldırım, laboratuvar-darbeli
 mıknatıslar, astrofiziksel plazmalar ve magnetar ölçeğindeki
 akımları işaretler. $1$~s/yıl hedefi $I \sim 10^{22}$~A gerektirir.}
 \label{fig:scaling}
-\end{figure}
-
+\end{figure*}
 \subsection{Belirsizlik ve duyarlılık}
 \label{subsec:uncertainty}
 
@@ -315,30 +314,30 @@ standart sapma verir. Baskın katkıda bulunanlar bobin akımı
 duyarlılık indeksleri $S_i = (dh/h)/(dp/p)$ hem akım hem yarıçap
 için $2.0$, verim için $1.0$ ve bölge çapı için $-1.0$'dır.
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig4_monte_carlo.png}
+\resizebox{0.9\textwidth}{!}{\includegraphics{figures/fig4_monte_carlo.png}}
 \caption{Parametre belirsizliklerinin Monte Carlo yayılımı
 ($N=50{,}000$). $h_{00}$ üzerinde göreli standart sapma \%14.6'dır.}
 \label{fig:mc}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig5_sensitivity_tornado.png}
+\resizebox{0.9\textwidth}{!}{\includegraphics{figures/fig5_sensitivity_tornado.png}}
 \caption{Cihaz parametreleri için duyarlılık indeksleri
 $S_i=(dh/h)/(dp/p)$. Akım ve bobin yarıçapı baskındır.}
 \label{fig:tornado}
-\end{figure}
+\end{figure*}
 
-\begin{figure}[t]
+\begin{figure*}[t]
 \centering
-\includegraphics[width=\columnwidth]{figures/fig1_unified_mechanisms.png}
+\resizebox{0.9\textwidth}{!}{\includegraphics{figures/fig1_unified_mechanisms.png}}
 \caption{Altı mekanizma arasında fizibilite boşluğu. Çubuklar
 $\log_{10}(\text{gereken}/\text{cihaz})$ gösterir; yeşil $=$ fiziksel
 olarak izin verilen, kırmızı $=$ Hawking (1992) tarafından dışlanan.}
 \label{fig:unified}
-\end{figure}
+\end{figure*}
 
 \input{bssn_section_tr}
 
