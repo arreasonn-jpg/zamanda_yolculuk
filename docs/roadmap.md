@@ -274,3 +274,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.4-alpha4: full stack SC + PTUM evolution (30-step stable)
 - 🔷 v6.4-beta: consolidate + v6.4.0 release
+
+- ✅ v6.5-alpha1: full stack 200-step long run (stable)
+- 🔷 v6.5-alpha2: refined full stack (2:1 grid + SC + PTUM)

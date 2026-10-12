@@ -984,3 +984,17 @@ spin a=0.9.
 **First full 3-component evolution.** Kerr + SC metric + SC condensate
 + PTUM fields co-evolve stably. Negative energy dominated by PTUM
 (SC condensate stays perturbative). All spins a=0..0.9 stable.
+
+## v6.5-alpha1: full stack 200-step long run (a=0.9)
+
+- `scripts/v6_sc_ptum_full_long.py`
+
+| step | rho_min | Kmax | alpha_min | finite |
+|---|---|---|---|---|
+| 40 | -0.28422 | 0.357 | 0.8742 | True |
+| 120 | -0.28424 | 0.415 | 0.8742 | True |
+| 200 | -0.28427 | 0.473 | 0.8742 | True |
+
+Full stack (Kerr+SC metric + condensate + PTUM) stable over 200
+steps at a=0.9. Constraint preserved, lapse constant, negative
+energy persistent at rho_min = -0.284.
