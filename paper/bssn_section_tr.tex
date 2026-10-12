@@ -143,6 +143,20 @@ yapılandırması sınırda kalır ($\tau = 1.0$'da
 $\text{oran} \approx 1.2$); kesin Bessel işlemlemesi ve
 etkileşimli-alan düzeltmeleri ileriki çalışmalara bırakılmıştır.
 
+
+\subsection{Karmaşık skaler madde}
+
+U(1)-simetrik Lagranjiyenli bir karmaşık skaler
+$\Psi = \Psi_R + i\Psi_I$ madde sektörüne eklenmiştir
+(\texttt{matter\_complex.py}, \texttt{bssn\_rk4\_complex\_ptum.py}).
+Gerçek limit, gerçek skaler durumuna döner; $\rho$'nun faz-dönme
+değişmezliği analitik olarak doğrulanmıştır. Denge-tohumlu PTUM
+vekil alanıyla tek-ağ evrimi, $A_{\rm fuel} = 3.0$'da NEC ihlaline
+ulaşır ($\rho_{\rm min} = -15.05$). İyileştirilmiş (2-düzeyli)
+versiyonda, prolongate/restrict döngüsü vekil dengeyi bozar ve
+NEC ihlali kaybolur ($\rho_{\rm min} \to 0$); bu, fiziksel bir
+sonuç olarak değil, bir sınırlama olarak belgelenmiştir.
+
 \subsection{Tam-yığın yapılandırması}
 
 Dönen düzenli çekirdeğin, SC yoğuşmasının ve PTUM alanlarının aynı
