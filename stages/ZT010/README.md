@@ -1042,3 +1042,11 @@ Refinement enables A=3.0 full stack evolution (single grid crashed).
 - Both papers compile clean (0 overfull hbox)
 - EN: 10 pages, TR: 10 pages
 - arXiv v3 package regenerated
+
+## paper-v6.5-fig7: full-stack diagnostic figure added
+
+- `paper/figures/fig7_fullstack.png` — 3-panel diagnostic:
+  (a) rho_min, (b) Kmax, (c) alpha_min over 100 steps
+- `paper/scripts/paper_fig7_fullstack.py` — generator
+- `bssn_section_en.tex` + `bssn_section_tr.tex`: fig7 included
+- Both papers compile clean (0 overfull)
