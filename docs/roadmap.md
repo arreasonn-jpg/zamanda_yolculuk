@@ -295,3 +295,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v7.0-alpha1: refined complex+PTUM NEC violation stable
 - 🔷 v7.0-alpha2: consolidate as v7.0.0 release
+
+- ✅ v7.1-alpha1: peak-preserving restrict (exploratory, two-way fails)
+- 🔷 v7.1-alpha2: consolidate — one-way coupling remains canonical

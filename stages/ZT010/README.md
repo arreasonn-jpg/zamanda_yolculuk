@@ -1142,3 +1142,22 @@ Fix: (a) smoothstep regularization of psi_equilibrium;
 - rho_min = -15.67 (constant, no decay)
 - psimax = 2.83 (constant, equilibrium preserved)
 - Kmax bounded, alpha_min = 1.0
+
+## v7.1-alpha1: peak-preserving restrict + two-way coupling (exploratory)
+
+- `src/zt005/refinement.py`: `restrict_max` (blend of avg and max)
+- `src/zt005/bssn_refined_complex_ptum_v3.py`: two-way matter coupling
+- `tests/test_refinement_max.py` (5 checks)
+- `tests/test_bssn_refined_complex_ptum_v3.py` (3 checks)
+
+### Result
+
+Two-way coupling with peak-preserving restrict still loses Phi
+peak: Phmax 3.0 -> 0.13 over 100 steps. Root cause: coarse RK4
+Laplacian term pulls the peak down, and this is doubly amplified
+by the prolongate/restrict cycle.
+
+v7.0-alpha1 (one-way coupling) remains the working configuration
+for refined complex+PTUM NEC violation.
+
+This is a fundamental AMR trade-off, not a bug.

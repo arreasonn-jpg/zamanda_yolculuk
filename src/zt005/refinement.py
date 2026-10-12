@@ -77,3 +77,42 @@ def restrict(f_fine, N_coarse, offset):
 
 
 __all__ = ["prolongate", "restrict"]
+
+
+def restrict_max(f_fine, N_coarse, offset, blend=0.5):
+    """Peak-preserving restriction: blend of average and max.
+
+    When the fine patch contains a sharp peak (e.g., a compact
+    Gaussian), simple averaging loses ~35% per step. This variant
+    blends the arithmetic average with the maximum of the 2x2x2
+    fine cells:
+        out = (1 - blend) * avg + blend * max
+
+    blend=0 -> pure averaging (matches restrict)
+    blend=1 -> pure max (peak-preserving, but can bias smooth regions)
+    blend=0.5 -> compromise (default)
+
+    Returns NaN outside the fine region, same convention as restrict.
+    """
+    N_f = f_fine.shape[0]
+    ox, oy, oz = offset
+    out = np.full((N_coarse, N_coarse, N_coarse), np.nan)
+    n_covered = (N_f - 1) // 2
+    for ii in range(n_covered):
+        for jj in range(n_covered):
+            for kk in range(n_covered):
+                i = ox + ii; j = oy + jj; k = oz + kk
+                if not (0 <= i < N_coarse and 0 <= j < N_coarse
+                        and 0 <= k < N_coarse):
+                    continue
+                fi0 = 2*ii; fi1 = fi0 + 1
+                fj0 = 2*jj; fj1 = fj0 + 1
+                fk0 = 2*kk; fk1 = fk0 + 1
+                patch = f_fine[fi0:fi1+1, fj0:fj1+1, fk0:fk1+1]
+                avg = patch.mean()
+                mx = patch.max()
+                out[i,j,k] = (1.0 - blend) * avg + blend * mx
+    return out
+
+
+__all__ += ["restrict_max"]
