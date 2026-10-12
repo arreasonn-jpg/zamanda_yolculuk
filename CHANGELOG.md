@@ -203,3 +203,16 @@ the open problem of cross-scale bridging.
 ### Reference
 - Extends SC paper's numerical support from static (v4.0) to
   rotating (Kerr) background
+
+## v6.4.0 (2026-10-12)
+
+### Added — full stack
+- bssn_rk4_sc_ptum.py (metric + SC + PTUM)
+- kerr_sc_ptum_ic.py (full-stack IC)
+- 30-step stable at a=0..0.9
+
+### Tests
+- 546 fast + 21 slow
+
+### Reference
+- First simultaneous evolution of SC + PTUM in Kerr background

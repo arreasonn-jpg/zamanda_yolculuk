@@ -391,3 +391,33 @@ throughout.
 v6.3 extends SC regular-core result from static (v4.0) to rotating
 (Kerr) background. This is the strongest numerical support for the
 SC paper: metric + matter + spin all consistent.
+
+## v6.4 scope
+
+### What v6.4 delivers
+
+- Full stack: Kerr+SC metric + SC condensate + PTUM fields
+- Driver: bssn_rk4_sc_ptum.py (metric + 6 matter fields)
+- 30-step evolution stable at a=0..0.9
+- 546 fast + 21 slow tests
+
+### Numerical result
+
+| Setup | Steps | Result |
+|---|---|---|
+| Kerr+SC+PTUM a=0..0.9 | 30 | stable, all finite |
+| rho_total | — | -0.284 (PTUM dominated) |
+| Kmax | — | 0.35-0.36 |
+
+### What v6.4 does NOT deliver
+
+- Long-run (>30 steps) full-stack stability
+- Full nonlinear SC condensate coupling
+- MPI / AMR for full stack
+- Radiation extraction
+
+### Honest assessment
+
+First simultaneous evolution of all three components (rotating
+regular core + QCD condensate + tachyon field). 30 steps stable.
+Long-run stability is deferred to v6.5.
