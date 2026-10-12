@@ -1016,3 +1016,20 @@ Kmax monotonically decreasing (constraint improving). Refinement
 stabilizes the full stack. PTUM activation weak at A_fuel=1.5
 (rho_min positive, small); larger A_fuel needed for NEC violation
 in this configuration.
+
+## v6.5-alpha3: refined full stack A=3.0 (NEC violation + stable)
+
+- `scripts/v6_refined_sc_ptum_run_strong.py`
+
+### 100-step run (a=0.9, A_fuel=3.0)
+
+| step | rho_min | n_neg | Kmax | alpha_min | finite |
+|---|---|---|---|---|---|
+| 25 | -0.0986 | 3 | 0.095 | 0.8805 | True |
+| 100 | -0.0986 | 3 | 0.131 | 0.8805 | True |
+
+Initial rho_min = -15.64 (transient discharge, from PTUM). After
+~25 steps drops to -0.099 (3 cells). Kmax linear bounded.
+Refinement enables A=3.0 full stack evolution (single grid crashed).
+
+**Full stack NEC violation realized + stable** at near-extremal Kerr.
