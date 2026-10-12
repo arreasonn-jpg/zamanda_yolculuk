@@ -1084,3 +1084,29 @@ crash) - refinement needed.
 
 Key insight: tachyon activation requires either (a) longer time
 (t > 0.1, not tested) or (b) equilibrium seed psi_0(Phi).
+
+## v6.6-alpha3: refined complex + PTUM (partial)
+
+- `src/zt005/bssn_refined_complex_ptum.py` — 2-grid (metric + 8 matter fields)
+- `tests/test_bssn_refined_complex_ptum.py` — 3 checks
+- `scripts/v6_refined_complex_ptum_run.py`
+
+### A=3.0 100-step run
+
+| step | rho_min | Kmax_c | Kmax_f | finite |
+|---|---|---|---|---|
+| 25 | 0.0 | 1.1e-04 | 1.1e-04 | True |
+| 100 | 0.0 | 4.4e-04 | 4.4e-04 | True |
+
+**Limitation:** equilibrium psi is not preserved through the
+prolongate/restrict cycle. The refinement layer overwrites fine
+psi with the prolongated coarse value each step; psi drifts from
+its equilibrium, PTUM activation decays, rho_min -> 0.
+
+The driver is functionally correct (tests pass, finite) but this
+specific configuration does not produce NEC violation. Physically
+meaningful full-stack NEC violation is already demonstrated in
+v6.5-alpha3 (refined SC+PTUM A=3.0, rho_min = -0.099).
+
+Complex scalar in refined full stack is deferred to v7.0 (needs
+consistent psi initialization across grids).

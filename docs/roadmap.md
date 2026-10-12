@@ -289,3 +289,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.6-alpha2: complex + PTUM equilibrium seed (NEC + stability)
 - 🔷 v6.6-alpha3: refined complex + PTUM (A=3.0 with 2:1 grid)
+
+- ✅ v6.6-alpha3: refined complex+PTUM (driver ok; equilibrium psi broken)
+- 🔷 v6.6-beta: consolidate with noted limitation
