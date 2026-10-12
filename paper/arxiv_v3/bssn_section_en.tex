@@ -147,9 +147,14 @@ work.
 A combined initial-data configuration has been constructed in which
 the rotating regular core, the SC condensate, and the PTUM fields
 are set up simultaneously on the same grid (\texttt{kerr\_sc\_ptum\_ic.py}).
-The individual components have each been verified to be stable over
-their respective evolution runs; a full coupled evolution of all
-three simultaneously is deferred to future work.
+Single-grid full-stack evolution is stable over 200 steps at
+$a = 0.9$ ($K_{\rm max}$ bounded, $\alpha_{\rm min}$ exactly
+constant). On a two-level (2:1) refined grid, the full stack with
+$A_{\rm fuel} = 3.0$ reaches 100 steps stably, with $\rho_{\rm min}$
+settling to $-0.099$ (3 persistent NEC-violating cells) after an
+initial transient of $-15.64$. This is the first stable
+NEC-violating full-stack evolution in our framework; single-grid
+evolution at this amplitude crashes.
 
 \subsection{Cross-scale structural parallel}
 

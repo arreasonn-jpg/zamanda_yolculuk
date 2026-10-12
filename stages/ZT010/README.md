@@ -1033,3 +1033,12 @@ Initial rho_min = -15.64 (transient discharge, from PTUM). After
 Refinement enables A=3.0 full stack evolution (single grid crashed).
 
 **Full stack NEC violation realized + stable** at near-extremal Kerr.
+
+## paper-v6.5: BSSN section updated with full-stack results
+
+- bssn_section_en.tex: full-stack v6.5 results added
+  (200-step single grid, 100-step refined A=3.0, NEC violation)
+- bssn_section_tr.tex: Turkish translation
+- Both papers compile clean (0 overfull hbox)
+- EN: 10 pages, TR: 10 pages
+- arXiv v3 package regenerated
