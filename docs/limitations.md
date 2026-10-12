@@ -451,3 +451,44 @@ Long-run stability is deferred to v6.5.
 v6.5 provides the first NEC-violating stable evolution of the full
 stack (rotating regular core + QCD condensate + tachyon field).
 The refinement technique is essential: A=3.0 crashes single-grid.
+
+## v6.6 scope
+
+### What v6.6 delivers
+
+- Complex scalar + PTUM driver (single grid, equilibrium seed)
+- Refined complex + PTUM driver (2-grid)
+- 555 fast tests
+
+### Numerical results
+
+| Setup | Steps | Result |
+|---|---|---|
+| Complex + PTUM A=1.5 (eq seed) | 100 | rho_min = -0.285, stable |
+| Complex + PTUM A=3.0 (eq seed) | 100 | rho_min = -15.05, Kmax=23.5 |
+| Refined complex + PTUM A=3.0 | 100 | rho_min = 0 (equilibrium psi lost) |
+
+### Key insights
+
+1. PTUM activation requires either (a) enough time (t > ~2.4 for
+   exponential growth from a small seed) or (b) equilibrium seed
+   psi_0(Phi).
+2. Refined complex + PTUM has a limitation: prolongate/restrict
+   overwrites fine-grid psi with prolonged coarse psi each step,
+   pushing it off equilibrium. This is a design limitation, not a bug.
+
+### What v6.6 does NOT deliver
+
+- Consistent psi initialization across refinement levels
+- Refined complex + PTUM NEC violation
+- Complex scalar + Kerr + PTUM (all combined)
+- Full-time-domain tachyon growth from small seed
+
+### Honest assessment
+
+v6.6 adds complex scalar to the PTUM stack. Single-grid complex +
+PTUM reaches NEC violation at A=3.0. The refined version does not
+(eq psi lost). Physically meaningful refined NEC violation is
+already in v6.5 (SC + PTUM).
+
+Complex scalar in the refined full stack is deferred to v7.0.

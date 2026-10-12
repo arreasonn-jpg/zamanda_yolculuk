@@ -230,3 +230,17 @@ the open problem of cross-scale bridging.
 ### Reference
 - First NEC-violating stable full stack evolution
 - Refinement resolves A=3.0 crash
+
+## v6.6.0 (2026-10-12)
+
+### Added — complex scalar + PTUM
+- bssn_rk4_complex_ptum.py (single-grid driver)
+- bssn_refined_complex_ptum.py (2-grid driver)
+- Equilibrium-seed analysis (single grid reaches NEC at A=3.0)
+
+### Tests
+- 555 fast + 21 slow
+
+### Known limitation
+- Refined complex+PTUM loses equilibrium psi through prolongate/restrict
+- Refined NEC violation remains a v6.5 result (SC+PTUM)
