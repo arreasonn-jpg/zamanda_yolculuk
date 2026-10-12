@@ -286,3 +286,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v6.6-alpha1: complex scalar + PTUM driver (activation needs seed)
 - 🔷 v6.6-alpha2: psi seed + full activation test
+
+- ✅ v6.6-alpha2: complex + PTUM equilibrium seed (NEC + stability)
+- 🔷 v6.6-alpha3: refined complex + PTUM (A=3.0 with 2:1 grid)

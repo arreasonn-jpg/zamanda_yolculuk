@@ -1065,3 +1065,22 @@ Refinement enables A=3.0 full stack evolution (single grid crashed).
 
 Complex scalar stable. PTUM activation requires seed (psi=0 is fixed
 point); psi seed deferred to next stage.
+
+## v6.6-alpha2: complex + PTUM with equilibrium seed
+
+- `scripts/v6_complex_ptum_run_seeded.py` (seed=1e-3, no activation in dt)
+- `scripts/v6_complex_ptum_run_eq.py` (equilibrium seed)
+
+### 100-step run (N=9, dt=5e-4)
+
+| A_fuel | rho_min | n_neg | Kmax | finite |
+|---|---|---|---|---|
+| 1.5 | -0.285 | 1 | 0.36 | True |
+| 3.0 | -15.05 | 1 | 23.5 | True (Kmax high) |
+
+Complex + PTUM with equilibrium seed reaches NEC violation.
+A=1.5 stable. A=3.0 strong NEC violation, Kmax high (near single-grid
+crash) - refinement needed.
+
+Key insight: tachyon activation requires either (a) longer time
+(t > 0.1, not tested) or (b) equilibrium seed psi_0(Phi).
