@@ -421,3 +421,33 @@ SC paper: metric + matter + spin all consistent.
 First simultaneous evolution of all three components (rotating
 regular core + QCD condensate + tachyon field). 30 steps stable.
 Long-run stability is deferred to v6.5.
+
+## v6.5 scope
+
+### What v6.5 delivers
+
+- Refined full stack: Kerr+SC metric + condensate + PTUM (2-grid)
+- Full stack 200-step long run (single grid, a=0.9)
+- Refined full stack 100-step at A=3.0 (NEC violation)
+- 549+ fast tests
+
+### Numerical results
+
+| Setup | Steps | Result |
+|---|---|---|
+| Full stack single grid a=0.9 | 200 | stable, Kmax bounded |
+| Refined full stack A=1.5 | 100 | Kmax decreasing |
+| Refined full stack A=3.0 | 100 | NEC violation, stable |
+
+### What v6.5 does NOT deliver
+
+- Full stack beyond 500 steps
+- Complex scalar + full stack
+- Radiation extraction
+- MPI / production AMR
+
+### Honest assessment
+
+v6.5 provides the first NEC-violating stable evolution of the full
+stack (rotating regular core + QCD condensate + tachyon field).
+The refinement technique is essential: A=3.0 crashes single-grid.

@@ -216,3 +216,17 @@ the open problem of cross-scale bridging.
 
 ### Reference
 - First simultaneous evolution of SC + PTUM in Kerr background
+
+## v6.5.0 (2026-10-12)
+
+### Added — refined full stack
+- bssn_refined_sc_ptum.py (2-grid + SC + PTUM)
+- Full stack 200-step single grid (a=0.9)
+- Refined full stack A=3.0 (NEC violation)
+
+### Tests
+- 549+ fast + 21 slow
+
+### Reference
+- First NEC-violating stable full stack evolution
+- Refinement resolves A=3.0 crash
