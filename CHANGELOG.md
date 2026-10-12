@@ -244,3 +244,20 @@ the open problem of cross-scale bridging.
 ### Known limitation
 - Refined complex+PTUM loses equilibrium psi through prolongate/restrict
 - Refined NEC violation remains a v6.5 result (SC+PTUM)
+
+## v7.0.0 (2026-10-12)
+
+### Added — refined complex+PTUM v2
+- bssn_refined_complex_ptum_v2.py (one-way matter coupling)
+- psi_equilibrium_smooth (regularized threshold)
+
+### Key results
+- Refined complex+PTUM A=3.0: rho_min = -15.67 persistent
+- psimax = 2.83 constant, Kmax bounded
+- Root causes fixed: sharp psi -> smooth; restrict loss -> one-way
+
+### Tests
+- 579+ fast + 21 slow
+
+### Reference
+- First persistent NEC violation in refined complex+PTUM

@@ -492,3 +492,47 @@ PTUM reaches NEC violation at A=3.0. The refined version does not
 already in v6.5 (SC + PTUM).
 
 Complex scalar in the refined full stack is deferred to v7.0.
+
+## v7.0 scope
+
+### What v7.0 delivers
+
+- Refined complex+PTUM with NEC violation (persistent)
+- Root cause fixes documented:
+  - psi_equilibrium_smooth (smoothstep regularization)
+  - restrict_matter flag (one-way coupling for matter)
+- 579+ fast tests
+
+### Key numerical result
+
+| Setup | Steps | rho_min | Kmax_c | Kmax_f |
+|---|---|---|---|---|
+| Refined complex+PTUM A=3.0 | 100 | -15.67 | 0.087 | 0.245 |
+
+rho_min persistent, psimax = 2.83 constant.
+
+### Design decision: one-way coupling
+
+Matter fields (Phi, psi, Psi_R/I) evolve on the coarse grid
+independently; the fine grid receives prolonged coarse matter each
+step. This avoids the ~35% per-step Gaussian peak loss from the
+restrict averaging. The metric still uses two-way coupling.
+
+This is a standard AMR technique for compact sources. It trades
+fine-grid matter accuracy for coarse-grid stability.
+
+### What v7.0 does NOT deliver
+
+- Two-way matter coupling without peak loss (deferred to v7.1)
+- Full 3D AMR
+- Radiation extraction
+- Kerr + complex + PTUM combined
+
+### Honest assessment
+
+v7.0 provides the first persistent NEC-violating refined
+complex+PTUM evolution. Two root causes identified and fixed:
+(a) sharp psi discontinuity -> smoothstep;
+(b) restrict matter loss -> one-way coupling.
+
+NEC violation rho_min = -15.67 stable over 100 steps.
