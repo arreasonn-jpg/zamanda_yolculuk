@@ -153,9 +153,15 @@ Gerçek limit, gerçek skaler durumuna döner; $\rho$'nun faz-dönme
 değişmezliği analitik olarak doğrulanmıştır. Denge-tohumlu PTUM
 vekil alanıyla tek-ağ evrimi, $A_{\rm fuel} = 3.0$'da NEC ihlaline
 ulaşır ($\rho_{\rm min} = -15.05$). İyileştirilmiş (2-düzeyli)
-versiyonda, prolongate/restrict döngüsü vekil dengeyi bozar ve
-NEC ihlali kaybolur ($\rho_{\rm min} \to 0$); bu, fiziksel bir
-sonuç olarak değil, bir sınırlama olarak belgelenmiştir.
+versiyonda, prolongate/restrict döngüsü başlangıçta vekil dengeyi
+bozmaktaydı; ancak iki düzeltme bunu çözer: (a) aktivasyon eşiğinin
+smoothstep düzenlemesi ($\psi\_{\rm eq}^{\rm smooth}$), ve
+(b) tek-yönlü madde çiftlenmesi (kaba ağ maddeyi bağımsız evrimler,
+restrict ortalamasının neden olduğu $\sim\%35$'lik Gauss tepe
+kaybını önler). Elde edilen iyileştirilmiş karmaşık+PTUM koşusu,
+100 adım boyunca kararlıdır ve kalıcı NEC ihlali gösterir:
+$\rho_{\rm min} = -15.67$ ve sabit vekil genliği
+$\psi_{\rm max} = 2.83$.
 
 \subsection{Tam-yığın yapılandırması}
 

@@ -152,10 +152,16 @@ The real limit recovers the real scalar case; the phase-rotation
 invariance of $\rho$ is verified analytically. Single-grid evolution
 with an equilibrium-seeded PTUM proxy reaches NEC violation at
 $A_{\rm fuel} = 3.0$ ($\rho_{\rm min} = -15.05$). In the refined
-(2-level) version, the prolongate/restrict cycle disrupts the
-proxy equilibrium and the NEC violation is lost
-($\rho_{\rm min} \to 0$); this is documented as a limitation
-rather than a physical result.
+(2-level) version, the prolongate/restrict cycle initially
+disrupted the proxy equilibrium, but two fixes resolve this:
+(a) a smoothstep regularization of the activation threshold
+($\psi\_{\rm eq}^{\rm smooth}$), and (b) one-way matter coupling
+(the coarse grid evolves matter independently, avoiding the
+$\sim 35\%$ per-step Gaussian peak loss from the restrict
+averaging). The resulting refined complex+PTUM run is stable for
+100 steps with persistent NEC violation at
+$\rho_{\rm min} = -15.67$ and constant proxy amplitude
+$\psi_{\rm max} = 2.83$.
 
 \subsection{Full-stack configuration}
 
