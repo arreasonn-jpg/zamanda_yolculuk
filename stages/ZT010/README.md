@@ -966,3 +966,21 @@ spin a=0.9.
 - All figures use figure* (full width, two-column mode)
 - All wide tables use table* (full width)
 - EN: 10 pages, TR: 10 pages
+
+## v6.4-alpha4: full stack SC + PTUM evolution
+
+- `src/zt005/bssn_rk4_sc_ptum.py` — RK4 on (metric + 6 matter fields):
+  SC condensate (phi_sc, Pi_sc) + PTUM (Phi, Pi_Phi, psi, Pi_psi).
+- `tests/test_bssn_rk4_sc_ptum.py` — 3 checks.
+
+### 30-step run (N=9, dt=1e-4)
+
+| a | rho_total | rho_sc | rho_ptum | Kmax | alpha_min | finite |
+|---|---|---|---|---|---|---|
+| 0.0 | -0.284 | ~0 | -0.284 | 0.363 | 0.8776 | True |
+| 0.5 | -0.284 | ~0 | -0.284 | 0.358 | 0.8766 | True |
+| 0.9 | -0.284 | ~0 | -0.284 | 0.350 | 0.8742 | True |
+
+**First full 3-component evolution.** Kerr + SC metric + SC condensate
++ PTUM fields co-evolve stably. Negative energy dominated by PTUM
+(SC condensate stays perturbative). All spins a=0..0.9 stable.

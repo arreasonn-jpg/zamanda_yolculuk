@@ -271,3 +271,6 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ paper v6.4 update (full-stack note EN+TR)
 - ✅ arXiv v3 package assembled (982 KB)
 - 🔷 Ready for arXiv upload (user decision pending)
+
+- ✅ v6.4-alpha4: full stack SC + PTUM evolution (30-step stable)
+- 🔷 v6.4-beta: consolidate + v6.4.0 release
