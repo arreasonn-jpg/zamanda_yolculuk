@@ -1,62 +1,75 @@
 # Session notes — pickup point
 
-Last stable release: **v6.5.0** (2026-10-12)
-Tests: 549 fast + 21 slow = 570 total, all passing.
-Tags: v1.0.0, v2.0.0, v3.0.0, v4.0.0, v5.0.0, v6.0.0-6.5.0 + 30+ alpha/beta.
+Last stable release: **v6.6.0** (2026-10-12)
+Tests: 555 fast + 21 slow = 576 total, all passing.
+Tags: v1.0.0, v2.0.0, v3.0.0, v4.0.0, v5.0.0, v6.0.0-6.6.0 (+ alpha tags).
 
 ## What works
 
-- BSSN solver (Schwarzschild, Kerr a<=0.5, moving puncture)
-- SC regular core (metric only, and metric+matter)
-- PTUM tachyon discharge (single + refined + Kerr)
-- Complex scalar matter
-- Scalar field matter coupling
+**Core BSSN solver:**
+- Schwarzschild (isotropic + puncture, moving puncture)
+- Kerr (Kerr-Schild, a <= M, slowly-rotating and near-extremal)
 - 2-level AMR-lite refinement (prolongate/restrict)
-- Ford-Roman quantum inequality diagnostic
-- Full stack: Kerr + SC metric + SC condensate + PTUM (200-step stable)
-- Refined full stack A=3.0 (100-step, NEC violation)
 
-## Latest key results (v6.5)
+**Matter modules:**
+- Scalar field, complex scalar (U(1)), PTUM (2-field)
+- SC condensate (QCD-inspired)
+- Full stack: Kerr + SC metric + SC condensate + PTUM
+
+**Diagnostics:**
+- Hamiltonian / momentum constraint
+- Ford-Roman quantum inequality
+- Kmax, alpha_min monitoring
+- Refined full stack stability
+
+## Latest key results (v6.6)
 
 | Configuration | Steps | Result |
 |---|---|---|
 | Kerr + SC + condensate | 500 | H growth 0.9823 |
 | Kerr + PTUM a=0.9 | 1000 | stable |
-| Full stack single grid a=0.9 | 200 | stable, Kmax bounded |
-| Refined full stack A=3.0 | 100 | rho_min = -0.099 (NEC violation) |
+| Full stack single grid a=0.9 | 200 | stable |
+| Refined SC+PTUM A=3.0 | 100 | NEC violation, rho_min = -0.099 |
+| Complex + PTUM A=3.0 (eq seed) | 100 | NEC violation, rho_min = -15.05 |
+
+## Known limitations (documented)
+
+1. **Refined complex + PTUM loses equilibrium psi** through
+   prolongate/restrict cycle → rho_min → 0. Deferred to v7.0.
+2. Long-time tachyon growth from small seed not simulated
+   (would require t > 2.4 for exponential activation).
+3. No full 3D AMR; refinement is 2-level static.
+4. No MPI / radiation extraction.
 
 ## Physics papers — status
 
-- **SC** — numerically supported (v4.0-v6.5): regular core stable,
-  rotating + condensate 500-step
-- **PTUM** — numerically supported (v5.0-v6.5): NEC violation,
-  transient discharge, QFT-compatible (massless), full stack refined
-- **SC ↔ PTUM bridge** — mathematical parallel verified; physical
-  bridge NOT established (78-order scale gap)
+**SC** — numerically supported (v4.0-v6.5): regular core stable,
+rotating + condensate 500-step.
 
-## Bilingual paper — status
+**PTUM** — numerically supported (v5.0-v6.6): NEC violation,
+transient discharge, QFT-compatible (massless).
 
-- `paper/main_en.tex` — 10 pages, English, ready
-- `paper/main_tr.tex` — 10 pages, Turkish, ready
-- `paper/bssn_section_en.tex` — BSSN section (v6.5 results)
-- `paper/bssn_section_tr.tex` — Turkish translation
-- Both compile with 0 overfull hbox
-- `paper/arxiv_submission_v3.zip` (982 KB) — ready for upload
+**SC ↔ PTUM bridge** — mathematical parallel verified; physical
+bridge NOT established (78-order scale gap).
 
-## What's next (when returning)
+## Bilingual paper
 
-Options on the table:
+- `paper/main_en.tex` — 10 pages, English
+- `paper/main_tr.tex` — 10 pages, Turkish
+- `paper/bssn_section_en.tex` / `_tr.tex` — v6.5 results
+- `paper/figures/fig7_fullstack.png` — 3-panel diagnostic
+- `paper/arxiv_submission_v3.zip` (~1 MB) — ready for upload
 
-**A) Paper figure** — add full-stack diagnostics figure to paper
-   (currently only text)
+## Cihaz vs CTC
 
-**B) Complex scalar + full stack** — extend matter to U(1)
-   complex scalar combined with SC and PTUM
+43-order gap to CTC-relevant scale: **UNCHANGED** (physics, not bug).
 
-**C) arXiv upload** — package ready, user decision pending
+## What's next
 
-**D) v7.0 — full 3D + Kerr + complex scalar + refinement + PTUM**
-   (weeks of work)
+**A) Paper complex scalar section** — add to bssn_section EN + TR
+**B) arXiv upload** — package ready
+**C) v7.0 — consistent psi init across refinement levels**
+**D) v7.0 — full 3D + complex scalar + refinement + PTUM**
 
 ## How to resume
 
@@ -64,12 +77,3 @@ Options on the table:
     source .venv/bin/activate
     pytest -q -m "not slow"        # ~2 min
     git log --oneline -20
-    git tag --sort=-creatordate | head -20
-
-## Current status
-
-- 6 major releases (v1.0 → v6.5)
-- 570 tests passing
-- 43-order gap to CTC regime: UNCHANGED (physics, not a bug)
-- Numerical laboratory: full stack stable + NEC violation proven
-- arXiv package ready for upload
