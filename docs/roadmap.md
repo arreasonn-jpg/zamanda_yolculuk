@@ -354,3 +354,8 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v8.2-alpha2: LQC + PTUM density comparison
 - ✅ v8.2-alpha3: LQC QFT window invariance
 - 🔷 v8.2-beta: v8.2.0 release
+
+## v8.3 roadmap
+- ✅ v8.3-alpha1: Hu-Sawicki f(R) dark energy
+- ✅ v8.3-alpha2: Universal tensor-scalar QFT invariance
+- 🔷 v8.3-beta: v8.3.0 release

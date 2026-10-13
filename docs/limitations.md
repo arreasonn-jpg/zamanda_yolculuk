@@ -749,3 +749,31 @@ PTUM QFT-OK window unchanged under:
 v8.2 confirms that the PTUM QFT threshold is a
 background-independent property, robust to three independent
 extensions: Kerr, Brans-Dicke, LQC.
+
+## v8.3 scope
+
+### What v8.3 delivers
+
+- Hu-Sawicki f(R) dark energy module
+- Universal scalar-tensor QFT invariance theorem
+
+### Key result
+
+**Universal invariance:** The PTUM QFT-OK window
+(A in [1.35, 1.87]) is invariant under ANY scalar-tensor
+extension of GR of the form F(phi) R. Proven analytically
+(PTUM rho_min is matter-sector-only) and tested numerically
+across 5 F(phi) values.
+
+### What v8.3 does NOT deliver
+
+- Full Hu-Sawicki BSSN evolution
+- f(R) black hole or cosmological solutions
+- Screening mechanism dynamics
+
+### Honest assessment
+
+v8.3 generalizes the triple invariance of v8.2 to a
+universal statement: PTUM QFT threshold is a fundamental
+PTUM-intrinsic property, independent of the gravitational
+background at leading order.

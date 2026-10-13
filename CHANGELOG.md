@@ -366,3 +366,17 @@ the open problem of cross-scale bridging.
 
 ### Tests
 - 623+ fast + 21 slow
+
+## v8.3.0 (2026-10-13)
+
+### Added
+- matter_hu_sawicki.py (f(R) dark energy)
+- tensor_scalar_qft.py (universal invariance)
+
+### Key results
+- Hu-Sawicki: GR limit at high curvature, chameleon screening
+- Universal QFT window invariance under F(phi)
+- Window: A in [1.35, 1.87]
+
+### Tests
+- 644+ fast + 21 slow

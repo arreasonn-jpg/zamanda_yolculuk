@@ -1492,3 +1492,29 @@ PTUM QFT-OK window invariant under:
 - Kerr spin (v7.5)
 - Brans-Dicke phi (v8.0)
 - LQC Friedmann correction (v8.2)
+
+## v8.3-alpha1/2: Hu-Sawicki + universal QFT invariance
+
+### alpha1: Hu-Sawicki f(R) dark energy
+- `src/zt005/matter_hu_sawicki.py`
+- `tests/test_matter_hu_sawicki.py` (5 checks)
+- f(R) = R - m^2 c1 (R/m^2)^n / (c2 (R/m^2)^n + 1)
+- High curvature -> GR + Lambda_eff
+- Chameleon screening
+
+### alpha2: Universal tensor-scalar QFT invariance
+- `src/zt005/tensor_scalar_qft.py`
+- `tests/test_tensor_scalar_qft.py` (8 checks)
+- Any F(phi) scalar-tensor extension leaves QFT-OK window invariant
+- Window: A in [1.35, 1.87], rho_min in [-1.26, -0.09]
+
+### Universal invariance
+
+PTUM QFT-OK window invariant under:
+- Kerr spin (v7.5)
+- Brans-Dicke phi (v8.0)
+- LQC Friedmann (v8.2)
+- Hu-Sawicki f(R) (v8.3)
+- **Any tensor-scalar F(phi)** (v8.3)
+
+The window is a PTUM-intrinsic property.
