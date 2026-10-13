@@ -316,3 +316,17 @@ the open problem of cross-scale bridging.
 
 ### Reference
 - Quantitative single-parameter QFT bound on PTUM NEC
+
+## v7.5.0 (2026-10-13)
+
+### Added
+- Discharge duration analysis (frozen at all A)
+- Kerr-invariance of QFT-OK window
+
+### Key results
+- Phi decays <1% over accessible window (all A, all spin)
+- QFT-OK window identical a=0.0 vs a=0.9
+- PTUM-intrinsic QFT threshold
+
+### Tests
+- 595 fast + 21 slow

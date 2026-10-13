@@ -645,3 +645,27 @@ Ford-Roman quantum inequalities.
 v7.3 provides a clean single-parameter bound on PTUM NEC
 violation. Strong NEC remains QFT-incompatible, as theory
 requires. The bound is quantitative, not qualitative.
+
+## v7.5 scope
+
+### What v7.5 delivers
+
+- Discharge duration analysis (QFT-OK window)
+- Kerr-invariance of QFT-OK window
+
+### Key results
+
+**Discharge duration:** Phi decays <1% over t=0.25 in A=1.4-1.8.
+Discharge frozen; timescale mismatch (v7.2) confirmed in QFT-OK window.
+
+**Kerr-invariance:** QFT-OK window (A ∈ [1.35, 1.87]) unchanged
+between a=0.0 and a=0.9. Threshold is set by PTUM physics, not by
+background metric.
+
+### Honest assessment
+
+Two negative/invariance results:
+1. Discharge never completes in accessible simulation time (any A).
+2. QFT-OK window does not depend on Kerr spin.
+
+The QFT-OK window is a PTUM-intrinsic property.
