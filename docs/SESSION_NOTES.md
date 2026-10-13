@@ -1,6 +1,6 @@
 # Session notes — pickup point
 
-Last stable release: **v7.3.0** (2026-10-13)
+Last stable release: **v7.5.0** (2026-10-13)
 Tests: 595 (fast + slow), all passing.
 
 ## Milestones reached (v1.0 → v7.3)
@@ -23,6 +23,8 @@ Tests: 595 (fast + slow), all passing.
 | v7.1 | Kerr + complex + PTUM |
 | v7.2 | Transient discharge (negative result) |
 | v7.3 | QFT threshold law (linear) |
+| v7.4 | 4-regime structure (3 thresholds) |
+| v7.5 | Discharge invariance + Kerr-independence |
 
 ## Latest key results
 
@@ -40,11 +42,25 @@ Tests: 595 (fast + slow), all passing.
 QFT-compatible: |rho_min| < 1.258 (A_fuel < 1.87)
 QFT-incompatible: |rho_min| > 1.258
 
+## 4-regime structure (v7.4)
+
+| Regime | A range | NEC | QFT |
+|---|---|---|---|
+| Deactivated | < 1.2 | No | OK |
+| Activated, no NEC | 1.2-1.35 | No | OK |
+| NEC + QFT-OK | 1.35-1.87 | Yes | OK |
+| NEC + QFT-violating | > 1.87 | Yes | No |
+
+## Additional findings (v7.5)
+
+- Discharge frozen at all amplitudes (t ~ 0.25 window, Phi decays <1%)
+- QFT-OK window Kerr-invariant (a=0 vs a=0.9 identical)
+
 ## Bilingual paper
 
 - paper/main_en.tex — 11 pages, English
 - paper/main_tr.tex — 11 pages, Turkish
-- 8 figures (fig1-fig8)
+- 9 figures (fig1-fig9)
 - paper/arxiv_submission_v3.zip — READY (upload = user decision)
 
 ## Cihaz vs CTC
