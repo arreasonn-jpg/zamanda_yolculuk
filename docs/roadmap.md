@@ -359,3 +359,7 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v8.3-alpha1: Hu-Sawicki f(R) dark energy
 - ✅ v8.3-alpha2: Universal tensor-scalar QFT invariance
 - 🔷 v8.3-beta: v8.3.0 release
+
+## v9.0 roadmap
+- ✅ v9.0-alpha1: Newman-Penrose GW extraction
+- 🔷 v9.0-alpha2: GW extraction from BSSN evolution

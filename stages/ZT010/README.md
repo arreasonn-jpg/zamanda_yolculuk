@@ -1518,3 +1518,14 @@ PTUM QFT-OK window invariant under:
 - **Any tensor-scalar F(phi)** (v8.3)
 
 The window is a PTUM-intrinsic property.
+
+## v9.0-alpha1: Newman-Penrose GW extraction
+
+- `src/zt005/newman_penrose.py` — TT polarizations, psi_4, energy flux
+- `tests/test_newman_penrose.py` — 6 checks
+
+### Key formulas
+
+- psi_4 = -1/2 (h_+ddot - i h_xddot)
+- |psi_4| = 1/2 omega^2 |h| (monochromatic)
+- F = c^3 / (16 pi G) * <hdot^2>
