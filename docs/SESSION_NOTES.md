@@ -1,9 +1,9 @@
 # Session notes — pickup point
 
-Last stable release: **v7.5.0** (2026-10-13)
-Tests: 595 (fast + slow), all passing.
+Last stable release: **v8.3.0** (2026-10-14)
+Tests: 657 (fast + slow), all passing.
 
-## Milestones reached (v1.0 → v7.3)
+## Milestones (v1.0 → v8.3)
 
 | Version | Highlight |
 |---|---|
@@ -19,31 +19,24 @@ Tests: 595 (fast + slow), all passing.
 | v6.4 | Full stack SC + PTUM |
 | v6.5 | Refined full stack (NEC) |
 | v6.6 | Complex + PTUM |
-| v7.0 | Refined complex+PTUM NEC (root cause fixed) |
+| v7.0 | Refined complex+PTUM NEC (root cause fix) |
 | v7.1 | Kerr + complex + PTUM |
 | v7.2 | Transient discharge (negative result) |
 | v7.3 | QFT threshold law (linear) |
 | v7.4 | 4-regime structure (3 thresholds) |
 | v7.5 | Discharge invariance + Kerr-independence |
+| v8.0 | Brans-Dicke scalar-tensor extension |
+| v8.1 | Loop Quantum Cosmology bounce |
+| v8.2 | Starobinsky f(R) + LQC invariance |
+| v8.3 | Hu-Sawicki f(R) + universal invariance |
 
-## Latest key results
+## Key scientific results
 
-| Config | rho_min | Ford-Roman |
-|---|---|---|
-| Weak PTUM (A=1.5) | -0.28 | Compatible |
-| Strong PTUM (A=3.0) | -15.66 | Violated (tau>=1) |
-| Kerr+complex+PTUM A=3.0 | -15.66 | Violated |
-| QFT threshold | \|rho\| = 1.258 | ratio=1 |
+**QFT threshold law (v7.3):**
+- ratio(tau=1) = 0.795 * |rho_min|
+- Threshold: |rho_min| = 1.258
 
-## QFT threshold law
-
-**ratio(tau=1) = 0.795 * |rho_min|**
-
-QFT-compatible: |rho_min| < 1.258 (A_fuel < 1.87)
-QFT-incompatible: |rho_min| > 1.258
-
-## 4-regime structure (v7.4)
-
+**4-regime structure (v7.4):**
 | Regime | A range | NEC | QFT |
 |---|---|---|---|
 | Deactivated | < 1.2 | No | OK |
@@ -51,27 +44,42 @@ QFT-incompatible: |rho_min| > 1.258
 | NEC + QFT-OK | 1.35-1.87 | Yes | OK |
 | NEC + QFT-violating | > 1.87 | Yes | No |
 
-## Additional findings (v7.5)
+**Universal invariance (v8.3):**
+PTUM QFT-OK window (A in [1.35, 1.87]) invariant under:
+- Kerr spin (v7.5)
+- Brans-Dicke phi (v8.0)
+- LQC Friedmann (v8.2)
+- Any scalar-tensor F(phi) (v8.3)
 
-- Discharge frozen at all amplitudes (t ~ 0.25 window, Phi decays <1%)
-- QFT-OK window Kerr-invariant (a=0 vs a=0.9 identical)
+**Alternative gravity (v8.x):**
+- Brans-Dicke: Mercury 43 arcsec, ω > 40000
+- LQC: Big Bang bounce at ρ = ρ_c
+- Starobinsky: n_s = 0.965, r = 0.004
+- Hu-Sawicki: chameleon screening
 
 ## Bilingual paper
 
-- paper/main_en.tex — 11 pages, English
-- paper/main_tr.tex — 11 pages, Turkish
-- 9 figures (fig1-fig9)
-- paper/arxiv_submission_v3.zip — READY (upload = user decision)
+- `paper/main_en.tex` — 13 pages, English
+- `paper/main_tr.tex` — 13 pages, Turkish
+- 10 figures (fig1-fig10)
+- `paper/arxiv_submission_v3.zip` (1.2 MB) — READY
 
 ## Cihaz vs CTC
 
-43-order gap: UNCHANGED.
+**43-order gap: UNCHANGED** (physics, not bug).
+
+## Physics papers supported
+
+- **SC** — numerically supported (v3-v6)
+- **PTUM** — numerically supported (v5-v8)
+  - QFT-OK window: A in [1.35, 1.87]
+  - Background-independent (universal)
 
 ## What's next
 
-**A) QFT-compatible sub-regime** — A < 1.87 detailed study
-**B) arXiv upload** — ready
-**C) Full 3D + all mechanisms**
+**A) arXiv upload** — package ready, user decision
+**B) New physics** — beyond scalar-tensor (Horndeski, DHOST, etc.)
+**C) 3D + GW extraction** — Newman-Penrose scalars
 **D) Stop**
 
 ## Resume
