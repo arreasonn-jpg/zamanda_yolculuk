@@ -1161,3 +1161,23 @@ v7.0-alpha1 (one-way coupling) remains the working configuration
 for refined complex+PTUM NEC violation.
 
 This is a fundamental AMR trade-off, not a bug.
+
+## v7.1-alpha2: refined Kerr + complex + PTUM
+
+- `src/zt005/kerr_complex_ptum_ic.py` — full IC
+- `src/zt005/bssn_refined_kerr_complex_ptum.py` — refined driver
+- `tests/` (5 + 3 checks)
+- `scripts/v7_1_kerr_complex_ptum_run.py`
+
+### 100-step run (a=0.9, A_fuel=3.0)
+
+| step | rho_min | n_neg | Kmax_c | Kmax_f | Phmax | psimax | alpha_min |
+|---|---|---|---|---|---|---|---|
+| 25 | -15.642 | 27 | 0.249 | 0.365 | 3.000 | 2.828 | 0.8432 |
+| 100 | -15.658 | 27 | 0.242 | 0.360 | 3.001 | 2.828 | 0.8432 |
+
+**Full package NEC violation:** Kerr + complex scalar + PTUM, refined.
+- NEC violation persistent (rho_min = -15.66)
+- Phi and psi preserved across refinement
+- Kmax decreasing (constraint improving)
+- All fields finite, 100 steps stable
