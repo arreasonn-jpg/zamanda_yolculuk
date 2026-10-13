@@ -1431,3 +1431,14 @@ independent of the gravitational background.
 - LQC critical: rho_c = 0.41 rho_P
 - Bounce at rho = rho_c (H^2 = 0)
 - Classical limit recovered at rho << rho_c
+
+## v8.1-alpha2: LQC-modified scalar field evolution
+
+- `src/zt005/lqc_scalar_evolution.py` — FRW + scalar + LQC correction
+- `tests/test_lqc_scalar_evolution.py` — 6 checks
+
+### Physics
+
+- Klein-Gordon with LQC H(rho)
+- H^2 = (8 pi G/3) rho (1 - rho/rho_c)
+- De Sitter + bounce scenarios
