@@ -279,6 +279,42 @@ $|\rho_{\min}| = 1.258$.}
 \label{fig:qft_threshold}
 \end{figure*}
 
+
+\paragraph{Four-regime structure.}
+Varying the fuel amplitude over $A_{\text{fuel}} \in [0.5, 1.8]$
+reveals a four-regime structure (Fig.~\ref{fig:regimes}):
+\begin{enumerate}
+\item \textbf{Deactivated} ($A < 1.2$): the fuel field never crosses
+the activation threshold $\Phi_c = 1$, so the proxy remains at
+$\psi = 0$ and no negative energy appears.
+\item \textbf{Activated, no NEC violation} ($1.2 < A < 1.35$): the
+proxy activates but the potential minimum is dominated by the fuel
+contribution, keeping $\rho > 0$.
+\item \textbf{NEC violation, QFT-compatible} ($1.35 < A < 1.87$):
+the proxy reaches a negative minimum and $\rho_{\min} \in
+[-0.09, -1.26]$. Ford--Roman quantum inequalities are satisfied.
+\item \textbf{NEC violation, QFT-violating} ($A > 1.87$):
+$\rho_{\min} < -1.26$ and the Ford--Roman ratio exceeds unity.
+\end{enumerate}
+
+The QFT-compatible NEC-violating window is therefore
+$A_{\text{fuel}} \in [1.35, 1.87]$, corresponding to
+$|\rho_{\min}| \in [0.09, 1.26]$. Three distinct thresholds
+separate the regimes: activation ($A \approx 1.2$), NEC onset
+($A \approx 1.35$), and QFT compatibility limit ($A \approx 1.87$).
+
+
+\begin{figure*}[t]
+\centering
+\resizebox{0.75\textwidth}{!}{\includegraphics{figures/fig9_regimes.png}}
+\caption{Four-regime structure of PTUM NEC violation as a function of
+$A_{\text{fuel}}$. Gray: deactivated. Green: NEC + QFT-compatible.
+Red: NEC + QFT-violating. Vertical dashed lines mark the three
+thresholds ($A_{\text{act}} \approx 1.2$, $A_{\text{NEC}} \approx
+1.35$, $A_{\text{QFT}} \approx 1.87$).}
+\label{fig:regimes}
+\end{figure*}
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

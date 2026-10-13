@@ -280,6 +280,43 @@ $|\rho_{\min}| = 1.258$'dedir.}
 \label{fig:qft_threshold_tr}
 \end{figure*}
 
+
+\paragraph{Dört-rejimli yapı.}
+Yakıt genliğini $A_{\text{fuel}} \in [0.5, 1.8]$ aralığında
+değiştirmek dört-rejimli bir yapı ortaya koyar
+(Şekil~\ref{fig:regimes_tr}):
+\begin{enumerate}
+\item \textbf{Deaktive} ($A < 1.2$): yakıt alanı aktivasyon eşiğini
+$\Phi_c = 1$ hiç geçmez; vekil $\psi = 0$'da kalır ve hiçbir negatif
+enerji görünmez.
+\item \textbf{Aktive, NEC ihlali yok} ($1.2 < A < 1.35$): vekil
+aktive olur ama potansiyel minimumu yakıt katkısı tarafından
+yönetilir, $\rho > 0$ kalır.
+\item \textbf{NEC ihlali, QFT-uyumlu} ($1.35 < A < 1.87$): vekil
+negatif minimuma ulaşır ve $\rho_{\min} \in [-0.09, -1.26]$ olur.
+Ford--Roman kuantum eşitsizlikleri sağlanır.
+\item \textbf{NEC ihlali, QFT-ihlal} ($A > 1.87$): $\rho_{\min} <
+-1.26$ ve Ford--Roman oranı birimi aşar.
+\end{enumerate}
+
+QFT-uyumlu NEC-ihlal penceresi bu nedenle $A_{\text{fuel}} \in
+[1.35, 1.87]$, yani $|\rho_{\min}| \in [0.09, 1.26]$'dır. Üç ayrı
+eşik rejimleri birbirinden ayırır: aktivasyon ($A \approx 1.2$),
+NEC başlangıcı ($A \approx 1.35$) ve QFT-uyumluluk sınırı
+($A \approx 1.87$).
+
+
+\begin{figure*}[t]
+\centering
+\resizebox{0.75\textwidth}{!}{\includegraphics{figures/fig9_regimes.png}}
+\caption{$A_{\text{fuel}}$'in fonksiyonu olarak PTUM NEC ihlalinin
+dört-rejimli yapısı. Gri: deaktive. Yeşil: NEC + QFT-uyumlu. Kırmızı:
+NEC + QFT-ihlal. Dikey kesikli çizgiler üç eşiği işaretler
+($A_{\text{akt}} \approx 1.2$, $A_{\text{NEC}} \approx 1.35$,
+$A_{\text{QFT}} \approx 1.87$).}
+\label{fig:regimes_tr}
+\end{figure*}
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir
