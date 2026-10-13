@@ -20,8 +20,9 @@ RHO_PLANCK = C**5 / (HBAR * G**2)
 RHO_C = 0.41 * RHO_PLANCK
 
 
-def H_squared_lqc(rho, rho_c=RHO_C):
-    return (8.0 * np.pi * G / 3.0) * rho * (1.0 - rho / rho_c)
+def H_squared_lqc(rho, rho_c=RHO_C, G_eff=None):
+    g = G if G_eff is None else G_eff
+    return (8.0 * np.pi * g / 3.0) * rho * (1.0 - rho / rho_c)
 
 
 def rho_scalar(phi, phi_dot, V_func):
@@ -29,26 +30,36 @@ def rho_scalar(phi, phi_dot, V_func):
 
 
 def evolve_lqc_scalar(phi0, phi_dot0, V_func, dV_func,
-                       rho_c=RHO_C, dt=1e-40, n_steps=1000):
-    """Explicit Euler integration of LQC FRW + scalar."""
+                       rho_c=RHO_C, dt=1e-40, n_steps=1000,
+                       G_eff=None, H0_sign=+1):
+    """Explicit Euler integration of LQC FRW + scalar.
+
+    H0_sign: +1 expanding, -1 contracting.
+    Bounce: when H^2 -> 0 and would flip sign, we set H = 0 and
+    flip sign for the next step.
+    """
     phi = phi0
     phi_dot = phi_dot0
     a = 1.0
+    sign_H = 1 if H0_sign >= 0 else -1
+    rho0 = rho_scalar(phi, phi_dot, V_func)
+    H2_0 = max(H_squared_lqc(rho0, rho_c, G_eff), 0.0)
+    H_init = sign_H * np.sqrt(H2_0)
+
     t_hist = [0.0]
     phi_hist = [phi]
-    rho_hist = [rho_scalar(phi, phi_dot, V_func)]
-    H_hist = [np.sqrt(max(H_squared_lqc(rho_hist[-1], rho_c), 0.0))]
+    rho_hist = [rho0]
+    H_hist = [H_init]
     a_hist = [a]
 
     for step in range(1, n_steps + 1):
         rho = rho_scalar(phi, phi_dot, V_func)
-        H2 = H_squared_lqc(rho, rho_c)
-        if H2 >= 0:
-            H = np.sqrt(H2)
+        H2 = H_squared_lqc(rho, rho_c, G_eff)
+        if H2 > 0:
+            H = sign_H * np.sqrt(H2)
         else:
-            # In quantum regime, effective bounce: H -> 0
             H = 0.0
-        # Klein-Gordon
+            sign_H = -sign_H  # bounce: flip branch
         phi_ddot = -3.0 * H * phi_dot - dV_func(phi)
         phi_dot = phi_dot + dt * phi_ddot
         phi = phi + dt * phi_dot

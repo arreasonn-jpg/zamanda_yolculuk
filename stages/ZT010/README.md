@@ -1442,3 +1442,28 @@ independent of the gravitational background.
 - Klein-Gordon with LQC H(rho)
 - H^2 = (8 pi G/3) rho (1 - rho/rho_c)
 - De Sitter + bounce scenarios
+
+## v8.1-alpha3: LQC bounce simulation (first successful)
+
+- `scripts/v8_1_bounce_trajectory.py`
+- `paper/figures/fig10_lqc_bounce.png`
+- `results/validated/v8_1_bounce.npz`
+
+### Result (dimensionless LQC)
+
+| Quantity | Value |
+|---|---|
+| phi | 0 -> -4.31 |
+| rho | 0.85 -> 1.0 (rho_c) -> 0.0063 |
+| Bounce | detected at t = 0.295 |
+| H | -0.357 -> +0.079 (sign flip) |
+| a | 1.0 -> 0.94 (min) -> 1397 |
+
+**First successful LQC bounce simulation.** Big Bang singularity
+replaced by a smooth bounce at rho = rho_c. Hubble rate changes
+sign; scale factor reaches minimum then re-expands.
+
+### Implementation note
+
+Signed-H tracking added to lqc_scalar_evolution.py to allow
+contracting-branch initial conditions and sign-flip detection.

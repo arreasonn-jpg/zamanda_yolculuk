@@ -345,3 +345,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v8.1-alpha2: LQC scalar evolution
 - 🔷 v8.1-alpha3: bounce trajectory (rho crosses rho_c)
+
+- ✅ v8.1-alpha3: LQC bounce simulation (bounce detected)
+- 🔷 v8.1-beta: paper integration + v8.1.0 release
