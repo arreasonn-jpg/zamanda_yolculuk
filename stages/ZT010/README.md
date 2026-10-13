@@ -1467,3 +1467,28 @@ sign; scale factor reaches minimum then re-expands.
 
 Signed-H tracking added to lqc_scalar_evolution.py to allow
 contracting-branch initial conditions and sign-flip detection.
+
+## v8.2-alpha1/2/3: Starobinsky + LQC-PTUM + LQC QFT window
+
+### alpha1: Starobinsky f(R) = R + alpha R^2
+- `src/zt005/matter_starobinsky.py`
+- `tests/test_matter_starobinsky.py` (6 checks)
+- V(phi) plateau, n_s ~ 0.965, r ~ 0.004
+
+### alpha2: LQC + PTUM coupling
+- `src/zt005/lqc_ptum_coupling.py`
+- `tests/test_lqc_ptum_coupling.py` (4 checks)
+- PTUM density ~ 1e19 kg/m^3, rho_c ~ 1e96
+
+### alpha3: QFT window invariance under LQC
+- `src/zt005/lqc_qft_window.py`
+- `tests/test_lqc_qft_window.py` (6 checks)
+- LQC correction factor: 1 - 1e-77
+- PTUM QFT window unchanged (machine precision)
+
+### Triple invariance
+
+PTUM QFT-OK window invariant under:
+- Kerr spin (v7.5)
+- Brans-Dicke phi (v8.0)
+- LQC Friedmann correction (v8.2)

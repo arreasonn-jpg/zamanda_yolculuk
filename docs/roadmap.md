@@ -348,3 +348,9 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v8.1-alpha3: LQC bounce simulation (bounce detected)
 - 🔷 v8.1-beta: paper integration + v8.1.0 release
+
+## v8.2 roadmap
+- ✅ v8.2-alpha1: Starobinsky f(R) scalar-tensor
+- ✅ v8.2-alpha2: LQC + PTUM density comparison
+- ✅ v8.2-alpha3: LQC QFT window invariance
+- 🔷 v8.2-beta: v8.2.0 release
