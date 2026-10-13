@@ -777,3 +777,24 @@ v8.3 generalizes the triple invariance of v8.2 to a
 universal statement: PTUM QFT threshold is a fundamental
 PTUM-intrinsic property, independent of the gravitational
 background at leading order.
+
+## v9.0/v9.1 scope (GW extraction + Horndeski)
+
+### What v9.0 delivers
+- Newman-Penrose GW extraction module
+- psi_4, TT polarizations, energy flux
+
+### What v9.1 delivers
+- Horndeski scalar-tensor skeleton (GR + BD limits)
+- Universal QFT window invariance under Horndeski
+
+### What v9.x does NOT deliver
+- Full Horndeski evolution
+- 3D GW extraction from BSSN
+- Realistic GW source templates
+
+### Honest assessment
+
+The NP module provides formulas; full 3D extraction from BSSN
+is deferred. Horndeski extends the universal-invariance result
+from scalar-tensor (v8.3) to the full Horndeski class.

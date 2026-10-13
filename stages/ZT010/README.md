@@ -1529,3 +1529,19 @@ The window is a PTUM-intrinsic property.
 - psi_4 = -1/2 (h_+ddot - i h_xddot)
 - |psi_4| = 1/2 omega^2 |h| (monochromatic)
 - F = c^3 / (16 pi G) * <hdot^2>
+
+## v9.1-alpha1: Horndeski scalar-tensor skeleton
+
+- `src/zt005/horndeski.py`
+- `tests/test_horndeski.py` — 6 checks
+
+### Key results
+
+- GR: G4 = 1/(16 pi G), others zero
+- Brans-Dicke: G2 = omega/phi * X, G4 = phi
+- PTUM QFT window invariant across G4 in [0.1, 10]
+
+### Universal invariance extended
+
+PTUM QFT-OK window unchanged under ANY Horndeski model
+(includes scalar-tensor + k-essence + Galileon).

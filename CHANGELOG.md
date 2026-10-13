@@ -380,3 +380,16 @@ the open problem of cross-scale bridging.
 
 ### Tests
 - 644+ fast + 21 slow
+
+## v9.1.0 (2026-10-14)
+
+### Added
+- Newman-Penrose GW extraction module
+- Horndeski scalar-tensor skeleton
+
+### Key results
+- psi_4, TT polarizations, Peters-Mathews flux
+- Universal invariance extended to Horndeski class
+
+### Tests
+- 657+ fast + 21 slow
