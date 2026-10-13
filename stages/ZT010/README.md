@@ -1277,3 +1277,27 @@ QFT-incompatible: |rho_min| > 1.27
 
 This is a quantitative, single-parameter QFT constraint on PTUM
 NEC violation.
+
+## v7.3-alpha2: fine threshold scan + figure
+
+- `scripts/v7_3_fine_scan_and_plot.py`
+- `paper/figures/fig8_qft_threshold.png`
+- `results/validated/v7_3_qft_scan.npz`
+
+### Result: clean linear law
+
+| A | rho_min | ratio | viol |
+|---|---|---|---|
+| 1.40 | -0.137 | 0.109 | No |
+| 1.80 | -1.105 | 0.878 | No |
+| 1.90 | -1.538 | 1.222 | Yes |
+| 2.00 | -2.069 | 1.644 | Yes |
+| 3.50 | -31.19 | 24.79 | Yes |
+
+**Linear fit:** ratio = 0.7949 * |rho_min| - 0.0002
+
+**Threshold:** |rho_min| = 1.258 (ratio = 1)
+**QFT-compatible:** |rho_min| < 1.258, i.e. A_fuel < 1.87
+**QFT-incompatible:** |rho_min| > 1.258
+
+Clean single-parameter QFT bound on PTUM NEC violation.

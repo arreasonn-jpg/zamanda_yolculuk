@@ -310,3 +310,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v7.3-alpha1: QFT threshold scan (linear scaling, |rho|<1.27)
 - 🔷 v7.3-alpha2: fine threshold scan + figure
+
+- ✅ v7.3-alpha2: fine scan + threshold figure (ratio=0.795*|rho|)
+- 🔷 v7.3-beta: paper integration + v7.3.0 release
