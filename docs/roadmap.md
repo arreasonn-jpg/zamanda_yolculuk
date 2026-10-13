@@ -363,3 +363,7 @@ solver so future work can measure what happens near the CTC regime.
 ## v9.0 roadmap
 - ✅ v9.0-alpha1: Newman-Penrose GW extraction
 - 🔷 v9.0-alpha2: GW extraction from BSSN evolution
+
+## v9.2 roadmap
+- ✅ v9.2-alpha1: GW extraction pipeline
+- 🔷 v9.2-alpha2: Full BSSN run with GW extraction

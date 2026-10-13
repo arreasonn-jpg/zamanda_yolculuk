@@ -1545,3 +1545,14 @@ The window is a PTUM-intrinsic property.
 
 PTUM QFT-OK window unchanged under ANY Horndeski model
 (includes scalar-tensor + k-essence + Galileon).
+
+## v9.2-alpha1: GW extraction pipeline from BSSN
+
+- `src/zt005/gw_extraction.py`
+- `tests/test_gw_extraction.py` — 5 checks
+
+### Key formulas
+
+- h_ij = gamma_ij - delta_ij (from BSSN state)
+- psi_4 from psi_4 = -1/2 (h_+ddot - i h_xddot)
+- Strain recovery via FFT peak frequency
