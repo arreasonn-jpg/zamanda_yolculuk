@@ -337,3 +337,8 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v8.0-alpha4: BD invariance of PTUM QFT window
 - 🔷 v8.0-beta: v8.0.0 release + paper
+
+## v8.1 roadmap (LQC)
+- ✅ v8.1-alpha1: LQC Friedmann module
+- 🔷 v8.1-alpha2: LQC-modified BSSN evolution (homogeneous)
+- 🔷 v8.1-alpha3: bounce trajectory

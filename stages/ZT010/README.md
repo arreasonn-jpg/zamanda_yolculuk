@@ -1419,3 +1419,15 @@ now shown to be invariant under:
 
 **Conclusion:** PTUM QFT threshold is a PTUM-intrinsic property,
 independent of the gravitational background.
+
+## v8.1-alpha1: Loop Quantum Cosmology (LQC) effective dynamics
+
+- `src/zt005/loop_quantum_cosmology.py` — LQC Friedmann equation
+- `tests/test_loop_quantum_cosmology.py` — 8 checks
+
+### Key results
+
+- Planck density: rho_P ~ 5e96 kg/m^3
+- LQC critical: rho_c = 0.41 rho_P
+- Bounce at rho = rho_c (H^2 = 0)
+- Classical limit recovered at rho << rho_c
