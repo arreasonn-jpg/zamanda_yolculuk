@@ -298,3 +298,21 @@ the open problem of cross-scale bridging.
 ### Reference
 - Timescale mismatch between PTUM discharge and QFT window
 - Confirms quantum inequality constraint on strong NEC
+
+## v7.3.0 (2026-10-13)
+
+### Added
+- QFT threshold scan (11 amplitudes)
+- Linear scaling law: ratio = 0.795 * |rho_min|
+- Fig8 (threshold figure) in bilingual paper
+
+### Key result
+- Threshold: |rho_min| = 1.258
+- QFT-compatible: A_fuel < 1.87
+- Linear fit quality: R ~ 1.000
+
+### Tests
+- 595 fast + 21 slow
+
+### Reference
+- Quantitative single-parameter QFT bound on PTUM NEC

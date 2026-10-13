@@ -615,3 +615,33 @@ necessarily violates them.
 The weak NEC regime (A=1.5, rho_min = -0.28, from v6.5) remains
 the only QFT-compatible non-trivial NEC configuration in this
 codebase. Strong NEC is QFT-incompatible, as theory requires.
+
+## v7.3 scope
+
+### What v7.3 delivers
+
+- QFT threshold scan (11 amplitudes, A=1.4..3.5)
+- Linear scaling law: ratio = 0.795 * |rho_min|
+- Single-parameter threshold: |rho_min| = 1.258
+- Fig8 (threshold scan) in bilingual paper
+
+### Key result
+
+QFT-compatible NEC: |rho_min| < 1.258 (A_fuel < 1.87)
+QFT-incompatible NEC: |rho_min| > 1.258
+
+This provides a quantitative QFT constraint on the PTUM model:
+strong NEC violation above |rho_min| ~ 1.26 necessarily violates
+Ford-Roman quantum inequalities.
+
+### What v7.3 does NOT deliver
+
+- QFT-compatible strong NEC
+- Mechanism to evade the threshold
+- Full transient-discharge simulation
+
+### Honest assessment
+
+v7.3 provides a clean single-parameter bound on PTUM NEC
+violation. Strong NEC remains QFT-incompatible, as theory
+requires. The bound is quantitative, not qualitative.
