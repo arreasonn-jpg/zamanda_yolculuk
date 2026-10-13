@@ -261,3 +261,21 @@ the open problem of cross-scale bridging.
 
 ### Reference
 - First persistent NEC violation in refined complex+PTUM
+
+## v7.1.0 (2026-10-13)
+
+### Added
+- restrict_max (peak-preserving restriction, exploratory)
+- Refined Kerr + complex + PTUM (v7.1-alpha2)
+- Ford-Roman check on strong NEC (v7.1-alpha3)
+
+### Key results
+- Refined Kerr+complex+PTUM A=3.0: rho_min = -15.66, 100-step
+- Ford-Roman violation at tau>=1.0 for strong NEC
+- Weak NEC remains QFT-compatible
+
+### Tests
+- 587 fast + 21 slow
+
+### Reference
+- QFT caveat for strong-amplitude PTUM documented

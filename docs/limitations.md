@@ -536,3 +536,42 @@ complex+PTUM evolution. Two root causes identified and fixed:
 (b) restrict matter loss -> one-way coupling.
 
 NEC violation rho_min = -15.67 stable over 100 steps.
+
+## v7.1 scope
+
+### What v7.1 delivers
+
+- Peak-preserving restrict (restrict_max, exploratory)
+- Refined Kerr + complex + PTUM (v7.1-alpha2)
+- Ford-Roman QFT caveat at strong NEC (v7.1-alpha3)
+
+### Key results
+
+| Config | Steps | rho_min | Ford-Roman |
+|---|---|---|---|
+| Refined Kerr+complex+PTUM A=3.0 | 100 | -15.66 | **VIOLATED** (tau>=1) |
+| Weak NEC PTUM (v6.0-v6.5) | 100-1000 | -0.1 | Compatible |
+
+### QFT caveat (important)
+
+Strong-amplitude PTUM discharge violates Ford-Roman quantum
+inequalities at tau >= 1.0 (massless ratio 3.93, massive ratio
+15.73). Weak-amplitude NEC is QFT-compatible.
+
+This is a general feature of strong NEC violation:
+short-lived strong negative energy is allowed; persistent
+strong negative energy is not.
+
+### What v7.1 does NOT deliver
+
+- QFT-compatible strong NEC configuration
+- Two-way matter coupling without peak loss
+- Full 3D AMR
+
+### Honest assessment
+
+v7.1 extends NEC violation to Kerr+complex+PTUM with refinement,
+and identifies the QFT constraint that strong-amplitude discharge
+must be short-lived. This is a numerical demonstration of the
+known tension between exotic-matter CTC solutions and quantum
+inequality bounds.
