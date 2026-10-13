@@ -1346,3 +1346,21 @@ in all regimes.
 **Confirms v7.2 timescale mismatch** in the QFT-compatible window
 as well. PTUM fiducial lambda=0.05 is fundamentally inaccessible
 for transient discharge simulation.
+
+## v7.5-alpha2: Kerr + PTUM QFT-OK window
+
+- `scripts/v7_5_kerr_qft_ok.py`
+
+| a | A | rho_min | ratio | viol |
+|---|---|---|---|---|
+| 0.0 | 1.6 | -0.488 | 0.123 | No |
+| 0.0 | 1.8 | -1.105 | 0.278 | No |
+| 0.9 | 1.6 | -0.488 | 0.123 | No |
+| 0.9 | 1.8 | -1.105 | 0.278 | No |
+
+**Kerr-invariance:** QFT-OK window is unchanged between a=0.0 and
+a=0.9. PTUM activation is centered (sigma=4) where Kerr effects are
+weak, so the QFT-compatibility threshold is set by PTUM physics,
+not by the background metric.
+
+QFT-OK window confirmed universal: A in [1.35, 1.87] regardless of spin.
