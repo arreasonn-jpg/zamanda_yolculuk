@@ -328,3 +328,6 @@ solver so future work can measure what happens near the CTC regime.
 - 🔷 v8.0-alpha2: BD evolution driver + GR limit test
 - 🔷 v8.0-alpha3: Perihelion precession test (observational)
 - 🔷 v8.0-alpha4: GW speed bound
+
+- ✅ v8.0-alpha2: BD evolution driver + GR limit
+- 🔷 v8.0-alpha3: perihelion precession (observational test)

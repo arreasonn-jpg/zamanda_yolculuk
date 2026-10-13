@@ -1370,3 +1370,9 @@ QFT-OK window confirmed universal: A in [1.35, 1.87] regardless of spin.
 - `src/zt005/matter_brans_dicke.py` — BD stress-energy Eulerian projections
 - `tests/test_matter_brans_dicke.py` — 6 checks
 - GR limit verified at omega > 40000 (Cassini bound)
+
+## v8.0-alpha2: Brans-Dicke RK4 driver
+
+- `src/zt005/bssn_rk4_brans_dicke.py`
+- `tests/test_bssn_rk4_brans_dicke.py` — 4 checks
+- GR limit verified (omega=1e10 -> no deviation)
