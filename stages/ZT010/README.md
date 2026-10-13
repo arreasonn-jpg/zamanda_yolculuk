@@ -1326,3 +1326,23 @@ Clean single-parameter QFT bound on PTUM NEC violation.
 PTUM discharge passes through three distinct thresholds.
 The QFT-compatible NEC-violating window is A in [1.35, 1.87],
 rho_min in [-0.09, -1.26].
+
+## v7.5-alpha1: discharge duration in QFT-OK window (negative)
+
+- `scripts/v7_5_discharge_duration.py` (A=1.4, 1.6, 1.8, 500 steps)
+
+### Result
+
+| A | rho_min(0) | rho_min(t=0.25) | Phi(0) | Phi(0.25) |
+|---|---|---|---|---|
+| 1.4 | -0.137 | -0.124 | 1.400 | 1.392 |
+| 1.6 | -0.488 | -0.454 | 1.600 | 1.589 |
+| 1.8 | -1.105 | -1.012 | 1.800 | 1.784 |
+
+Phi decays < 1% over t=0.25. Discharge timescale (lambda=0.05)
+is t ~ 5-20; accessible window is t ~ 0.25. Discharge is frozen
+in all regimes.
+
+**Confirms v7.2 timescale mismatch** in the QFT-compatible window
+as well. PTUM fiducial lambda=0.05 is fundamentally inaccessible
+for transient discharge simulation.

@@ -316,3 +316,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v7.4-alpha1: sub-QFT regime 4-regime structure identified
 - 🔷 v7.4-alpha2: figure + paper integration
+
+- ✅ v7.5-alpha1: discharge duration in QFT-OK window (frozen)
+- 🔷 v7.5-beta: consolidate
