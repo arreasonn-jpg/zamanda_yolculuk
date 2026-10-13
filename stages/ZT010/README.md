@@ -1220,3 +1220,37 @@ A caveat must be added to the PTUM numerical results:
 - Strong-amplitude transient violates Ford-Roman
 - This is a *general* feature of strong NEC violation, not specific
   to PTUM
+
+## v7.2-alpha1: transient discharge attempt (negative result)
+
+- `scripts/v7_2_transient_discharge.py` (500 adım, λ=0.05 natural decay)
+- `scripts/v7_2_fast_discharge_test.py` (500 adım, λ=1.0 tek grid çöktü)
+- `scripts/v7_2_c1_refined_fast.py` (100 adım, λ=1.0 refined)
+
+### Findings
+
+**λ=0.05 (PTUM fiducial):**
+- Phi lifetime ~5-20 (timescale)
+- Erişilebilir sim: t~0.1 (500 adım)
+- Phi %0.5 bile sönmemiş → discharge "kalıcı" görünür
+- Ford-Roman ihlal devam (ratio 23.7 at τ=1.0)
+
+**λ=1.0 (fast variant, NOT PTUM):**
+- A=3.0: discharge şiddetli, QFT ihlal sürüyor
+- A=1.5: rho_min = 0, NEC ihlali kaybolur
+
+### Physical conclusion
+
+PTUM discharge **kozmik ölçekte geçici** (t~5-20), 
+**QFT penceresinde (τ~1) kalıcı** görünür.
+Bu bir çelişki değil: timescale farkı.
+
+QFT-uyumlu NEC ihlali, PTUM'un **zayıf amplitüd** rejiminde
+(A=1.5, λ=0.05, rho_min=-0.28) zaten v6.5'te gösterildi.
+Güçlü amplitüd (rho_min=-15) QFT-uyumsuzdur ve olmak zorundadır;
+bu, kuantum eşitsizliklerinin doğal bir sonucudur.
+
+### What v7.2 does NOT deliver
+
+- QFT-compatible strong NEC violation
+- Full transient discharge (requires t>5, infeasible)
