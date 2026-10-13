@@ -301,3 +301,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v7.1-alpha2: refined Kerr + complex + PTUM (NEC, 100-step)
 - 🔷 v7.1-alpha3: Ford-Roman check on new config
+
+- ✅ v7.1-alpha3: Ford-Roman violation detected at strong NEC
+- 🔷 v7.1-beta: consolidate with QFT caveat

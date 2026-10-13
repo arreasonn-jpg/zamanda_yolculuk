@@ -1181,3 +1181,42 @@ This is a fundamental AMR trade-off, not a bug.
 - Phi and psi preserved across refinement
 - Kmax decreasing (constraint improving)
 - All fields finite, 100 steps stable
+
+## v7.1-alpha3: Ford-Roman on Kerr+complex+PTUM (violation detected)
+
+- `scripts/v7_1_ford_roman_check.py`
+
+### Result (a=0.9, A=3.0, rho_min = -15.66)
+
+**Massless (N=2):**
+| tau | ratio | violates |
+|---|---|---|
+| 0.01-0.1 | ~0 | No |
+| 0.5 | 0.49 | No (borderline) |
+| 1.0 | 3.93 | **YES** |
+
+**Massive (mu=1, N=2):**
+| tau | ratio | violates |
+|---|---|---|
+| 0.01-0.1 | ~0 | No |
+| 0.5 | 0.77 | No (borderline) |
+| 1.0 | 15.73 | **YES** |
+
+### Physical interpretation
+
+Strong NEC violation (rho_min = -15.66, A=3.0) violates Ford-Roman
+quantum inequalities at tau >= 1.0. This is contrasted with the
+weak NEC regime (rho_min = -0.1, A=1.5 from v6.0/v6.5) which is
+QFT-compatible at all tested sampling widths.
+
+**The PTUM "discharge" phase violates QFT; the steady state is
+compatible.** This is consistent with quantum inequality bounds:
+strong negative energy must be short-lived.
+
+### Implication for papers
+
+A caveat must be added to the PTUM numerical results:
+- Weak-amplitude configs are QFT-compatible
+- Strong-amplitude transient violates Ford-Roman
+- This is a *general* feature of strong NEC violation, not specific
+  to PTUM
