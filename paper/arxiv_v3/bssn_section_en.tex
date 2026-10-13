@@ -239,6 +239,19 @@ is therefore a \emph{transient} physical feature, not a steady
 state, and its QFT consistency must be assessed on the
 time-integrated level.
 
+
+\paragraph{Timescale limitation.}
+The PTUM fuel potential $V_{\rm fuel}(\Phi) = V_0(1 - e^{-\lambda\Phi^2})$
+with the fiducial $\lambda = 0.05$ implies a natural fuel-roll lifetime
+$t_{\rm discharge} \sim 5$--$20$. The accessible simulation window
+($t \sim 0.1$, 500 steps) captures less than $1\%$ of this, so the
+discharge appears permanent within the QFT sampling window
+($\tau \sim 1$). The strong-amplitude Ford--Roman violation is
+therefore a \emph{timescale} effect: strong NEC violation over QFT
+windows is incompatible with quantum inequalities, as theory
+requires. A full transient-discharge simulation would require
+$\sim 25{,}000$--$100{,}000$ steps and is deferred to future work.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

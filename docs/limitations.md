@@ -575,3 +575,43 @@ and identifies the QFT constraint that strong-amplitude discharge
 must be short-lived. This is a numerical demonstration of the
 known tension between exotic-matter CTC solutions and quantum
 inequality bounds.
+
+## v7.2 scope
+
+### What v7.2 delivers
+
+- Transient discharge attempt (natural Phi decay, lambda=0.05)
+- Fast-discharge variant (lambda=1.0, refined grid)
+- Negative result documented
+
+### Key finding: timescale mismatch
+
+PTUM discharge has a natural lifetime of t ~ 5-20 (from the fuel
+potential V_fuel = V0(1 - e^{-lambda Phi^2}) with lambda=0.05).
+The accessible simulation time (t ~ 0.1, 500 steps) captures less
+than 1% of this. The discharge therefore appears "permanent" in
+the accessible window.
+
+Consequence: Ford-Roman quantum inequality is violated at tau >= 1
+for strong amplitude (A=3.0, rho_min = -15.66). This is
+**physically expected** — strong NEC violation cannot be
+QFT-compatible over QFT-scale windows.
+
+### What v7.2 does NOT deliver
+
+- A QFT-compatible strong NEC configuration
+- Full transient discharge simulation (would require 25,000-100,000
+  steps, 9-36 hours CPU)
+- Any resolution of the timescale mismatch
+
+### Honest assessment
+
+v7.2 confirms that PTUM's "discharge" framing is consistent with
+cosmological timescales but NOT with the QFT window (tau ~ 1).
+This is a feature, not a bug: quantum inequalities bound negative
+energy over quantum timescales, and PTUM's strong discharge
+necessarily violates them.
+
+The weak NEC regime (A=1.5, rho_min = -0.28, from v6.5) remains
+the only QFT-compatible non-trivial NEC configuration in this
+codebase. Strong NEC is QFT-incompatible, as theory requires.

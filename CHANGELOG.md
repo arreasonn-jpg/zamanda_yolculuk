@@ -279,3 +279,22 @@ the open problem of cross-scale bridging.
 
 ### Reference
 - QFT caveat for strong-amplitude PTUM documented
+
+## v7.2.0 (2026-10-13)
+
+### Added
+- Transient discharge attempt (natural Phi decay)
+- Fast-discharge variant (lambda=1.0, refined grid)
+- Negative result documented with timescale analysis
+
+### Key finding
+- PTUM discharge lifetime ~5-20 (inaccessible at t~0.1)
+- Strong NEC (rho_min=-15.66) QFT-incompatible at tau>=1 (expected)
+- Weak NEC (rho_min=-0.28) QFT-compatible (v6.5, unchanged)
+
+### Tests
+- 595 fast + 21 slow
+
+### Reference
+- Timescale mismatch between PTUM discharge and QFT window
+- Confirms quantum inequality constraint on strong NEC
