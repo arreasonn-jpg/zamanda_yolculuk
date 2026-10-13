@@ -1254,3 +1254,26 @@ bu, kuantum eşitsizliklerinin doğal bir sonucudur.
 
 - QFT-compatible strong NEC violation
 - Full transient discharge (requires t>5, infeasible)
+
+## v7.3-alpha1: QFT-compatibility threshold scan
+
+- `scripts/v7_3_qft_threshold_scan.py` (A=1.5..3.5)
+
+### Result: linear scaling law
+
+| A | rho_min | Ford-Roman ratio (tau=1) | ratio/|rho_min| |
+|---|---|---|---|
+| 1.5 | -0.284 | 0.226 | 0.79 |
+| 2.0 | -2.069 | 1.644 | 0.79 |
+| 2.5 | -6.622 | 5.264 | 0.79 |
+| 3.0 | -15.638 | 12.431 | 0.79 |
+| 3.5 | -31.185 | 24.789 | 0.79 |
+
+**Linear scaling:** ratio = 0.79 * |rho_min|
+
+**Threshold:** ratio = 1 at |rho_min| ~ 1.27
+QFT-compatible: |rho_min| < 1.27
+QFT-incompatible: |rho_min| > 1.27
+
+This is a quantitative, single-parameter QFT constraint on PTUM
+NEC violation.
