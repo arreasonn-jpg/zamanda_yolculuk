@@ -322,3 +322,9 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v7.5-alpha2: Kerr-invariance of QFT-OK window
 - 🔷 v7.5-beta: consolidate
+
+## v8.0 roadmap (new physics)
+- ✅ v8.0-alpha1: Brans-Dicke matter module
+- 🔷 v8.0-alpha2: BD evolution driver + GR limit test
+- 🔷 v8.0-alpha3: Perihelion precession test (observational)
+- 🔷 v8.0-alpha4: GW speed bound

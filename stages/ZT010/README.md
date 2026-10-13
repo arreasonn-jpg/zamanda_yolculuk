@@ -1364,3 +1364,9 @@ weak, so the QFT-compatibility threshold is set by PTUM physics,
 not by the background metric.
 
 QFT-OK window confirmed universal: A in [1.35, 1.87] regardless of spin.
+
+## v8.0-alpha1: Brans-Dicke scalar-tensor matter (foundation)
+
+- `src/zt005/matter_brans_dicke.py` — BD stress-energy Eulerian projections
+- `tests/test_matter_brans_dicke.py` — 6 checks
+- GR limit verified at omega > 40000 (Cassini bound)
