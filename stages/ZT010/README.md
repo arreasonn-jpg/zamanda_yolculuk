@@ -1301,3 +1301,28 @@ NEC violation.
 **QFT-incompatible:** |rho_min| > 1.258
 
 Clean single-parameter QFT bound on PTUM NEC violation.
+
+## v7.4-alpha1: sub-QFT regime — 4-regime structure
+
+- `scripts/v7_4_sub_qft_regime.py`
+
+### 4-regime structure
+
+| Regime | A range | NEC | QFT |
+|---|---|---|---|
+| Deactivated | 0.5-1.0 | No | OK |
+| Activated, no NEC | 1.2-1.3 | No | OK |
+| NEC + QFT-compatible | 1.4-1.85 | Yes | OK |
+| NEC + QFT-violating | A > 1.87 | Yes | Violated |
+
+### Thresholds
+
+- Activation onset: A ~ 1.2 (Phi_c = 1.0)
+- NEC onset: A ~ 1.35 (V_fuel ~ |V_min|)
+- QFT-violation onset: A ~ 1.87 (|rho_min| = 1.258)
+
+### Physical picture
+
+PTUM discharge passes through three distinct thresholds.
+The QFT-compatible NEC-violating window is A in [1.35, 1.87],
+rho_min in [-0.09, -1.26].
