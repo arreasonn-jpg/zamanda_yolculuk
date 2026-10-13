@@ -252,6 +252,33 @@ windows is incompatible with quantum inequalities, as theory
 requires. A full transient-discharge simulation would require
 $\sim 25{,}000$--$100{,}000$ steps and is deferred to future work.
 
+
+\paragraph{Quantitative QFT threshold.}
+The linear scaling between the strong-NEC magnitude and the
+Ford--Roman violation ratio is
+\begin{equation}
+\text{ratio}(\tau = 1) = 0.795 \times |\rho_{\min}| - 0.0002,
+\end{equation}
+across eleven amplitudes $A_{\text{fuel}} \in [1.4, 3.5]$
+(Fig.~\ref{fig:qft_threshold}). The QFT-compatibility threshold
+$\text{ratio} = 1$ is reached at $|\rho_{\min}| = 1.258$,
+corresponding to $A_{\text{fuel}} \approx 1.87$. This provides a
+single-parameter constraint on the PTUM model: strong NEC violation
+above $|\rho_{\min}| \approx 1.26$ necessarily violates
+Ford--Roman quantum inequalities at QFT sampling scales.
+
+
+\begin{figure*}[t]
+\centering
+\resizebox{0.9\textwidth}{!}{\includegraphics{figures/fig8_qft_threshold.png}}
+\caption{Ford-Roman violation ratio at $\tau = 1$ vs NEC magnitude
+(left) and fuel amplitude (right). The dashed red line marks the
+QFT-compatibility threshold. Linear fit gives
+$\text{ratio} = 0.795|\rho_{\min}|$, with the threshold at
+$|\rho_{\min}| = 1.258$.}
+\label{fig:qft_threshold}
+\end{figure*}
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
