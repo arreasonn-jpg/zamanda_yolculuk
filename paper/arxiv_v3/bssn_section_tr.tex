@@ -199,6 +199,45 @@ olarak doğruladık. Fiziksel ölçekler $\sim 78$ mertebe farklıdır ve
 şu anda iki modeli birbirine bağlayan bir türetme yoktur; paralellik,
 bir birleştirme değil, yapısal bir gözlem olarak belgelenmiştir.
 
+
+\subsection{Güçlü NEC ihlali üzerine kuantum eşitsizlik kısıtı}
+
+$A_{\rm fuel} = 3.0$'daki iyileştirilmiş Kerr+karmaşık+PTUM
+koşusundan (100 adım, $\rho_{\rm min} = -15.66$) elde edilen
+$\rho(t)$ zaman serisine Ford--Roman kuantum eşitsizliğini
+uyguluyoruz.
+
+\begin{table}[h]
+\centering
+\footnotesize
+\caption{Güçlü NEC konfigürasyonunda Ford--Roman testi.}
+\label{tab:ford_roman_strong_tr}
+\begin{tabular}{lrrrr}
+\hline
+$\tau$ & Değer & Sınır & Oran & İhlal \\
+\hline
+0.01 & $-3.26$ & $-1.90\times 10^{6}$ & $0.000$ & Hayır \\
+0.10 & $-0.73$ & $-1.90\times 10^{2}$ & $0.004$ & Hayır \\
+0.50 & $-0.15$ & $-3.04\times 10^{-1}$ & $0.491$ & Hayır \\
+1.00 & $-0.075$ & $-1.90\times 10^{-2}$ & $3.93$ & \textbf{Evet} \\
+\hline
+\end{tabular}
+\end{table}
+
+$\tau = 1.0$'da kütlesiz sınır yaklaşık 4 kat, kütleli
+($\mu = 1$) sınır yaklaşık 16 kat ihlal edilir. Daha önce
+incelenen zayıf-NEC konfigürasyonları ($\rho_{\rm min} = -0.1$,
+SC+PTUM ailesinden) test edilen tüm örnekleme genişliklerinde
+QFT-uyumludur.
+
+\paragraph{Yorum.}
+Güçlü negatif enerji yoğunluğu geçici ve QFT-uyumsuzdur; zayıf
+negatif enerji yoğunluğu kalıcı ve QFT-uyumludur. Bu, bilinen
+kuantum eşitsizlik sınırlarıyla tutarlıdır: güçlü NEC ihlali kısa
+ömürler gerektirir. PTUM deşarj fazı bu nedenle \emph{geçici}
+bir fiziksel özelliktir, kalıcı bir durum değildir ve QFT
+tutarlılığı zaman-entegre düzeyde değerlendirilmelidir.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir

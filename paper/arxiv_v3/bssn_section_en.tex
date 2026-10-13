@@ -200,6 +200,45 @@ of magnitude and no derivation currently connects the two models; the
 parallel is documented as a structural observation, not a
 unification.
 
+
+\subsection{Quantum inequality constraint on strong NEC violation}
+
+We apply the Ford--Roman quantum inequality to the time series
+$\rho(t)$ extracted from the refined Kerr+complex+PTUM run at
+$A_{\rm fuel} = 3.0$ (100 steps, $\rho_{\rm min} = -15.66$).
+
+\begin{table}[h]
+\centering
+\footnotesize
+\caption{Ford--Roman test on strong NEC config.}
+\label{tab:ford_roman_strong}
+\begin{tabular}{lrrrr}
+\hline
+$\tau$ & Value & Bound & Ratio & Violates \\
+\hline
+0.01 & $-3.26$ & $-1.90\times 10^{6}$ & $0.000$ & No \\
+0.10 & $-0.73$ & $-1.90\times 10^{2}$ & $0.004$ & No \\
+0.50 & $-0.15$ & $-3.04\times 10^{-1}$ & $0.491$ & No \\
+1.00 & $-0.075$ & $-1.90\times 10^{-2}$ & $3.93$ & \textbf{Yes} \\
+\hline
+\end{tabular}
+\end{table}
+
+At $\tau = 1.0$, the massless bound is violated by a factor of
+$\sim 4$; the massive ($\mu = 1$) bound is violated by a factor
+of $\sim 16$. The weak-NEC configurations studied earlier
+($\rho_{\rm min} = -0.1$, from the SC$+$PTUM family) are
+QFT-compatible at all sampling widths tested.
+
+\paragraph{Interpretation.}
+Strong negative energy density is transient and QFT-incompatible;
+weak negative energy density is persistent and QFT-compatible.
+This is consistent with known quantum inequality bounds: strong
+NEC violation requires short lifetimes. The PTUM discharge phase
+is therefore a \emph{transient} physical feature, not a steady
+state, and its QFT consistency must be assessed on the
+time-integrated level.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
