@@ -669,3 +669,45 @@ Two negative/invariance results:
 2. QFT-OK window does not depend on Kerr spin.
 
 The QFT-OK window is a PTUM-intrinsic property.
+
+## v8.0 scope (Brans-Dicke extension)
+
+### What v8.0 delivers
+
+- BD scalar-tensor matter module
+- BD RK4 evolution driver
+- BD observational tests (Mercury, GW speed, Cassini)
+- BD + PTUM combined driver + invariance check
+
+### Key results
+
+**BD observables:**
+- Mercury perihelion: 43 arcsec/century (GR) ✅
+- BD deviation at Cassini bound: < 2e-5
+- GW speed: c_GW/c = 1 - 2.5e-5
+
+**BD + PTUM:**
+- phi_BD = 0.5, 1.0, 2.0 gives identical PTUM QFT ratios
+- PTUM QFT window is BD-invariant
+
+### Combined with v7.5
+
+PTUM QFT threshold invariant under:
+- Kerr spin (a=0..0.9)
+- Brans-Dicke phi (0.5..2.0)
+- Flat (v6.5)
+
+**PTUM QFT threshold is intrinsic, background-independent.**
+
+### What v8.0 does NOT deliver
+
+- Full nonlinear BD (only slow-motion weak-coupling)
+- BD black hole perturbation theory
+- BD + Kerr + complex + PTUM (all combined)
+- Numerical BD BH solutions
+
+### Honest assessment
+
+v8.0 adds the first alternative-gravity extension. The BD module
+is at the leading-order level; the QFT-invariance result is robust
+but does not claim full nonlinear BD.

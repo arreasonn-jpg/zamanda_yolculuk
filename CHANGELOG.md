@@ -330,3 +330,24 @@ the open problem of cross-scale bridging.
 
 ### Tests
 - 595 fast + 21 slow
+
+## v8.0.0 (2026-10-13)
+
+### Added — Brans-Dicke extension
+- bssn_rk4_brans_dicke.py (evolution)
+- matter_brans_dicke.py (stress-energy)
+- brans_dicke_observables.py (Mercury, GW speed)
+- bssn_rk4_bd_ptum.py (BD + PTUM combined)
+
+### Key results
+- Mercury precession 43 arcsec/century (GR) ✅
+- BD deviation at Cassini bound: < 2e-5
+- QFT-OK window invariant under BD phi
+- Combined with v7.5: PTUM threshold background-independent
+
+### Tests
+- 590+ fast + 21 slow
+
+### Reference
+- First alternative-gravity extension of the framework
+- PTUM QFT threshold intrinsic property confirmed
