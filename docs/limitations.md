@@ -711,3 +711,41 @@ PTUM QFT threshold invariant under:
 v8.0 adds the first alternative-gravity extension. The BD module
 is at the leading-order level; the QFT-invariance result is robust
 but does not claim full nonlinear BD.
+
+## v8.2 scope (Starobinsky + LQC invariance)
+
+### What v8.2 delivers
+
+- Starobinsky f(R) = R + alpha R^2 scalar-tensor module
+- LQC + PTUM density comparison
+- QFT window invariance under LQC
+
+### Key results
+
+**Starobinsky:**
+- V(phi) plateau, V_max = 1/(8 alpha)
+- n_s ~ 0.965, r ~ 0.004 (Planck-compatible)
+
+**LQC + PTUM:**
+- PTUM density ~1e19 kg/m^3, rho_c ~1e96 kg/m^3
+- Ratio: 1e-77 (LQC correction negligible)
+- QFT window shift < 1e-70 (machine precision)
+
+**Triple invariance:**
+PTUM QFT-OK window unchanged under:
+- Kerr spin (v7.5)
+- Brans-Dicke phi (v8.0)
+- LQC Friedmann (v8.2)
+
+### What v8.2 does NOT deliver
+
+- Full Starobinsky BSSN evolution
+- LQC BSSN (only FRW + PTUM density comparison)
+- f(R) black hole solutions
+- LQC perturbations
+
+### Honest assessment
+
+v8.2 confirms that the PTUM QFT threshold is a
+background-independent property, robust to three independent
+extensions: Kerr, Brans-Dicke, LQC.

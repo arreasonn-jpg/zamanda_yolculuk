@@ -351,3 +351,18 @@ the open problem of cross-scale bridging.
 ### Reference
 - First alternative-gravity extension of the framework
 - PTUM QFT threshold intrinsic property confirmed
+
+## v8.2.0 (2026-10-13)
+
+### Added
+- matter_starobinsky.py (R + alpha R^2)
+- lqc_ptum_coupling.py (density comparison)
+- lqc_qft_window.py (QFT window invariance)
+
+### Key results
+- Starobinsky: n_s ~ 0.965, r ~ 0.004
+- LQC correction for PTUM: 1 - 1e-77
+- Triple invariance of PTUM QFT threshold
+
+### Tests
+- 623+ fast + 21 slow
