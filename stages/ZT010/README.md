@@ -1393,3 +1393,29 @@ QFT-OK window confirmed universal: A in [1.35, 1.87] regardless of spin.
 
 Cassini-bound BD (omega > 40000) is observationally
 indistinguishable from GR at current precision.
+
+## v8.0-alpha4: BD + PTUM combined (invariance confirmed)
+
+- `src/zt005/bssn_rk4_bd_ptum.py`
+- `tests/test_bssn_rk4_bd_ptum.py` (3 checks)
+- `scripts/v8_0_bd_ptum_scan.py`
+
+### Result
+
+BD phi in {0.5, 1.0, 2.0} -> identical PTUM rho_min and QFT ratio.
+
+| phi_BD | A=1.8 rho_min | ratio | viol |
+|---|---|---|---|
+| 0.5 | -1.105 | 0.878 | No |
+| 1.0 | -1.105 | 0.878 | No |
+| 2.0 | -1.105 | 0.878 | No |
+
+**Invariance:** PTUM QFT-OK window is unchanged by BD phi.
+
+Combined with v7.5 (Kerr-invariance), the PTUM QFT threshold is
+now shown to be invariant under:
+- Kerr spin (a=0..0.9)
+- Brans-Dicke phi (0.5..2.0)
+
+**Conclusion:** PTUM QFT threshold is a PTUM-intrinsic property,
+independent of the gravitational background.

@@ -334,3 +334,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v8.0-alpha3: BD perihelion + GW speed observables
 - 🔷 v8.0-alpha4: BD + PTUM combined (does BD affect QFT-OK window?)
+
+- ✅ v8.0-alpha4: BD invariance of PTUM QFT window
+- 🔷 v8.0-beta: v8.0.0 release + paper
