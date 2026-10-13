@@ -331,3 +331,6 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v8.0-alpha2: BD evolution driver + GR limit
 - 🔷 v8.0-alpha3: perihelion precession (observational test)
+
+- ✅ v8.0-alpha3: BD perihelion + GW speed observables
+- 🔷 v8.0-alpha4: BD + PTUM combined (does BD affect QFT-OK window?)

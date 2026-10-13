@@ -1376,3 +1376,20 @@ QFT-OK window confirmed universal: A in [1.35, 1.87] regardless of spin.
 - `src/zt005/bssn_rk4_brans_dicke.py`
 - `tests/test_bssn_rk4_brans_dicke.py` — 4 checks
 - GR limit verified (omega=1e10 -> no deviation)
+
+## v8.0-alpha3: Brans-Dicke observational tests
+
+- `src/zt005/brans_dicke_observables.py`
+- `tests/test_brans_dicke_observables.py` — 6 checks
+
+### Key results
+
+- Mercury perihelion GR: 43.0 arcsec/century ✅
+- BD deviation at Cassini bound (omega=40000): < 2e-5
+- GW speed: c_GW/c = 1 - 2.5e-5 at omega=40000
+- Formula corrected: (4 + 3 omega)/(6 + 3 omega)
+
+### Observational constraint
+
+Cassini-bound BD (omega > 40000) is observationally
+indistinguishable from GR at current precision.
