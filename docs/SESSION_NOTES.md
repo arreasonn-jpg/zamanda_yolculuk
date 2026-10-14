@@ -1,7 +1,7 @@
 # Session notes — pickup point
 
-Last stable release: **v9.3.0** (2026-10-14)
-Tests: 674 (fast + slow), all passing.
+Last stable release: **v10.2.0** (2026-10-14)
+Tests: 697 (fast + slow), all passing.
 
 ## Milestones (v1.0 → v8.3)
 
@@ -32,7 +32,10 @@ Tests: 674 (fast + slow), all passing.
 | v9.0 | Newman-Penrose GW extraction formulas |
 | v9.1 | Horndeski skeleton + universal invariance extension |
 | v9.2 | BSSN -> NP pipeline (null result for symmetric source) |
-| v9.3 | Quadrupole GW (nonzero signal) |
+| v9.3 | Quadrupole GW (scalar — noise-level) |
+| v10.0 | Binary orbit scalar GW (null result — physics) |
+| v10.1 | GW pipeline validated (TT injection) |
+| v10.2 | Proca vector GW (h+ = 4.0e-6, first real signal) |
 
 ## Key scientific results
 
@@ -65,7 +68,7 @@ PTUM QFT-OK window (A in [1.35, 1.87]) invariant under:
 
 - `paper/main_en.tex` — 13 pages, English
 - `paper/main_tr.tex` — 13 pages, Turkish
-- 12 figures (fig1-fig12)
+- 15 figures (fig1-fig15)
 - `paper/arxiv_submission_v3.zip` (1.2 MB) — READY
 
 ## GW extraction (v9.x)
