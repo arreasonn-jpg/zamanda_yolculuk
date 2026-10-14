@@ -1,6 +1,6 @@
 # Session notes — pickup point
 
-Last stable release: **v8.3.0** (2026-10-14)
+Last stable release: **v9.3.0** (2026-10-14)
 Tests: 657 (fast + slow), all passing.
 
 ## Milestones (v1.0 → v8.3)
@@ -29,6 +29,10 @@ Tests: 657 (fast + slow), all passing.
 | v8.1 | Loop Quantum Cosmology bounce |
 | v8.2 | Starobinsky f(R) + LQC invariance |
 | v8.3 | Hu-Sawicki f(R) + universal invariance |
+| v9.0 | Newman-Penrose GW extraction formulas |
+| v9.1 | Horndeski skeleton + universal invariance extension |
+| v9.2 | BSSN -> NP pipeline (null result for symmetric source) |
+| v9.3 | Quadrupole GW (nonzero signal) |
 
 ## Key scientific results
 
@@ -61,8 +65,15 @@ PTUM QFT-OK window (A in [1.35, 1.87]) invariant under:
 
 - `paper/main_en.tex` — 13 pages, English
 - `paper/main_tr.tex` — 13 pages, Turkish
-- 10 figures (fig1-fig10)
+- 12 figures (fig1-fig12)
 - `paper/arxiv_submission_v3.zip` (1.2 MB) — READY
+
+## GW extraction (v9.x)
+
+- Newman-Penrose module (psi_4, TT, flux)
+- BSSN -> TT pipeline
+- Null result: spherical source -> no GW (correct)
+- Nonzero: quadrupole source -> h+ = 4.46e-12 (correct)
 
 ## Cihaz vs CTC
 
