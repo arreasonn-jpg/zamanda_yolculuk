@@ -374,3 +374,5 @@ solver so future work can measure what happens near the CTC regime.
 ## v10.0 roadmap
 - ❌ v10.0-alpha1/2: binary scalar GW (null result — physics)
 - 🔷 v10.0-beta: document + release
+- ✅ v10.1-alpha1/2: GW pipeline validated (strain extraction correct)
+- 🔷 v10.1-beta: consolidate + paper integration

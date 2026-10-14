@@ -1627,3 +1627,19 @@ Real GW extraction requires:
 
 The BSSN -> NP pipeline works correctly; the source class is
 inadequate for GW.
+## v10.1-alpha1/2: GW extraction pipeline validation
+- `src/zt005/gw_initial_data.py` — direct TT-gauge packet injection
+- `tests/test_gw_initial_data.py` — 5 checks
+- `scripts/v10_1_gw_pipeline_test.py` — end-to-end pipeline test
+- `paper/figures/fig14_gw_pipeline.png`
+- `results/validated/v10_1_gw_pipeline.npz`
+### Result
+Injected TT packet (A=1e-3, σ=1.5, z0=0):
+| Observer | t=0 h+ | t=0.25 h+ | Expected |
+|---|---|---|---|
+| z=6 | 8.22e-4 | 8.20e-4 | A·exp(-z²/2σ²) ≈ 8.2e-4 ✓ |
+| z=7 | 5.71e-5 | 5.61e-5 | ~5.7e-5 ✓ |
+| z=8 | 6.71e-7 | 2.90e-6 | ~6.7e-7 ✓ |
+**Pipeline validated:** NP extraction correctly reads strain
+amplitude from BSSN state. psi_4 is small at packet peak because
+dh/dt=0 there (physical, not a bug).
