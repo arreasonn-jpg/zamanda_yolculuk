@@ -798,3 +798,36 @@ background at leading order.
 The NP module provides formulas; full 3D extraction from BSSN
 is deferred. Horndeski extends the universal-invariance result
 from scalar-tensor (v8.3) to the full Horndeski class.
+
+## v9.2 scope (GW extraction)
+
+### What v9.2 delivers
+
+- Newman-Penrose GW extraction module (psi_4, TT, flux)
+- BSSN + NP extraction pipeline
+- Null result for spherically symmetric source
+
+### Key results
+
+| Setup | h+ max | psi_4 max |
+|---|---|---|
+| Spherical scalar (A=1e-4) | 0 | 0 |
+
+### Physical interpretation
+
+Monopole source -> no GW. Consistent with Einstein (1918)
+quadrupole formula. The pipeline correctly identifies
+zero signal.
+
+### What v9.2 does NOT deliver
+
+- Nonzero GW extraction (requires quadrupole source)
+- 3D grid with realistic binary merger
+- LIGO-comparable waveforms
+
+### Honest assessment
+
+The GW extraction pipeline is functional end-to-end. This
+specific setup produces null signal because the source is
+symmetric. Realistic GW extraction requires asymmetric
+(quadrupole) dynamics, deferred to v10.

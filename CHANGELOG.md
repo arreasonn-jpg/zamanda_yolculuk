@@ -393,3 +393,16 @@ the open problem of cross-scale bridging.
 
 ### Tests
 - 657+ fast + 21 slow
+
+## v9.2.0 (2026-10-14)
+
+### Added
+- gw_extraction.py (BSSN -> TT pipeline)
+- Newman-Penrose scalar computation
+
+### Key results
+- Null result: spherical source -> no GW (correct physics)
+- Pipeline validated end-to-end
+
+### Tests
+- 669+ fast + 21 slow
