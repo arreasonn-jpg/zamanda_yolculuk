@@ -1,7 +1,7 @@
 # Session notes — pickup point
 
 Last stable release: **v9.3.0** (2026-10-14)
-Tests: 657 (fast + slow), all passing.
+Tests: 674 (fast + slow), all passing.
 
 ## Milestones (v1.0 → v8.3)
 
