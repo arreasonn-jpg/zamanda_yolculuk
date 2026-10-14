@@ -430,3 +430,14 @@ the open problem of cross-scale bridging.
 - psi_4 = 0 at packet peak (physical)
 ### Tests
 - 674 fast + 21 slow
+## v10.2.0 (2026-10-14)
+### Added
+- Proca vector field matter source
+- RK4 driver for BSSN + Proca
+- Nonzero GW extraction from vector source
+### Key results
+- Scalar source: h+ = 0 (v10.0)
+- Proca source: h+ = 4.0e-6 (v10.2)
+- Confirms TT content requirement for GW
+### Tests
+- 697 fast + 21 slow

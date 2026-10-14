@@ -1643,3 +1643,15 @@ Injected TT packet (A=1e-3, σ=1.5, z0=0):
 **Pipeline validated:** NP extraction correctly reads strain
 amplitude from BSSN state. psi_4 is small at packet peak because
 dh/dt=0 there (physical, not a bug).
+## v10.2-alpha1/2/3: Proca vector field GW source
+- `src/zt005/matter_proca.py` — Proca stress-energy (6 checks)
+- `src/zt005/bssn_rk4_proca.py` — RK4 driver (3 checks)
+- `scripts/v10_2_proca_gw.py`
+- `paper/figures/fig15_proca_gw.png`
+### Result: vector source produces GW (unlike scalar)
+| Source | h+ max | Note |
+|---|---|---|
+| Scalar (v10.0) | 0 | no TT content |
+| **Proca (v10.2)** | **4.0e-6** | TT via E_ij anisotropic |
+Magnitude consistent with T ~ E^2 ~ 1e-6, K ~ 4pi*T*dt*steps ~ 6e-6.
+**First nonzero GW signal from a physical (non-injected) field.**

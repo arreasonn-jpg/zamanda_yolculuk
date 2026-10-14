@@ -895,3 +895,23 @@ Pipeline validated end-to-end. Combined with v10.0's null result
 (scalar source -> no GW), this establishes: the extraction code
 is correct; the challenge is producing a source with TT content,
 which requires either vector/tensor fields or full 3D BH evolution.
+## v10.2 scope (Proca GW source)
+### What v10.2 delivers
+- Proca (massive vector) field stress-energy module
+- BSSN + Proca RK4 driver
+- Nonzero h+ extraction from vector source
+### Key result
+| Source | h+ max | TT content |
+|---|---|---|
+| Scalar | 0 | none |
+| Proca | 4.0e-6 | nonzero |
+Vector field's anisotropic T_ij produces TT content,
+unlike scalar. First physical GW signal (not injected).
+### What v10.2 does NOT deliver
+- Massive Proca (m > 0) GW extraction (used m=0)
+- Realistic astrophysical source
+- Frequency-domain waveform matching
+### Honest assessment
+Confirms the general principle: GW requires TT content in
+T_ij, which scalar fields lack. Vector/tensor sources provide
+it. This closes the source-class question from v10.0/v10.1.
