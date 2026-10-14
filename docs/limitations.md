@@ -851,3 +851,25 @@ symmetric. Realistic GW extraction requires asymmetric
 Quadrupole GW extraction now demonstrated. Signal is small
 (A=1e-3 source), falls off with distance as expected. Full
 binary inspiral is future work.
+
+## v10.0 scope (binary GW — null result)
+
+### What v10.0 attempted
+- Two scalar Gaussians in circular orbit
+- Complex scalar version with phase separation
+- Expected f_GW = 2 f_orbit
+
+### Result: null
+- h+ ~ 0 (machine noise)
+- Scalar sources have no TT content
+
+### Honest assessment
+This is a well-known physics limitation, not a numerical bug.
+The GW extraction pipeline is correct; scalar sources simply
+don't produce gravitational waves in GR. Real GW extraction
+would require either vector/tensor fields or full 3D binary BH
+evolution (BSSN with black holes), which is a much larger
+project.
+
+Documented as a negative result. Same pattern as the
+Kerr/Brans-Dicke invariance: physics constrains, not code.

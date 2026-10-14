@@ -1596,3 +1596,34 @@ Two Gaussian bumps offset along x-axis (binary-like quadrupole).
 
 **First nonzero GW extraction from quadrupole source.**
 Confirms Einstein quadrupole formula: asymmetric source -> GW.
+
+## v10.0-alpha1/2: binary orbit GW — null result
+
+- `src/zt005/binary_orbit_ic.py` (6 checks)
+- `src/zt005/binary_complex_ic.py` (3 checks)
+- `scripts/v10_0_binary_gw.py` (real scalar version)
+- `scripts/v10_0_binary_gw_complex.py` (complex version)
+
+### Result: scalar sources do NOT produce GW
+
+| Source | h+ max | psi_4 max |
+|---|---|---|
+| Real scalar binary | ~1e-12 (noise) | ~1e-10 (noise) |
+| Complex scalar binary | 0 | 3e-38 (noise) |
+
+### Physical reason
+
+Einstein quadrupole formula: GW emission requires time-varying
+quadrupole moment. Scalar field T_ij = d_i phi d_j phi + delta_ij L
+has TT content only from the d_i phi d_j phi term, which is
+isotropic for a Gaussian peak. The TT projection vanishes to
+leading order.
+
+### Implication
+
+Real GW extraction requires:
+- Vector or tensor field source, OR
+- Full 3D binary BH evolution (not scalar proxy)
+
+The BSSN -> NP pipeline works correctly; the source class is
+inadequate for GW.

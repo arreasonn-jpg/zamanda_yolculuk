@@ -370,3 +370,7 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v9.2-alpha2: BSSN + GW extraction (null result for symmetric source)
 - 🔷 v9.2-beta: document + v9.2.0 release
+
+## v10.0 roadmap
+- ❌ v10.0-alpha1/2: binary scalar GW (null result — physics)
+- 🔷 v10.0-beta: document + release
