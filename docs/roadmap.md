@@ -367,3 +367,6 @@ solver so future work can measure what happens near the CTC regime.
 ## v9.2 roadmap
 - ✅ v9.2-alpha1: GW extraction pipeline
 - 🔷 v9.2-alpha2: Full BSSN run with GW extraction
+
+- ✅ v9.2-alpha2: BSSN + GW extraction (null result for symmetric source)
+- 🔷 v9.2-beta: document + v9.2.0 release

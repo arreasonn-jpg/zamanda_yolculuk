@@ -1556,3 +1556,27 @@ PTUM QFT-OK window unchanged under ANY Horndeski model
 - h_ij = gamma_ij - delta_ij (from BSSN state)
 - psi_4 from psi_4 = -1/2 (h_+ddot - i h_xddot)
 - Strain recovery via FFT peak frequency
+
+## v9.2-alpha2: BSSN + GW extraction (null result)
+
+- `scripts/v9_2_gw_extraction_run.py`
+- `paper/figures/fig11_gw_extraction.png`
+- `results/validated/v9_2_gw_extraction.npz`
+
+### Result
+
+Spherically symmetric scalar perturbation (A=1e-4, Gaussian)
+evolves through BSSN correctly, but TT strain at observer
+positions is exactly zero.
+
+### Physical interpretation
+
+A monopole source has no quadrupole moment. In GR, GW emission
+requires at least a time-varying quadrupole (Einstein 1918
+quadrupole formula). Null result is consistent with theory.
+
+### What this validates
+
+The BSSN → NP extraction pipeline runs end-to-end and correctly
+identifies zero signal for symmetric sources. A quadrupole
+source is required to see nonzero GW (future work).
