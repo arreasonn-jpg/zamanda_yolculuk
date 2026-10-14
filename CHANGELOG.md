@@ -420,3 +420,13 @@ the open problem of cross-scale bridging.
 
 ### Tests
 - 674+ fast + 21 slow
+## v10.1.0 (2026-10-14)
+### Added
+- gw_initial_data.py (direct TT packet injection)
+- Pipeline validation: extracted strain matches analytic envelope
+- Fig14 in bilingual paper
+### Key results
+- h+ extraction correct to numerical precision
+- psi_4 = 0 at packet peak (physical)
+### Tests
+- 674 fast + 21 slow

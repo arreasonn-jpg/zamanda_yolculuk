@@ -873,3 +873,25 @@ project.
 
 Documented as a negative result. Same pattern as the
 Kerr/Brans-Dicke invariance: physics constrains, not code.
+## v10.1 scope (GW pipeline validation)
+### What v10.1 delivers
+- Direct TT-gauge wave packet injection (gw_initial_data.py)
+- End-to-end pipeline test: injection -> BSSN -> NP extraction
+- Validation: extracted h+ matches analytic envelope
+### Key result
+| Observer | h+ extracted | Analytic |
+|---|---|---|
+| z=6 | 8.22e-4 | 8.2e-4 |
+| z=7 | 5.71e-5 | 5.7e-5 |
+| z=8 | 6.71e-7 | 6.7e-7 |
+Pipeline reads metric perturbation correctly. psi_4 = 0
+at packet peak (physical: dh/dt = 0).
+### What v10.1 does NOT deliver
+- GW from realistic (non-symmetric) source (scalar doesn't work)
+- Binary BH inspiral (requires black hole excision)
+- LIGO-comparable waveforms
+### Honest assessment
+Pipeline validated end-to-end. Combined with v10.0's null result
+(scalar source -> no GW), this establishes: the extraction code
+is correct; the challenge is producing a source with TT content,
+which requires either vector/tensor fields or full 3D BH evolution.

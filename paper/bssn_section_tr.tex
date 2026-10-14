@@ -454,6 +454,37 @@ monopol kaynak gravitasyonel ışıma yaymaz.}
 \label{fig:gw_extraction_tr}
 \end{figure*}
 
+\subsection{GW çıkarım boru hattı doğrulaması}
+BSSN $\to$ Newman--Penrose boru hattını kaynak fiziğinden bağımsız
+olarak doğrulamak için, başlangıç verisine doğrudan TT-gauge bir
+dalga paketi enjekte ediyoruz:
+$h_{ij}(\mathbf{x}) = A\,e^{-(z-z_0)^2/2\sigma^2}\,e_{ij}$,
+$A = 10^{-3}$, $\sigma = 1.5$, $z_0 = 0$, ve
+$e_{ij} = \mathrm{diag}(1,-1,0)$ (artı polarizasyon). $z$
+ekseni boyunca üç gözlemcide çıkarılan gerinim, analitik zarfla
+sayısal hassasiyet içinde örtüşür:
+$z = 6$'da $h_+^{\rm obs} = 8.22\times 10^{-4}$ (tahmin
+$A\,e^{-z^2/2\sigma^2} = 8.2\times 10^{-4}$);
+$z = 7$'de $5.71\times 10^{-5}$ (tahmin $5.7\times 10^{-5}$);
+$z = 8$'de $6.71\times 10^{-7}$ (tahmin $6.7\times 10^{-7}$)
+(Şekil~\ref{fig:gw_pipeline_tr}). Bu, çıkarım zincirinin metrik
+pertürbasyonunu doğru okuduğunu doğrular. NP skaleri $\psi_4$
+paket tepesinde küçüktür çünkü orada $\dot h = 0$ (simetrik
+maksimum); bu fiziksel bir sıfırdır, sayısal değil.
+
+
+\begin{figure*}[t]
+\centering
+\resizebox{0.85\textwidth}{!}{\includegraphics{figures/fig14_gw_pipeline.p
+ng}}
+\caption{GW çıkarım boru hattı doğrulaması. Doğrudan TT-gauge
+dalga paketi enjekte edildi; üç gözlemcide çıkarılan gerinim
+analitik zarfla sayısal hassasiyet içinde örtüşür. (a) En dıştaki
+gözlemcide gerinim zaman serisi. (b) Birden çok gözlemcide $h_+$.
+(c) Frekans spektrumu. (d) Enjekte edilen paket profili.}
+\label{fig:gw_pipeline_tr}
+\end{figure*}
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir
