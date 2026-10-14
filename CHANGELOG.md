@@ -406,3 +406,17 @@ the open problem of cross-scale bridging.
 
 ### Tests
 - 669+ fast + 21 slow
+
+## v9.3.0 (2026-10-14)
+
+### Added
+- Quadrupole GW source test
+- Nonzero GW extraction
+
+### Key results
+- h+ max = 4.46e-12 (obs z=8)
+- psi4 max = 1.00e-10
+- Confirms Einstein quadrupole formula
+
+### Tests
+- 674+ fast + 21 slow

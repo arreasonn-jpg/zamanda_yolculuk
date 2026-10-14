@@ -1580,3 +1580,19 @@ quadrupole formula). Null result is consistent with theory.
 The BSSN → NP extraction pipeline runs end-to-end and correctly
 identifies zero signal for symmetric sources. A quadrupole
 source is required to see nonzero GW (future work).
+
+## v9.3-alpha1: quadrupole GW extraction (nonzero signal)
+
+- `scripts/v9_3_quadrupole_gw.py`
+- `paper/figures/fig12_quadrupole_gw.png`
+- `results/validated/v9_3_quadrupole_gw.npz`
+
+### Result
+
+Two Gaussian bumps offset along x-axis (binary-like quadrupole).
+- obs z=8: h+ = 4.46e-12, psi4 = 1.00e-10
+- obs z=9: h+ = 8.22e-15, psi4 = 5.55e-13
+- obs z=10: no signal (outside wave propagation)
+
+**First nonzero GW extraction from quadrupole source.**
+Confirms Einstein quadrupole formula: asymmetric source -> GW.

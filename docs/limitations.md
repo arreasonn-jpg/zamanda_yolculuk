@@ -831,3 +831,23 @@ The GW extraction pipeline is functional end-to-end. This
 specific setup produces null signal because the source is
 symmetric. Realistic GW extraction requires asymmetric
 (quadrupole) dynamics, deferred to v10.
+
+## v9.3 scope (quadrupole GW)
+
+### What v9.3 delivers
+
+- Quadrupole (two-bump) scalar source
+- Nonzero GW extraction (h+ ~ 4.5e-12)
+- Confirms Einstein quadrupole formula
+
+### What v9.3 does NOT deliver
+
+- Realistic binary merger (requires 3D evolution)
+- LIGO-comparable waveforms
+- Post-Newtonian matching
+
+### Honest assessment
+
+Quadrupole GW extraction now demonstrated. Signal is small
+(A=1e-3 source), falls off with distance as expected. Full
+binary inspiral is future work.
