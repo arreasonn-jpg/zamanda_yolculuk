@@ -1726,3 +1726,13 @@ Constraint bounded (1.0682).
 | 50 | 1.0002 | 2.9e-6 | 7.3e-4 |
 | 300 | 1.0086 | 1.0e-4 | 4.4e-3 |
 Constraint bounded, both polarizations grow.
+## v12.3-alpha1: SC + PTUM + BH triple toy model
+- `src/zt005/triple_toy_model.py` (6 checks)
+### Result
+| Sector | Role | Effect on PTUM QFT |
+|---|---|---|
+| SC | metric (regular core) | none |
+| BH | metric (curvature) | none |
+| PTUM | matter (tachyon) | invariant |
+QFT window A ∈ [1.35, 1.87] unchanged by SC or BH.
+**Universal invariance extended to triple coupling.**

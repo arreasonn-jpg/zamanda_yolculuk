@@ -988,3 +988,14 @@ Full inspiral requires longer runs + higher resolution (future).
 ### Honest assessment
 Vectorization makes N=13 feasible. Full inspiral and merger
 now possible but still need long runs + boundary handling.
+## v12.3 scope (triple toy model)
+### What v12.3 delivers
+- 0D/1D SC + PTUM + BH triple coupling model
+- Confirms QFT window invariance
+### Key result
+PTUM QFT window (A ∈ [1.35, 1.87]) unchanged by SC core or BH curvature.
+Universal invariance extends to triple sector.
+### What v12.3 does NOT deliver
+- Full 3D SC+PTUM+BH evolution
+- Backreaction of PTUM on BH metric
+- Realistic observational signatures

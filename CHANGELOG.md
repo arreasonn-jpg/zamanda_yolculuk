@@ -481,3 +481,11 @@ the open problem of cross-scale bridging.
 - N=13 binary: H growth 1.0086, h+ = 1.0e-4
 ### Tests
 - 692 fast + 21 slow
+## v12.3.0 (2026-10-15)
+### Added
+- SC + PTUM + BH triple toy model
+### Key results
+- QFT window invariant under SC + BH
+- Extends universal invariance to triple sector
+### Tests
+- 698 fast + 21 slow
