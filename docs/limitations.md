@@ -956,3 +956,16 @@ the bridge to v12.0.
 Bowen-York IC produces orbital dynamics (hx != 0, absent in
 time-symmetric Brill-Lindquist). Stability bounded over 200 steps.
 Full inspiral requires longer runs + higher resolution (future).
+## v12.1 scope (plunge + PTUM in BH + long orbit)
+### What v12.1 delivers
+- Brill-Lindquist plunge waveform (N=7, 50 steps)
+- PTUM static field in Schwarzschild background
+- Long Bowen-York orbit (300 steps)
+### Key results
+- Plunge: h+ = 8.7e-6, hx = 0 (symmetric)
+- Orbit: h+ = 3.1e-4, hx = 1.1e-2 (both polarizations)
+- PTUM QFT window unchanged by BH curvature
+### What v12.1 does NOT deliver
+- Full orbital period (5% captured)
+- N>=9 (Python too slow)
+- Merger + ringdown

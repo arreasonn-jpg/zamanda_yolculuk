@@ -1676,3 +1676,38 @@ Magnitude consistent with T ~ E^2 ~ 1e-6, K ~ 4pi*T*dt*steps ~ 6e-6.
 | FFT | Nyquist (örnekleme yetersiz) |
 **Note:** Brill-Lindquist is time-symmetric (infall, not orbit).
 Real orbital dynamics requires Bowen-York momentum (v12.0).
+## v12.1-alpha1: Brill-Lindquist plunge waveform
+- `scripts/v12_1_bl_plunge_waveform.py`
+- N=7, 50 steps, dt=5e-3
+### Result
+| Metric | Value |
+|---|---|
+| H growth | 1.0018 |
+| h+ max | 8.7e-6 |
+| hx max | 0 (symmetric, expected) |
+**Note:** N≥9 too slow for Python RK4 (tensor loops).
+Full binary inspiral needs C/Cython acceleration or lower-N.
+## v12.1-alpha1: Brill-Lindquist plunge waveform
+- `scripts/v12_1_bl_plunge_waveform.py`
+- N=7, 50 steps, dt=5e-3
+### Result
+| Metric | Value |
+|---|---|
+| H growth | 1.0018 |
+| h+ max | 8.7e-6 |
+| hx max | 0 (symmetric, expected) |
+**Note:** N≥9 too slow for Python RK4 (tensor loops).
+Full binary inspiral needs C/Cython acceleration or lower-N.
+## v12.1: plunge + PTUM in BH + long orbit
+### alpha1: Brill-Lindquist plunge (N=7)
+- h+ = 8.7e-6, hx = 0 (symmetric)
+### alpha2: PTUM in Schwarzschild background
+- `src/zt005/ptum_in_bh_background.py` (5 checks)
+- PTUM activation local; QFT window invariant under BH curvature
+### alpha3: long orbital run (N=7, 300 steps)
+| step | H/H0 | h+ | hx |
+|---|---|---|---|
+| 50 | 1.0018 | 8.7e-6 | 1.8e-3 |
+| 300 | 1.0682 | 3.1e-4 | 1.1e-2 |
+Both polarizations grow monotonically (orbital, not plunge).
+Constraint bounded (1.0682).

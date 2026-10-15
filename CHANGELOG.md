@@ -461,3 +461,14 @@ the open problem of cross-scale bridging.
 - h+ = 7.9e-6, hx = 7.4e-4 (orbital)
 ### Tests
 - 712+ fast + 21 slow
+## v12.1.0 (2026-10-15)
+### Added
+- Brill-Lindquist plunge waveform
+- PTUM in Schwarzschild background
+- Long orbital binary run (300 steps)
+### Key results
+- Plunge: h+ = 8.7e-6
+- Orbit: h+ = 3.1e-4, hx = 1.1e-2
+- QFT window invariant under BH curvature
+### Tests
+- 697 fast + 21 slow

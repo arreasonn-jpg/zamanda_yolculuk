@@ -508,6 +508,29 @@ time-symmetric Brill--Lindquist case. Full inspiral (orbital
 period $T \approx 23$ in code units) requires longer runs and is
 deferred.
 
+\subsection{Plunge waveform, PTUM in BH background, long orbit}
+Three extensions of the 3D binary framework are presented.
+\paragraph{Brill--Lindquist plunge.}
+A time-symmetric two-puncture configuration ($m_1 = m_2 = 0.5$,
+$d = 4$) is evolved for 50 steps on a coarse grid ($N = 7$). The
+constraint grows by $1.0018$ and the extracted strain is
+$h_+ = 8.7\times 10^{-6}$ with $h_\times = 0$ (as expected for
+the reflection-symmetric infall).
+\paragraph{PTUM in Schwarzschild background.}
+The PTUM tachyon field is placed in a fixed Schwarzschild metric.
+The activation threshold is local (set by $\Phi$), so the BH
+curvature does not shift the QFT-compatibility window
+$A_{\rm fuel} \in [1.35, 1.87]$. This extends the universal
+invariance result (Sections above) to the strong-field regime.
+\paragraph{Long orbital run.}
+The Bowen--York orbital binary ($m_1 = m_2 = 0.5$, $d = 4$) is
+evolved for 300 steps. Both polarizations grow monotonically:
+$h_+$ from $8.7\times 10^{-6}$ to $3.1\times 10^{-4}$, and
+$h_\times$ from $1.8\times 10^{-3}$ to $1.1\times 10^{-2}$. The
+Hamiltonian constraint grows by $1.0682$ and remains bounded. The
+orbit's $5\%$ captured; the Newtonian $f_{\rm GW} = 0.0398$ is
+not resolved by the short window.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
