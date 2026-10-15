@@ -969,3 +969,22 @@ Full inspiral requires longer runs + higher resolution (future).
 - Full orbital period (5% captured)
 - N>=9 (Python too slow)
 - Merger + ringdown
+## v12.2 scope (vectorized BSSN)
+### What v12.2 delivers
+- Fully vectorized BSSN RHS (einsum-based)
+- Vectorized moving puncture RK4 driver
+- 25x speedup at N=11-13
+- N=13 binary BH in 26 seconds
+### Key numbers
+| N | loop (s/RHS) | vec (s/RHS) | speedup |
+|---|---|---|---|
+| 9 | 0.68 | 0.02 | 27x |
+| 11 | 1.73 | 0.07 | 25x |
+| 13 | 4.87 | 0.19 | 26x |
+### What v12.2 does NOT deliver
+- Full orbital period (still Nyquist-limited)
+- Merger / ringdown
+- N>15 (memory)
+### Honest assessment
+Vectorization makes N=13 feasible. Full inspiral and merger
+now possible but still need long runs + boundary handling.

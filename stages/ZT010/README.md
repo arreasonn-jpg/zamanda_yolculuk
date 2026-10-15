@@ -1711,3 +1711,18 @@ Full binary inspiral needs C/Cython acceleration or lower-N.
 | 300 | 1.0682 | 3.1e-4 | 1.1e-2 |
 Both polarizations grow monotonically (orbital, not plunge).
 Constraint bounded (1.0682).
+## v12.2: vectorized BSSN (25x speedup)
+### alpha1: vectorized RHS
+- `src/zt005/bssn_rhs_vec.py`
+- All tensor operations via einsum, no Python point loops
+- Speedup vs loop: N=9: 27x, N=11: 25x, N=13: 26x
+### alpha2: vectorized moving puncture driver
+- `src/zt005/bssn_rk4_mp_vec.py`
+- Tests: 3 checks (Minkowski, puncture, tolerance)
+### alpha3: N=13 binary BH
+- 300 steps in 26 seconds (was hours)
+| step | H/H0 | h+ | hx |
+|---|---|---|---|
+| 50 | 1.0002 | 2.9e-6 | 7.3e-4 |
+| 300 | 1.0086 | 1.0e-4 | 4.4e-3 |
+Constraint bounded, both polarizations grow.

@@ -472,3 +472,12 @@ the open problem of cross-scale bridging.
 - QFT window invariant under BH curvature
 ### Tests
 - 697 fast + 21 slow
+## v12.2.0 (2026-10-15)
+### Added — vectorized BSSN
+- bssn_rhs_vec.py (einsum-based RHS, 25x speedup)
+- bssn_rk4_mp_vec.py (vectorized moving puncture)
+- N=13 binary BH runnable in seconds
+### Key results
+- N=13 binary: H growth 1.0086, h+ = 1.0e-4
+### Tests
+- 692 fast + 21 slow

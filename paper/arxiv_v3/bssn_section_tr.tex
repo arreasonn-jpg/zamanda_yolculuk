@@ -532,6 +532,20 @@ $1.0682$ büyür ve sınırlı kalır. Yörüngenin $\%5$'i yakalanmıştır;
 Newtonyen $f_{\rm GW} = 0.0398$ kısa pencere tarafından
 çözülemez.
 
+\subsection{Vektörel BSSN ve N=13 ikili}
+BSSN sağ-tarafının nokta-nokta Python uygulaması 3B koşular için
+darboğazdır. Tüm tensör daralmalarının \texttt{numpy.einsum} ile
+yapıldığı tamamen vektörel bir sürüm sunuyoruz
+(\texttt{bssn\_rhs\_vec.py}); böylece nokta başına Python döngüsü
+ortadan kalkar. Nokta-nokta sürüme göre hızlanma çözünürlükten
+bağımsızdır: $N=9$'da $27\times$, $N=11$'de $25\times$, $N=13$'te
+$26\times$. Bu, $N=13$ Bowen--York ikilisini saatler yerine saniyeler
+içinde mümkün kılar: 300 adım 26 saniyede tamamlanır; kısıt büyümesi
+$1.0086$, her iki polarizasyon da monoton büyür ($h_+ = 1.0\times
+10^{-4}$, $h_\times = 4.4\times 10^{-3}$). Yörünge periyodu hâlâ
+simüle edilen pencereden uzundur; Newtonyen $f_{\rm GW}$'yi çözmek
+daha uzun koşular gerektirir.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir
