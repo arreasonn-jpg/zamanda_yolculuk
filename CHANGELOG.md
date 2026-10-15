@@ -489,3 +489,9 @@ the open problem of cross-scale bridging.
 - Extends universal invariance to triple sector
 ### Tests
 - 698 fast + 21 slow
+## v12.4.0 (2026-10-15)
+### Added
+- N=15 medium run (1000 steps, 152s)
+- h+ = 2.5e-4, hx = 6.2e-3 (both grow)
+### Tests
+- 698 fast + 21 slow

@@ -999,3 +999,12 @@ Universal invariance extends to triple sector.
 - Full 3D SC+PTUM+BH evolution
 - Backreaction of PTUM on BH metric
 - Realistic observational signatures
+## v12.4 scope (N=15 medium run)
+### What v12.4 delivers
+- N=15 binary evolution, 1000 steps in 152s
+- H growth 1.0268 (bounded)
+- Both GW polarizations grow monotonically
+### What v12.4 does NOT deliver
+- Full orbital period
+- Merger + ringdown
+- Constraint-preserving BC

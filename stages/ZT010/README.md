@@ -1736,3 +1736,10 @@ Constraint bounded, both polarizations grow.
 | PTUM | matter (tachyon) | invariant |
 QFT window A ∈ [1.35, 1.87] unchanged by SC or BH.
 **Universal invariance extended to triple coupling.**
+## v12.4-alpha1: N=15 medium run
+- `scripts/v12_4_n15_medium.py`
+| step | H/H0 | h+ | hx | t(s) |
+|---|---|---|---|---|
+| 200 | 1.0011 | 1.0e-5 | 1.2e-3 | 27 |
+| 1000 | 1.0268 | 2.5e-4 | 6.2e-3 | 152 |
+Both polarizations grow. H bounded.
