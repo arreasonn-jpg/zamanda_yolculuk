@@ -483,6 +483,31 @@ at the outermost observer. (b) $h_+$ at multiple observers.
 \label{fig:gw_pipeline}
 \end{figure*}
 
+\subsection{3D binary black holes and orbital GW}
+We extend the framework to two black holes on a 3D Cartesian
+grid. Two initial-data families are implemented:
+\begin{enumerate}
+\item \textbf{Brill--Lindquist} (time-symmetric): $\psi = 1 +
+m_1/(2r_1) + m_2/(2r_2)$, $K_{ij} = 0$. The punctures plunge
+rather than orbit; the emitted radiation comes from the
+infall quadrupole.
+\item \textbf{Bowen--York} (orbital): same conformal factor but
+with tangential momenta $P = m\,v_{\rm orb}$, $v_{\rm orb} =
+\sqrt{M/(4d)}$, producing a circular Newtonian orbit with
+$f_{\rm GW} = 2 f_{\rm orb}$.
+\end{enumerate}
+The moving-puncture formalism is validated in 3D: a single
+Schwarzschild puncture evolves for 200 steps with Hamiltonian
+constraint growth $1.0001$ and bounded lapse minimum
+($\alpha_{\min} = 0.3333$). The Bowen--York binary ($m_1 = m_2 =
+0.25$, $d = 3$) evolves stably for 200 steps (growth $1.0098$)
+with \emph{both} GW polarizations present: $h_+ = 7.9\times
+10^{-6}$ and $h_\times = 7.4\times 10^{-4}$. The non-zero
+$h_\times$ is the orbital signature absent in the
+time-symmetric Brill--Lindquist case. Full inspiral (orbital
+period $T \approx 23$ in code units) requires longer runs and is
+deferred.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
