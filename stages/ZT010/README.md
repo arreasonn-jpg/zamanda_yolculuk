@@ -1743,3 +1743,12 @@ QFT window A ∈ [1.35, 1.87] unchanged by SC or BH.
 | 200 | 1.0011 | 1.0e-5 | 1.2e-3 | 27 |
 | 1000 | 1.0268 | 2.5e-4 | 6.2e-3 | 152 |
 Both polarizations grow. H bounded.
+## v12.5-alpha1: DHOST skeleton
+- `src/zt005/dhost.py` (6 checks)
+- Beyond-Horndeski terms, GW170817 bound
+- PTUM QFT window invariant
+
+## v12.5-alpha2: teleparallel f(T)
+- `src/zt005/teleparallel.py` (6 checks)
+- TEGR = GR equivalence, f(T) = T + alpha T^2
+- PTUM QFT window invariant

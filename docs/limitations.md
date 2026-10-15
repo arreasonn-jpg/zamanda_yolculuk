@@ -1008,3 +1008,15 @@ Universal invariance extends to triple sector.
 - Full orbital period
 - Merger + ringdown
 - Constraint-preserving BC
+## v12.5 scope (DHOST + teleparallel)
+### What v12.5 delivers
+- DHOST skeleton (beyond-Horndeski terms)
+- Teleparallel f(T) skeleton
+- GW170817 constraint
+### Key results
+- GW speed: |c_GW/c - 1| < 1e-15 (GW170817)
+- PTUM QFT window invariant under DHOST, f(T)
+### What v12.5 does NOT deliver
+- Full DHOST evolution
+- f(T) BSSN implementation
+- Observational predictions beyond GW speed

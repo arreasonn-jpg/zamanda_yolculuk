@@ -495,3 +495,12 @@ the open problem of cross-scale bridging.
 - h+ = 2.5e-4, hx = 6.2e-3 (both grow)
 ### Tests
 - 698 fast + 21 slow
+## v12.5.0 (2026-10-15)
+### Added
+- DHOST skeleton (beyond-Horndeski)
+- Teleparallel f(T) skeleton
+### Key results
+- GW170817 bound integrated
+- QFT window invariant (extended)
+### Tests
+- 715 fast + 21 slow
