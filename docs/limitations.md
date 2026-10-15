@@ -915,3 +915,44 @@ unlike scalar. First physical GW signal (not injected).
 Confirms the general principle: GW requires TT content in
 T_ij, which scalar fields lack. Vector/tensor sources provide
 it. This closes the source-class question from v10.0/v10.1.
+## v11.0 scope (3D binary BH)
+### What v11.0 delivers
+- Moving puncture 3D validated (200 steps, growth 1.0001)
+- Brill-Lindquist binary BH IC module
+- Binary BH evolution stable (100 steps)
+- GW signal h+ = 1.4e-7 (from infall, not orbit)
+### Key results
+| Setup | Steps | H growth | h+ |
+|---|---|---|---|
+| Single MP 3D | 200 | 1.0001 | — |
+| Binary BL | 100 | 1.0001 | 1.4e-7 |
+### What v11.0 does NOT deliver
+- Orbital dynamics (Bowen-York momentum) — v12.0
+- GW frequency matching
+- Realistic inspiral waveform
+- Full merger + ringdown
+### Honest assessment
+Moving puncture works in 3D. Binary BH IC (Brill-Lindquist) is
+time-symmetric: punctures plunge, not orbit. Real waveform
+requires momentum constraint solution (Bowen-York). This is
+the bridge to v12.0.
+## v12.0 scope (Bowen-York orbital binary)
+### What v12.0 delivers
+- Bowen-York IC: two punctures with tangential momenta
+- Orbital binary BH evolution (200 steps)
+- Both GW polarizations present (h+, hx)
+### Key result
+| Metric | Value |
+|---|---|
+| H growth (200 steps) | 1.0098 |
+| h+ max | 7.9e-6 |
+| hx max | 7.4e-4 (orbital signature) |
+### What v12.0 does NOT deliver
+- Full orbital period (only 1.7% captured)
+- GW frequency measurement (Nyquist-limited)
+- Merger + ringdown
+- LIGO-comparable waveform
+### Honest assessment
+Bowen-York IC produces orbital dynamics (hx != 0, absent in
+time-symmetric Brill-Lindquist). Stability bounded over 200 steps.
+Full inspiral requires longer runs + higher resolution (future).

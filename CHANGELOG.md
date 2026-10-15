@@ -441,3 +441,23 @@ the open problem of cross-scale bridging.
 - Confirms TT content requirement for GW
 ### Tests
 - 697 fast + 21 slow
+## v11.0.0 (2026-10-14)
+### Added — 3D binary BH
+- Moving puncture 3D validation
+- Brill-Lindquist binary IC
+- Binary evolution + GW extraction
+### Key results
+- 3D MP: H growth 1.0001 over 200 steps
+- Binary BH: h+ = 1.4e-7 (infall quadrupole)
+### Tests
+- 703+ fast + 21 slow
+## v12.0.0 (2026-10-15)
+### Added — Bowen-York orbital binary
+- bssn_ic_bowen_york.py (tangential momentum IC)
+- Orbital binary BH evolution
+- Both GW polarizations (h+, hx)
+### Key results
+- H growth 1.0098 (200 steps, bounded)
+- h+ = 7.9e-6, hx = 7.4e-4 (orbital)
+### Tests
+- 712+ fast + 21 slow

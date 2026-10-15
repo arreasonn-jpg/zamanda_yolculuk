@@ -1655,3 +1655,24 @@ dh/dt=0 there (physical, not a bug).
 | **Proca (v10.2)** | **4.0e-6** | TT via E_ij anisotropic |
 Magnitude consistent with T ~ E^2 ~ 1e-6, K ~ 4pi*T*dt*steps ~ 6e-6.
 **First nonzero GW signal from a physical (non-injected) field.**
+## v11.0: 3D BH evolution
+### alpha1: moving puncture 3D validation (N=11, 200 steps)
+- `scripts/v11_0_mp_3d_validate.py`
+| step | H growth | Kmax | amin | finite |
+|---|---|---|---|---|
+| 50 | 1.0000 | 2.2e-4 | 0.3333 | True |
+| 200 | 1.0001 | 8.8e-4 | 0.3333 | True |
+### alpha2: Brill-Lindquist binary BH IC
+- `src/zt005/bssn_ic_binary.py` (6 checks)
+- Two punctures (m1=m2=0.5, d=6), time-symmetric
+- f_orbit = (1/2π)√(M/d³), f_GW = 2 f_orbit
+### alpha3: binary BH evolution + GW
+- `scripts/v11_0_binary_bh.py`
+| Metrik | Değer |
+|---|---|
+| H growth (100 steps) | 1.0001 |
+| h+ max | 1.4e-7 |
+| hx | 0 (symmetric) |
+| FFT | Nyquist (örnekleme yetersiz) |
+**Note:** Brill-Lindquist is time-symmetric (infall, not orbit).
+Real orbital dynamics requires Bowen-York momentum (v12.0).
