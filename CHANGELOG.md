@@ -504,3 +504,26 @@ the open problem of cross-scale bridging.
 - QFT window invariant (extended)
 ### Tests
 - 715 fast + 21 slow
+## v12.6.0 (2026-10-15)
+### Added
+- N=17 chunked inspiral (3200 steps)
+- Constraint breakdown detected at H/H0 = 1.63
+### Key finding
+- Yörünge %28 captured before BC failure
+- Sommerfeld BC insufficient for full inspiral
+### Tests
+- 715 fast + 21 slow
+
+## v12.7.0 (2026-10-16)
+
+### Added
+- bssn_bc_improved.py (sponge + multi-layer Sommerfeld, 8 checks)
+- Z4c damping in bssn_rhs_vec.py
+- bssn_rk4_mp_vec_z4c.py driver
+
+### Key finding (negative)
+Boundary constraint damping has no effect on N=17 inspiral.
+H growth 2.71 (damped) vs 2.71 (undamped). Puncture under-resolution is limiting factor.
+
+### Tests
+- 725 fast + 21 slow

@@ -1020,3 +1020,45 @@ Universal invariance extends to triple sector.
 - Full DHOST evolution
 - f(T) BSSN implementation
 - Observational predictions beyond GW speed
+## v12.6 scope (N=17 inspiral — constraint breakdown)
+### What v12.6 delivers
+- N=17 chunked run (3200 steps, ~10 min CPU)
+- Yörünge periyodunun %28'i (T=23, t=6.4)
+- Constraint breakdown detected
+### Key finding
+| Chunk | Step | H/H0 | h+ |
+|---|---|---|---|
+| 1 | 800 | 1.09 | 5.8e-4 |
+| 2 | 1600 | 1.19 | 2.1e-3 |
+| 3 | 2400 | 1.28 | 4.2e-3 |
+| 4 | 3200 | 1.63 | 7.2e-3 |
+**H growth accelerates past 1.5** → Sommerfeld outflow BC
+insufficient for long inspiral. Wave reflection at boundaries
+accumulates constraint violation.
+### What v12.6 does NOT deliver
+- Full orbital period (stopped at 28%)
+- Merger / ringdown
+- Constraint-preserving BC
+### Honest assessment
+The constraint breakdown is a **physics result**, not a bug:
+Sommerfeld BC is first-order; long inspiral needs
+constraint-preserving boundaries (e.g., Friedrich-Nagy, Kreiss-
+Winicour). This is a well-known limitation of simple NR setups.
+
+## v12.7 scope (negative result: boundary damping ineffective)
+
+### What v12.7 delivers
+- Sponge + multi-layer Sommerfeld BC module (8 checks)
+- Z4c-style constraint damping in vectorized RHS
+- Systematic test: kappa in [0.02, 0.5], sponge in [3,5]
+
+### Key finding
+Damping has NO measurable effect on H growth. At t=6.4, outgoing radiation has not yet reached the boundary (L/2=10). Constraint violation accumulates in the puncture region, where N=17 gives ~1.25 grid cells per unit mass.
+
+### What v12.7 does NOT deliver
+- Constraint control (needs AMR / N>=32)
+- Full inspiral
+- Merger / ringdown
+
+### Honest assessment
+Boundary damping is the wrong tool. Next: mesh refinement near punctures.

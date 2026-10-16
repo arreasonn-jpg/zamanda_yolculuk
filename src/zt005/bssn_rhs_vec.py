@@ -42,7 +42,7 @@ def _grad_tensor3(G, h):
                 dG[..., k, i, j, 2] = dz
     return dG
 
-def bssn_rhs_vec(phi, gt, K, At, alpha, h):
+def bssn_rhs_vec(phi, gt, K, At, alpha, h, sponge=None, kappa=0.0):
     """Vectorized BSSN RHS (alpha=1, beta=0)."""
     dphi = _grad(phi, h)
     Hphi = _hess(phi, h)
@@ -79,6 +79,10 @@ def bssn_rhs_vec(phi, gt, K, At, alpha, h):
         - np.einsum('...ij,...kij,...k->...', gtinv, G, dalpha)
     )
     dK_t = -DDalpha + alpha * (A2_scalar + K**2 / 3.0)
+    if sponge is not None and kappa != 0.0:
+        R_scalar = np.einsum('...ij,...ij->...', gtinv, R_ij)
+        H_const = R_scalar + K**2 - A2_scalar
+        dK_t = dK_t - kappa * alpha * sponge * H_const
 
     # dphi
     dphi_t = -alpha * K / 6.0

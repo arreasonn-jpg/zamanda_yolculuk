@@ -1752,3 +1752,19 @@ Both polarizations grow. H bounded.
 - `src/zt005/teleparallel.py` (6 checks)
 - TEGR = GR equivalence, f(T) = T + alpha T^2
 - PTUM QFT window invariant
+
+## v12.7: constraint damping attempts (negative result)
+
+- `src/zt005/bssn_bc_improved.py` (8 checks) - sponge + multi-layer Sommerfeld
+- `src/zt005/bssn_rhs_vec.py` patched: Z4c-style damping (sponge, kappa)
+- `src/zt005/bssn_rk4_mp_vec_z4c.py` - driver with damping
+
+### Result (N=17, 3200 steps)
+
+| Config | kappa | width | H/H0 @ 3200 |
+|--------|-------|-------|-------------|
+| no damping | 0.0 | - | 2.7092 |
+| soft | 0.02 | 3 | 2.7137 |
+| strong | 0.5 | 5 | no effect @ 300 |
+
+**No measurable effect.** Wave has not reached boundary (t=6.4 < L/2=10). H growth is interior (puncture under-resolution), not boundary-driven.

@@ -578,6 +578,10 @@ analog. $\alpha = 0$ recovers GR identically.
 In both cases the PTUM QFT-OK window $A_{\rm fuel} \in [1.35,
 1.87]$ is unchanged (matter-sector threshold).
 
+\subsection{Negative result: boundary damping is not limiting}
+
+We attempted to suppress the constraint growth in the $N=17$ Bowen--York binary by adding Z4c-style constraint damping $\dot K \to \dot K - \kappa\,\alpha\,S(\mathbf{x})\,H$, with sponge profile $S$ (width 3--5 cells) and $\kappa \in [0.02,\,0.5]$. The Hamiltonian constraint growth was unchanged (H/H$_0 = 2.7092$ undamped, $2.7137$ damped at step 3200). The reason is kinematic: at $t = 6.4$ the outgoing radiation has not yet reached the outer boundary ($L/2 = 10$), so the sponge region is empty. The constraint violation accumulates in the strong-field region near each puncture, where $N=17$ provides only $\sim 1.25$ grid cells per unit mass. Boundary damping is not the limiting factor for these runs; mesh refinement or $N \ge 32$ is required.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
