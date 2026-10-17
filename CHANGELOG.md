@@ -555,3 +555,16 @@ H growth 2.71 (damped) vs 2.71 (undamped). Puncture under-resolution is limiting
 
 ### Tests
 - 731 fast + 21 slow
+
+## v12.10.0 (2026-10-17)
+
+### Added
+- scripts/v12_10_amr_flex.py (configurable AMR)
+
+### Key findings
+- Subcycling neutral at 2x (same H_f/H0 = 1.0166)
+- 4x + no subcycle fails (CFL violation)
+- BC injection is the limiting factor
+
+### Tests
+- 731 fast + 21 slow

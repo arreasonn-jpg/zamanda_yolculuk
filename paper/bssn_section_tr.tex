@@ -588,6 +588,10 @@ Vektörel BSSN sağ-tarafı, $\phi$, $\tilde\gamma_{ij}$, $K$, $\tilde A_{ij}$ v
 
 Puncture'ları inceltilmiş bir alt-ağda çözmenin Hamilton kısıtı büyümesini azaltıp azaltmadığını test etmek için iki-ağlı bir AMR şeması uyguluyoruz. Kaba ağ ($N=17$, $L=20$, $h=1.25$) tüm bölgeyi kapsar; ince ağ ($N=17$, $L=10$, $h=0.625$, inceltme çarpanı 2) her iki puncture'ı içeren merkezi bölgeyi kapsar. Her adımda: (i) kaba ağ bir RK4 adımı evrimleşir; (ii) merkezi $9^3$ alt-bölge trilinear interpolasyon ile ince ağa uzatılır; (iii) uzatılmış kaba sınır değerleri ince ağın en dıştaki 4 katmanına enjekte edilir; (iv) ince ağ bir RK4 adımı evrimleşir. Her iki ağ da vektörel Z4c sürücüsünü kullanır. 1000. adımda kaba alt-bölge kısıtı başlangıç değerinin $1.1254$ katına büyürken, ince ağ yalnızca $1.0756$ seviyesindedir -- \emph{\%33 azalma}. İyileşme adım sayısıyla monoton olarak artar (200. adımda $2.0\times$, 600. adımda $2.1\times$, 1000. adımda göreli fazlalıkta $1.33\times$). Bu, bir konsept kanıtı olarak sabit yama AMR'nin kısıt ihlalini azalttığını gösterir. Üretim koşuları 4x--8x inceltme, zamansal alt-döngü ve ince-kabadan kısıtlama gerektirir; bunların tümü bu çerçevenin doğrudan uzantılarıdır.
 
+\subsection{AMR parametre taraması: alt-döngü ve inceltme derinliği}
+
+v12.9'un üzerine, alt-döngünün (ince ağ kaba adım başına $n$ adım atar) veya daha yüksek inceltmenin (4x) kısıt kontrolünü iyileştirip iyileştirmediğini test ediyoruz. 2x inceltmede, $n=2$ alt-döngü $n=1$ ile \emph{birebir aynı} sonuçları verir (500. adımda $H_f/H_0 = 1.0166$): ince iç bölge 2x'te zaten iyi çözülmüştür ve kısıtlayıcı etken kaba-ince sınır enjeksiyonudur. Alt-döngüsüz 4x inceltmede ince ağ CFL'i ihlal eder ($dt_f/h_f = 6.4\times 10^{-3}$) ve kısıt kaba temel çizgiden daha hızlı büyür ($H_f/H_0 = 1.14$). Ne alt-döngü ne de daha derin inceltme kaldıraçtır; 2x kısıt-azaltma platosunun ötesine geçmek için daha yüksek mertebe uzatma veya hareketli-yama AMR gereklidir.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir

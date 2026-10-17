@@ -1097,3 +1097,20 @@ All ingredients except AMR are now correct. AMR (v12.9+) is the required next st
 
 ### Honest assessment
 Fixed-patch AMR works as proof of concept. 2x refinement gives 33% constraint reduction. Production requires: (a) 4x-8x refinement (b) sub-cycling (c) restriction. This is now the clear path to full inspiral.
+
+## v12.10 scope (subcycling + refinement scan)
+
+### What v12.10 delivers
+- Configurable AMR driver (factor 2/4, subcycle 1/2/4)
+- Systematic scan: 2x sc=2 (neutral), 4x sc=1 (CFL fail)
+
+### Key finding
+Subcycling does NOT improve constraint control at 2x. BC injection is the limiting factor. Higher refinement without subcycling fails (CFL).
+
+### What v12.10 does NOT deliver
+- Tested 4x + subcycle=4 (correct CFL)
+- Proper restriction feedback
+- Production AMR
+
+### Honest assessment
+2x AMR works (v12.9). Subcycling and refinement factor are not the lever. Fixing BC injection (higher-order prolongation, moving patch) is the next real step, not deeper refinement.

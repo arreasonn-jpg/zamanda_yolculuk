@@ -1814,3 +1814,19 @@ Higher resolution reveals stronger constraint source; low-N smears puncture, hid
 | 1000 | 1.1254 | 1.0756 | **33% reduction** |
 
 AMR reduces constraint growth by 33% with 2x refinement. Proof of concept works.
+
+## v12.10: subcycling + higher refinement (mixed result)
+
+- `scripts/v12_10_amr_flex.py`: configurable factor + subcycle
+
+### Result (500 steps, H_fine/H0)
+
+| Config | h_f | dt_f/h_f | H_f/H0 | Verdict |
+|--------|-----|----------|--------|---------|
+| 2x sc=1 (v12.9) | 0.625 | 3.2e-3 | 1.0166 | baseline |
+| 2x sc=2 | 0.625 | 1.6e-3 | 1.0166 | **subcycling neutral** |
+| 4x sc=1 | 0.3125 | 6.4e-3 | 1.1418 | **CFL violation** |
+| 4x sc=4 | 0.3125 | 1.6e-3 | untested | (same dt_f/h_f as sc=2) |
+
+### Key finding
+Subcycling is neutral at 2x: same result as v12.9. The coarse-to-fine BC injection is the limiting factor, not the fine interior. Higher refinement without CFL-correct subcycling fails outright.

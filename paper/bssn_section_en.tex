@@ -590,6 +590,10 @@ The vectorized BSSN RHS is extended with the full shift advection terms for $\ph
 
 We implement a two-grid AMR scheme to test whether resolving the punctures on a refined sub-grid reduces the Hamiltonian constraint growth. The coarse grid ($N=17$, $L=20$, $h=1.25$) covers the full domain; a fine grid ($N=17$, $L=10$, $h=0.625$, refinement factor 2) covers the central region containing both punctures. Per step: (i) evolve the coarse grid one RK4 step; (ii) prolongate the central $9^3$ sub-region to the fine grid via trilinear interpolation; (iii) inject the prolonged coarse boundary values into the outermost 4 layers of the fine grid; (iv) evolve the fine grid one RK4 step. Both grids use the vectorized Z4c driver. At step 1000, the coarse sub-region constraint has grown to $1.1254$ times its initial value, while the fine grid is only at $1.0756$ -- a \emph{33\% reduction}. The improvement grows monotonically with step count (2.0$\times$ at step 200, 2.1$\times$ at step 600, 1.33$\times$ at step 1000 in relative excess). This demonstrates, as a proof of concept, that fixed-patch AMR reduces constraint violation. Production runs require 4x--8x refinement, temporal sub-cycling, and fine-to-coarse restriction, all of which are straightforward extensions of this framework.
 
+\subsection{AMR parameter scan: subcycling and refinement depth}
+
+Building on v12.9, we test whether sub-cycling (fine grid takes $n$ steps per coarse step) or higher refinement (4x) improves constraint control. At 2x refinement, sub-cycling with $n=2$ gives \emph{identical} results to $n=1$ ($H_f/H_0 = 1.0166$ at step 500): the fine interior is already well-resolved at 2x, and the limiting factor is the coarse-to-fine boundary injection. At 4x refinement without sub-cycling, the fine grid violates CFL ($dt_f/h_f = 6.4\times 10^{-3}$) and the constraint grows faster than the coarse baseline ($H_f/H_0 = 1.14$). Neither sub-cycling nor deeper refinement is the lever; higher-order prolongation or moving-patch AMR is needed to push past the 2x constraint-reduction plateau.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
