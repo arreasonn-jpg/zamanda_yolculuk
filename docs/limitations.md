@@ -1062,3 +1062,22 @@ Damping has NO measurable effect on H growth. At t=6.4, outgoing radiation has n
 
 ### Honest assessment
 Boundary damping is the wrong tool. Next: mesh refinement near punctures.
+
+## v12.8 scope (BSSN shift + resolution limit)
+
+### What v12.8 delivers
+- Full BSSN shift advection in vectorized RHS
+- Shift properly coupled to metric (waveforms change with eta)
+- Systematic eta scan (1.0, 4.0)
+- Clear diagnosis: puncture under-resolution is the limit
+
+### Key finding
+Shift integration works (h+ differs 10% between eta=1, eta=4) but does NOT reduce H growth. The constraint breakdown is resolution-limited: at N=17, puncture has ~1 grid cell (M=1, h=1.25). Increasing resolution (N=24) makes it worse (constraint source sharper), confirming low-N was hiding the problem.
+
+### What v12.8 does NOT deliver
+- Constraint control (requires AMR)
+- Full inspiral
+- Merger / ringdown
+
+### Honest assessment
+All ingredients except AMR are now correct. AMR (v12.9+) is the required next step for production binary BH.

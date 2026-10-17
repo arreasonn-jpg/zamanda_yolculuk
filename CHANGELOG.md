@@ -527,3 +527,18 @@ H growth 2.71 (damped) vs 2.71 (undamped). Puncture under-resolution is limiting
 
 ### Tests
 - 725 fast + 21 slow
+
+## v12.8.0 (2026-10-17)
+
+### Added
+- Full BSSN shift advection in bssn_rhs_vec.py
+- Shift coupled into metric evolution via rk4_step_mp_vec_z4c
+
+### Key findings
+- Shift integration works (waveforms change with eta)
+- Constraint control NOT provided by shift
+- Resolution-limited (N=17: ~1 cell per puncture)
+- AMR is the required next step
+
+### Tests
+- 727 fast + 21 slow

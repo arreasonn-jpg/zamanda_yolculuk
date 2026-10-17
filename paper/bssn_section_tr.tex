@@ -580,6 +580,10 @@ Her iki durumda PTUM QFT-OK penceresi $A_{\rm fuel} \in [1.35,
 
 $N=17$ Bowen--York ikilisindeki kısıt büyümesini Z4c tarzı sönümlemeyle bastırmayı denedik: $\dot K \to \dot K - \kappa\,\alpha\,S(\mathbf{x})\,H$; burada $S$ sünger profili (3--5 hücre genişliği) ve $\kappa \in [0.02,\,0.5]$. Hamilton kısıtı büyümesi değişmedi (3200. adımda sönümsüz $H/H_0 = 2.7092$, sönümlü $2.7137$). Sebep kinematiktir: $t = 6.4$ anında dışa giden ışıma henüz dış sınıra ulaşmamıştır ($L/2 = 10$), bu nedenle sünger bölgesi boştur. Kısıt ihlali her puncture yakınındaki güçlü-alan bölgesinde birikir; burada $N=17$ birim kütle başına yalnızca $\sim 1.25$ ağ hücresi sağlar. Sınır sönümlemesi bu koşular için kısıtlayıcı etken değildir; ağ iyileştirmesi veya $N \ge 32$ gereklidir.
 
+\subsection{Shift entegrasyonu ve çözünürlük limiti}
+
+Vektörel BSSN sağ-tarafı, $\phi$, $\tilde\gamma_{ij}$, $K$, $\tilde A_{ij}$ ve $\tilde\Gamma^i$ için tam shift adveksiyon terimleriyle genişletilmiştir. Shift artık metrik evrimine geri beslenmektedir; dalga formları shift-sürücü parametresi $\eta$'ya bağlıdır (1600. adımda $\eta=1$ için $h_+ = 1.76 \times 10^{-3}$, $\eta=4$ için $1.97\times 10^{-3}$). Ancak 1600. adımda Hamilton kısıtı büyümesi tüm konfigürasyonlarda esasen değişmez (shift'siz 1.30; $\eta=1$ ile 1.31; $\eta=4$ ile 1.30). Çözünürlüğü $N=17$'den $N=24$'e çıkarmak (ağ aralığını yarıya indirmek) erken kısıt büyümesini \emph{kötüleştirir} ($H/H_0$ 400. adımda $1.09$ vs $1.02$), iyileştirmez: puncture tüm durumlarda yetersiz çözülmüştür ($N=17$'de birim kütle başına $\sim 1$ ağ hücresi) ve düşük çözünürlük puncture'ı yalnızca bulanıklaştırarak kısıt kaynağını yapay olarak bastırır. Puncture'ları çözerken dalga bölgesini seyrek tutmak için uyarlamalı ağ iyileştirmesi (AMR) gereklidir.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir

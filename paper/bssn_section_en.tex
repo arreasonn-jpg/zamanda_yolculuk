@@ -582,6 +582,10 @@ In both cases the PTUM QFT-OK window $A_{\rm fuel} \in [1.35,
 
 We attempted to suppress the constraint growth in the $N=17$ Bowen--York binary by adding Z4c-style constraint damping $\dot K \to \dot K - \kappa\,\alpha\,S(\mathbf{x})\,H$, with sponge profile $S$ (width 3--5 cells) and $\kappa \in [0.02,\,0.5]$. The Hamiltonian constraint growth was unchanged (H/H$_0 = 2.7092$ undamped, $2.7137$ damped at step 3200). The reason is kinematic: at $t = 6.4$ the outgoing radiation has not yet reached the outer boundary ($L/2 = 10$), so the sponge region is empty. The constraint violation accumulates in the strong-field region near each puncture, where $N=17$ provides only $\sim 1.25$ grid cells per unit mass. Boundary damping is not the limiting factor for these runs; mesh refinement or $N \ge 32$ is required.
 
+\subsection{Shift integration and resolution limit}
+
+The vectorized BSSN RHS is extended with the full shift advection terms for $\phi$, $\tilde\gamma_{ij}$, $K$, $\tilde A_{ij}$, and $\tilde\Gamma^i$. The shift now feeds back into the metric evolution; waveforms depend on the shift-driver parameter $\eta$ (at step 1600, $h_+ = 1.76 \times 10^{-3}$ for $\eta=1$ vs $1.97\times 10^{-3}$ for $\eta=4$). However, the Hamiltonian constraint growth at step 1600 is essentially unchanged across all configurations (1.30 without shift; 1.31 with $\eta=1$; 1.30 with $\eta=4$). Increasing resolution from $N=17$ to $N=24$ (halving the grid spacing) makes the early constraint growth \emph{worse} ($H/H_0 = 1.09$ at step 400 vs $1.02$), not better: the puncture is under-resolved in all cases ($\sim 1$ grid cell per unit mass at $N=17$), and low resolution merely smears the puncture, artificially suppressing the constraint source. Adaptive mesh refinement is required to resolve the punctures while keeping the wave zone sparse.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

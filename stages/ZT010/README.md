@@ -1768,3 +1768,29 @@ Both polarizations grow. H bounded.
 | strong | 0.5 | 5 | no effect @ 300 |
 
 **No measurable effect.** Wave has not reached boundary (t=6.4 < L/2=10). H growth is interior (puncture under-resolution), not boundary-driven.
+
+## v12.8: BSSN shift integration + resolution-limited breakdown
+
+- `src/zt005/bssn_rhs_vec.py`: added shift advection (5 equations)
+- `src/zt005/bssn_rk4_mp_vec_z4c.py`: shift feeds back into metric via RHS
+- Tests: 2 passed (regression safe, beta=0 unchanged)
+
+### eta scan (N=17, 1600 steps, shift now connected)
+
+| eta | H/H0 @1600 | h+ @1600 |
+|-----|------------|----------|
+| no shift (v12.6) | 1.2994 | 2.11e-3 |
+| 1.0 | 1.3125 | 1.76e-3 |
+| 4.0 | 1.3043 | 1.97e-3 |
+
+Shift changes waveforms (proves integration) but does NOT control constraint.
+
+### Root cause: puncture under-resolution
+
+| N | h | H/H0 @1600 | Puncture cells |
+|---|-----|-----------|----------------|
+| 17 | 1.25 | 1.30 | ~1 |
+| 24 (L=15) | 0.65 | 1.09 @400 (worse) | ~2 |
+| 32 | 0.645 | untested (2h CPU) | ~2 |
+
+Higher resolution reveals stronger constraint source; low-N smears puncture, hiding it. Resolution is the actual limit. Fix: AMR (v12.9+).

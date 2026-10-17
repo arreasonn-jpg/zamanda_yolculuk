@@ -5,12 +5,12 @@ from .bssn_state_mp import BSSNStateMP
 from .bssn_rhs_vec import bssn_rhs_vec
 from .bssn_bc_improved import sponge_3d
 
-def _rhs(s, h, sponge, kappa):
+def _rhs(s, h, sponge, kappa, eta=1.0):
     r = bssn_rhs_vec(s.phi, s.gtilde, s.K, s.Atilde, s.alpha, h,
-                     sponge=sponge, kappa=kappa)
+                     sponge=sponge, kappa=kappa, beta=s.beta, Gamma=s.Gamma)
     r["dalpha"] = -2.0 * s.alpha * s.K
     r["dbeta"]  = 0.75 * s.B
-    r["dB"]     = r["dGamma"] - s.B
+    r["dB"]     = r["dGamma"] - eta * s.B
     return r
 
 def _add(s, k, sc):
@@ -22,13 +22,13 @@ def _add(s, k, sc):
         beta=s.beta + sc*k["dbeta"],
         B=s.B + sc*k["dB"])
 
-def rk4_step_mp_vec_z4c(state, h, dt, width_cells=3, kappa=0.02):
+def rk4_step_mp_vec_z4c(state, h, dt, width_cells=3, kappa=0.02, eta=1.0):
     N = state.phi.shape[0]
     sponge = sponge_3d(N, width_cells)
-    k1 = _rhs(state, h, sponge, kappa)
-    k2 = _rhs(_add(state, k1, 0.5*dt), h, sponge, kappa)
-    k3 = _rhs(_add(state, k2, 0.5*dt), h, sponge, kappa)
-    k4 = _rhs(_add(state, k3, dt), h, sponge, kappa)
+    k1 = _rhs(state, h, sponge, kappa, eta)
+    k2 = _rhs(_add(state, k1, 0.5*dt), h, sponge, kappa, eta)
+    k3 = _rhs(_add(state, k2, 0.5*dt), h, sponge, kappa, eta)
+    k4 = _rhs(_add(state, k3, dt), h, sponge, kappa, eta)
     return BSSNStateMP(
         phi=state.phi + (dt/6)*(k1["dphi"]+2*k2["dphi"]+2*k3["dphi"]+k4["dphi"]),
         gtilde=state.gtilde + (dt/6)*(k1["dgt"]+2*k2["dgt"]+2*k3["dgt"]+k4["dgt"]),

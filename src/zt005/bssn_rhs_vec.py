@@ -42,7 +42,7 @@ def _grad_tensor3(G, h):
                 dG[..., k, i, j, 2] = dz
     return dG
 
-def bssn_rhs_vec(phi, gt, K, At, alpha, h, sponge=None, kappa=0.0):
+def bssn_rhs_vec(phi, gt, K, At, alpha, h, sponge=None, kappa=0.0, beta=None, Gamma=None):
     """Vectorized BSSN RHS (alpha=1, beta=0)."""
     dphi = _grad(phi, h)
     Hphi = _hess(phi, h)
@@ -111,6 +111,30 @@ def bssn_rhs_vec(phi, gt, K, At, alpha, h, sponge=None, kappa=0.0):
     tb = -(2.0/3.0) * np.einsum('...ij,...j->...i', gtinv, dK)
     tc = 6.0 * np.einsum('...ij,...j->...i', At_up, dphi)
     dG_t = t1 + 2.0 * alpha[..., None] * (ta + tb + tc)
+
+    # --- Shift advection terms (BSSN shift, v12.8) ---
+    if beta is not None and Gamma is not None:
+        dAt = _grad_tensor(At, h)
+        dbeta = _grad(beta, h)  # dbeta[...,i,k] = d_k beta^i
+        dGam = np.zeros(beta.shape + (3,))
+        for i in range(3):
+            dGam[..., i, :] = _grad(Gamma[..., i], h)
+        tr_dbeta = np.trace(dbeta, axis1=-2, axis2=-1)
+        dphi_t = dphi_t + np.einsum('...k,...k->...', beta, dphi)
+        dK_t = dK_t + np.einsum('...k,...k->...', beta, dK)
+        dgt_t = (dgt_t
+                 + np.einsum('...ijk,...k->...ij', dgt, beta)
+                 + np.einsum('...ik,...kj->...ij', gt, dbeta)
+                 + np.einsum('...kj,...ki->...ij', gt, dbeta))
+        dAt_t = (dAt_t
+                 + np.einsum('...ijk,...k->...ij', dAt, beta)
+                 + np.einsum('...ik,...kj->...ij', At, dbeta)
+                 + np.einsum('...kj,...ki->...ij', At, dbeta)
+                 - (2.0/3.0) * tr_dbeta[..., None, None] * At)
+        dG_t = (dG_t
+                + np.einsum('...ik,...k->...i', dGam, beta)
+                - np.einsum('...j,...ij->...i', Gamma, dbeta)
+                + (2.0/3.0) * tr_dbeta[..., None] * Gamma)
 
     return {"dphi": dphi_t, "dgt": dgt_t, "dK": dK_t,
             "dAt": dAt_t, "dGamma": dG_t}
