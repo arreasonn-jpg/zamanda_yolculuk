@@ -1126,3 +1126,18 @@ Cubic is 0.25% worse than trilinear (1.0191 vs 1.0166). Not a lever.
 
 ### Honest assessment
 Interpolation order doesn't control AMR constraint growth. The BC injection physics (prolonged values don't satisfy fine constraint) is the limit. Next: constraint-consistent prolongation or moving-patch AMR (which physically tracks punctures).
+
+## v12.12 scope (AMR long run)
+
+### What v12.12 delivers
+- 2000-step 2x AMR, stable
+- BH tracking module (grid-quantized at N=17)
+- Time-evolution of AMR advantage: 54% -> 8%
+
+### Key finding
+Fixed-patch 2x AMR provides reducing constraint control over time. At step 2000, advantage shrinks to 8%. BC injection physics is the long-term limit.
+
+### What v12.12 does NOT deliver
+- Sub-grid BH tracking
+- Moving patch (BHs still inside fixed patch)
+- Constraint-consistent prolongation

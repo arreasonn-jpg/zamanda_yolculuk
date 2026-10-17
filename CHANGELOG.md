@@ -580,3 +580,17 @@ Cubic prolongation 0.25% worse than trilinear at 2x AMR. Interpolation order is 
 
 ### Tests
 - 732 fast + 21 slow
+
+## v12.12.0 (2026-10-17)
+
+### Added
+- amr_bh_track.py (BH center tracking)
+- v12_12_amr_track.py (2000-step 2x AMR)
+
+### Key findings
+- AMR advantage decays: 54% (step 500) -> 8% (step 2000)
+- BH tracking grid-quantized at N=17
+- 2000 steps stable; runtime 2x by end
+
+### Tests
+- 733 fast + 21 slow

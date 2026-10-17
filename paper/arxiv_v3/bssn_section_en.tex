@@ -598,6 +598,10 @@ Building on v12.9, we test whether sub-cycling (fine grid takes $n$ steps per co
 
 We replace trilinear with cubic Lagrange prolongation in the AMR pipeline. Cubic is exact for quadratics (verified analytically; 7 tests pass). At $2\times$ refinement (coarse $N=17$, $L=20$; fine $N=17$, $L=10$), cubic is marginally \emph{worse} than trilinear: $H_f/H_0 = 1.0191$ vs $1.0166$ at step 500. The difference is 0.25\% and within noise. We interpret this as boundary-clamped stencil oscillations: cubic 4-point stencils near the coarse sub-region edges introduce high-frequency noise, which the fine grid amplifies slightly. The constraint growth is set by the coarse-to-fine BC physics (prolonged values do not satisfy the fine Hamiltonian constraint), not by interpolation order. Constraint-consistent prolongation or moving-patch AMR is the required next step.
 
+\subsection{AMR long run: advantage decays over time}
+
+We extend the $2\times$ fixed-patch AMR run to 2000 steps and track black-hole positions via $|\tilde A_{ij}|^2$ peaks. The configuration remains stable (no NaN) throughout. The BH pair remains within the fixed patch ($\pm 2.5$ at grid resolution $h=1.25$). Crucially, the AMR advantage \emph{decays} over time: at step 500 the fine grid constraint is $54\%$ below coarse, at step 1000 it is $40\%$, at step 1500 it is $24\%$, and at step 2000 it is only $8\%$ ($H_f/H_0 = 1.383$ vs $1.417$). The runtime also stiffens: the last 1000 steps take about twice as long as the first 1000. Two conclusions follow. First, fixed-patch AMR buys time but not steady-state constraint control. Second, the limiting factor is the coarse-to-fine boundary injection physics, not the patch geometry. Moving-patch AMR is not yet required (BHs stay inside), but constraint-consistent prolongation or a finer fine-level resolution is.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

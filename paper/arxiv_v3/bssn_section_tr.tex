@@ -596,6 +596,10 @@ v12.9'un üzerine, alt-döngünün (ince ağ kaba adım başına $n$ adım atar)
 
 AMR boru hattında trilineer uzatmayı kübik Lagrange ile değiştiriyoruz. Kübik, kuadratikler için tamdır (analitik olarak doğrulanmış; 7 test geçer). $2\times$ inceltmede (kaba $N=17$, $L=20$; ince $N=17$, $L=10$), kübik trilineerden marjinal olarak \emph{daha kötüdür}: 500. adımda $H_f/H_0 = 1.0191$ vs $1.0166$. Fark \%0.25 olup gürültü içindedir. Bunu sınır-kenetli şablon salınımları olarak yorumluyoruz: kaba alt-bölge kenarlarına yakın kübik 4-noktalı şablonlar yüksek-frekanslı gürültü üretir; ince ağ bunu hafifçe yükseltir. Kısıt büyümesi, interpolasyon mertebesiyle değil, kaba-ince BC fiziğiyle (uzatılmış değerler ince Hamilton kısıtını sağlamaz) belirlenir. Kısıt-tutarlı uzatma veya hareketli-yama AMR gerekli sonraki adımdır.
 
+\subsection{AMR uzun koşu: avantaj zamanla azalır}
+
+$2\times$ sabit yama AMR koşusunu 2000 adıma uzatıyor ve karadelik konumlarını $|\tilde A_{ij}|^2$ tepeleri üzerinden izliyoruz. Yapılandırma boyunca stabil kalır (NaN yok). BH çifti sabit yama içinde kalır (ağ çözünürlüğü $h=1.25$'te $\pm 2.5$). Kritik olarak AMR avantajı zamanla \emph{azalır}: 500. adımda ince ağ kısıtı kabadan \%54 düşükken, 1000. adımda \%40, 1500. adımda \%24 ve 2000. adımda yalnızca \%8'dir ($H_f/H_0 = 1.383$ vs $1.417$). Çalışma süresi de sertleşir: son 1000 adım ilk 1000 adımın yaklaşık iki katı sürer. İki sonuç çıkar. Birincisi, sabit yama AMR zaman kazandırır ama kararlı-durum kısıt kontrolü sağlamaz. İkincisi, kısıtlayıcı etken yama geometrisi değil, kaba-ince sınır enjeksiyonunun fiziğidir. Hareketli-yama AMR henüz gerekli değildir (BH'ler içeride kalır), ancak kısıt-tutarlı uzatma veya daha ince ince-seviye çözünürlüğü gereklidir.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir

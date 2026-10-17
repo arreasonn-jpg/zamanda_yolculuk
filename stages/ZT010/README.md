@@ -1844,3 +1844,27 @@ Subcycling is neutral at 2x: same result as v12.9. The coarse-to-fine BC injecti
 | Cubic (v12.11) | 1.0191 |
 
 Cubic is 0.25% worse, not better. Boundary-clamped stencils produce small oscillations that add noise at fine boundary. Interpolation order is NOT the lever. Constraint-consistent prolongation or moving patch is needed.
+
+## v12.12: AMR long run (2000 steps) + BH tracking
+
+- `src/zt005/amr_bh_track.py`: Atilde-magnitude BH center tracking
+- `scripts/v12_12_amr_track.py`: 2x AMR 2000-step + tracking
+
+### Result (2x, 2000 steps)
+
+| step | H_c/H0 | H_f/H0 | Reduction |
+|------|--------|--------|-----------|
+| 500 | 1.0362 | 1.0166 | 54% |
+| 1000 | 1.1254 | 1.0756 | 40% |
+| 1500 | 1.2494 | 1.1906 | 24% |
+| 2000 | 1.4172 | 1.3830 | 8% |
+
+### Key findings
+1. **AMR advantage decays over time**: 54% (step 500) -> 8% (step 2000). Fixed-patch AMR buys time but not steady-state control.
+2. **BH tracking is grid-quantized** at N=17 (sep snaps 2.5 <-> 5.0). Not physics.
+3. **Run 2x slower at end**: constraint growth stiffens RK4.
+
+### What v12.12 does NOT deliver
+- Sub-grid BH tracking
+- Moving patch (not needed yet - BHs stay inside ±5)
+- Steady-state AMR advantage (needs constraint-consistent prolongation)
