@@ -1794,3 +1794,23 @@ Shift changes waveforms (proves integration) but does NOT control constraint.
 | 32 | 0.645 | untested (2h CPU) | ~2 |
 
 Higher resolution reveals stronger constraint source; low-N smears puncture, hiding it. Resolution is the actual limit. Fix: AMR (v12.9+).
+
+## v12.9: fixed-patch AMR (proof of concept, positive)
+
+- `src/zt005/amr_interp.py`: trilinear prolongation + injection (6 checks)
+- `scripts/v12_9_amr_test.py`: two-grid lockstep (coarse N=17 + fine N=17, L=10)
+
+### Method
+- Coarse: N=17, L=20, h=1.25
+- Fine:   N=17, L=10, h=0.625 (refinement 2x)
+- Per step: coarse RK4 -> prolongate center 9^3 -> inject into fine boundary -> fine RK4
+
+### Result (1000 steps)
+
+| step | H_coarse_sub | H_fine | ratio |
+|------|--------------|--------|-------|
+| 200 | 1.0061 | 1.0030 | 1.50x better |
+| 600 | 1.0508 | 1.0240 | 2.10x better |
+| 1000 | 1.1254 | 1.0756 | **33% reduction** |
+
+AMR reduces constraint growth by 33% with 2x refinement. Proof of concept works.

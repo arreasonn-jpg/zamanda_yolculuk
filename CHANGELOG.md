@@ -542,3 +542,16 @@ H growth 2.71 (damped) vs 2.71 (undamped). Puncture under-resolution is limiting
 
 ### Tests
 - 727 fast + 21 slow
+
+## v12.9.0 (2026-10-17)
+
+### Added
+- src/zt005/amr_interp.py (prolongation + injection, 6 checks)
+- scripts/v12_9_amr_test.py (two-grid AMR)
+- Paper: fixed-patch AMR section (EN+TR)
+
+### Key finding (positive)
+2x AMR refinement reduces Hamiltonian constraint growth by 33% at step 1000 (H_fine/H0 = 1.0756 vs coarse H = 1.1254). First positive AMR result.
+
+### Tests
+- 731 fast + 21 slow

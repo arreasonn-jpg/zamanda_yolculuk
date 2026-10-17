@@ -1081,3 +1081,19 @@ Shift integration works (h+ differs 10% between eta=1, eta=4) but does NOT reduc
 
 ### Honest assessment
 All ingredients except AMR are now correct. AMR (v12.9+) is the required next step for production binary BH.
+
+## v12.9 scope (fixed-patch AMR, proof of concept)
+
+### What v12.9 delivers
+- Trilinear prolongation + injection operators (6 tests)
+- Two-grid AMR in lockstep (coarse + fine, refinement 2x)
+- Positive constraint reduction: 1.0756 vs 1.1254 at step 1000 (33% better)
+
+### What v12.9 does NOT deliver
+- Sub-cycling (coarse and fine evolve with same dt)
+- Multiple refinement levels
+- Proper restriction (fine->coarse feedback)
+- Production runs (still ~1 cell per puncture at fine level)
+
+### Honest assessment
+Fixed-patch AMR works as proof of concept. 2x refinement gives 33% constraint reduction. Production requires: (a) 4x-8x refinement (b) sub-cycling (c) restriction. This is now the clear path to full inspiral.
