@@ -1114,3 +1114,15 @@ Subcycling does NOT improve constraint control at 2x. BC injection is the limiti
 
 ### Honest assessment
 2x AMR works (v12.9). Subcycling and refinement factor are not the lever. Fixing BC injection (higher-order prolongation, moving patch) is the next real step, not deeper refinement.
+
+## v12.11 scope (cubic prolongation, negative)
+
+### What v12.11 delivers
+- Cubic Lagrange prolongation (exact for quadratics, 7 tests pass)
+- Direct comparison: cubic vs trilinear at 2x AMR
+
+### Key finding
+Cubic is 0.25% worse than trilinear (1.0191 vs 1.0166). Not a lever.
+
+### Honest assessment
+Interpolation order doesn't control AMR constraint growth. The BC injection physics (prolonged values don't satisfy fine constraint) is the limit. Next: constraint-consistent prolongation or moving-patch AMR (which physically tracks punctures).

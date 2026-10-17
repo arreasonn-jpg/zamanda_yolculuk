@@ -1830,3 +1830,17 @@ AMR reduces constraint growth by 33% with 2x refinement. Proof of concept works.
 
 ### Key finding
 Subcycling is neutral at 2x: same result as v12.9. The coarse-to-fine BC injection is the limiting factor, not the fine interior. Higher refinement without CFL-correct subcycling fails outright.
+
+## v12.11: cubic prolongation (neutral result)
+
+- `amr_interp.py`: cubic Lagrange prolongation (3 funcs, +1 test)
+- `scripts/v12_11_amr_cubic.py`: cubic AMR driver
+
+### Result (2x, 500 steps, H_fine/H0)
+
+| Interp | H_f/H0 @500 |
+|--------|-------------|
+| Trilinear (v12.9) | 1.0166 |
+| Cubic (v12.11) | 1.0191 |
+
+Cubic is 0.25% worse, not better. Boundary-clamped stencils produce small oscillations that add noise at fine boundary. Interpolation order is NOT the lever. Constraint-consistent prolongation or moving patch is needed.

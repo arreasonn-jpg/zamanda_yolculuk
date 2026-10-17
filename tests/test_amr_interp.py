@@ -61,3 +61,20 @@ def test_inject_boundary_replaces_edges():
     assert out[-1, 4, 4] == 20.0
 
 
+
+
+def test_cubic_prolongate_quadratic():
+    """Cubic interpolation exact for quadratic (order 3 polynomial)."""
+    N = 7
+    x = np.linspace(0, 1, N)
+    X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
+    c = 3.0 * X**2 + 2.0 * Y**2 + 1.0 * Z**2
+    from zt005.amr_interp import prolongate_scalar_cubic
+    f = prolongate_scalar_cubic(c, factor=2)
+    Nf = (N - 1) * 2 + 1
+    xf = np.linspace(0, 1, Nf)
+    Xf, Yf, Zf = np.meshgrid(xf, xf, xf, indexing="ij")
+    expected = 3.0 * Xf**2 + 2.0 * Yf**2 + 1.0 * Zf**2
+    # Interior only (boundary clamped stencil degrades)
+    m = slice(2, Nf-2)
+    assert np.allclose(f[m, m, m], expected[m, m, m], atol=1e-10)

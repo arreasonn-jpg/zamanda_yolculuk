@@ -594,6 +594,10 @@ We implement a two-grid AMR scheme to test whether resolving the punctures on a 
 
 Building on v12.9, we test whether sub-cycling (fine grid takes $n$ steps per coarse step) or higher refinement (4x) improves constraint control. At 2x refinement, sub-cycling with $n=2$ gives \emph{identical} results to $n=1$ ($H_f/H_0 = 1.0166$ at step 500): the fine interior is already well-resolved at 2x, and the limiting factor is the coarse-to-fine boundary injection. At 4x refinement without sub-cycling, the fine grid violates CFL ($dt_f/h_f = 6.4\times 10^{-3}$) and the constraint grows faster than the coarse baseline ($H_f/H_0 = 1.14$). Neither sub-cycling nor deeper refinement is the lever; higher-order prolongation or moving-patch AMR is needed to push past the 2x constraint-reduction plateau.
 
+\subsection{Cubic prolongation: interpolation order is not the lever}
+
+We replace trilinear with cubic Lagrange prolongation in the AMR pipeline. Cubic is exact for quadratics (verified analytically; 7 tests pass). At $2\times$ refinement (coarse $N=17$, $L=20$; fine $N=17$, $L=10$), cubic is marginally \emph{worse} than trilinear: $H_f/H_0 = 1.0191$ vs $1.0166$ at step 500. The difference is 0.25\% and within noise. We interpret this as boundary-clamped stencil oscillations: cubic 4-point stencils near the coarse sub-region edges introduce high-frequency noise, which the fine grid amplifies slightly. The constraint growth is set by the coarse-to-fine BC physics (prolonged values do not satisfy the fine Hamiltonian constraint), not by interpolation order. Constraint-consistent prolongation or moving-patch AMR is the required next step.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

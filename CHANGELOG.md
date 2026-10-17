@@ -568,3 +568,15 @@ H growth 2.71 (damped) vs 2.71 (undamped). Puncture under-resolution is limiting
 
 ### Tests
 - 731 fast + 21 slow
+
+## v12.11.0 (2026-10-17)
+
+### Added
+- Cubic Lagrange prolongation (bssn_interp.py, 3 funcs)
+- scripts/v12_11_amr_cubic.py
+
+### Key finding (negative)
+Cubic prolongation 0.25% worse than trilinear at 2x AMR. Interpolation order is not the lever.
+
+### Tests
+- 732 fast + 21 slow

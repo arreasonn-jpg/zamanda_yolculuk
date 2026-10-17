@@ -592,6 +592,10 @@ Puncture'ları inceltilmiş bir alt-ağda çözmenin Hamilton kısıtı büyüme
 
 v12.9'un üzerine, alt-döngünün (ince ağ kaba adım başına $n$ adım atar) veya daha yüksek inceltmenin (4x) kısıt kontrolünü iyileştirip iyileştirmediğini test ediyoruz. 2x inceltmede, $n=2$ alt-döngü $n=1$ ile \emph{birebir aynı} sonuçları verir (500. adımda $H_f/H_0 = 1.0166$): ince iç bölge 2x'te zaten iyi çözülmüştür ve kısıtlayıcı etken kaba-ince sınır enjeksiyonudur. Alt-döngüsüz 4x inceltmede ince ağ CFL'i ihlal eder ($dt_f/h_f = 6.4\times 10^{-3}$) ve kısıt kaba temel çizgiden daha hızlı büyür ($H_f/H_0 = 1.14$). Ne alt-döngü ne de daha derin inceltme kaldıraçtır; 2x kısıt-azaltma platosunun ötesine geçmek için daha yüksek mertebe uzatma veya hareketli-yama AMR gereklidir.
 
+\subsection{Kübik uzatma: interpolasyon mertebesi kaldıraç değil}
+
+AMR boru hattında trilineer uzatmayı kübik Lagrange ile değiştiriyoruz. Kübik, kuadratikler için tamdır (analitik olarak doğrulanmış; 7 test geçer). $2\times$ inceltmede (kaba $N=17$, $L=20$; ince $N=17$, $L=10$), kübik trilineerden marjinal olarak \emph{daha kötüdür}: 500. adımda $H_f/H_0 = 1.0191$ vs $1.0166$. Fark \%0.25 olup gürültü içindedir. Bunu sınır-kenetli şablon salınımları olarak yorumluyoruz: kaba alt-bölge kenarlarına yakın kübik 4-noktalı şablonlar yüksek-frekanslı gürültü üretir; ince ağ bunu hafifçe yükseltir. Kısıt büyümesi, interpolasyon mertebesiyle değil, kaba-ince BC fiziğiyle (uzatılmış değerler ince Hamilton kısıtını sağlamaz) belirlenir. Kısıt-tutarlı uzatma veya hareketli-yama AMR gerekli sonraki adımdır.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir
