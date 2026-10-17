@@ -1141,3 +1141,15 @@ Fixed-patch 2x AMR provides reducing constraint control over time. At step 2000,
 - Sub-grid BH tracking
 - Moving patch (BHs still inside fixed patch)
 - Constraint-consistent prolongation
+
+## v12.13 scope (finer fine resolution, negative)
+
+### What v12.13 delivers
+- Configurable N_fine in AMR driver
+- Direct comparison N_fine=17 vs 25
+
+### Key finding
+N_fine=25 (3x factor) is 3x worse than N_fine=17 (2x factor). Trilinear aliasing at non-power-of-2 factors. CFL marginal at dt/h=4.8e-3.
+
+### Honest assessment
+Finer fine resolution is NOT the lever. Constraint-consistent prolongation (fixing the injection values themselves) is the required next step.

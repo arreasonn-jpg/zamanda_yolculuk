@@ -1868,3 +1868,18 @@ Cubic is 0.25% worse, not better. Boundary-clamped stencils produce small oscill
 - Sub-grid BH tracking
 - Moving patch (not needed yet - BHs stay inside ±5)
 - Steady-state AMR advantage (needs constraint-consistent prolongation)
+
+## v12.13: finer fine resolution (negative)
+
+- `scripts/v12_13_amr_finen.py`: configurable N_fine
+
+### Result (2x coarse, N_fine=25 vs 17, 200 steps)
+
+| N_fine | h_fine | factor | H_f/H0 @200 |
+|--------|--------|--------|-------------|
+| 17 | 0.625 | 2x | **1.0030** |
+| 25 | 0.417 | 3x | 1.0091 (worse) |
+
+Finer fine grid (3x) is worse than coarser fine grid (2x). Trilinear prolongation with factor=3 (non-power-of-2) introduces aliasing. Also CFL dt/h = 4.8e-3 marginal.
+
+**Conclusion**: finer fine resolution is NOT the lever. BC injection quality is.

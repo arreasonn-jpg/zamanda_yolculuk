@@ -594,3 +594,14 @@ Cubic prolongation 0.25% worse than trilinear at 2x AMR. Interpolation order is 
 
 ### Tests
 - 733 fast + 21 slow
+
+## v12.13.0 (2026-10-17)
+
+### Added
+- scripts/v12_13_amr_finen.py (configurable N_fine)
+
+### Key finding (negative)
+N_fine=25 worse than N_fine=17 (1.0091 vs 1.0030). Trilinear aliasing at factor=3. Finer fine is not the lever.
+
+### Tests
+- 733 fast + 21 slow
