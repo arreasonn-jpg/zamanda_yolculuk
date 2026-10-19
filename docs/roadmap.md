@@ -47,7 +47,9 @@ so until an independent ethics/safety review concludes otherwise.
 ## Update — P0/P1 tamamlandı
 
 - ✅ P0: Kök dizin temizlendi, `requirements.txt` üretildi, 305 test geçiyor.
-- ✅ P1a: Yakınsama hatası çözüldü (ZT-006.2.24, a_wire_eff=0.08 m).
+- ✅ P1a: Yakınsama hatası çözüldü (ZT-006.2.24, a_wire_eff=0.08 m);
+  retarded-solver varyantı da PASS (ZT-006.2.25) → kaynak zinciri
+  sayısal olarak kapandı.
 - ✅ P1b: `exotic_matter.py` + `energy_gap_report.py` eklendi.
 - 🔷 P2: Doğrusal olmayan rejim (BSSN) henüz yok.
 

@@ -10,5 +10,7 @@
 | **ZT-006.1** | Weak-field linearized GR baseline | Archived | 5.0 / 10 |
 | **ZT-006.2.1-20** | Conductor regularization and Green convergence studies | Archived | 5.4 / 10 |
 | **ZT-006.2.21** | Current normalization, dual Green solvers, grid convergence gate | **VALIDATED** | **6.0 / 10** |
+| **ZT-006.2.24/.25** | a_wire_eff regularization + retarded-solver device-source convergence | **VALIDATED** | **6.2 / 10** |
 | **ZT-006.3** | GR validation layer (geodesics, benchmarks, causal classifier) | **VALIDATED** | **6.0 / 10** |
 | **ZT-007.0.0** | Spacetime Causality Pipeline: Retarded GR, CTC engine, Earth navigation, human safety gate, energy scan | **OPERATIONAL** | **3.0 / 10 (Time-Travel Pipeline)** |
+| **ZT-010** | Exotic-matter integration (energy gap report, 43 orders) | Open / exploratory | — |

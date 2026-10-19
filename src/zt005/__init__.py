@@ -1,1 +1,5 @@
-__version__ = "12.14.0"
+try:
+    from importlib.metadata import version as _version
+    __version__ = _version("zamanda-yolculuk-zt005-2")
+except Exception:  # source checkout without pip install -e .
+    __version__ = "12.15.1"

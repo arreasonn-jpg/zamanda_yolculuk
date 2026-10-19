@@ -4,7 +4,9 @@ This directory stores documented negative test results, failed verification expe
 
 1. **Zero-Radius Filament Singularity Breakdown (ZT-006.2.19)**:
    - Root cause: Ideal filaments of zero radius yield $B \sim 1/r$, producing diverging local energy density $u \sim B^2 \sim 1/r^2$. The volume integral of $1/r^2$ diverges logarithmically, causing Green integrals to oscillate wildly with grid refinement.
-   - Resolution: Physical finite-thickness conductor regularization (ZT-006.2.21).
+   - Resolution: finite-thickness regularization (ZT-006.2.21), effective
+     kernel radius a_wire_eff = 0.08 m (ZT-006.2.24), and the same
+     convergence gate passing against the retarded solver (ZT-006.2.25).
 
 2. **Uncompensated Celestial Time Jump**:
    - Backward time jump $\Delta t = -1.0\text{ s}$ without frame lock causes traveler to materialize in vacuum $29.8\text{ km}$ away from Earth.

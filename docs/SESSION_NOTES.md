@@ -48,7 +48,7 @@ PTUM QFT window A in [1.35, 1.87] invariant under:
 ## Paper
 - main_en.tex / main_tr.tex: 15 pages each
 - 15 figures
-- arxiv_submission_v3.zip (~1.5 MB) READY
+- paper/archive/arxiv_submission_v3.zip (~1.5 MB) READY
 
 ## Next
 - A) Full inspiral (weeks)

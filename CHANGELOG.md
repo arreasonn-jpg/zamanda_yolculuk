@@ -1,5 +1,26 @@
 # Changelog
 
+## v12.15.1 (2026-10-19) — consistency maintenance
+
+### Fixed
+- `src/zt005/__init__.py`: version now derived via importlib.metadata
+  (pyproject as source of truth) with fallback; new regression test
+  `tests/unit/test_version_consistency.py` guards against renewal drift
+- `docs/stages/README.md`: ZT-006.2.24/.25 rows added (chronology table)
+- `results/failed/README.md`: resolution pointer corrected
+  (ZT-006.2.21 → ZT-006.2.21/.24/.25)
+- Broken-path references after the v12.13.1 archive moves updated
+  ( stages/ZT010/README.md, docs/SESSION_NOTES.md → paper/archive/ )
+- CHANGELOG: duplicate "## v6.0.0" stub entry removed; v12.15 test
+  count added (736 fast + 21 slow)
+
+### Docs
+- README frontline updated with the v12.15 neutral result; version
+  status table extended to v12.15; repository layout mentions paper/
+
+### Tests
+- 738 fast + 21 slow
+
 ## v12.15.0 (2026-10-19)
 
 ### Added — constraint-consistent Gamma injection (v12.15)
@@ -22,6 +43,9 @@
 
 ### Docs
 - docs/limitations.md: v12.15 scope section
+
+### Tests
+- 736 fast + 21 slow
 
 ### Misc
 - src/zt005/__init__.py __version__ synced (was stale 0.2.0)
@@ -206,11 +230,6 @@
 
 ### Tests
 - 504 fast + 21 slow
-
-## v6.0.0 (2026-10-11)
-
-### Added — complex scalar + AMR-lite
-(see previous entry)
 
 ## v6.1.0 (2026-10-11)
 

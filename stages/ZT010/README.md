@@ -954,7 +954,7 @@ spin a=0.9.
 
 - `paper/bssn_section_en.tex` — added "Full-stack configuration" note
 - `paper/bssn_section_tr.tex` — added "Tam-yığın yapılandırması"
-- `paper/arxiv_submission_v3.zip` (982 KB) — complete package:
+- `paper/archive/arxiv_submission_v3.zip` (982 KB) — complete package:
   - main_en.tex, main_tr.tex
   - bssn_section_en.tex, bssn_section_tr.tex
   - refs.bib, figures/*.png (6 figures)

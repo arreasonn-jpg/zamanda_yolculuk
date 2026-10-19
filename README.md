@@ -10,13 +10,15 @@ really is.
 > converged for the device source. No time machine has been built, and
 > the honest expectation is a quantitative bound, not a device.
 >
-> **Current frontline (v12.14):** (a) device-source convergence is
+> **Current frontline (v12.15):** (a) device-source convergence is
 > CLOSED — ZT-006.2.24 (instantaneous kernel) and ZT-006.2.25 (retarded
 > solver, device sources) both PASS; the remaining gap to a device
 > metric is physical (h ~ 10⁻⁴⁶, EM-only linearized chain), not
-> numerical; (b) fixed-patch AMR for BSSN binaries —
-> constraint-consistent prolongation identified as the next lever
-> (v12.9–v12.13).
+> numerical; (b) fixed-patch AMR for BSSN binaries: cubic prolongation
+> (v12.11), finer fine resolution (v12.13) and Gamma rederivation
+> (v12.15) are all neutral/negative — the remaining defect is the
+> O(h_c²) second-derivative mismatch of the prolonged fields; next
+> real levers: constraint projection or moving-patch AMR.
 
 The term "time machine" is avoided in technical layers by design: the
 correct description is **spacetime-manipulation hypothesis**. All CTC
@@ -32,7 +34,8 @@ machinery in this repo is a known-answer benchmark, not a device claim.
 | v6–v8   | 2-level refinement (AMR-lite), Ford-Roman QFT bounds, QFT-OK window (A ∈ [1.35, 1.87]), Kerr/BD/LQC invariances |
 | v9–v10  | Newman-Penrose GW extraction; scalar-source null result; end-to-end GW pipeline validation |
 | v11–v12 | 3D binary BH: Brill-Lindquist → Bowen-York orbital; vectorized RHS (25x); N=17 constraint breakdown diagnosed; AMR v12.9–v12.13 (proof of concept, negative results documented) |
-| v12.13  | 733 fast + 21 slow tests; frontline: constraint-consistent prolongation |
+| v12.14  | ZT-006.2.25: retarded-solver device-source convergence PASS (source chain numerically closed) |
+| v12.15  | Constraint-consistent Gamma injection: neutral (H unchanged); 737 fast + 21 slow tests; frontline: constraint projection / moving-patch AMR |
 
 See `docs/limitations.md` for the full scope/NOT-delivered register per
 version, and `docs/validation.md` for the PASS/FAIL register.
@@ -43,7 +46,9 @@ version, and `docs/validation.md` for the PASS/FAIL register.
 ├── src/zt005/          # all code (EM layer, T_mu_nu, retarded GR layer,
 │                       # benchmark metrics, geodesics, CTC search)
 ├── tests/              # pytest suite
-├── stages/             # per-stage records (ZT001…ZT007), incl. FAILs
+├── stages/             # per-stage records (ZT001…ZT010), incl. FAILs
+├── paper/              # LaTeX sources + figures (arxiv_v3 active;
+│                       # archive/ holds historical submission zips)
 ├── results/
 │   ├── validated/      # acceptance-tested outputs (regenerable)
 │   ├── exploratory/    # in-progress, not citable
