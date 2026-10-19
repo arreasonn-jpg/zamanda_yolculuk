@@ -9,9 +9,12 @@ If a limitation is not listed here, that is a documentation bug.
    the power source are absent (assumptions.md A1).
 2. **Linearized gravity only.** First order in G on a fixed Minkowski
    background. No full g_μν(t, x) solve, no back-reaction.
-3. **No validated device metric.** The retarded solver is validated with
-   manufactured sources; a grid-convergence study of the retarded
-   integral with the actual device source is still open.
+3. **No validated device metric.** The retarded solver is validated
+   with manufactured sources, and its device-source spatial convergence
+   is now demonstrated (ZT-006.2.25, `rel < 0.05`, a_wire_eff = 0.08 m).
+   What remains open is a *physical* device-metric statement: the chain
+   is EM-only (incomplete source model, A1) and linearized (A2), so no
+   self-consistent g_mu(t, x) for the device exists.
 4. **MQS electromagnetics.** Valid while L/λ ≪ 1; frequency scans beyond
    that need ZT-007 (full-wave).
 5. **Resonance is hypothetical.** No Q/ω₀/L/C/R or modal model exists

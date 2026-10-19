@@ -1,5 +1,32 @@
 # Changelog
 
+## v12.14.0 (2026-10-19)
+
+### Added — ZT-006.2.25: retarded device-source convergence
+- `src/zt005/run_zt006_2_25.py` — grid-refinement study of the
+  **retarded** linearized-Einstein integral with the actual device
+  sources (G1–G4, external observers, `a_wire_eff = 0.08 m`, MQS
+  1 MHz time dependence with per-point retarded phase)
+- `tests/validation/test_zt006_2_25.py` — fast regression test
+  (smallest grid pair, one observer)
+- `stages/ZT006/README_ZT006_2_25.md` + stage record updates
+
+### Result (PASS)
+- All consecutive-grid rel < 0.05 in both modes (quick worst rel
+  1.47e-2; full final rel 5.79e-6), G1–G4
+- Values numerically coincide with ZT-006.2.24 (instantaneous
+  kernel), as MQS requires (ωL/c ≈ 5e-8 rad across the source)
+- Closes the last open item of docs/validation.md's "Not yet
+  validated" source-chain list; remaining gap to a device metric is
+  physical (EM-only, linearized), not numerical
+
+### Docs
+- README frontline + honesty record, docs/validation.md,
+  docs/limitations.md (#3) updated to reflect the closed item
+
+### Tests
+- 734 fast + 21 slow
+
 ## v12.13.1 (2026-10-19) — maintenance
 
 ### Changed

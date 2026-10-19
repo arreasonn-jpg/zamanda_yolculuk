@@ -10,10 +10,13 @@ really is.
 > converged for the device source. No time machine has been built, and
 > the honest expectation is a quantitative bound, not a device.
 >
-> **Current frontline (v12.13):** (a) device-source green-kernel grid
-> convergence — still open (ZT-006.2.20); (b) fixed-patch AMR for the
-> BSSN binary — works as a proof of concept, constraint-consistent
-> prolongation identified as the required next lever (v12.9–v12.13).
+> **Current frontline (v12.14):** (a) device-source convergence is
+> CLOSED — ZT-006.2.24 (instantaneous kernel) and ZT-006.2.25 (retarded
+> solver, device sources) both PASS; the remaining gap to a device
+> metric is physical (h ~ 10⁻⁴⁶, EM-only linearized chain), not
+> numerical; (b) fixed-patch AMR for BSSN binaries —
+> constraint-consistent prolongation identified as the next lever
+> (v12.9–v12.13).
 
 The term "time machine" is avoided in technical layers by design: the
 correct description is **spacetime-manipulation hypothesis**. All CTC
@@ -73,6 +76,11 @@ version, and `docs/validation.md` for the PASS/FAIL register.
   distribution and/or discretization, not only the singularity.
   Record: `results/archived/zt006_2_20_results.json`,
   `stages/ZT006/README.md`.
+* **ZT-006.2.24/.25 — RESOLVED.** Effective smoothing `a_wire_eff`
+  = 0.08 m recovers external-observer convergence (2.24), and the
+  retarded solver passes the same device-source grid study (2.25,
+  worst rel ≈ 1.5e−2 quick / 5.8e−6 full). Numerical chain closed;
+  the gap to any device metric is physical, not numerical.
 * Current perturbation scale h ~ 10⁻⁴⁶: a physics result quantifying the
   gap, not a bug. A final verdict of "consistent model, inaccessible
   energy scale" would be a valuable outcome.

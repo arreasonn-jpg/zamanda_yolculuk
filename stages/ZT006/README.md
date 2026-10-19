@@ -47,3 +47,16 @@ External-observer Green-kernel convergence now passes.
   source configs (G1-G4). Final step rel ~ 5.8e-06 (full mode).
 - Evidence: `results/validated/zt006_2_24_results.json`
 - Script: `src/zt005/run_zt006_2_24.py`
+
+## ZT-006.2.25 — RETARDED DEVICE-SOURCE CONVERGENCE: PASS
+
+Retarded solver (`retarded_gr.retarded_hbar`) replaces the
+instantaneous kernel with the same device sources, external
+observers and `a_wire_eff = 0.08 m`; criterion and grids identical
+to 2.24. All consecutive-grid rel < 0.05 passed (quick worst
+1.47e-2, full final 5.79e-6). MQS retarded phase across the source
+~ 5e-8 rad — formally kept, numerically negligible.
+
+- Evidence: `results/validated/zt006_2_25_results.json`
+- Script: `src/zt005/run_zt006_2_25.py`
+- Details: `stages/ZT006/README_ZT006_2_25.md`

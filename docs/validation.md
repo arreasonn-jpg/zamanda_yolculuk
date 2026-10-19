@@ -48,18 +48,23 @@ Regenerate: `python -m zt005.run_zt006_3_gr_layer --mode quick|full`
 
 ## Not yet validated (open)
 
-* Convergence of the retarded integral for the *device* source
-  distribution (grid refinement study pending — this is where ZT-006.2
-  died once; it must be redone against the retarded solver).
 * Any nonlinear / self-consistent metric statement — none exists yet.
 * Any CTC statement about device fields — the detector is validated only
   on known metrics so far.
 * Energy model (P_in, P_loss, P_stored, P_radiated, P_thermal, η,
   E_{1s}) — not implemented.
 
-### RESOLVED — ZT-006.2.24
+### RESOLVED — ZT-006.2.24 / ZT-006.2.25
 
 ZT-006.2.19/.20 convergence FAILs are resolved by using an effective
 kernel smoothing radius `a_wire_eff = 0.08 m` (numerical, not physical).
 See `stages/ZT006/README.md` and
 `results/validated/zt006_2_24_results.json`.
+
+ZT-006.2.25 closes the follow-up open item: the same grid-refinement
+study against the **retarded** solver (device sources G1–G4, external
+observers, same smoothing, MQS 1 MHz time dependence) passes with the
+same `rel < 0.05` criterion.
+Artifact: `results/validated/zt006_2_25_results.json`.
+This validates the *spatial* chain numerically; it is still not a
+device-metric claim (EM-only source, linearized gravity).
