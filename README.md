@@ -9,6 +9,11 @@ really is.
 > physical source→metric chain is linearized, EM-only, and not yet
 > converged for the device source. No time machine has been built, and
 > the honest expectation is a quantitative bound, not a device.
+>
+> **Current frontline (v12.13):** (a) device-source green-kernel grid
+> convergence — still open (ZT-006.2.20); (b) fixed-patch AMR for the
+> BSSN binary — works as a proof of concept, constraint-consistent
+> prolongation identified as the required next lever (v12.9–v12.13).
 
 The term "time machine" is avoided in technical layers by design: the
 correct description is **spacetime-manipulation hypothesis**. All CTC
@@ -19,12 +24,15 @@ machinery in this repo is a known-answer benchmark, not a device claim.
 | Version | Highlights |
 |---|---|
 | v1.0.0 | Linearized GR, exotic matter models, energy gap report (43 orders) |
-| v2.0.0 | Full BSSN solver: Gamma + alpha + beta + gauge + Z4c + physical Ricci |
-|         | 500-step Schwarzschild: H growth 1.0062 |
-|         | Kerr a=0..0.5: growth 1.0004 |
-|         | 420 tests passing (400 fast + 20 slow) |
+| v2.0.0 | Full BSSN solver (Gamma + alpha + beta + gauge + Z4c-style damping + physical Ricci); Schwarzschild/Kerr benchmarks stable |
+| v3–v5   | Moving puncture, full Kerr (KS, a≤0.99), SC regular core, scalar matter, PTUM tachyon coupling (NEC violation confirmed) |
+| v6–v8   | 2-level refinement (AMR-lite), Ford-Roman QFT bounds, QFT-OK window (A ∈ [1.35, 1.87]), Kerr/BD/LQC invariances |
+| v9–v10  | Newman-Penrose GW extraction; scalar-source null result; end-to-end GW pipeline validation |
+| v11–v12 | 3D binary BH: Brill-Lindquist → Bowen-York orbital; vectorized RHS (25x); N=17 constraint breakdown diagnosed; AMR v12.9–v12.13 (proof of concept, negative results documented) |
+| v12.13  | 733 fast + 21 slow tests; frontline: constraint-consistent prolongation |
 
-See `docs/limitations.md` for v2.0 scope and what is NOT included.
+See `docs/limitations.md` for the full scope/NOT-delivered register per
+version, and `docs/validation.md` for the PASS/FAIL register.
 
 ## Repository layout
 

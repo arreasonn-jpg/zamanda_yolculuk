@@ -1,5 +1,21 @@
 # Changelog
 
+## v12.13.1 (2026-10-19) — maintenance
+
+### Changed
+- Repository hygiene pass (no code changes):
+  - `paper/`: 23 `.bak*` duplicates and LaTeX build artifacts (aux/log/out/blg)
+    removed; `.bbl` kept for arXiv compilation. Previous versions remain in
+    git history and in the archived submission zips.
+  - Root: `arxiv_submission_v2/` + zip moved to `paper/archive/`;
+    `pytest_raporu.txt` (old 299-test report) moved to
+    `results/archived/pytest_raporu_299tests_old.txt`.
+  - Caches cleaned (`__pycache__`, `.pytest_cache`, egg-info).
+- README: version table updated through v12.13 (superseded the v2.0-only
+  state that referenced "420 tests"); "current frontline" note added
+  (device-source convergence open; constraint-consistent prolongation).
+- Version bumped to 12.13.1.
+
 ## v0.9.0 (2026-10-10)
 - P0: repo cleanup, requirements.txt pinned
 - P1: ZT-006.2.24 convergence resolved (a_wire_eff=0.08 m)
