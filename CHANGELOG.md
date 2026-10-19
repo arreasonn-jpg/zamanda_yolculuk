@@ -1,5 +1,31 @@
 # Changelog
 
+## v12.15.0 (2026-10-19)
+
+### Added — constraint-consistent Gamma injection (v12.15)
+- `src/zt005/bssn_amr_consistent.py` — rederive_Gamma: Gamma^i from
+  prolonged gtilde with fine spacing, same d_central operator as the
+  RHS; BSSN identity unit-tested (3 checks in
+  tests/unit/test_bssn_amr_consistent.py)
+- `scripts/v12_15_amr_gamma_consistent.py` — baseline vs gamma-consistent
+  band injection, 2x fixed-patch AMR, Bowen-York binary, 1000 steps
+
+### Key result (neutral)
+- Gamma-consistent band injection changes injected Gamma by O(50%)
+  relative but leaves H unchanged:
+  baseline 1.0756 vs gamma_cons 1.0757 at step 1000
+  (reference v12.9: 1.0756 — baseline reproduces it exactly)
+- Third consecutive "not the lever" result (after cubic prolongation
+  v12.11, finer fine v12.13): the remaining defect is the
+  O(h_c^2) second-derivative mismatch of prolongated fields;
+  next real levers are constraint projection or moving patches
+
+### Docs
+- docs/limitations.md: v12.15 scope section
+
+### Misc
+- src/zt005/__init__.py __version__ synced (was stale 0.2.0)
+
 ## v12.14.0 (2026-10-19)
 
 ### Added — ZT-006.2.25: retarded device-source convergence

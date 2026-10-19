@@ -1156,3 +1156,48 @@ N_fine=25 (3x factor) is 3x worse than N_fine=17 (2x factor). Trilinear aliasing
 
 ### Honest assessment
 Finer fine resolution is NOT the lever. Constraint-consistent prolongation (fixing the injection values themselves) is the required next step.
+
+## v12.15 scope (constraint-consistent Gamma injection — neutral)
+
+### What v12.15 delivers
+
+- `src/zt005/bssn_amr_consistent.py`: rederive_Gamma — Gamma^i =
+  gtilde^{jk} G^k_ij recomputed from the prolonged gtilde with fine
+  spacing and the same d_central operator the RHS uses (identity
+  unit-tested: Gamma^i = -d_j gtilde^ij for det-1 fields).
+- Band-level constraint-consistent injection in
+  `scripts/v12_15_amr_gamma_consistent.py` (Gamma in the injected
+  layers rederived instead of prolongated).
+- Two 1000-step runs, setup identical to v12.9 (N=N_f=17, L=20/10,
+  factor=2, dt=2e-3, 4 injected layers).
+
+### Key result (neutral)
+
+| Variant | H_f/H0 @ 1000 steps |
+|---|---|
+| baseline (v12.9 injection) | 1.0756 |
+| gamma_consistent band | 1.0757 |
+
+The rederivation changes the injected Gamma by O(50%) relative, but
+H does not move: the Hamiltonian constraint error at the horizon
+band is carried by the second-derivative (Ricci) mismatch of the
+prolonged fields, not by the Gamma-gauge inconsistency.
+Baseline reproduces the v12.9 reference exactly (1.0756 @ step 1000).
+
+### What v12.15 does NOT deliver
+
+- Constraint-consistent prolongation at the field level
+  (phi/gtilde/K/Atilde projection) — the actual remaining lever.
+- Restriction feedback, moving patches, sub-cycling changes.
+- Production-grade AMR.
+
+### Honest assessment
+
+Third consecutive "not the lever" result in the AMR series (after
+cubic prolongation v12.11 and finer fine v12.13), now with a
+stronger instrument: the injected band Gamma is made FD-consistent
+with gtilde and the constraint is unchanged. The remaining defect is
+the O(h_c^2) truncation mismatch of the prolonged
+second-derivative-coupled fields themselves; fixing it requires
+either constraint projection onto the injected band or moving-patch
+AMR, both substantially larger steps.
