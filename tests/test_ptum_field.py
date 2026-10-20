@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from zt005.ptum_field import (
+from zt005.matter.ptum_field import (
     V_fuel, dV_fuel, m_eff_squared, Phi_critical,
     V_proxy, psi_equilibrium, fuel_profile, ptdm_equilibrium_check,
 )

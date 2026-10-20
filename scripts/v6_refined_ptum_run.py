@@ -1,8 +1,8 @@
 import numpy as np, time
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_refined_ptum import evolve_refined_ptum
-from zt005.ptum_field import fuel_profile, m_eff_squared, psi_equilibrium
-from zt005.matter_ptum import ptum_sources
+from zt005.matter.ptum_field import fuel_profile, m_eff_squared, psi_equilibrium
+from zt005.matter.matter_ptum import ptum_sources
 
 # Coarse: wide domain, coarse grid
 N_c = 9; L_c = 20.0; h_c = L_c/(N_c-1)

@@ -5,7 +5,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from zt005.kerr_sc_ptum_ic import kerr_sc_ptum_state
 from zt005.bssn_rk4_sc_ptum import rk4_step_sc_ptum
-from zt005.matter_ptum import ptum_sources
+from zt005.matter.matter_ptum import ptum_sources
 
 N = 9; L = 20.0; h = L/(N-1); dt = 1e-4; steps = 100
 a = 0.9; A_fuel = 1.5

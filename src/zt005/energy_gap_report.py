@@ -13,7 +13,7 @@ from typing import Dict
 
 import numpy as np
 
-from .exotic_matter import (
+from .matter.exotic_matter import (
     casimir_parallel_plates,
     morris_thorne_shell,
     tipler_cylinder,

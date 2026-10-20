@@ -1,0 +1,8 @@
+{
+  "stage": "v13.0.0",
+  "steps": 1000,
+  "recenter_steps": [],
+  "recenters": 0,
+  "H_fine_final": 1.0756436436056307,
+  "baseline_reference_v12_15_step1000": 1.0756
+}

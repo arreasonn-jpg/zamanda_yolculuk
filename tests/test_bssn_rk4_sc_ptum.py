@@ -1,7 +1,7 @@
 import numpy as np
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_rk4_sc_ptum import rk4_step_sc_ptum
-from zt005.sc_condensate import sc_condensate_potential
+from zt005.matter.sc_condensate import sc_condensate_potential
 
 
 def test_vacuum_stationary():

@@ -37,7 +37,7 @@ def test_ic_A_fuel_determines_activation():
         N=9, L=20.0, M=1.0, a=0.0, A_fuel=1.5, sigma=4.0)
     s2, Phi2, psi2, _, _ = kerr_ptum_state(
         N=9, L=20.0, M=1.0, a=0.0, A_fuel=3.0, sigma=4.0)
-    from zt005.ptum_field import m_eff_squared
+    from zt005.matter.ptum_field import m_eff_squared
     n1 = np.sum(m_eff_squared(Phi1) < 0)
     n2 = np.sum(m_eff_squared(Phi2) < 0)
     assert n2 >= n1

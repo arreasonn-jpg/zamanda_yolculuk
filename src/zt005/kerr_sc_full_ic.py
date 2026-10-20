@@ -8,7 +8,7 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .kerr_sc_ic import kerr_sc_state
-from .sc_condensate import sc_condensate_profile, sc_condensate_potential
+from .matter.sc_condensate import sc_condensate_profile, sc_condensate_potential
 
 
 def kerr_sc_full_state(N, L, M=1.0, a=0.0, rc=1.0, rho_core=1e19,

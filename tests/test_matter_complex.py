@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from zt005.matter_complex import complex_sources, charge_density
+from zt005.matter.matter_complex import complex_sources, charge_density
 from zt005.bssn_state import minkowski_state
 
 

@@ -13,7 +13,7 @@ Coupling per step:
 from __future__ import annotations
 import numpy as np
 from .bssn_grid import d_central
-from .refinement import prolongate, restrict
+from .amr.refinement import prolongate, restrict
 
 
 def _lap(f, h):

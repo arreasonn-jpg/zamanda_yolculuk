@@ -4,8 +4,8 @@ from zt005.bssn_state_mp import BSSNStateMP
 from zt005.bssn_ic_bowen_york import bowen_york_binary
 from zt005.bssn_rk4_mp_vec_z4c import rk4_step_mp_vec_z4c
 from zt005.bssn_ricci_full import hamiltonian_constraint_full
-from zt005.amr_interp import prolongate_scalar, prolongate_tensor, prolongate_vector
-from zt005.amr_bh_track import find_bh_centers, pair_separation
+from zt005.amr.amr_interp import prolongate_scalar, prolongate_tensor, prolongate_vector
+from zt005.amr.amr_bh_track import find_bh_centers, pair_separation
 
 N_c, L_c, N_sub, L_f = 17, 20.0, 9, 10.0
 steps = int(sys.argv[1]) if len(sys.argv) > 1 else 2000

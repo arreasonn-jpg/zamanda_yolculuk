@@ -25,7 +25,7 @@ def test_psi_equilibrium_preserved():
     Xc,Yc,Zc = np.meshgrid(xc,xc,xc,indexing="ij")
     Xf,Yf,Zf = np.meshgrid(xf,xf,xf,indexing="ij")
     Rc2 = Xc**2+Yc**2+Zc**2; Rf2 = Xf**2+Yf**2+Zf**2
-    from zt005.ptum_field import psi_equilibrium
+    from zt005.matter.ptum_field import psi_equilibrium
     s_c = minkowski_state(N_c); s_f = minkowski_state(N_f)
     Phc = 3.0*np.exp(-Rc2/8.0); Phf = 3.0*np.exp(-Rf2/2.0)
     psc = psi_equilibrium(Phc); psf = psi_equilibrium(Phf)

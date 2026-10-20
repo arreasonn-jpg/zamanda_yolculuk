@@ -1,7 +1,7 @@
 import numpy as np
-from zt005.matter_ptum import ptum_sources
+from zt005.matter.matter_ptum import ptum_sources
 from zt005.bssn_state import minkowski_state
-from zt005.ptum_field import fuel_profile
+from zt005.matter.ptum_field import fuel_profile
 
 
 def test_vacuum_zero():
@@ -30,7 +30,7 @@ def test_fuel_phi_only_has_positive_rho():
 
 def test_proxy_activated_negative_contribution():
     """At Phi > Phi_c, V_proxy has negative minimum at psi_0."""
-    from zt005.ptum_field import psi_equilibrium
+    from zt005.matter.ptum_field import psi_equilibrium
     N = 5
     s = minkowski_state(N)
     Phi = np.ones((N,N,N)) * 2.0

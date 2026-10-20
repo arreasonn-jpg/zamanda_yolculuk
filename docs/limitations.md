@@ -1201,3 +1201,36 @@ the O(h_c^2) truncation mismatch of the prolonged
 second-derivative-coupled fields themselves; fixing it requires
 either constraint projection onto the injected band or moving-patch
 AMR, both substantially larger steps.
+
+## v13.0.0 scope (COM-tracked moving patch: no-op; subpackage restructure)
+
+Pending at this release: the 4x + subcycle=4 run (v12.10 open item)
+is in progress; its outcome is recorded in a follow-up version.
+
+### What v13.0.0 delivers
+
+- Moving fine-patch AMR machinery: `scripts/v13_amr_moving.py`. The
+  binary center of mass is tracked each step from |Atilde|^2 peaks
+  (`zt005.amr.amr_bh_track`), and the fine window is recentered on
+  even coarse offsets (factor-2 prolongation aligned) with a full
+  re-extract + prolongate from the current coarse state whenever the
+  COM drift exceeds 1 coarse cell.
+- Moving-patch result (null): over 1000 steps the COM trigger never
+  fires (recenter_steps empty). H_f/H0 at step 1000 is 1.07564,
+  identical to the fixed-patch baseline (1.0756), because with zero
+  recenters the trajectories coincide. Interpretation: at this
+  equal-mass Bowen-York setup and at the 1000-step horizon, the
+  binary COM drifts by less than one coarse cell, so a COM-following
+  moving patch is a no-op. The v12.12 statement that the BHs stay
+  inside the fixed patch is now quantified for the COM.
+
+### What v13.0.0 does NOT deliver
+
+- Any change in the constraint-growth picture: the remaining defect
+  is still the O(h_c^2) second-derivative mismatch of the prolonged
+  fields.
+- Per-puncture moving-patch handling (merger-vicinity recentering).
+- Compatibility shims for the restructured import paths breaking
+  change documented in CHANGELOG.
+- Production-grade AMR.
+

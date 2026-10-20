@@ -10,7 +10,7 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_rk4_matter import rk4_step_matter
-from .refinement_tensor import prolongate_state, restrict_state_into
+from .amr.refinement_tensor import prolongate_state, restrict_state_into
 from .bssn_grid import d_central
 
 
@@ -32,12 +32,12 @@ def _copy_state(s):
 
 def _prolongate_field(f_c, N_f, offset):
     """For scalar matter fields."""
-    from .refinement import prolongate
+    from .amr.refinement import prolongate
     return prolongate(f_c, N_f, offset)
 
 
 def _restrict_field_into(f_f, out_c, N_c, offset):
-    from .refinement import restrict
+    from .amr.refinement import restrict
     ox, oy, oz = offset
     N_f = f_f.shape[0]
     half = N_f // 2

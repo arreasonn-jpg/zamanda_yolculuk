@@ -6,7 +6,7 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_full import bssn_rhs_beta1
-from .matter_proca import proca_sources
+from .matter.matter_proca import proca_sources
 from .bssn_grid import d_central
 
 def _lap(f, h):

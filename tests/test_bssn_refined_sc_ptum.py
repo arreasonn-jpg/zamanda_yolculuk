@@ -1,7 +1,7 @@
 import numpy as np
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_refined_sc_ptum import evolve_refined_sc_ptum
-from zt005.sc_condensate import sc_condensate_potential
+from zt005.matter.sc_condensate import sc_condensate_potential
 from zt005.kerr_sc_ptum_ic import kerr_sc_ptum_state
 
 

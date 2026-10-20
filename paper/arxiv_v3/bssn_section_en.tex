@@ -473,8 +473,7 @@ $\psi_4$ is small at the packet peak because $\dot h = 0$ there
 
 \begin{figure*}[t]
 \centering
-\resizebox{0.85\textwidth}{!}{\includegraphics{figures/fig14_gw_pipeline.p
-ng}}
+\resizebox{0.85\textwidth}{!}{\includegraphics{figures/fig14_gw_pipeline.png}}
 \caption{GW extraction pipeline validation. Direct TT-gauge wave
 packet injected; extracted strain at three observers matches the
 analytic envelope to numerical precision. (a) Strain time series
@@ -601,6 +600,59 @@ We replace trilinear with cubic Lagrange prolongation in the AMR pipeline. Cubic
 \subsection{AMR long run: advantage decays over time}
 
 We extend the $2\times$ fixed-patch AMR run to 2000 steps and track black-hole positions via $|\tilde A_{ij}|^2$ peaks. The configuration remains stable (no NaN) throughout. The BH pair remains within the fixed patch ($\pm 2.5$ at grid resolution $h=1.25$). Crucially, the AMR advantage \emph{decays} over time: at step 500 the fine grid constraint is $54\%$ below coarse, at step 1000 it is $40\%$, at step 1500 it is $24\%$, and at step 2000 it is only $8\%$ ($H_f/H_0 = 1.383$ vs $1.417$). The runtime also stiffens: the last 1000 steps take about twice as long as the first 1000. Two conclusions follow. First, fixed-patch AMR buys time but not steady-state constraint control. Second, the limiting factor is the coarse-to-fine boundary injection physics, not the patch geometry. Moving-patch AMR is not yet required (BHs stay inside), but constraint-consistent prolongation or a finer fine-level resolution is.
+
+\subsection{Finer fine-level resolution: negative result}
+
+We test whether increasing only the fine-level resolution solves the
+constraint control problem. A configurable fine grid ($N_{fine}=17$ vs
+$N_{fine}=25$, i.e.\ a nominal $3\times$ factor over the coarse grid)
+is compared directly at $2\times$ physical separation. $N_{fine}=25$
+is three times \emph{worse} than $N_{fine}=17$ (final relative change
+$1.0091$ vs $1.0030$): trilinear interpolation produces aliasing
+errors at non-power-of-two refinement factors, and the CFL number
+becomes marginal at $dt/h = 4.8\times10^{-3}$. Finer fine resolution
+is therefore not the lever; the boundary-injection defect dominates.
+
+\subsection{Gamma-consistent band injection: neutral result}
+
+The stated root cause of the fixed-patch limit is that prolonged
+boundary values do not satisfy the fine-grid constraints. We
+implement a targeted first step: the stored conformal connection
+functions $\Gamma^i$ in the injected boundary band are rederived from
+the prolonged $\tilde g_{ij}$ with fine spacing, using the same
+central-difference operator as the evolution equations (so the band
+is mutually consistent with the data it must evolve). The unit tests
+verify the BSSN identity $\Gamma^i = -\partial_j\tilde g^{ij}$ for
+$\det\tilde g = 1$ fields. The rederivation changes the injected
+$\Gamma$ values by order 50\% relative, yet the Hamiltonian
+constraint is unchanged over 1000 steps: $H_f/H_0 = 1.0757$ with
+Gamma rederivation vs $1.0756$ without (the fixed-patch baseline
+reproduces the earlier $1.0756$ exactly). We conclude that the
+constraint error at the interface band is carried by the
+second-derivative (Ricci) mismatch of the prolonged fields
+$\phi$, $\tilde g_{ij}$, $K$, $\tilde A_{ij}$, not by the
+Gamma--gauge inconsistency. This is the third consecutive
+``not the lever'' result (after cubic prolongation and finer fine
+resolution), and it sharpens the next-step choice: constraint
+projection onto the injected band, or moving-patch AMR.
+
+\subsection{Moving patch quantified: a no-op at this regime}
+
+The two remaining proposed levers were constraint projection and
+moving-patch AMR. We first close the moving-patch branch. The binary
+center of mass is computed each step from the $|\tilde A_{ij}|^2$
+peaks, and the fine window is recentered (full re-extract +
+prolongate from the current coarse state) with even coarse-cell
+offsets so that the factor-2 prolongation grid stays aligned,
+whenever the COM drifts by more than one coarse cell. Over 1000
+steps the trigger never fires: the COM of the equal-mass Bowen-York
+binary drifts by less than one coarse cell at this horizon, and the
+trajectory coincides with the fixed-patch baseline ($H_f/H_0 = 1.076$
+at step 1000, identical to the v12.15 baseline within round-off). A
+COM-following moving patch is thus a no-op for the inspiral phase;
+it becomes relevant only per-puncture (merger vicinity), which is a
+different order of machinery. This quantifies the earlier
+qualitative statement that the BH pair stays inside the fixed patch.
 
 \subsection{Limitations}
 

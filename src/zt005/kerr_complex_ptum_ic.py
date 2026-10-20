@@ -9,7 +9,7 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_ic_kerr_full import kerr_schild_state
-from .ptum_field import fuel_profile, psi_equilibrium_smooth
+from .matter.ptum_field import fuel_profile, psi_equilibrium_smooth
 
 
 def kerr_complex_ptum_state(N, L, M=1.0, a=0.0,

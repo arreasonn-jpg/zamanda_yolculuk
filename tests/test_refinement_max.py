@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from zt005.refinement import restrict, restrict_max
+from zt005.amr.refinement import restrict, restrict_max
 
 
 def test_restrict_max_constant_matches_restrict():

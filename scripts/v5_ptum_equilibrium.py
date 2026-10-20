@@ -1,9 +1,9 @@
 import numpy as np, time
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_rk4_ptum import rk4_step_ptum
-from zt005.ptum_field import (fuel_profile, Phi_critical, m_eff_squared,
+from zt005.matter.ptum_field import (fuel_profile, Phi_critical, m_eff_squared,
                                 psi_equilibrium)
-from zt005.matter_ptum import ptum_sources
+from zt005.matter.matter_ptum import ptum_sources
 
 N = 9; L = 20.0; h = L/(N-1); dt = 5e-4; steps = 100
 V0=1.0; lam=0.05; m2=1.0; alpha_p=1.0; Eth=1.0; lam_psi=1.0

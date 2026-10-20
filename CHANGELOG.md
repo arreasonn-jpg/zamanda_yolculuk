@@ -1,5 +1,51 @@
 # Changelog
 
+## v13.0.0 (2026-10-20)
+
+### Added
+- Moving fine-patch AMR machinery: `scripts/v13_amr_moving.py` with the
+  reusable window logic in `src/zt005/amr/amr_moving.py` (COM tracking
+  via |Atilde|^2 peaks, even-offset recentering, factor-2 aligned).
+- Null result recorded: over 1000 steps the binary COM trigger never
+  fires; H_f/H0 @ 1000 = 1.07564 — identical to the v12.15 fixed-patch
+  baseline (1.0756); the COM-following moving patch is a no-op at this
+  regime, quantifying the v12.12 "BHs stay inside the fixed patch".
+  Artifacts: `results/validated/v13_amr_moving.{npz,json}`.
+
+### Changed — subpackage restructure (breaking)
+- 14 core modules moved into subpackages; imports rewritten repo-wide
+  (85 files), no compatibility shims kept:
+  - `zt005/amr/`: amr_interp, amr_bh_track, refinement,
+    refinement_tensor, bssn_amr_consistent, amr_moving
+  - `zt005/matter/`: matter_scalar, matter_complex, matter_ptum,
+    matter_proca, matter_brans_dicke, sc_condensate, exotic_matter,
+    phase_transition_common, ptum_field
+  - `zt005.amr_interp` etc. are gone; use `zt005.amr.amr_interp`.
+- README repository layout + version table updated; docs/limitations
+  and docs/SESSION_NOTES updated to the v13 state.
+
+### Paper (pre-v4 documentation pass)
+- EN/TR bssn sections: new subsections for v12.13 (finer fine:
+  negative) and v12.15 (Gamma-consistent injection: neutral).
+- EN/TR main validation: source-chain closure recorded
+  (ZT-006.2.24 a_wire_eff = 0.08 m; ZT-006.2.25 retarded solver,
+  5.8e-6 relative).
+- Pre-existing LaTeX bug fixed: split figure path
+  `fig14_gw_pipeline.p\n ng` (both languages); both documents now
+  compile with 0 errors.
+- Built PDFs are now gitignored (`paper/arxiv_v3/*.pdf`).
+
+### Tests
+- New: `tests/unit/test_amr_moving.py` (window parity, clipping,
+  mask threshold); version-guard test keeps pyproject 13.0.0.
+- Full fast suite: 743 passed + 21 slow deselected (7:53).
+- Diagnostic tools added under `scripts/dev/`
+  (fan-in scan, one-shot refactor plan, import smoke).
+
+### Pending (recorded in a follow-up version)
+- 4x + subcycle=4 AMR run (the explicit v12.10 open item,
+  CFL-correct): in progress at release time.
+
 ## v12.15.1 (2026-10-19) — consistency maintenance
 
 ### Fixed

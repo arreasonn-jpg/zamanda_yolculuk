@@ -12,8 +12,8 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_rk4_sc_ptum import rk4_step_sc_ptum
-from .refinement_tensor import prolongate_state, restrict_state_into
-from .refinement import prolongate, restrict
+from .amr.refinement_tensor import prolongate_state, restrict_state_into
+from .amr.refinement import prolongate, restrict
 
 
 def _copy_state(s):

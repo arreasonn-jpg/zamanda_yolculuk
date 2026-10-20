@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from zt005.sc_condensate import sc_condensate_profile, sc_condensate_potential
+from zt005.matter.sc_condensate import sc_condensate_profile, sc_condensate_potential
 
 
 def test_profile_shapes():

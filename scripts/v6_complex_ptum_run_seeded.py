@@ -1,7 +1,7 @@
 import numpy as np, time
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_rk4_complex_ptum import rk4_step_complex_ptum
-from zt005.matter_ptum import ptum_sources
+from zt005.matter.matter_ptum import ptum_sources
 
 N = 9; L = 20.0; h = L/(N-1); dt = 1e-4; steps = 100
 params = {"V0": 1.0, "lam": 0.05, "m2": 1.0, "alpha_p": 1.0,

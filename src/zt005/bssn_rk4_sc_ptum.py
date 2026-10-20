@@ -11,8 +11,8 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_full import bssn_rhs_beta1
-from .matter_scalar import scalar_sources
-from .matter_ptum import ptum_sources
+from .matter.matter_scalar import scalar_sources
+from .matter.matter_ptum import ptum_sources
 from .bssn_grid import d_central
 
 
@@ -36,7 +36,7 @@ def _scalar_rhs(phi, Pi, alpha, K, h, V_func):
 def _ptum_rhs(Phi, Pi_Phi, psi, Pi_psi, alpha, K, h,
               V0=1.0, lam=0.05, m2=1.0, alpha_p=1.0, Eth=1.0, lam_psi=1.0):
     """Two-field PTUM RHS (from matter_ptum)."""
-    from .ptum_field import V_fuel, m_eff_squared
+    from .matter.ptum_field import V_fuel, m_eff_squared
     eps = 1e-5
     dV_f = (V_fuel(Phi+eps, V0=V0, lam=lam) -
             V_fuel(Phi-eps, V0=V0, lam=lam)) / (2*eps)

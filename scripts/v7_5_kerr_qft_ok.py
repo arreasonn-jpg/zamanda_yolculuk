@@ -2,7 +2,7 @@
 import numpy as np, time
 from zt005.kerr_complex_ptum_ic import kerr_complex_ptum_state
 from zt005.bssn_refined_kerr_complex_ptum import evolve_refined_kerr_complex_ptum
-from zt005.matter_ptum import ptum_sources
+from zt005.matter.matter_ptum import ptum_sources
 from zt005.quantum_inequality import check_ford_roman
 
 N_c = 9; L_c = 20.0; h_c = L_c/(N_c-1)

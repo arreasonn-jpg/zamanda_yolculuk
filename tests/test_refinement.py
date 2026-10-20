@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from zt005.refinement import prolongate, restrict
+from zt005.amr.refinement import prolongate, restrict
 
 
 def test_prolongate_constant():

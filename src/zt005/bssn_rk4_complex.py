@@ -10,7 +10,7 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_full import bssn_rhs_beta1
-from .matter_complex import complex_sources
+from .matter.matter_complex import complex_sources
 from .bssn_grid import d_central
 
 

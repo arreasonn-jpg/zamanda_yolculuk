@@ -11,7 +11,7 @@ projection is generically nonzero, giving real GW emission.
 """
 from __future__ import annotations
 import numpy as np
-from .bssn_grid import d_central
+from ..bssn_grid import d_central
 
 def _grad(f, h):
     return np.stack(d_central(f, h), axis=-1)

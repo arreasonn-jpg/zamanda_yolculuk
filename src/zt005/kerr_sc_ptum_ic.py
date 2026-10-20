@@ -10,10 +10,10 @@ Diagnostics compute the total stress-energy (sum of SC + PTUM).
 from __future__ import annotations
 import numpy as np
 from .kerr_sc_ic import kerr_sc_state
-from .sc_condensate import sc_condensate_profile, sc_condensate_potential
-from .ptum_field import fuel_profile, psi_equilibrium
-from .matter_scalar import scalar_sources
-from .matter_ptum import ptum_sources
+from .matter.sc_condensate import sc_condensate_profile, sc_condensate_potential
+from .matter.ptum_field import fuel_profile, psi_equilibrium
+from .matter.matter_scalar import scalar_sources
+from .matter.matter_ptum import ptum_sources
 
 
 def kerr_sc_ptum_state(N, L, M=1.0, a=0.0, rc=1.0,

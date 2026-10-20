@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from zt005.matter_scalar import scalar_sources
+from zt005.matter.matter_scalar import scalar_sources
 from zt005.bssn_state import minkowski_state
 
 

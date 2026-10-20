@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from zt005.phase_transition_common import (
+from zt005.matter.phase_transition_common import (
     sc_like_potential, ptum_like_potential,
     sc_like_equilibrium, ptum_like_equilibrium,
     v_min_sc_like, v_min_ptum_like,

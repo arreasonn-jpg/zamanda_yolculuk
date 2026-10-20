@@ -2,7 +2,7 @@ import numpy as np, time
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_rk4_matter import rk4_step_matter
 from zt005.bssn_ricci_full import hamiltonian_constraint_full
-from zt005.sc_condensate import sc_condensate_profile, sc_condensate_potential
+from zt005.matter.sc_condensate import sc_condensate_profile, sc_condensate_potential
 
 N = 9; L = 20.0; h = L/(N-1); dt = 1e-6; steps = 50
 print(f"N={N} L={L} h={h:.2f} dt={dt} steps={steps}")

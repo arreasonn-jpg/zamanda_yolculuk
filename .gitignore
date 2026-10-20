@@ -61,4 +61,5 @@ scripts/dev/_*
 *.fdb_latexmk
 paper/main.pdf
 paper/*.pdf
+paper/arxiv_v3/*.pdf
 !paper_figures/*.pdf

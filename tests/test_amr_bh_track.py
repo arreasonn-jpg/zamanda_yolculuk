@@ -1,7 +1,7 @@
 import numpy as np
 from zt005.bssn_state_mp import BSSNStateMP
 from zt005.bssn_ic_bowen_york import bowen_york_binary
-from zt005.amr_bh_track import find_bh_centers, pair_separation
+from zt005.amr.amr_bh_track import find_bh_centers, pair_separation
 
 def test_find_centers_initial():
     """Initial IC: punctures at x = +/- 2 (d=4)."""

@@ -40,7 +40,7 @@ def test_small_perturbation_finite():
     Xc,Yc,Zc = np.meshgrid(xc,xc,xc,indexing="ij")
     Xf,Yf,Zf = np.meshgrid(xf,xf,xf,indexing="ij")
     Rc2 = Xc**2+Yc**2+Zc**2; Rf2 = Xf**2+Yf**2+Zf**2
-    from zt005.ptum_field import psi_equilibrium
+    from zt005.matter.ptum_field import psi_equilibrium
     s_c = minkowski_state(N_c); s_f = minkowski_state(N_f)
     PRc = 1e-5*np.exp(-Rc2/4.0); PRf = 1e-5*np.exp(-Rf2/1.0)
     Phc = 1.5*np.exp(-Rc2/8.0); Phf = 1.5*np.exp(-Rf2/2.0)

@@ -9,7 +9,7 @@ from zt005.bssn_state_mp import BSSNStateMP
 from zt005.bssn_ic_bowen_york import bowen_york_binary
 from zt005.bssn_rk4_mp_vec_z4c import rk4_step_mp_vec_z4c
 from zt005.bssn_ricci_full import hamiltonian_constraint_full
-from zt005.amr_interp import (
+from zt005.amr.amr_interp import (
     prolongate_scalar, prolongate_tensor, prolongate_vector, inject_boundary,
 )
 
@@ -111,6 +111,12 @@ for step in range(1, steps + 1):
         print(f"step={step:4d} H_c/H0={H_c_sub/H0_c_sub:.4f} H_f/H0={H_f/H0_f:.4f} fin={fin} t={time.time()-t0:.0f}s")
         if not fin:
             print("NON-FINITE"); break
+
+    if step % 250 == 0:
+        np.savez(f"results/validated/v12_10_amr_{tag}.npz",
+                 t=np.array(t_hist), H_coarse=np.array(H_c_hist),
+                 H_fine=np.array(H_f_hist))
+        print(f"[checkpoint] {tag} step={step}")
 
 np.savez(f"results/validated/v12_10_amr_{tag}.npz",
          t=np.array(t_hist), H_coarse=np.array(H_c_hist), H_fine=np.array(H_f_hist))

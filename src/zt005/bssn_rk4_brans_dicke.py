@@ -7,7 +7,7 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_full import bssn_rhs_beta1
-from .matter_brans_dicke import brans_dicke_sources
+from .matter.matter_brans_dicke import brans_dicke_sources
 from .bssn_grid import d_central
 
 

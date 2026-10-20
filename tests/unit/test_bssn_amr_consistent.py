@@ -8,7 +8,7 @@ det gtilde = 1 exactly).
 import numpy as np
 
 from zt005.bssn_grid import d_central
-from zt005.bssn_amr_consistent import rederive_Gamma, gamma_consistent_band
+from zt005.amr.bssn_amr_consistent import rederive_Gamma, gamma_consistent_band
 
 
 class _FakeState:

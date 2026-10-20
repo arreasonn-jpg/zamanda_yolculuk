@@ -21,7 +21,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from .bssn_grid import d_central
+from ..bssn_grid import d_central
 
 
 def rederive_Gamma(gtilde, h):

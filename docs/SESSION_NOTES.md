@@ -1,9 +1,9 @@
 # Session notes — pickup point
 
-Last stable release: **v12.3.0** (2026-10-15)
-Tests: 698 fast + 21 slow, all passing.
+Last stable release: **v13.0.0** (2026-10-20)
+Tests: fast suite all passing (see CHANGELOG per version).
 
-## Milestones (v1.0 -> v12.3)
+## Milestones (v1.0 -> v13.0)
 
 | Version | Highlight |
 |---|---|
@@ -22,6 +22,11 @@ Tests: 698 fast + 21 slow, all passing.
 | v12.0 | Bowen-York orbit |
 | v12.2 | Vectorized BSSN (25x) |
 | v12.3 | SC+PTUM+BH triple toy |
+| v12.5 | Full stress-tensor + retarded solver chain |
+| v12.9 | N=17 diagnosis + 2x AMR proof of concept |
+| v12.10-* v12.15 | AMR limit chain: cubic/finer-fine/Gamma rederiv; injection physics |
+| v12.14 | ZT-006.2.24/.25 source chain closed |
+| v13.0 | Moving patch (COM) no-op; restructure amr/ + matter/ |
 
 ## Key results
 
@@ -46,16 +51,17 @@ PTUM QFT window A in [1.35, 1.87] invariant under:
 ## 43-order gap: UNCHANGED
 
 ## Paper
-- main_en.tex / main_tr.tex: 15 pages each
+- main_en.tex / main_tr.tex (arxiv_v3 active): validation + bssn sections
+  updated through v12.15 (v13 AMR subsection pending)
 - 15 figures
-- paper/archive/arxiv_submission_v3.zip (~1.5 MB) READY
+- paper/archive/ holds historical submission zips
 
 ## Next
 - A) Full inspiral (weeks)
 - B) Cython for N>=15
-- C) arXiv upload (user decision)
+- C) arXiv upload v4 (user decision)
 - D) New physics (Horndeski/DHOST)
-- E) Stop
+- E) Constraint projection onto the injected AMR band
 
 ## Resume
     cd ~/zamanda_yolculuk

@@ -3,9 +3,9 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_rk4_complex_ptum import rk4_step_complex_ptum
-from .refinement_tensor import prolongate_state, restrict_state_into
-from .refinement import prolongate
-from .ptum_field import psi_equilibrium_smooth
+from .amr.refinement_tensor import prolongate_state, restrict_state_into
+from .amr.refinement import prolongate
+from .matter.ptum_field import psi_equilibrium_smooth
 
 
 def _copy_state(s):

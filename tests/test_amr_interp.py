@@ -1,5 +1,5 @@
 import numpy as np
-from zt005.amr_interp import (
+from zt005.amr.amr_interp import (
     prolongate_scalar, prolongate_tensor, prolongate_vector,
     restrict_scalar, inject_boundary,
 )
@@ -69,7 +69,7 @@ def test_cubic_prolongate_quadratic():
     x = np.linspace(0, 1, N)
     X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
     c = 3.0 * X**2 + 2.0 * Y**2 + 1.0 * Z**2
-    from zt005.amr_interp import prolongate_scalar_cubic
+    from zt005.amr.amr_interp import prolongate_scalar_cubic
     f = prolongate_scalar_cubic(c, factor=2)
     Nf = (N - 1) * 2 + 1
     xf = np.linspace(0, 1, Nf)

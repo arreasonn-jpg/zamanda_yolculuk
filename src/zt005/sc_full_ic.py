@@ -11,7 +11,7 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .sc_like_ic import sc_like_state
-from .sc_condensate import sc_condensate_profile, sc_condensate_potential
+from .matter.sc_condensate import sc_condensate_profile, sc_condensate_potential
 
 
 def sc_full_state(N, L, M=1.0, rc=1.0, rho_core=1e19, m_pair_MeV=10.0,

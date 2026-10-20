@@ -10,8 +10,8 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_ic_kerr_full import kerr_schild_state
-from .ptum_field import fuel_profile, psi_equilibrium, m_eff_squared
-from .matter_ptum import ptum_sources
+from .matter.ptum_field import fuel_profile, psi_equilibrium, m_eff_squared
+from .matter.matter_ptum import ptum_sources
 
 
 def kerr_ptum_state(N, L, M=1.0, a=0.0, A_fuel=3.0, sigma=None,

@@ -1,7 +1,7 @@
 import numpy as np
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_rk4_ptum import rk4_step_ptum
-from zt005.ptum_field import fuel_profile
+from zt005.matter.ptum_field import fuel_profile
 
 
 def test_vacuum_stationary():

@@ -3,7 +3,7 @@ import math
 import numpy as np
 import pytest
 
-from zt005.exotic_matter import (
+from zt005.matter.exotic_matter import (
     casimir_parallel_plates,
     morris_thorne_shell,
     tipler_cylinder,

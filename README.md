@@ -10,15 +10,20 @@ really is.
 > converged for the device source. No time machine has been built, and
 > the honest expectation is a quantitative bound, not a device.
 >
-> **Current frontline (v12.15):** (a) device-source convergence is
+> **Current frontline (v13.0.0):** (a) device-source convergence is
 > CLOSED — ZT-006.2.24 (instantaneous kernel) and ZT-006.2.25 (retarded
 > solver, device sources) both PASS; the remaining gap to a device
 > metric is physical (h ~ 10⁻⁴⁶, EM-only linearized chain), not
 > numerical; (b) fixed-patch AMR for BSSN binaries: cubic prolongation
-> (v12.11), finer fine resolution (v12.13) and Gamma rederivation
-> (v12.15) are all neutral/negative — the remaining defect is the
-> O(h_c²) second-derivative mismatch of the prolonged fields; next
-> real levers: constraint projection or moving-patch AMR.
+> (v12.11), finer fine resolution (v12.13), Gamma rederivation (v12.15)
+> are all neutral/negative; COM-following moving patch quantified as a
+> no-op (v13.0.0: COM drift < 1 coarse cell in 1000 steps; H_f/H0 =
+> 1.0756 unchanged); 4x + subcycle=4 (the v12.10 open item) pending.
+> The
+> remaining defect is the O(h_c²) second-derivative mismatch of the
+> prolonged fields; next real lever: constraint projection.
+> (c) code layout: BSSN-amr machinery in `zt005.amr/`, matter models
+> in `zt005.matter/`.
 
 The term "time machine" is avoided in technical layers by design: the
 correct description is **spacetime-manipulation hypothesis**. All CTC
@@ -36,6 +41,7 @@ machinery in this repo is a known-answer benchmark, not a device claim.
 | v11–v12 | 3D binary BH: Brill-Lindquist → Bowen-York orbital; vectorized RHS (25x); N=17 constraint breakdown diagnosed; AMR v12.9–v12.13 (proof of concept, negative results documented) |
 | v12.14  | ZT-006.2.25: retarded-solver device-source convergence PASS (source chain numerically closed) |
 | v12.15  | Constraint-consistent Gamma injection: neutral (H unchanged); 737 fast + 21 slow tests; frontline: constraint projection / moving-patch AMR |
+| v13.0.0 | COM-tracked moving patch quantified as no-op (COM drift < 1 coarse cell in 1000 steps; H_f/H0 = 1.0756 unchanged); subpackage restructure (`zt005.amr/`, `zt005.matter/`) |
 
 See `docs/limitations.md` for the full scope/NOT-delivered register per
 version, and `docs/validation.md` for the PASS/FAIL register.
@@ -43,8 +49,13 @@ version, and `docs/validation.md` for the PASS/FAIL register.
 ## Repository layout
 
 ```
-├── src/zt005/          # all code (EM layer, T_mu_nu, retarded GR layer,
-│                       # benchmark metrics, geodesics, CTC search)
+├── src/zt005/          # code root: EM layer, T_mu_nu, retarded GR layer,
+│   │                   # benchmark metrics, geodesics, CTC search,
+│   │                   # BSSN solver + run_* stage entry points
+│   ├── zt005/amr/      # AMR-lite: interpolation/prolongation, BH tracking,
+│   │                   # refinement, consistent injection, moving window
+│   └── zt005/matter/   # matter models: scalar/complex/ptum/proca/
+│                       # Brans-Dicke, condensate, exotic matter
 ├── tests/              # pytest suite
 ├── stages/             # per-stage records (ZT001…ZT010), incl. FAILs
 ├── paper/              # LaTeX sources + figures (arxiv_v3 active;

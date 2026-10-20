@@ -9,7 +9,7 @@ Expectation: PTUM QFT threshold unchanged (as with Kerr/BD).
 from __future__ import annotations
 import numpy as np
 from .lqc_scalar_evolution import H_squared_lqc, RHO_C
-from .ptum_field import V_fuel, m_eff_squared
+from .matter.ptum_field import V_fuel, m_eff_squared
 
 
 def combined_density_lqc_ptum(Phi, Pi_Phi, psi, Pi_psi,

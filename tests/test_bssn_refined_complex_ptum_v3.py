@@ -25,7 +25,7 @@ def test_peak_mode_preserves_Phi():
     Xc,Yc,Zc = np.meshgrid(xc,xc,xc,indexing='ij')
     Xf,Yf,Zf = np.meshgrid(xf,xf,xf,indexing='ij')
     Rc2 = Xc**2+Yc**2+Zc**2; Rf2 = Xf**2+Yf**2+Zf**2
-    from zt005.ptum_field import psi_equilibrium_smooth
+    from zt005.matter.ptum_field import psi_equilibrium_smooth
     s_c = minkowski_state(N_c); s_f = minkowski_state(N_f)
     Phc = 3.0*np.exp(-Rc2/8.0); Phf = 3.0*np.exp(-Rf2/8.0)
     psc = psi_equilibrium_smooth(Phc); psf = psi_equilibrium_smooth(Phf)
@@ -53,7 +53,7 @@ def test_avg_mode_matches_v2():
     Xc,Yc,Zc = np.meshgrid(xc,xc,xc,indexing='ij')
     Xf,Yf,Zf = np.meshgrid(xf,xf,xf,indexing='ij')
     Rc2 = Xc**2+Yc**2+Zc**2; Rf2 = Xf**2+Yf**2+Zf**2
-    from zt005.ptum_field import psi_equilibrium_smooth
+    from zt005.matter.ptum_field import psi_equilibrium_smooth
     s_c = minkowski_state(N_c); s_f = minkowski_state(N_f)
     Phc = 3.0*np.exp(-Rc2/8.0); Phf = 3.0*np.exp(-Rf2/8.0)
     psc = psi_equilibrium_smooth(Phc); psf = psi_equilibrium_smooth(Phf)

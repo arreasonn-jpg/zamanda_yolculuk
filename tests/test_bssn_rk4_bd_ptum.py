@@ -34,7 +34,7 @@ def test_small_perturbation_finite():
     phi_BD = 1.0 + 1e-4*np.exp(-R2/2.0)
     Phi = 1.6*np.exp(-R2/8.0)
     Z = np.zeros((N,N,N))
-    from zt005.ptum_field import psi_equilibrium_smooth
+    from zt005.matter.ptum_field import psi_equilibrium_smooth
     psi = psi_equilibrium_smooth(Phi)
     params = {"V0":1.0,"lam":0.05,"m2":1.0,"alpha_p":1.0,"Eth":1.0,"lam_psi":1.0}
     out = rk4_step_bd_ptum(s, phi_BD, Z, Phi, Z, psi, Z,

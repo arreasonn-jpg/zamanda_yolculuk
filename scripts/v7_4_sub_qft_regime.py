@@ -8,8 +8,8 @@ For A in [0.5, 1.87], measure:
 import numpy as np, time
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_rk4_complex_ptum import rk4_step_complex_ptum
-from zt005.ptum_field import psi_equilibrium_smooth
-from zt005.matter_ptum import ptum_sources
+from zt005.matter.ptum_field import psi_equilibrium_smooth
+from zt005.matter.matter_ptum import ptum_sources
 from zt005.quantum_inequality import check_ford_roman
 
 N = 9; L = 20.0; h = L/(N-1); dt = 5e-4; steps = 100

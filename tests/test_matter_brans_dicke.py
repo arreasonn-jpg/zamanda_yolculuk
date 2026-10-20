@@ -1,5 +1,5 @@
 import numpy as np
-from zt005.matter_brans_dicke import brans_dicke_sources, gr_limit_check
+from zt005.matter.matter_brans_dicke import brans_dicke_sources, gr_limit_check
 from zt005.bssn_state import minkowski_state
 
 

@@ -26,9 +26,9 @@ from zt005.bssn_state_mp import BSSNStateMP
 from zt005.bssn_ic_bowen_york import bowen_york_binary
 from zt005.bssn_rk4_mp_vec_z4c import rk4_step_mp_vec_z4c
 from zt005.bssn_ricci_full import hamiltonian_constraint_full
-from zt005.amr_interp import (
+from zt005.amr.amr_interp import (
     prolongate_scalar, prolongate_tensor, prolongate_vector, inject_boundary)
-from zt005.bssn_amr_consistent import rederive_Gamma
+from zt005.amr.bssn_amr_consistent import rederive_Gamma
 
 N_c, L_c = 17, 20.0
 N_f, L_f = 17, 10.0

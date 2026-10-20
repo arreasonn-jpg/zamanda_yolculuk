@@ -11,8 +11,8 @@ from __future__ import annotations
 import numpy as np
 from .bssn_state import BSSNState
 from .bssn_full import bssn_rhs_beta1
-from .matter_complex import complex_sources
-from .matter_ptum import ptum_sources
+from .matter.matter_complex import complex_sources
+from .matter.matter_ptum import ptum_sources
 from .bssn_grid import d_central
 
 
@@ -40,7 +40,7 @@ def _complex_rhs(PR, PI, PiR, PiI, alpha, K, h, dV_func=None):
 
 def _ptum_rhs(Ph, PPh, ps, Pps, alpha, K, h,
               V0=1.0, lam=0.05, m2=1.0, alpha_p=1.0, Eth=1.0, lam_psi=1.0):
-    from .ptum_field import V_fuel, m_eff_squared
+    from .matter.ptum_field import V_fuel, m_eff_squared
     eps = 1e-5
     dV_f = (V_fuel(Ph+eps, V0=V0, lam=lam) -
             V_fuel(Ph-eps, V0=V0, lam=lam)) / (2*eps)

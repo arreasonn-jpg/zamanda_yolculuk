@@ -475,8 +475,7 @@ maksimum); bu fiziksel bir sıfırdır, sayısal değil.
 
 \begin{figure*}[t]
 \centering
-\resizebox{0.85\textwidth}{!}{\includegraphics{figures/fig14_gw_pipeline.p
-ng}}
+\resizebox{0.85\textwidth}{!}{\includegraphics{figures/fig14_gw_pipeline.png}}
 \caption{GW çıkarım boru hattı doğrulaması. Doğrudan TT-gauge
 dalga paketi enjekte edildi; üç gözlemcide çıkarılan gerinim
 analitik zarfla sayısal hassasiyet içinde örtüşür. (a) En dıştaki
@@ -599,6 +598,31 @@ AMR boru hattında trilineer uzatmayı kübik Lagrange ile değiştiriyoruz. Kü
 \subsection{AMR uzun koşu: avantaj zamanla azalır}
 
 $2\times$ sabit yama AMR koşusunu 2000 adıma uzatıyor ve karadelik konumlarını $|\tilde A_{ij}|^2$ tepeleri üzerinden izliyoruz. Yapılandırma boyunca stabil kalır (NaN yok). BH çifti sabit yama içinde kalır (ağ çözünürlüğü $h=1.25$'te $\pm 2.5$). Kritik olarak AMR avantajı zamanla \emph{azalır}: 500. adımda ince ağ kısıtı kabadan \%54 düşükken, 1000. adımda \%40, 1500. adımda \%24 ve 2000. adımda yalnızca \%8'dir ($H_f/H_0 = 1.383$ vs $1.417$). Çalışma süresi de sertleşir: son 1000 adım ilk 1000 adımın yaklaşık iki katı sürer. İki sonuç çıkar. Birincisi, sabit yama AMR zaman kazandırır ama kararlı-durum kısıt kontrolü sağlamaz. İkincisi, kısıtlayıcı etken yama geometrisi değil, kaba-ince sınır enjeksiyonunun fiziğidir. Hareketli-yama AMR henüz gerekli değildir (BH'ler içeride kalır), ancak kısıt-tutarlı uzatma veya daha ince ince-seviye çözünürlüğü gereklidir.
+
+\subsection{Daha ince ince-seviye çözünürlüğü: negatif sonuç}
+
+Kısıt kontrolü problemini yalnızca ince-seviye çözünürlüğü artırarak çözmenin mümkün olup olmadığını test ediyoruz. Yapılandırılabilir ince ağ ($N_{fine}=17$ vs $N_{fine}=25$, yani kaba ağa göre nominal $3\times$ etki) doğrudan $2\times$ fiziksel ayrımda karşılaştırılıyor. $N_{fine}=25$, $N_{fine}=17$'den üç kat \emph{daha kötüdür} (son rölatif değişim $1.0091$ vs $1.0030$): trilineer interpolasyon $2$'nin kuvveti olmayan inceltme etkenlerinde takma-anma (aliasing) hataları üretir ve CFL sayısı $dt/h = 4.8\times10^{-3}$ ile marjinal hale gelir. Daha ince ince-seviye çözünürlüğü bu nedenle kaldıraç değildir; sınır-enjeksiyon kusuru baskındır.
+
+\subsection{Gamma-tutarlı bant enjeksiyonu: nötr sonuç}
+
+Sabit yama limitinin belirtilen kök nedeni, uzatılmış sınır değerlerinin ince-ağ kısıtlarını sağlamamasıdır. Hedefli bir ilk adım uyguluyoruz: enjeksiyon bandındaki depolanmış konformal bağlantı fonksiyonları $\Gamma^i$, uzatılmış $\tilde g_{ij}$'den ince aralıkla, evrim denklemleriyle aynı santral-fark operatörü kullanılarak yeniden türetilir (bant, evrimleşmesi gereken veriyle karşılıklı tutarlı olur). Birim testleri, $\det\tilde g = 1$ alanları için BSSN kimliğini $\Gamma^i = -\partial_j\tilde g^{ij}$ doğrular. Yeniden türetme enjekte edilen $\Gamma$ değerlerini rölatif \%50 mertebesinde değiştirir, ancak Hamilton kısıtı 1000 adım boyunca değişmez: $H_f/H_0 = 1.0757$ (Gamma yeniden türetmesiyle) vs $1.0756$ ( olmadan, yani Gamma yeniden türetmesi olmadan; sabit yama taban çizgisi önceki $1.0756$'yı birebir yeniden üretir). Sonuç: arayüz bandındaki kısıt hatası, uzatılmış $\phi$, $\tilde g_{ij}$, $K$, $\tilde A_{ij}$ alanlarının ikinci-türev (Ricci) farkı tarafından taşınır; Gamma--gauge tutarsızlığı tarafından değil. Bu, kübik uzatma ve daha ince ince çözünürlük'ten sonra art arda üçüncü ``kaldıraç değil'' sonucudur ve bir sonraki adım seçimini netleştirir: enjekte edilen banda kısıt projeksiyonu veya hareketli-yama AMR.
+
+\subsection{Hareketli yama nicelleştirildi: bu rejimde etkisiz}
+
+Geriye kalan önerilen iki kaldıraç kısıt projeksiyonu ve hareketli-yama
+AMR idi. Önce hareketli-yama dalını kapatıyoruz. İkili bileşenin
+kütle merkezi her adımda $|\tilde A_{ij}|^2$ tepelerinden hesaplanır ve
+COM bir kaba hücreden fazla sürüklenirse ince pencere yeniden
+merkezlenir (mevcut kaba durumdan tam yeniden çıkarım + uzatma; factor-2
+uzatma ızgarasının hizasını koruyan çift kaba-hücre ofsetleriyle). 1000
+adım boyunca tetik hiç ateşlenmez: eş-kütle Bowen-York ikilisinin COM'u
+bu ufukta bir kaba hücreden az sürüklenir ve yörünge sabit-yama taban
+çizgisiyle birebir çakışır (1000. adımda $H_f/H_0 = 1.076$; v12.15
+taban çizgisiyle Yuvarlaklama hatası dahilinde aynı). COM-izlemeli
+hareketli yama, inspiral fazı için etkinsizdir; ancak puncture'ların
+yaklaştığı birleşme civarı fazında anlamlı hale gelir. Bu, daha
+öncedeki niteliksel hükmü (BH çifti sabit yamanın içinde kalır)
+nicelleştirir.
 
 \subsection{Sınırlamalar}
 

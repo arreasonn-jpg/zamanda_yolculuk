@@ -1,9 +1,9 @@
 import numpy as np, time
 from zt005.bssn_state import minkowski_state
 from zt005.bssn_refined_sc_ptum import evolve_refined_sc_ptum
-from zt005.sc_condensate import sc_condensate_potential
-from zt005.matter_scalar import scalar_sources
-from zt005.matter_ptum import ptum_sources
+from zt005.matter.sc_condensate import sc_condensate_potential
+from zt005.matter.matter_scalar import scalar_sources
+from zt005.matter.matter_ptum import ptum_sources
 
 N_c = 9; L_c = 20.0; h_c = L_c/(N_c-1)
 N_f = 9; L_f = 10.0; h_f = L_f/(N_f-1)

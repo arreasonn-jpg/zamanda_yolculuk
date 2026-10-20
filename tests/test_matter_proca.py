@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from zt005.matter_proca import proca_sources, tt_content_estimate
+from zt005.matter.matter_proca import proca_sources, tt_content_estimate
 from zt005.bssn_state import minkowski_state
 
 def test_vacuum_zero():
