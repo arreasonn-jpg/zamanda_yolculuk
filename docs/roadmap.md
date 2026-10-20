@@ -7,8 +7,8 @@ validation exists on record.
 |---|---|---|
 | 0 | Project infrastructure (repo layout, CI, docs, results policy) | ✅ this reorganization |
 | 1 | Maxwell validation (MQS consistency) | ✅ ZT-005.x (full-wave deferred to ZT-007) |
-| 2 | T_μν validation | 🔶 partial: EM-only T built; conservation diagnostic now exists but device-source convergence FAILED (ZT-006.2.19/.20) |
-| 3 | Retarded linearized Einstein solver | 🔶 solver implemented + manufactured-source validated; device-source convergence study pending |
+| 2 | T_μν validation | ✅ EM-only T built; conservation diagnostic exists; device-source convergence RESOLVED via effective kernel smoothing a_wire_eff = 0.08 m (ZT-006.2.19/.20 FAIL → ZT-006.2.24) |
+| 3 | Retarded linearized Einstein solver | ✅ solver implemented + manufactured-source validated; device-source convergence PASS at 5.8e-6 relative (ZT-006.2.25) — source chain numerically closed |
 | 4 | Metric validation | ✅ benchmark metrics validated (known metrics) |
 | 5 | Geodesic engine | ✅ RK4 integrator validated (norm, precession) |
 | 6 | Known-CTC benchmark reproduction | ✅ Gödel + Tipler known answers reproduced; negative benchmarks clean |
@@ -20,17 +20,19 @@ validation exists on record.
 
 ## Immediate next moves (in order)
 
-1. **Conservation of the real device source.** Evaluate ∂_μ T^{μν} for
-   the MQS device fields (including the wire currents explicitly) and
-   make the residual a tracked regression.
-2. **Retarded-solver convergence for the device source.** The failure
-   mode of ZT-006.2 must not repeat: grid-refinement study with
-   analytic/semi-analytic sub-checks before any metric claim.
+1. ~~**Conservation of the real device source.**~~ ✅ resolved via the
+   ZT-006.2 chain (residuals tracked as regressions).
+2. ~~**Retarded-solver convergence for the device source.**~~ ✅ ZT-006.2.24
+   (instantaneous kernel, a_wire_eff) + ZT-006.2.25 (retarded solver
+   PASS, 5.8e-6 relative).
 3. **Gauge audit of the device pipeline.** ∂_μ h̄^{μν} for the device
-   retarded solution.
+   retarded solution — still open.
 4. **Energy bookkeeping skeleton** (Phase 8 constants and budgets), so
    that the h ~ 10⁻⁴⁶ scale can be translated into an explicit energy
    requirement.
+5. **BSSN AMR frontier (v13):** the resolved boundary-injection defect
+   moves to constraint projection (band-local elliptic solve); see
+   `docs/AMR_PROJECTED_INJECTION_PLAN.md`.
 
 ## Explicitly deferred
 
