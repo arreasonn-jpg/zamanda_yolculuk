@@ -1,5 +1,33 @@
 # Changelog
 
+## v13.1.0 (2026-10-20)
+
+### Added — 4x + subcycle=4 AMR closed as negative (the v12.10 open item)
+- The CFL-correct 4x + subcycle=4 configuration (N_f = 33, h_f =
+  0.3125, dt_f = 5e-4) was run over 1000 steps plan; the process died
+  of session shutdown between steps 500-750 and the step-500
+  checkpoint resolves the question:
+  H_f/H0 @ 500 = 1.1418 (4x) vs 1.0166 (2x baseline) and 1.0297
+  (own coarse subgrid) — 4x is ~12% WORSE and worse than its own
+  coarse grid; monotonic divergence from ~step 400.
+- Verdict: resolution does not clear the prolonged-boundary
+  second-derivative mismatch; it AMPLIFIES it. Constraint projection
+  (see docs/AMR_PROJECTED_INJECTION_PLAN.md) is the only remaining
+  lever candidate.
+- Artifacts: results/validated/v13_amr_f4sub4.{npz,json};
+  reproduce: `python scripts/v12_10_amr_flex.py 500 v16f4sub4 4 4`.
+- Paper EN/TR: new bssn subsections (4x negative; moving-patch no-op
+  added in v13.0.0 doc pass), arxiv_submission_v4.zip regenerated.
+- Roadmap: phase-2/3 status synced to the ZT-006.2.24/.25 resolution
+  (done in v13.0.1), immediate-next list updated, projection plan
+  linked.
+
+### Tests
+- Diagnostic helpers in scripts/dev/ (probe_4x_step.py profiling
+  probe, check_4x.py checkpoint reader).
+- Full fast suite: 743 fast passed (v13.0.0 state); this release
+  adds no test and changes no production code (artifacts + docs).
+
 ## v13.0.0 (2026-10-20)
 
 ### Added

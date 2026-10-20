@@ -1234,3 +1234,39 @@ is in progress; its outcome is recorded in a follow-up version.
   change documented in CHANGELOG.
 - Production-grade AMR.
 
+## v13.1.0 scope (4x + subcycle=4 AMR: closed as negative at step 500)
+
+### What v13.1.0 delivers
+
+- The explicit v12.10 open item (4x refinement WITH subcycle = 4,
+  i.e. dt_f = 5e-4 obeying a correct CFL number) was attempted over
+  1000 steps and terminated by a session shutdown between steps 500
+  and 750. The step-500 checkpoint decides the question.
+- Result (negative): at step 500, H_f/H0 = 1.1418 on the 4x fine
+  grid (N_f = 33, h_f = 0.3125), versus 1.0166 for the 2x baseline
+  (same checkpoint) and 1.0297 for the run's own coarse-subgrid. The
+  4x configuration is therefore about 12% WORSE than the 2x baseline
+  and worse than its own coarse reference: additional refinement
+  AMPLIFIES the prolonged-boundary second-derivative mismatch
+  instead of fixing it. The curve diverges from the baseline
+  monotonically from near step 400 onward; waiting for step 1000
+  cannot change the sign of this verdict.
+- Artifacts: `results/validated/v13_amr_f4sub4.npz` (step-500
+  checkpoint copy of v12_10_amr_v16f4sub4.npz) plus a json verdict;
+  reproduce with `python scripts/v12_10_amr_flex.py 500 v16f4sub4 4 4`.
+- A profiling probe of the fine-grid step (about 30 s/step, einsum
+  dominance) is recorded with the wake-up plan in
+  `docs/AMR_PROJECTED_INJECTION_PLAN.md`; with the moving-window and
+  the 4x branches closed, constraint projection is the only
+  remaining lever from the v12.15 shortlist.
+
+### Honest caveats
+
+- The recorded run is a 500-step checkpoint, not a full 1000-step
+  curve. Both numbers quoted are standard normalizations (ratio to
+  each grid's own step-0 constraint), so the comparison is
+  meaningful; the exact 1000-step 4x curve does not exist anywhere
+  in the repo.
+- No field-state resume is implemented (the script restarts from
+  step 0), which is why the terminated run cannot be continued.
+

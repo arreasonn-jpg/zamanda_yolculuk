@@ -624,6 +624,21 @@ yaklaştığı birleşme civarı fazında anlamlı hale gelir. Bu, daha
 öncedeki niteliksel hükmü (BH çifti sabit yamanın içinde kalır)
 nicelleştirir.
 
+\subsection{Doğru alt-döngülü 4$\times$ inceltme: negatif}
+
+AMR parametre taramasından kalan açık maddeyi kapatıyoruz: CFL-düzgün
+alt-döngülü $4\times$ ince ağ ($dt_f = 5\times10^{-4}$, $N_f = 33$,
+$h_f = 0.3125$) kısıt kusarını düzeltir mi? 500. adımda alt-döngülü
+$4\times$ ince ağı $H_f/H_0 = 1.1418$ verir; $2\times$ taban çizgisi
+$1.0166$ ve kendi kaba alt-ağı $1.0297$ iken bu, taban çizgisinden
+yaklaşık \%12 \emph{daha kötü} ve kaba ağın kendisinden de kötüdür.
+Taban çizgisinden ayrışma 400. adım civarından itibaren monotondur.
+Yorum, zincirin tamamıyla tutarlıdır: temizlenmemiş sınır-enjeksiyonu
+altında ek çözünürlük, uzatılmış alanların ikinci-türev uyuşmazlığını
+amplifiye eder, çözmez. $4\times$ kaydımız, kesintiye uğramış
+1000-adımlık koşunun 500-adımlık kontrol noktasıdır; kesme gerekçesinin
+monoton-ayrışma analizi, havuzun sınırlamalar kaydında belgelenmiştir.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir

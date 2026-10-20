@@ -1,0 +1,15 @@
+{
+  "stage": "v13.1.0",
+  "experiment": "4x refinement with subcycle=4 (CFL-correct)",
+  "source_script": "scripts/v12_10_amr_flex.py (tag v16f4sub4, factor 4, subcycle 4)",
+  "provenance": "run was terminated by session shutdown between steps 500 and 750; the step-500 checkpoint was analyzed and its verdict is decisive (monotonic divergence, cross-over already visible at ~step 400)",
+  "steps_recorded": 500,
+  "H0_coarse_sub": 2.2712e-02,
+  "H0_fine": 3.8531e-02,
+  "H_fine_at_500": 1.1418,
+  "H_coarse_sub_at_500": 1.0297,
+  "baseline_v12_15_2x_at_500": 1.0166,
+  "baseline_v12_15_2x_at_1000": 1.0756,
+  "reproduce": "python scripts/v12_10_amr_flex.py 500 v16f4sub4 4 4",
+  "verdict": "NEGATIVE - 4x + subcycle 4 makes the fine-grid Hamiltonian constraint 12% WORSE than the 2x baseline at step 500 and worse than its own coarse reference; more refinement amplifies the prolonged-boundary second-derivative mismatch instead of fixing it"
+}

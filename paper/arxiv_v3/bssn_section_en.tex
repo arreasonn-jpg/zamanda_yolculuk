@@ -654,6 +654,23 @@ it becomes relevant only per-puncture (merger vicinity), which is a
 different order of machinery. This quantifies the earlier
 qualitative statement that the BH pair stays inside the fixed patch.
 
+\subsection{4$\times$ refinement with correct sub-cycling: negative}
+
+We close the remaining open item from the AMR parameter scan: does a
+$4\times$ fine grid with CFL-correct sub-cycling ($dt_f = 5\times
+10^{-4}$, $N_f = 33$, $h_f = 0.3125$) fix the constraint defect? At
+step 500 the sub-cycled $4\times$ fine grid has $H_f/H_0 = 1.1418$,
+against $1.0166$ for the $2\times$ baseline and $1.0297$ for its own
+coarse subgrid: about $12\%$ \emph{worse} than the baseline and worse
+than the coarse grid itself. The divergence from the baseline is
+monotonic from near step 400. The interpretation is consistent with
+the whole chain: additional resolution at an uncleared boundary
+injection amplifies the second-derivative mismatch of the prolonged
+fields; it does not resolve it. Our $4\times$ record is a step-500
+checkpoint of an interrupted 1000-step run, with the
+monotonic-divergence justification for truncation recorded in the
+repository's limitations register.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
