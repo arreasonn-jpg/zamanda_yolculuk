@@ -1270,3 +1270,49 @@ is in progress; its outcome is recorded in a follow-up version.
 - No field-state resume is implemented (the script restarts from
   step 0), which is why the terminated run cannot be continued.
 
+## v13.2 scope (band-local conformal projection: FIRST POSITIVE RESULT)
+
+### What v13.2 delivers
+
+- `src/zt005/amr/amr_projection.py` (v13.2-alpha1): after each
+  coarse-to-fine injection, phi inside the injected band is corrected
+  by a damped point-Jacobi solve of
+  Lap(dphi) = e^{4phi} · H_res / 8 (flat-Laplacian, first-order
+  mapping of the identity
+  H = e^{-4phi} (Rtilde - 8 D^2 phi - 8 |grad phi|^2) + K^2 - At^2),
+  with the guard mask excluding cells where |grad phi| > 0.5
+  (puncture-vicinity cells, where the quadratic |grad phi|^2 term
+  would invalidate the linearization).
+- Result (positive): over the full 1000-step protocol, the fine
+  Hamiltonian constraint is H_f/H0 = 0.9319 at step 1000 versus the
+  fixed-patch baseline 1.0756 — about 13.4% lower, and BELOW the
+  run's own step-0 normalization: the band projection actively
+  cleans the fine data during evolution instead of merely limiting
+  its growth. The run is finite at every checkpoint;
+  dphi_max stays near 2e-2.
+- This closes the diagnosis chain: after cubic prolongation (v12.11),
+  finer fine (v12.13), Gamma rederivation (v12.15), the COM moving
+  patch (v13.0) and 4x + subcycle (v13.1) were all not the lever —
+  the constraint projection IS a lever.
+- Solver unit tests: `tests/unit/test_amr_projection.py`
+  (Laplacian exactness, manufactured-solution convergence, boundary
+  zero, guard-mask behavior, residual reduction).
+- Artifacts: `results/validated/v13_2_projection.{npz,json}` and the
+  run log; reproduce with `python scripts/v13_2_projection.py 1000`.
+
+### Honest caveats
+
+- The mapping is FIRST-ORDER: flat Laplacian standing in for the
+  gamma-tilde covariant Laplacian, the |grad phi|^2 term lagged and
+  masked away near punctures. The result is therefore a
+  demonstration that the injected-band physics can be reduced, not
+  an exact discrete projection.
+- H_f/H0 dropping below 1.0 mixes two effects: real constraint
+  reduction at the band and the fact that H0 is measured at step 0
+  WITHOUT projection. A cleaner metric (both curves with the same
+  projected-initial-data reference) is left for the v13.3 pass.
+- Coarse-grid constraint growth (1.1191 @ 1000) is unchanged by
+  design: the projection only touches the fine band.
+- Momentum constraint and the exact covariant mapping remain open
+  items (`docs/AMR_PROJECTED_INJECTION_PLAN.md`).
+

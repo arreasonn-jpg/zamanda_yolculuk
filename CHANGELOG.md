@@ -1,5 +1,50 @@
 # Changelog
 
+## v13.2.0 (2026-10-23)
+
+### Added — band-local conformal projection: FIRST POSITIVE LEVER
+- `src/zt005/amr/amr_projection.py` (v13.2-alpha1): after each
+  coarse-to-fine injection, phi inside the 4-layer band is corrected
+  by a damped point-Jacobi solve of Lap(dphi) = e^{4 phi} H_res / 8
+  (first-order mapping of H = e^{-4 phi} (Rtilde - 8 D^2 phi -
+  8 |grad phi|^2) + K^2 - At^2), with a |grad phi| > 0.5 guard mask
+  excluding puncture-vicinity cells.
+- Result: full 1000-step protocol, H_f/H0 @ 1000 = 0.9319 versus the
+  fixed-patch baseline 1.0756 (about -13.4%), and BELOW the run's
+  own step-0 normalization: the projection actively cleans the fine
+  data during evolution. Finite at every checkpoint in the run
+  (H_f curve 0.853 @ 50 -> 0.9319 @ 1000); dphi_max steady at
+  ~2e-2.
+- Diagnosis chain closed: cubic prolongation (v12.11), finer fine
+  (v12.13), Gamma rederivation (v12.15), COM-moving patch (v13.0)
+  and 4x + subcycle (v13.1) were all not the lever; the projected
+  injected band IS a lever. The remaining defect sits exactly where
+  the diagnosis had claimed all along: the prolonged second-
+  derivative mismatch of the injected fields.
+- `scripts/v13_2_projection.py` runner (same harness as v12.9/15);
+  artifacts `results/validated/v13_2_projection.{npz,json}`
+  (run log available but logs are gitignored);
+  reproduce: `python scripts/v13_2_projection.py 1000`.
+- Solver unit tests (5): tests/unit/test_amr_projection.py
+  (Laplacian exactness, manufactured-solution convergence, zero
+  boundary, guard mask, residual reduction).
+- Paper EN/TR: moving-patch and 4x subsections already present
+  (v13.0/13.1 documentation passes); the positive projection
+  subsections added in this release; arxiv_submission_v4.zip
+  regenerated.
+
+### Caveats (on record)
+- First-order mapping only: flat Laplacian stands in for the
+  gamma-tilde covariant one; |grad phi|^2 lagged and masked. Exact
+  covariant projection + momentum-constraint analog remain open
+  (docs/AMR_PROJECTED_INJECTION_PLAN.md).
+- H_f/H0 < 1 mixes genuine reduction with the H0 definition (measured
+  without projection at step 0); an iso-reference metric is queued
+  for the next pass.
+
+### Tests
+- Full fast suite at 13.2.0: see README (743 + 5 new solver tests).
+
 ## v13.1.0 (2026-10-20)
 
 ### Added — 4x + subcycle=4 AMR closed as negative (the v12.10 open item)

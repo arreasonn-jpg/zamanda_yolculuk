@@ -30,9 +30,13 @@ validation exists on record.
 4. **Energy bookkeeping skeleton** (Phase 8 constants and budgets), so
    that the h ~ 10⁻⁴⁶ scale can be translated into an explicit energy
    requirement.
-5. **BSSN AMR frontier (v13):** the resolved boundary-injection defect
-   moves to constraint projection (band-local elliptic solve); see
-   `docs/AMR_PROJECTED_INJECTION_PLAN.md`.
+5. **BSSN AMR frontier (v13):** the five negative/neutral lever attempts
+   (cubic prolongation, finer fine, Gamma rederivation, COM-moving
+   patch, 4x+subcycle) closed the parameter space; constraint
+   projection (v13.2.0, band-local Jacobi conformal solve) landed as
+   the FIRST POSITIVE lever (H_f/H0 @ 1000: 0.9319 vs 1.0756).
+   Follow-ups: exact covariant mapping, momentum-constraint analog —
+   see `docs/AMR_PROJECTED_INJECTION_PLAN.md`.
 
 ## Explicitly deferred
 

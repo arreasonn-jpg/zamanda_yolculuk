@@ -1,0 +1,11 @@
+{
+  "stage": "v13.2",
+  "steps": 1000,
+  "H_fine_final": 0.9319002587176047,
+  "H_coarse_final": 1.1191214677591297,
+  "H0_fine": 0.03168589990052539,
+  "baseline_reference_step1000": 1.0756,
+  "baseline_reference_step500": 1.0166,
+  "dphi_max_last": 0.021598062709327515,
+  "reproduce": "python scripts/v13_2_projection.py 1000"
+}

@@ -671,6 +671,27 @@ checkpoint of an interrupted 1000-step run, with the
 monotonic-divergence justification for truncation recorded in the
 repository's limitations register.
 
+\subsection{Constraint projection onto the injected band: first
+positive lever}
+
+Finally, we project the injected data itself: after each
+coarse-to-fine injection, $\phi$ inside the 4-layer band is corrected
+by a damped Jacobi solve of $Lap(\delta\phi) =
+e^{4\phi}\,H_{\rm res}/8$ (first-order mapping of
+$H = e^{-4\phi}(R - 8\Delta\phi - 8|\nabla\phi|^2) + K^2 - \tilde A^2$),
+with cells near the punctures masked out by a
+$|\nabla\phi|$ guard. Over the full 1000-step protocol the fine
+Hamiltonian constraint reaches $H_f/H_0 = 0.932$ against the
+baseline $1.076$: about $13\%$ lower, and below the run's own
+step-zero reference, i.e.\ the band projection actively cleans the
+fine data during evolution rather than merely slowing its growth.
+This is the first positive lever in the AMR series and confirms the
+long-held diagnosis: the fixed-patch deficit is carried by the
+injected band's second-derivative mismatch. The mapping is a
+first-order approximation (flat Laplacian, lagged $|\nabla\phi|^2$);
+an exact covariant projection and the momentum-constraint analog
+remain the follow-up items.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

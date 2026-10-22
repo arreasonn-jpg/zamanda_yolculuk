@@ -10,21 +10,21 @@ really is.
 > converged for the device source. No time machine has been built, and
 > the honest expectation is a quantitative bound, not a device.
 >
-> **Current frontline (v13.0.0):** (a) device-source convergence is
+> **Current frontline (v13.2.0):** (a) device-source convergence is
 > CLOSED — ZT-006.2.24 (instantaneous kernel) and ZT-006.2.25 (retarded
 > solver, device sources) both PASS; the remaining gap to a device
 > metric is physical (h ~ 10⁻⁴⁶, EM-only linearized chain), not
 > numerical; (b) fixed-patch AMR for BSSN binaries: cubic prolongation
 > (v12.11), finer fine resolution (v12.13), Gamma rederivation (v12.15)
 > are all neutral/negative; COM-following moving patch quantified as a
-> (v12.15) are all neutral/negative; COM-following moving patch
-> quantified as a no-op (v13.0.0: COM drift < 1 coarse cell in 1000
-> steps; H_f/H0 = 1.0756 unchanged); 4x + subcycle=4 closed as
-> NEGATIVE (v13.1.0: H@500 = 1.1418 vs baseline 1.0166 — refinement
-> amplifies the prolonged-boundary mismatch). The remaining defect is
-> still the O(h_c²) second-derivative mismatch of the prolonged
-> fields; next real lever: constraint projection
-> (docs/AMR_PROJECTED_INJECTION_PLAN.md).
+> no-op (v13.0.0: COM drift < 1 coarse cell in 1000 steps; H_f/H0 =
+> 1.0756 unchanged); 4x + subcycle=4 closed as NEGATIVE (v13.1.0:
+> H@500 = 1.1418 vs baseline 1.0166 — refinement amplifies the
+> prolonged-boundary mismatch); first POSITIVE lever is constraint
+> projection (v13.2.0): Jacobi conformal solve of the injected phi
+> band reduces H_f/H0 to 0.9319 @ 1000 (baseline 1.0756, -13.4%),
+> below the run's own step-0 reference. Next: exact covariant mapping
+> + momentum constraint (docs/AMR_PROJECTED_INJECTION_PLAN.md).
 > (c) code layout: BSSN-amr machinery in `zt005.amr/`, matter models
 > in `zt005.matter/`.
 
@@ -45,7 +45,8 @@ machinery in this repo is a known-answer benchmark, not a device claim.
 | v12.14  | ZT-006.2.25: retarded-solver device-source convergence PASS (source chain numerically closed) |
 | v12.15  | Constraint-consistent Gamma injection: neutral (H unchanged); 737 fast + 21 slow tests; frontline: constraint projection / moving-patch AMR |
 | v13.0.0 | COM-tracked moving patch quantified as no-op (COM drift < 1 coarse cell in 1000 steps; H_f/H0 = 1.0756 unchanged); subpackage restructure (`zt005.amr/`, `zt005.matter/`) |
-| v13.1.0 | 4×+subcycle=4 (CFL-correct) closed as negative: H@500 = 1.1418 vs baseline 1.0166 — resolution amplifies the prolonged-boundary mismatch; only remaining lever: constraint projection |
+| v13.1.0 | 4×+subcycle=4 (CFL-correct) closed as negative: H@500 = 1.1418 vs baseline 1.0166 — resolution amplifies the prolonged-boundary mismatch |
+| v13.2.0 | First positive lever: band-local conformal projection (Jacobi solve of the injected phi band, guard-masked) — H_f/H0 @ 1000 = 0.9319 vs baseline 1.0756 (−13.4%), below the run's own step-0 reference |
 
 See `docs/limitations.md` for the full scope/NOT-delivered register per
 version, and `docs/validation.md` for the PASS/FAIL register.

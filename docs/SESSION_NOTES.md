@@ -51,17 +51,30 @@ PTUM QFT window A in [1.35, 1.87] invariant under:
 ## 43-order gap: UNCHANGED
 
 ## Paper
-- main_en.tex / main_tr.tex (arxiv_v3 active): validation + bssn sections
-  updated through v12.15 (v13 AMR subsection pending)
+- main_en.tex / main_tr.tex (arxiv_v3 active): validation + bssn
+  sections updated through v13.2 (moving patch no-op, 4x negative,
+  constraint projection positive); arxiv_submission_v4.zip
+  regenerated (`scripts/dev/make_zip_v4.py`)
 - 15 figures
 - paper/archive/ holds historical submission zips
 
+## Current state (v13.2.0, 2026-10-23)
+- v13.0.0: moving patch = no-op (COM drift < 1 cell) + subpackage
+  restructure (zt005.amr/, zt005.matter/); v13.0.1: docs sync.
+- v13.1.0: 4x + subcycle=4 closed NEGATIVE (H@500 1.1418 vs 1.0166).
+- v13.2.0: band-local conformal projection FIRST POSITIVE lever
+  (H_f/H0 @ 1000 = 0.9319 vs baseline 1.0756, -13.4%); solver core
+  `src/zt005/amr/amr_projection.py` + 5 unit tests.
+- AMR lever chain fully mapped; the remaining defect is genuinely
+  the injected band's second-derivative mismatch.
+
 ## Next
-- A) Full inspiral (weeks)
-- B) Cython for N>=15
-- C) arXiv upload v4 (user decision)
-- D) New physics (Horndeski/DHOST)
-- E) Constraint projection onto the injected AMR band
+- A) v13.3: exact covariant mapping (gamma-tilde Laplacian, no
+   lagged |grad phi|^2) + iso-reference success metric
+- B) v13.4: momentum-constraint projection analog
+- C) Full inspiral (weeks)
+- D) arXiv upload v4 (user decision)
+- E) New physics (Horndeski/DHOST)
 
 ## Resume
     cd ~/zamanda_yolculuk
