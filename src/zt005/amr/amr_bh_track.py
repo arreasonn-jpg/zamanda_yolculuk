@@ -24,6 +24,10 @@ def find_bh_centers(s, L, N, axis=0):
     return x[left_peak], x[right_peak], profile
 
 
+def pair_separation(x_left, x_right):
+    return abs(x_right - x_left)
+
+
 def peak_centroids(s, L, frac=0.05, radius=2):
     """2D BH centers (x, y) for an orbital pair, in grid coordinates.
 
