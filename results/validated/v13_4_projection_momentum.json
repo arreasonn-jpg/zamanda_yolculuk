@@ -1,0 +1,17 @@
+{
+  "stage": "v13.4",
+  "steps": 1000,
+  "H0_fine_raw": 0.03168589990052539,
+  "H0_fine_isoref": 0.028486212401289464,
+  "M0_fine": 0.11681286606704125,
+  "M0_fine_band": 0.0288236827132501,
+  "H_fine_final_per_raw": 0.9371294063576867,
+  "H_fine_final_per_isoref": 1.0423916014311652,
+  "M_final_per_M0": 1.5018159764376586,
+  "Mband_final_per_Mb0": 0.6512283121522366,
+  "baseline_reference_step1000": 1.0756,
+  "v13_3_reference_step1000": 0.9382,
+  "dphi_max_last": 0.027150194755194756,
+  "dvl_ratio_mean": 0.3761575934786883,
+  "reproduce": "python scripts/v13_4_projection_momentum.py 1000"
+}

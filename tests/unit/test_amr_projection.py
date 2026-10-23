@@ -2,8 +2,9 @@
 import numpy as np
 
 from zt005.amr.amr_projection import (
-    cov_laplacian, covariant_delta_phi, flat_laplacian_7pt,
-    gradient_magnitude, jacobi_zero_bc, project_phi_band)
+    atilde_up_divergence, cov_laplacian, covariant_delta_phi,
+    flat_laplacian_7pt, gradient_magnitude, jacobi_zero_bc,
+    momentum_band_correct, project_phi_band)
 
 N = 17
 L = 10.0
@@ -176,3 +177,72 @@ def test_project_phi_band_reduces_pure_conformal_residual():
                                           else out, h))
     lap_before = np.abs(resid)
     assert np.max(lap_after) < np.max(np.abs(lap_before))
+
+
+# ---------------------------------------------------------------------------
+# v13.4: momentum-constraint (Atilde divergence) band correction
+# ---------------------------------------------------------------------------
+
+def _analytic_divfree_v(X, Y, Z):
+    """v = curl(psi), psi = sin(aX) sin(aY) sin(aZ): div v = 0 exactly."""
+    a = 2 * np.pi / L
+    v1 = a * np.sin(a * X) * np.cos(a * Y) * np.sin(a * Z)
+    v2 = -a * np.cos(a * X) * np.sin(a * Y) * np.sin(a * Z)
+    return np.stack([v1, v2, np.zeros_like(X)], axis=-1)
+
+
+def _lv_down(dva, ginv, gdown):
+    """(L v)_ij on down indices from dv[a,b] = d_a v_b (the inverse of
+    what momentum_band_correct subtracts)."""
+    C = np.einsum("...ia,...ab->...ib", ginv, dva)
+    div_v = np.einsum("...mn,...mn->...", ginv, dva)
+    cup = (C + C.swapaxes(-1, -2)
+           - (2.0 / 3.0) * ginv * div_v[..., None, None])
+    return np.einsum("...ik,...kl,...jl->...ij", gdown, cup, gdown)
+
+
+def _d_of_v(v, h):
+    dva = np.zeros(v.shape[:3] + (3, 3))
+    for b in range(3):
+        g = np.gradient(v[..., b], h, edge_order=2)
+        dva[..., 0, b] = g[0]
+        dva[..., 1, b] = g[1]
+        dva[..., 2, b] = g[2]
+    return dva
+
+
+def test_momentum_correction_reduces_divergence():
+    x = np.linspace(-L / 2, L / 2, N)
+    X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
+    gt = _delta_gt()
+    ginv = np.linalg.inv(gt)
+    v_ex = _analytic_divfree_v(X, Y, Z)
+    dva = _d_of_v(v_ex, h)
+    At0 = _lv_down(dva, ginv, gt) * 0.1
+    At_new, l_before, l_after = momentum_band_correct(At0, gt, h,
+                                                      passes=1)
+    assert l_before > 0.0
+    assert l_after < 0.8 * l_before, \
+        f"before {l_before:.3e} after {l_after:.3e}"
+    # the fixed-point iteration converges: more passes, less divergence
+    l1, l3 = momentum_band_correct(At0, gt, h, passes=3)[1:]
+    assert l3 < 0.7 * l1, f"1 pass {l1:.3e} 3 passes {l3:.3e}"
+    # boundary face untouched by the meter/correction combination
+    assert np.allclose(At_new[0, :, :], At0[0, :, :])
+
+
+def test_momentum_correction_preserves_trace():
+    x = np.linspace(-L / 2, L / 2, N)
+    X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
+    gt = _delta_gt()
+    ginv = np.linalg.inv(gt)
+    v_ex = _analytic_divfree_v(X, Y, Z)
+    dva = _d_of_v(v_ex, h)
+    At0 = _lv_down(dva, ginv, gt) * 0.1
+    trace_part = 0.05 * gt
+    At0 = At0 + trace_part
+    tr_before = np.einsum("...ij,...ij->...", gt, At0)
+    At_new, _, _ = momentum_band_correct(At0, gt, h)
+    tr_after = np.einsum("...ij,...ij->...", gt, At_new)
+    assert np.allclose(tr_before, tr_after, atol=1e-12)
+    assert np.isfinite(At_new).all()

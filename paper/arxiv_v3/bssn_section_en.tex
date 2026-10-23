@@ -710,6 +710,26 @@ it is the definitional offset between the raw and the once-projected
 initial band, the rest is genuine constraint reduction during
 evolution. The momentum-constraint analog remains the next increment.
 
+\subsection{Momentum correction: cleanable, and not the carrier}
+
+The last AMR lever candidate is the vector side: after the phi
+projection, the Atilde divergence inside the injected band is
+reduced by a vector-Poisson correction (three decoupled solves of
+$\nabla^2 v_i = -\ell_i$, adding the trace-free longitudinal part of
+$(Lv)$ on the band; the fixed point satisfies
+$\operatorname{div}(A^{new}) = 0$ as $\nabla^2 v = -\ell$, with a
+residual $-\tfrac13\nabla(\operatorname{div} v)$ per pass that
+three passes squash by two-thirds). The mechanism works: every step
+the correction cuts the freshly injected band divergence to about
+$44\%$ of its pre-correction value. The 1000-step headline is
+however neutral: $H_f/H_0 = 0.937$ against $0.938$ without the
+momentum branch. The conclusion is therefore precise: the
+Atilde-divergence defect in the band is real and cleanable, but it
+does not carry the Hamiltonian constraint growth — the phi-band
+projection captures the whole effect. With this, the AMR lever
+longlist is exhausted: five parameter levers negative, two
+projection stages positive-and-neutral, each verdict measured.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

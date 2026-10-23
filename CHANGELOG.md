@@ -1,5 +1,33 @@
 # Changelog
 
+## v13.4.0 (2026-10-23)
+
+### Added — momentum Vector-Poisson band correction (NEUTRAL on H)
+- `src/zt005/amr/amr_projection.py`: `atilde_up_divergence` (conformal
+  A-divergence meter, both indices raised, one-sided second-order
+  edges so the meter is valid on the face-touching band;
+  `d_central` edge-zeroing previously produced an EXACT frozen
+  face-cell artifact in the metric) and `momentum_band_correct`
+  (per-component Jacobi solves of dv2 v_i = -l_i, ADDING the
+  trace-free longitudinal (Lv) on the skip_face band; sign lesson on
+  record: subtracting (Lv) doubles the divergence, adding it zeros
+  it at the fixed point).
+- Unit tests 14 total (trace preservation, monotone fixed-point
+  convergence ~ -30% per pass step, band/boundary discipline).
+- Combined 1000-step protocol (v13.3 covariant phi projection + 3
+  momentum passes): H_f/H0_raw @ 1000 = 0.9371 (v13.3: 0.9382 —
+  within noise); iso-ref 1.0424; band divergence Mb/Mb0 = 0.651 at
+  step 1000, per-step correction ratio ~0.43 (mean 0.376).
+- NEUTRAL verdict: the band Atilde-divergence defect is real and
+  cleanable but does NOT carry the Hamiltonian constraint growth —
+  the phi-band projection remains the whole effect. The AMR lever
+  longlist is now exhausted, every verdict measured.
+- `scripts/v13_4_projection_momentum.py`;
+  artifacts results/validated/v13_4_projection_momentum.{npz,json};
+  reproduce: `python scripts/v13_4_projection_momentum.py 1000`.
+- Paper EN/TR momentum subsection added; arxiv_submission_v4.zip
+  regenerated; limitations v13.4 section.
+
 ## v13.3.0 (2026-10-23)
 
 ### Added — exact covariant operator + iso-reference metric (NEUTRAL)

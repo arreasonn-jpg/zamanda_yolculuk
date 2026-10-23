@@ -1,10 +1,13 @@
 # Plan: constraint projection onto the injected AMR band
 
-Status: PARTIALLY IMPLEMENTED. v13.2.0-alpha1: flat-Laplacian
-band solve, POSITIVE result (H_f/H0 @ 1000 = 0.9319 vs baseline
-1.0756). v13.3 (in progress): exact gamma-tilde covariant operator
-+ iso-reference metric; the momentum Vector-Poisson increment below
-is the v13.4 candidate.
+Status: FULLY IMPLEMENTED (v13.2.0-v13.4.0). v13.2.0-alpha1:
+flat-Laplacian band solve, POSITIVE result (H_f/H0 @ 1000 = 0.9319
+vs baseline 1.0756). v13.3.0: exact gamma-tilde covariant operator +
+iso-reference metric, NEUTRAL — the gain is operator-robust.
+v13.4.0: the momentum Vector-Poisson increment below is also
+NEUTRAL on H (band A-divergence cleanable at ratio ~0.43/step but
+the Hamiltonian headline is unchanged: 0.9371). Both increments are
+measured and closed; see limitations.md v13.2-v13.4 sections.
 
 ## Diagnosis chain so far (why projection is the next lever)
 

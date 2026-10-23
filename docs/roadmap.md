@@ -36,9 +36,9 @@ validation exists on record.
    projection (v13.2.0, band-local Jacobi conformal solve) landed as
    the FIRST POSITIVE lever (H_f/H0 @ 1000: 0.9319 vs 1.0756); the
    exact gamma-tilde covariant upgrade is NEUTRAL (v13.3.0, 0.9382) —
-   the gain is operator-robust.  Remaining follow-up:
-   momentum-constraint analog — see
-   `docs/AMR_PROJECTED_INJECTION_PLAN.md`.
+   the gain is operator-robust; the momentum Vector-Poisson branch is
+   NEUTRAL too (v13.4.0, 0.9371 — band A-divergence cleanable but
+   carries no H signal). AMR lever longlist exhausted.
 
 ## Explicitly deferred
 

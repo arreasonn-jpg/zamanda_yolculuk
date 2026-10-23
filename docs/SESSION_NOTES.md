@@ -52,13 +52,13 @@ PTUM QFT window A in [1.35, 1.87] invariant under:
 
 ## Paper
 - main_en.tex / main_tr.tex (arxiv_v3 active): validation + bssn
-  sections updated through v13.2 (moving patch no-op, 4x negative,
-  constraint projection positive); arxiv_submission_v4.zip
-  regenerated (`scripts/dev/make_zip_v4.py`)
+  sections updated through v13.4 (moving patch no-op, 4x negative,
+  projection positive, covariant neutral, momentum neutral);
+  arxiv_submission_v4.zip regenerated (`scripts/dev/make_zip_v4.py`)
 - 15 figures
 - paper/archive/ holds historical submission zips
 
-## Current state (v13.2.0, 2026-10-23)
+## Current state (v13.4.0, 2026-10-23)
 - v13.0.0: moving patch = no-op (COM drift < 1 cell) + subpackage
   restructure (zt005.amr/, zt005.matter/); v13.0.1: docs sync.
 - v13.1.0: 4x + subcycle=4 closed NEGATIVE (H@500 1.1418 vs 1.0166).
@@ -68,13 +68,14 @@ PTUM QFT window A in [1.35, 1.87] invariant under:
 - v13.3.0: exact gamma-tilde covariant operator NEUTRAL (0.9382 vs
   0.9319) — gain is operator-robust; iso-reference metric delivered
   (~10% of the sub-1.0 effect is definitional). 10 projection tests.
+- v13.4.0: momentum Vector-Poisson branch NEUTRAL (H 0.9371 vs
+  0.9382) — band A-divergence cleanable (ratio ~0.43/step) but no H
+  signal. AMR lever longlist EXHAUSTED (8/8 levers measured).
 - AMR lever chain fully mapped; the remaining defect is genuinely
   the injected band's second-derivative mismatch.
 
 ## Next
-- A) v13.4: momentum-constraint projection analog (Vector-Poisson
-   on Atilde divergence, plan doc increment #2)
-- B) Full inspiral (weeks)
+- A) Full inspiral (weeks)
 - C) arXiv upload v4 (user decision)
 - D) New physics (Horndeski/DHOST)
 

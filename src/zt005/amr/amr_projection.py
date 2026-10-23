@@ -25,7 +25,7 @@ outcomes are recorded (see docs/AMR_PROJECTED_INJECTION_PLAN.md).
 """
 from __future__ import annotations
 import numpy as np
-from ..bssn_grid import christoffel_from_grid
+from ..bssn_grid import christoffel_from_grid, d_central
 
 
 def flat_laplacian_7pt(u, h):
@@ -276,3 +276,123 @@ def project_phi_band_covariant(state_phi, gtilde, h_f, hamiltonian_res,
     out = state_phi.copy()
     out[band] = state_phi[band] + dphi[band]
     return out, float(np.max(np.abs(dphi[band]))) if band.any() else 0.0
+
+
+# ---------------------------------------------------------------------------
+# v13.4: momentum-constraint (Atilde divergence) band correction
+#
+# Metric (conformal A-divergence, both indices raised):
+#     l_i = d_tilde^k A_{ki},  A^{ab} = ginv^{ac} ginv^{bd} A_{cd}
+# implemented with raw central derivatives (d_central), whose edge
+# zeroing is immaterial because the band stays >= 4 cells from the
+# boundary. This is the divergence side of the Z4c link constraint,
+# with its Gamma-terms handled by the v12.15 Gamma-consistent
+# injection rather than re-derived here.
+#
+# Correction (iterable fixed-point, first increment = one pass):
+#     solve  Lap(v_i) = -l_i        (three decoupled Jacobi solves)
+#     subtract  (L v)^{ij} trace-free from A^{ij} on the band:
+#     (L v)^{ij} = g^{ia} d_a v^j + g^{ja} d_a v^i
+#                  - (2/3) g^{ij} g^{mn} d_m v_n
+# The flat Jacobi stand-in for Lap is justified by the v13.3
+# operator-robustness result. Residual after one pass is
+# -(1/3) grad(div v); a second pass can be applied via `passes`.
+# ---------------------------------------------------------------------------
+
+
+def atilde_up_divergence(At, gt, h):
+    """l_i = d^k Atilde_{ki} with A^{ab} = ginv^{ac} ginv^{bd} A_cd.
+
+    One-sided second-order derivatives at the grid faces
+    (np.gradient edge_order=2): the divergence meter must be valid on
+    the injected band, which touches the faces.
+    """
+    ginv = np.linalg.inv(gt)
+    dAt = np.zeros(At.shape[:3] + (3, 3, 3))
+    for a in range(3):
+        for b in range(3):
+            comp = At[..., a, b]
+            g = np.gradient(comp, h, edge_order=2)
+            dAt[..., a, b, 0] = g[0]
+            dAt[..., a, b, 1] = g[1]
+            dAt[..., a, b, 2] = g[2]
+    m = np.einsum("...ka,...abk->...b", ginv, dAt)
+    return np.einsum("...ib,...b->...i", ginv, m)
+
+
+def _geometric_band(n, n_layers, skip_face=1):
+    """Shell of cells within n_layers of any face, with the outermost
+    `skip_face` layer excluded (v13.4: v's zero-Dirichlet faces
+    cannot move the grid-face layer, so the band meter lives one
+    cell in)."""
+    n_layers = min(n_layers, n // 4)
+    mask = np.zeros((n, n, n), dtype=bool)
+    for k in range(n_layers):
+        mask[k, ...] = True
+        mask[-1 - k, ...] = True
+        mask[:, k, ...] = True
+        mask[:, -1 - k, ...] = True
+        mask[:, :, k, ...] = True
+        mask[:, :, -1 - k, ...] = True
+    for k in range(skip_face):
+        mask[k, ...] = False
+        mask[-1 - k, ...] = False
+        mask[:, k, ...] = False
+        mask[:, -1 - k, ...] = False
+        mask[:, :, k, ...] = False
+        mask[:, :, -1 - k, ...] = False
+    return mask
+
+
+def momentum_band_correct(At, gt, h, n_layers=4, sweeps=20, omega=0.8,
+                          passes=1):
+    """v13.4: reduce the Atilde divergence inside the injected band.
+
+    Atilde holds the conformal tracefree tensor with DOWN indices
+    (the codebase convention). The correction subtracts the
+    trace-free longitudinal part of a vector potential v solved from
+    -div(Atilde), applied only on the geometric band. Tracelessness
+    of Atilde is preserved by construction.
+
+    Returns (At_new, l_before_max_on_band, l_after_max_on_band).
+    """
+    n = At.shape[0]
+    ginv = np.linalg.inv(gt)
+    gdown = gt
+    band = _geometric_band(n, n_layers) if n_layers > 0 \
+        else np.ones((n, n, n), dtype=bool)
+    l_before = atilde_up_divergence(At, gt, h)
+    bmask = band & (np.max(np.abs(l_before), axis=-1) > 0.0)
+    for _ in range(max(1, passes)):
+        l = atilde_up_divergence(At, gt, h)
+        # per-component sources masked to the band
+        v = np.zeros(At.shape[:3] + (3,))
+        for i in range(3):
+            src_i = np.zeros((n, n, n))
+            src_i[band] = -l[band, i]
+            v[..., i] = jacobi_zero_bc(src_i, h, sweeps=sweeps,
+                                       omega=omega)
+        # dv[a, b] = d_a v_b (consistent with the meter), v DOWN
+        dva = np.zeros(At.shape[:3] + (3, 3))
+        for b in range(3):
+            g = np.gradient(v[..., b], h, edge_order=2)
+            dva[..., 0, b] = g[0]
+            dva[..., 1, b] = g[1]
+            dva[..., 2, b] = g[2]
+        # A^{i}_{b} = g^{ia} d_a v_b; then trace-free (Lv)^{ij}
+        C = np.einsum("...ia,...ab->...ib", ginv, dva)
+        div_v = np.einsum("...mn,...mn->...", ginv, dva)
+        cup = (C + C.swapaxes(-1, -2)
+               - (2.0 / 3.0) * ginv * div_v[..., None, None])
+        # lower both indices: c_{ij} = gt_{ip} gt_{jq} c^{pq}
+        cdown = np.einsum("...ik,...kl,...jl->...ij", gdown, cup, gdown)
+        # div(Lv) ~= Lap v = -l (v13.3-justified flat Jacobi), so the
+        # correction is ADDED: div(At_new) = l - l = 0 exactly at the
+        # fixed point of the iteration.
+        At = At + np.where(band[..., None, None], cdown, 0.0)
+    l_after = atilde_up_divergence(At, gt, h)
+    before_max = float(np.max(np.abs(l_before[bmask]))) \
+        if bmask.any() else 0.0
+    after_max = float(np.max(np.abs(l_after[bmask]))) \
+        if bmask.any() else 0.0
+    return At, before_max, after_max

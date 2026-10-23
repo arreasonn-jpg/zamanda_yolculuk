@@ -677,6 +677,25 @@ bandı ile bir kez projekte edilmiş bandın tanım-farkıdır, gerisi
 evrim sırasındaki gerçek kısıt azalmasıdır. Momentum-kısıt analogu
 bir sonraki artış olarak kayıtlıdır.
 
+\subsection{Momentum düzeltmesi: temizlenir, ama taşıyıcı değildir}
+
+Son AMR kaldıraç adayı vektör tarafıdır: phi projeksiyonundan sonra,
+enjekte edilen bandın içindeki $\tilde A$ diverjansı bir
+vektör-Poisson düzeltmesiyle azaltılır (bileşen başına üç ayrık
+$\nabla^2 v_i = -\ell_i$ çözümü; bandın üzerinde $(Lv)$'nin izsiz
+boyuna parçası EKLENİR; sabit noktada
+$\operatorname{div}(A^{new}) = 0$ sağlanır ve her geçişin
+$-\tfrac13\nabla(\operatorname{div} v)$ kalıntısı üç geçişte üçte
+iki kadar basılır). Mekanizma çalışır: her adımda düzeltme, taze
+enjekte edilen bant diverjansını ön-değerinin yaklaşık \%44'üne
+çeker. Ancak 1000-adımlık ana sonuç nötrdür: $H_f/H_0 = 0.937$,
+momentum dalı olmadan $0.938$. Sonuç kesindir: banttaki
+$\tilde A$-divergence kusuru gerçektir ve temizlenebilir; ancak
+Hamilton kısıtı büyümesini o taşımaz — phi-bant projeksiyonu etkinin
+tamamını yakalar. Bununla AMR kaldıraç listesi tükenir: beş
+parametre kaldıracı negatif, iki projeksiyon aşaması biri
+pozitif-biri nötr; her hüküm ölçülerek yazıldı.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir

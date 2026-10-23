@@ -1362,3 +1362,51 @@ is in progress; its outcome is recorded in a follow-up version.
 - The run keeps the raw-prolongated initial data (no pre-projection
   of the evolving state's ancestor), matching every predecessor.
 
+## v13.4 scope (momentum Vector-Poisson band correction: NEUTRAL on H)
+
+### What v13.4 delivers
+
+- `src/zt005/amr/amr_projection.py`: `atilde_up_divergence`
+  (conformal A-divergence metric, both indices raised,
+  one-sided second-order edges so the meter is valid on the band,
+  which touches the grid faces) and `momentum_band_correct`
+  (three decoupled Jacobi solves dv2 v_i = -l_i per component, then
+  the trace-free longitudinal part of (Lv) ADDED on the band,
+  `skip_face=1` because v's zero-Dirichlet faces cannot move the
+  outermost layer). One sign lesson is on record: subtracting (Lv)
+  DOUBLES the divergence; adding it zeros it at the fixed point.
+- The earlier d_central edge-zeroing produced an EXACT face-cell
+  artifact (the meter's max frozen at a face cell across passes);
+  the np.gradient meter fixes it, and the band meter skips the
+  outermost face layer.
+- Unit tests (14 total in test_amr_projection.py): trace
+  preservation (gamma-tilde trace unchanged), monotone fixed-point
+  convergence (1 pass ~ -30%, 3 passes ~ -60%), band/boundary
+  discipline.
+- Combined protocol (covariant phi projection as in v13.3 + the
+  momentum correction with 3 passes), full 1000-step run:
+  H_f/H0_raw @ 1000 = 0.9371 (v13.3: 0.9382 — within noise);
+  iso-reference 1.0424; band-restricted divergence Mb/Mb0 = 0.651
+  at step 1000 with a per-step correction ratio of 0.43 (mean
+  'l_after/l_before' = 0.376): mechanically the correction keeps
+  cleaning most of the freshly injected divergence every step while
+  the Hamiltonian headline is untouched.
+- Verdict (neutral): the Atilde-divergence defect in the band is
+  real, cleanable, and NOT the carrier of the Hamiltonian
+  constraint growth. The momentum lever branch closes; the phi-band
+  projection (v13.2/v13.3, roughly 13%) remains the complete story
+  for this protocol. Global divergence outside the band grows
+  unabsorbed (M/M0 = 1.50), as expected for an untouched region.
+- Artifacts: results/validated/v13_4_projection_momentum.{npz,json};
+  reproduce with `python scripts/v13_4_projection_momentum.py 1000`.
+
+### Honest caveats
+
+- The momentum correction's fixed-point iteration leaves the
+  documented -(1/3) grad(div v) residual per pass; 3 passes squash
+  two-thirds of it, more passes would inch closer but the H outcome
+  would not change (the metric is neutral).
+- The global divergence metric (M/M0 = 1.5 at step 1000) mixes
+  regions the experiment never claimed to fix; it is reported for
+  completeness, not as a success/failure signal.
+

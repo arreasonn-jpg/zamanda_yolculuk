@@ -10,7 +10,7 @@ really is.
 > converged for the device source. No time machine has been built, and
 > the honest expectation is a quantitative bound, not a device.
 >
-> **Current frontline (v13.3.0):** (a) device-source convergence is
+> **Current frontline (v13.4.0):** (a) device-source convergence is
 > CLOSED — ZT-006.2.24 (instantaneous kernel) and ZT-006.2.25 (retarded
 > solver, device sources) both PASS; the remaining gap to a device
 > metric is physical (h ~ 10⁻⁴⁶, EM-only linearized chain), not
@@ -26,8 +26,10 @@ really is.
 > below the run's own step-0 reference. Covariant-operator upgrade
 > (v13.3.0) is NEUTRAL (0.9382 vs 0.9319): the ~13% gain is robust
 > to the operator; iso-reference splits the sub-1.0 effect into
-> ~10% definitional + rest genuine. Next: momentum constraint
-> (docs/AMR_PROJECTED_INJECTION_PLAN.md).
+> ~10% definitional + rest genuine. Momentum branch (v13.4.0) also
+> NEUTRAL: the band A-divergence is cleanable (per-step ratio 0.43)
+> but carries no H signal — the phi-band projection is the whole
+> effect; AMR lever list exhausted.
 > (c) code layout: BSSN-amr machinery in `zt005.amr/`, matter models
 > in `zt005.matter/`.
 
@@ -51,6 +53,7 @@ machinery in this repo is a known-answer benchmark, not a device claim.
 | v13.1.0 | 4×+subcycle=4 (CFL-correct) closed as negative: H@500 = 1.1418 vs baseline 1.0166 — resolution amplifies the prolonged-boundary mismatch |
 | v13.2.0 | First positive lever: band-local conformal projection (Jacobi solve of the injected phi band, guard-masked) — H_f/H0 @ 1000 = 0.9319 vs baseline 1.0756 (−13.4%), below the run's own step-0 reference |
 | v13.3.0 | Exact γ̃-covariant operator + iso-reference metric: NEUTRAL (0.9382 vs 0.9319 flat) — the projection gain is operator-robust; ~10% of the sub-1.0 effect is definitional |
+| v13.4.0 | Momentum Vector-Poisson band correction: NEUTRAL on H (0.9371 vs 0.9382) — band Ã-divergence cleanable (ratio 0.43/step) but carries no H signal; AMR lever longlist exhausted |
 
 See `docs/limitations.md` for the full scope/NOT-delivered register per
 version, and `docs/validation.md` for the PASS/FAIL register.
