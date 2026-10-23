@@ -65,16 +65,18 @@ PTUM QFT window A in [1.35, 1.87] invariant under:
 - v13.2.0: band-local conformal projection FIRST POSITIVE lever
   (H_f/H0 @ 1000 = 0.9319 vs baseline 1.0756, -13.4%); solver core
   `src/zt005/amr/amr_projection.py` + 5 unit tests.
+- v13.3.0: exact gamma-tilde covariant operator NEUTRAL (0.9382 vs
+  0.9319) — gain is operator-robust; iso-reference metric delivered
+  (~10% of the sub-1.0 effect is definitional). 10 projection tests.
 - AMR lever chain fully mapped; the remaining defect is genuinely
   the injected band's second-derivative mismatch.
 
 ## Next
-- A) v13.3: exact covariant mapping (gamma-tilde Laplacian, no
-   lagged |grad phi|^2) + iso-reference success metric
-- B) v13.4: momentum-constraint projection analog
-- C) Full inspiral (weeks)
-- D) arXiv upload v4 (user decision)
-- E) New physics (Horndeski/DHOST)
+- A) v13.4: momentum-constraint projection analog (Vector-Poisson
+   on Atilde divergence, plan doc increment #2)
+- B) Full inspiral (weeks)
+- C) arXiv upload v4 (user decision)
+- D) New physics (Horndeski/DHOST)
 
 ## Resume
     cd ~/zamanda_yolculuk

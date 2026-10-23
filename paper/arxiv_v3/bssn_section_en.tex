@@ -692,6 +692,24 @@ first-order approximation (flat Laplacian, lagged $|\nabla\phi|^2$);
 an exact covariant projection and the momentum-constraint analog
 remain the follow-up items.
 
+\subsection{Exact covariant operator: neutral, and therefore
+robust}
+
+We then upgrade the operator itself: the band solve is repeated with
+the exact gamma-tilde covariant Laplacian
+$\tilde\nabla^2 = \tilde g^{ij}(\partial_i\partial_j -
+\tilde\Gamma^k_{ij}\partial_k)$ as an assembled variable-coefficient
+sparse Dirichlet system (machine-precision exact at $\tilde g = \delta$,
+verified against an analytic field and a converged flat solve).
+The 1000-step result is $H_f/H_0 = 0.938$ against the flat-operator
+$0.932$: neutral at this field amplitude. That neutrality is itself
+informative: the roughly $13\%$ gain of the band projection does not
+depend on the flat-Laplacian stand-in, and with the iso-reference
+measure we can also split the earlier sub-1.0 effect: about $10\%$ of
+it is the definitional offset between the raw and the once-projected
+initial band, the rest is genuine constraint reduction during
+evolution. The momentum-constraint analog remains the next increment.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

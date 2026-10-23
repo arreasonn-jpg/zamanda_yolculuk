@@ -1316,3 +1316,49 @@ is in progress; its outcome is recorded in a follow-up version.
 - Momentum constraint and the exact covariant mapping remain open
   items (`docs/AMR_PROJECTED_INJECTION_PLAN.md`).
 
+## v13.3 scope (exact covariant operator + iso-reference metric: NEUTRAL)
+
+### What v13.3 delivers
+
+- `src/zt005/amr/amr_projection.py` grows the exact operator pair:
+  `cov_laplacian` (gamma-tilde covariant Laplacian
+  ginv^{ij}(d_i d_j u - Gamma^k_ij d_k u), raw central stencils) and
+  `covariant_delta_phi` (assembled variable-coefficient sparse
+  Dirichlet solve, scipy spsolve) used through
+  `project_phi_band_covariant` with v13.2 band/guard semantics.
+- Exactness evidence, all at machine precision:
+  (a) at gtilde = delta the covariant operator reproduces the flat
+  7-point Laplacian pointwise (max dev 0.0);
+  (b) analytic test D^2 x = -a/(1+a x)^3 for
+  gamma_xx = (1 + a x)^2: max dev 1.2e-16;
+  (c) the sparse solve and a converged flat Jacobi agree to 3e-16
+  on the same manufactured source.
+  Unit tests: tests/unit/test_amr_projection.py, 10/10.
+- Full 1000-step run, otherwise the identical harness: H_f/H0_raw
+  @ 1000 = 0.9382 versus 0.9319 (v13.2 flat) and 1.0756 (baseline);
+  iso-reference H_f/H0_proj = 1.0436 with H0_proj = 0.02849 versus
+  H0_raw = 0.03169. Finite everywhere; dphi_max ~ 2.7e-2 (slightly
+  larger than flat's 2.2e-2).
+- Verdict (neutral, on record): the covariant Christoffel/divergence
+  terms are immaterial at this field amplitude; the v13.2 positive
+  result is ROBUST to the operator upgrade — roughly 13.4% equivalent
+  gain either way (0.9382 vs 1.0756 is 12.8%). Which also means the
+  remaining ~10-14% deficit is not operator-level refinement.
+- Iso-reference metric delivered as promised in the v13.2 caveat:
+  about 10% of the sub-1.0 effect is definitional (the unprojected
+  H0 sits 10% above the once-projected initial band); the rest is
+  genuine band-quality improvement during evolution.
+- Artifacts: results/validated/v13_3_projection_covariant.{npz,json};
+  reproduce with `python scripts/v13_3_projection_covariant.py 1000`.
+
+### Honest caveats
+
+- The first-order lag terms (the -16 grad(phi0).grad(dphi) advection
+  and the multiplicative e-fold reaction) are STILL out of the
+  operator; the guard mask keeps the cells where they matter most
+  out of the solve. The neutral outcome indicates their combined
+  influence is also small — or that the projection is already near
+  its realistic ceiling in this protocol.
+- The run keeps the raw-prolongated initial data (no pre-projection
+  of the evolving state's ancestor), matching every predecessor.
+

@@ -1,8 +1,10 @@
-# Plan: constraint projection onto the injected AMR band (v13.2 candidate)
+# Plan: constraint projection onto the injected AMR band
 
-Status: DESIGN — not implemented. Written 2026-10-20 after v13.0.0
-(the COM-following moving patch closed out as a no-op; the subcycled
-4x result pending).
+Status: PARTIALLY IMPLEMENTED. v13.2.0-alpha1: flat-Laplacian
+band solve, POSITIVE result (H_f/H0 @ 1000 = 0.9319 vs baseline
+1.0756). v13.3 (in progress): exact gamma-tilde covariant operator
++ iso-reference metric; the momentum Vector-Poisson increment below
+is the v13.4 candidate.
 
 ## Diagnosis chain so far (why projection is the next lever)
 

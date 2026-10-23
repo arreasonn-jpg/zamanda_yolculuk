@@ -10,7 +10,7 @@ really is.
 > converged for the device source. No time machine has been built, and
 > the honest expectation is a quantitative bound, not a device.
 >
-> **Current frontline (v13.2.0):** (a) device-source convergence is
+> **Current frontline (v13.3.0):** (a) device-source convergence is
 > CLOSED — ZT-006.2.24 (instantaneous kernel) and ZT-006.2.25 (retarded
 > solver, device sources) both PASS; the remaining gap to a device
 > metric is physical (h ~ 10⁻⁴⁶, EM-only linearized chain), not
@@ -23,8 +23,11 @@ really is.
 > prolonged-boundary mismatch); first POSITIVE lever is constraint
 > projection (v13.2.0): Jacobi conformal solve of the injected phi
 > band reduces H_f/H0 to 0.9319 @ 1000 (baseline 1.0756, -13.4%),
-> below the run's own step-0 reference. Next: exact covariant mapping
-> + momentum constraint (docs/AMR_PROJECTED_INJECTION_PLAN.md).
+> below the run's own step-0 reference. Covariant-operator upgrade
+> (v13.3.0) is NEUTRAL (0.9382 vs 0.9319): the ~13% gain is robust
+> to the operator; iso-reference splits the sub-1.0 effect into
+> ~10% definitional + rest genuine. Next: momentum constraint
+> (docs/AMR_PROJECTED_INJECTION_PLAN.md).
 > (c) code layout: BSSN-amr machinery in `zt005.amr/`, matter models
 > in `zt005.matter/`.
 
@@ -47,6 +50,7 @@ machinery in this repo is a known-answer benchmark, not a device claim.
 | v13.0.0 | COM-tracked moving patch quantified as no-op (COM drift < 1 coarse cell in 1000 steps; H_f/H0 = 1.0756 unchanged); subpackage restructure (`zt005.amr/`, `zt005.matter/`) |
 | v13.1.0 | 4×+subcycle=4 (CFL-correct) closed as negative: H@500 = 1.1418 vs baseline 1.0166 — resolution amplifies the prolonged-boundary mismatch |
 | v13.2.0 | First positive lever: band-local conformal projection (Jacobi solve of the injected phi band, guard-masked) — H_f/H0 @ 1000 = 0.9319 vs baseline 1.0756 (−13.4%), below the run's own step-0 reference |
+| v13.3.0 | Exact γ̃-covariant operator + iso-reference metric: NEUTRAL (0.9382 vs 0.9319 flat) — the projection gain is operator-robust; ~10% of the sub-1.0 effect is definitional |
 
 See `docs/limitations.md` for the full scope/NOT-delivered register per
 version, and `docs/validation.md` for the PASS/FAIL register.

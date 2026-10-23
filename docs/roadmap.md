@@ -34,9 +34,11 @@ validation exists on record.
    (cubic prolongation, finer fine, Gamma rederivation, COM-moving
    patch, 4x+subcycle) closed the parameter space; constraint
    projection (v13.2.0, band-local Jacobi conformal solve) landed as
-   the FIRST POSITIVE lever (H_f/H0 @ 1000: 0.9319 vs 1.0756).
-   Follow-ups: exact covariant mapping, momentum-constraint analog —
-   see `docs/AMR_PROJECTED_INJECTION_PLAN.md`.
+   the FIRST POSITIVE lever (H_f/H0 @ 1000: 0.9319 vs 1.0756); the
+   exact gamma-tilde covariant upgrade is NEUTRAL (v13.3.0, 0.9382) —
+   the gain is operator-robust.  Remaining follow-up:
+   momentum-constraint analog — see
+   `docs/AMR_PROJECTED_INJECTION_PLAN.md`.
 
 ## Explicitly deferred
 

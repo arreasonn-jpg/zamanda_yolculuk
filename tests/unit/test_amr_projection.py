@@ -2,8 +2,8 @@
 import numpy as np
 
 from zt005.amr.amr_projection import (
-    flat_laplacian_7pt, gradient_magnitude, jacobi_zero_bc,
-    project_phi_band)
+    cov_laplacian, covariant_delta_phi, flat_laplacian_7pt,
+    gradient_magnitude, jacobi_zero_bc, project_phi_band)
 
 N = 17
 L = 10.0
@@ -48,6 +48,95 @@ def test_jacobi_zero_bc_boundary_stays_zero():
     u = jacobi_zero_bc(src, h, sweeps=10)
     assert np.all(u[0, :, :] == 0.0)
     assert np.all(u[-1, :, :] == 0.0)
+
+
+# ---------------------------------------------------------------------------
+# v13.3: exact gamma-tilde covariant operator
+# ---------------------------------------------------------------------------
+
+def _anisotropic_gt(x):
+    """gamma_tilde = diag((1+a x)^2, 1, 1), mild variation."""
+    gx = (1.0 + 0.06 * x) ** 2
+    gt = np.zeros((N, N, N, 3, 3))
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                gt[i, j, k, 0, 0] = gx[i]
+                gt[i, j, k, 1, 1] = 1.0
+                gt[i, j, k, 2, 2] = 1.0
+    return gt
+
+
+def _delta_gt():
+    gt = np.zeros((N, N, N, 3, 3))
+    for d in range(3):
+        gt[..., d, d] = 1.0
+    return gt
+
+
+def test_cov_laplacian_matches_flat_at_delta():
+    x = np.linspace(-L / 2, L / 2, N)
+    X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
+    u = X ** 3 + 0.5 * Y ** 2 - 2.0 * Z
+    lap_cov = cov_laplacian(u, _delta_gt(), h)
+    lap_flat = flat_laplacian_7pt(u, h)
+    assert np.allclose(lap_cov[1:-1, 1:-1, 1:-1], lap_flat)
+
+
+def test_cov_laplacian_of_constant_is_zero_anisotropic():
+    x = np.linspace(-L / 2, L / 2, N)
+    X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
+    gt = _anisotropic_gt(x)
+    u = np.full((N, N, N), 3.7)
+    lap = cov_laplacian(u, gt, h)
+    assert np.all(lap == 0.0)
+
+
+def test_cov_laplacian_analytic_linear_field():
+    # gamma_xx = (1 + a x)^2: Gamma^x_xx = a / (1 + a x);
+    # D^2 x = - ginv^{ij} Gamma^x_ij = - a / (1 + a x)^3 exactly,
+    # since raw central second/fourth stencils of a linear field are 0
+    # and central first derivatives are exact for it.
+    x = np.linspace(-L / 2, L / 2, N)
+    X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
+    a = 0.06
+    gt = _anisotropic_gt(x)
+    u = X.copy()
+    lap = cov_laplacian(u, gt, h)
+    exact = -a / (1.0 + a * X) ** 3
+    inner = slice(3, N - 3)
+    assert np.allclose(lap[inner, inner, inner],
+                       exact[inner, inner, inner], rtol=1e-8), \
+        f"max dev {np.max(np.abs(lap[inner, inner, inner] - exact[inner, inner, inner])):.2e}"
+
+
+def test_covariant_delta_phi_matches_flat_jacobi_at_delta():
+    # Same equation, two solvers: at gtilde = delta the assembled
+    # covariant system reduces to the flat 7-point Laplacian, so the
+    # sparse solve and the converged Jacobi agree.
+    x = np.linspace(-L / 2, L / 2, N)
+    X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
+    src = np.where((X + Y + Z) > 0.0, 0.01, 0.0)
+    src = 0.02 * np.exp(-0.1 * (X ** 2 + Y ** 2 + Z ** 2))
+    u_sparse = covariant_delta_phi(_delta_gt(), h, src)
+    u_jacobi = jacobi_zero_bc(src, h, sweeps=6000, omega=1.0)
+    inner = slice(2, N - 2)
+    scale = max(1e-30, np.max(np.abs(u_jacobi)))
+    dev = np.max(np.abs(u_sparse[inner, inner, inner]
+                        - u_jacobi[inner, inner, inner]))
+    assert dev < 2e-3 * scale, \
+        f"dev {dev:.3e} vs scale {scale:.3e}"
+
+
+def test_covariant_delta_phi_boundary_stays_zero():
+    x = np.linspace(-L / 2, L / 2, N)
+    X, Y, Z = np.meshgrid(x, x, x, indexing="ij")
+    src = np.ones((N, N, N))
+    gt = _anisotropic_gt(x)
+    u = covariant_delta_phi(gt, h, src)
+    assert np.all(u[0, :, :] == 0.0)
+    assert np.all(u[:, -1, :] == 0.0)
+    assert np.isfinite(u).all()
 
 
 def test_project_phi_band_masks_punctures_and_bounds_delta():

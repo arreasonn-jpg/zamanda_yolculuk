@@ -1,5 +1,40 @@
 # Changelog
 
+## v13.3.0 (2026-10-23)
+
+### Added — exact covariant operator + iso-reference metric (NEUTRAL)
+- `src/zt005/amr/amr_projection.py`: `cov_laplacian` (gamma-tilde
+  covariant Laplacian ginv^{ij}(d_i d_j u - Gamma^k_ij d_k u), raw
+  central stencils, exactly equal to the flat 7-point Laplacian at
+  gtilde = delta) and `covariant_delta_phi` (assembled
+  variable-coefficient sparse Dirichlet solve, scipy spsolve),
+  exposed via `project_phi_band_covariant` with v13.2 band/guard
+  semantics.
+- Exactness evidence at machine precision: delta-consistency dev
+  0.0; analytic D^2 x = -a/(1+a x)^3 test dev 1.2e-16;
+  sparse-vs-converged-Jacobi agreement 3e-16.
+  Unit tests 10/10 (tests/unit/test_amr_projection.py).
+- Full 1000-step covariant run: H_f/H0_raw @ 1000 = 0.9382
+  (flat v13.2: 0.9319; baseline: 1.0756); iso-reference
+  H_f/H0_proj = 1.0436 (H0_proj = 0.02849 vs H0_raw = 0.03169).
+  Finite everywhere; dphi_max ~ 2.7e-2.
+- NEUTRAL verdict — the v13.2 positive result is ROBUST to the
+  operator upgrade: the ~13% gain does not rest on the
+  flat-Laplacian approximation. The iso-reference splits the
+  sub-1.0 effect: ~10% definitional offset (raw vs once-projected
+  initial band), the rest genuine band-quality improvement.
+- `scripts/v13_3_projection_covariant.py` runner;
+  artifacts results/validated/v13_3_projection_covariant.{npz,json};
+  reproduce: `python scripts/v13_3_projection_covariant.py 1000`.
+- Paper EN/TR: exact-covariant subsection added (neutral);
+  arxiv_submission_v4.zip regenerated; limitations v13.3 section.
+
+### Tests
+- 5 new tests on the covariant operator (consistency, constant,
+  analytic linear field, solver cross-check, boundary); projection
+  module total 10 tests. No baseline drift: the v13.2 flat path is
+  untouched.
+
 ## v13.2.0 (2026-10-23)
 
 ### Added — band-local conformal projection: FIRST POSITIVE LEVER
