@@ -1410,3 +1410,57 @@ is in progress; its outcome is recorded in a follow-up version.
   regions the experiment never claimed to fix; it is reported for
   completeness, not as a success/failure signal.
 
+## v14.0 stage-0 scope (instrumented long evolution: band blow-up at t = 5.6)
+
+### What v14.0 delivers
+
+- Two independent puncture locators in `src/zt005/amr/amr_bh_track.py`:
+  `peak_centroids` (2D |Atilde|^2-weighted bulge centers with strict
+  half-space split and local boxes) and `alpha_pair` (lapse-basin
+  meter). Meter lessons are on record: (a) the exact-center node of
+  an odd grid must belong to NEITHER half or the split is asymmetric
+  with mirror-symmetric data; (b) BY osculation bulges are momentum
+  RINGS — psi^-4 * A vanishes AT the puncture, so the |A| argmax
+  position is ring-biased, never the puncture itself; (c) on the
+  coarse grid (h = 1.25) NO lapse funnel forms within 6 M (alpha_min
+  rises 0.67 -> 0.87 and the basin wanders to the domain edge);
+  a puncture locator stable at this resolution does not exist.
+- The first instrumented long run (moving-patch baseline, no
+  projection, 10000 steps) crashed at t = 5.6 with overflow. The
+  post-mortem (`results/validated/v14_0_state_step02800.npz`,
+  `scripts/dev/_dbg_postmortem.py`) shows: fine-window fields all
+  NaN at the collapse instant while the coarse grid stays healthy
+  (phi 0.028-0.24, alpha 0.87, |H| finite). The instability lives
+  in the AMR INJECTION BAND.
+- Band max |H| time line (fine window, r > 1.5 mask): 0.44 (t=1) ->
+  0.64 (t=3) -> 1.04 (t=4) -> 2.32 (t=5) -> non-finite (t=5.6):
+  exponential growth with an e-fold of roughly 0.4 M. The coarse
+  grid grows mildly over the same interval (edge band 0.23 -> 0.44).
+  NOT the domain edges, NOT the punctures.
+- Before the blow-up, the orbit-gauge signal appears with the
+  CORRECT sign and magnitude: dphi reaches +0.44 rad at t = 5.0 and
+  omega climbs to +0.13..+0.15 rad/M around t = 4.8-5.0 (Newtonian
+  reference sqrt(M/d^3) = 0.125 at d = 4; the negative-omega
+  readings below t = 2 are the gauge transient, not the orbit).
+- The COM drifts less than one coarse cell through t = 5, so the
+  recenter machinery never triggers: the blow-up belongs to the
+  base fixed-window harness, not to the moving mechanism.
+- Guard added (alpha2): a NaN meter position no longer kills the
+  recenter with int(round(nan)); the run dumps full field state on
+  NON-FINITE plus per-500-step H maps for the growth timeline.
+- Artifacts: results/validated/v14_0_inspiral_track.{npz,json},
+  v14_0_diag3000.log (run log), v14_0_state_step02800.npz
+  (post-mortem state), v14_0_hmaps_step*.npz (H-map timeline).
+
+### Honest verdict and the critical path it defines
+
+The chronic AMR injection defect (v11-v13 chain) goes NONLINEAR at
+t = 5.5 +/- 0.5 in the band, roughly 3x past the validated window
+(t = 2), before the inspiral can be tracked to a useful fraction of
+an orbit. The full-inspiral critical path is therefore: run the SAME
+instrumentation with the v13.4 projection protocol (v14.1) and
+measure whether the projected band stays sub-critical toward
+t = 10-20. Absolute puncture positions carry +/-0.3-0.5 meter
+biases (ring bias, node quantization); only time-derivatives
+series are trusted signals.
+

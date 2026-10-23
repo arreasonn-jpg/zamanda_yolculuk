@@ -37,8 +37,13 @@ validation exists on record.
    the FIRST POSITIVE lever (H_f/H0 @ 1000: 0.9319 vs 1.0756); the
    exact gamma-tilde covariant upgrade is NEUTRAL (v13.3.0, 0.9382) —
    the gain is operator-robust; the momentum Vector-Poisson branch is
-   NEUTRAL too (v13.4.0, 0.9371 — band A-divergence cleanable but
-   carries no H signal). AMR lever longlist exhausted.
+   NEUTRAL too (v13.4.0, 0.9371 — band Ã-divergence cleanable but
+   carries no H signal). AMR lever longlist exhausted. Stage-0 of
+   the inspiral marathon (v14.0.0) mapped the failure: the
+   unprojected long run blows up at t = 5.6 in the injection band
+   (fine band max |H| 0.44 → 2.32, e-fold ~ 0.4 M) while the
+   orbit-gauge signal is real (omega +0.13..0.15 rad/M); the
+   critical path is projection-on long runs (v14.1).
 
 ## Explicitly deferred
 

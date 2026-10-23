@@ -92,6 +92,34 @@ def fine_mask():
     return fine_grid_mask(N_f, L_f, 1.5)
 
 
+def dump_state(path, s_c, s_f, step):
+    """Full field dump of both grids for a post-mortem (alpha2)."""
+    np.savez(path,
+             step=step,
+             c_phi=s_c.phi, c_gtilde=s_c.gtilde, c_K=s_c.K,
+             c_Atilde=s_c.Atilde, c_Gamma=s_c.Gamma,
+             c_alpha=s_c.alpha, c_beta=s_c.beta,
+             f_phi=s_f.phi, f_gtilde=s_f.gtilde, f_K=s_f.K,
+             f_Atilde=s_f.Atilde, f_Gamma=s_f.Gamma,
+             f_alpha=s_f.alpha, f_beta=s_f.beta)
+
+
+def hmap_dump(path, s_c, s_f, hi_c, mask_c_sub, mask_f):
+    """H maps of the coarse sub-window and the fine window."""
+    H_c_map = hamiltonian_constraint_full(
+        s_c.phi[CENTER_IDX:hi_c, CENTER_IDX:hi_c, CENTER_IDX:hi_c],
+        s_c.gtilde[CENTER_IDX:hi_c, CENTER_IDX:hi_c,
+                   CENTER_IDX:hi_c],
+        s_c.K[CENTER_IDX:hi_c, CENTER_IDX:hi_c, CENTER_IDX:hi_c],
+        s_c.Atilde[CENTER_IDX:hi_c, CENTER_IDX:hi_c,
+                   CENTER_IDX:hi_c], h_c)
+    H_f_map = hamiltonian_constraint_full(s_f.phi, s_f.gtilde,
+                                          s_f.K, s_f.Atilde, h_f)
+    np.savez(path, H_c_map=H_c_map, H_f_map=H_f_map,
+             mask_c_sub=mask_c_sub, mask_f=mask_f,
+             center_idx=CENTER_IDX)
+
+
 def main():
     s_c = BSSNStateMP.from_base(bowen_york_binary(N_c, L_c, 0.5, 0.5,
                                                   4.0))
@@ -129,6 +157,10 @@ def main():
     d0_ref = None
     t0 = time.time()
     for step in range(1, STEPS + 1):
+        if step % 500 == 0:
+            hmap_dump(Path(f"results/validated/"
+                           f"v14_0_hmaps_step{step:05d}.npz"),
+                      s_c, s_f, hi_c, mask_c_sub, mask_f)
         s_c = rk4_step_mp_vec_z4c(s_c, h=h_c, dt=DT, width_cells=3,
                                   kappa=0.0, eta=1.0)
         # BH meter on the FINE window (h = 0.625, 2x the coarse
@@ -147,12 +179,18 @@ def main():
         off = xc[lo] + L_f / 2.0
         xl, yl = cl_a[0] + off, cl_a[1] + off
         xr, yr = cr_a[0] + off, cr_a[1] + off
-        lo_new = target_lo_impl(0.5 * (xl + xr), h_c, N_c, N_sub)
-        if lo_new != lo:
-            lo = lo_new
-            s_f = extract_window(s_c, lo)
-            recenter_steps.append(step)
-            mask_f = fine_mask()
+        # Blow-up guard (v14.0 alpha2): a NaN meter position must not
+        # kill the recenter log with int(round(nan)); the recenter is
+        # skipped for that step and the NaN itself is the recorded
+        # decay signal.
+        com = 0.5 * (xl + xr)
+        if np.isfinite(com):
+            lo_new = target_lo_impl(com, h_c, N_c, N_sub)
+            if lo_new != lo:
+                lo = lo_new
+                s_f = extract_window(s_c, lo)
+                recenter_steps.append(step)
+                mask_f = fine_mask()
         s_fresh = extract_window(s_c, lo)
         s_f = inject_full(s_f, s_fresh, n_layers=4)
         s_f = rk4_step_mp_vec_z4c(s_f, h=h_f, dt=DT, width_cells=3,
@@ -215,7 +253,10 @@ def main():
                   f"rec={len(recenter_steps)} fin={fin} "
                   f"t WALL={time.time() - t0:.0f}s", flush=True)
             if not fin:
-                print("NON-FINITE")
+                print("NON-FINITE: dumping state", flush=True)
+                dump_state(Path("results/validated/"
+                                f"v14_0_state_step{step:05d}.npz"),
+                           s_c, s_f, step)
                 break
             if step % 1000 == 0:
                 base_ckpt = Path("results/validated")

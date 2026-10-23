@@ -1,0 +1,21 @@
+{
+  "stage": "v14.0",
+  "steps": 3000,
+  "t_final": 5.6000000000000005,
+  "d0": 4.970198293129127,
+  "d_final": NaN,
+  "d_ratio": NaN,
+  "phase_total_rad": NaN,
+  "orbits": NaN,
+  "omega_measured_mean": NaN,
+  "omega_newtonian_ref": 0.09024838235358248,
+  "omega_ratio": NaN,
+  "d_alpha_final": NaN,
+  "alpha_min_final": NaN,
+  "recenter_steps": [],
+  "recenters": 0,
+  "H_fine_final": NaN,
+  "H_coarse_final": 1.940457786541838,
+  "baseline_AMR_reference_step1000": 1.0756,
+  "reproduce": "python scripts/v14_0_inspiral_track.py 10000"
+}

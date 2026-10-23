@@ -8,6 +8,16 @@ v13.4.0: the momentum Vector-Poisson increment below is also
 NEUTRAL on H (band A-divergence cleanable at ratio ~0.43/step but
 the Hamiltonian headline is unchanged: 0.9371). Both increments are
 measured and closed; see limitations.md v13.2-v13.4 sections.
+Stage-0 of the marathon (v14.0.0, 2026-10-23): unprojected long
+run blows up at t = 5.6 IN THE INJECTION BAND (fine band max |H|
+0.44 -> 2.32, e-fold ~ 0.4 M; coarse healthy) while the orbit-gauge
+signal is real (omega +0.13..0.15 rad/M, Newtonian ref 0.125). The
+plan doc's next experiment is therefore projection-on: the same
+instrumentation with the v13.4 protocol run toward t = 10-20
+(v14.1) — whether the projected band stays sub-critical. The
+pent-up question "does the moving patch follow the orbit?" is
+deferred behind this: the pair survives without recentering to
+t = 5 (COM < 1 cell).
 
 ## Diagnosis chain so far (why projection is the next lever)
 

@@ -1,5 +1,34 @@
 # Changelog
 
+## v14.0.0 (2026-10-23)
+
+### Added — full-inspiral stage-0: instrumented long evolution (band blow-up at t = 5.6)
+- `src/zt005/amr/amr_bh_track.py`: `peak_centroids` (2D |Atilde|^2
+  bulge locator; lessons: strict halves so the odd-grid center node
+  belongs to neither half; BY bulges are momentum RINGS — the |A|
+  peak vanishes at the puncture) and `alpha_pair` (lapse-basin
+  meter; lesson: no coarse-grid funnel within 6 M, alpha_min rises
+  0.67 -> 0.87 and the basin wanders). 3 unit tests
+  (tests/unit/test_amr_bh_meters.py).
+- `scripts/v14_0_inspiral_track.py`: moving-patch baseline with the
+  v13.0 recenter logic + full orbital instrumentation (per-50-step
+  d, phase, omega, both meter series, H curves, per-500-step H
+  maps, full state dump on NON-FINITE, NaN-guarded recenter so an
+  exploded meter cannot kill the loop with int(round(nan))).
+- FIRST LONG RUN (no projection, 10000 steps): crashed at t = 5.6.
+  Post-mortem decisive: fine window all-NaN, coarse grid healthy —
+  the chronic AMR injection defect goes NONLINEAR IN THE BAND
+  (band max |H|: 0.44 t=1, 1.04 t=4, 2.32 t=5; e-fold ~ 0.4 M),
+  ~3x past the validated window. COM drift < 1 cell (recenter
+  never triggered): the failure belongs to the base harness.
+- Before the blow-up the orbit-gauge signal is REAL: phase +0.44
+  rad at t = 5, omega +0.13..0.15 rad/M (Newtonian ref 0.125;
+  negative omega below t = 2 is gauge transient).
+- Artifacts: v14_0_inspiral_track.{npz,json,log},
+  v14_0_state_step02800.npz, v14_0_hmaps_step*.npz.
+- Paper EN/TR "long baseline" subsection; arxiv_submission_v4.zip
+  regenerated; limitations v14.0 stage-0 section.
+
 ## v13.4.0 (2026-10-23)
 
 ### Added — momentum Vector-Poisson band correction (NEUTRAL on H)

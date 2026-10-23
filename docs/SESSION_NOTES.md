@@ -58,7 +58,7 @@ PTUM QFT window A in [1.35, 1.87] invariant under:
 - 15 figures
 - paper/archive/ holds historical submission zips
 
-## Current state (v13.4.0, 2026-10-23)
+## Current state (v14.0.0, 2026-10-23)
 - v13.0.0: moving patch = no-op (COM drift < 1 cell) + subpackage
   restructure (zt005.amr/, zt005.matter/); v13.0.1: docs sync.
 - v13.1.0: 4x + subcycle=4 closed NEGATIVE (H@500 1.1418 vs 1.0166).
@@ -71,6 +71,15 @@ PTUM QFT window A in [1.35, 1.87] invariant under:
 - v13.4.0: momentum Vector-Poisson branch NEUTRAL (H 0.9371 vs
   0.9382) — band A-divergence cleanable (ratio ~0.43/step) but no H
   signal. AMR lever longlist EXHAUSTED (8/8 levers measured).
+- v14.0.0 stage-0 (full-inspiral marathon begins): instrumented
+  unprojected long run blows up at t = 5.6 IN THE BAND (fine band
+  max |H| 0.44 -> 2.32, e-fold ~ 0.4 M; coarse grid healthy), while
+  the orbit gauge-signal is real (omega +0.13..0.15 rad/M by
+  t ~ 5, Newtonian ref 0.125; negative omega < t2 is transient).
+  Two puncture-meter lessons on record (momentum-RING bias of the
+  Atilde peaks; no coarse-grid lapse funnel within 6 M). Critical
+  path: projection-on long runs (v14.1) to test band sub-criticality
+  toward t = 10-20.
 - AMR lever chain fully mapped; the remaining defect is genuinely
   the injected band's second-derivative mismatch.
 

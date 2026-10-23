@@ -10,7 +10,7 @@ really is.
 > converged for the device source. No time machine has been built, and
 > the honest expectation is a quantitative bound, not a device.
 >
-> **Current frontline (v13.4.0):** (a) device-source convergence is
+> **Current frontline (v14.0.0):** (a) device-source convergence is
 > CLOSED — ZT-006.2.24 (instantaneous kernel) and ZT-006.2.25 (retarded
 > solver, device sources) both PASS; the remaining gap to a device
 > metric is physical (h ~ 10⁻⁴⁶, EM-only linearized chain), not
@@ -30,6 +30,13 @@ really is.
 > NEUTRAL: the band A-divergence is cleanable (per-step ratio 0.43)
 > but carries no H signal — the phi-band projection is the whole
 > effect; AMR lever list exhausted.
+> (b2) full-inspiral stage-0 (v14.0.0): the first instrumented long
+> run (no projection) blows up at t = 5.6 — the chronic AMR injection
+> defect goes NONLINEAR in the injection BAND (fine band max |H|:
+> 0.44 t=1 → 2.32 t=5, e-fold ~0.4 M; coarse grid stays healthy).
+> The orbit-gauge signal itself is real (phase +0.44 rad, omega
+> +0.13..0.15 rad/M ≈ Newtonian 0.125) but the band is the blocker:
+> the measured critical path is projection-on long runs (v14.1).
 > (c) code layout: BSSN-amr machinery in `zt005.amr/`, matter models
 > in `zt005.matter/`.
 
@@ -54,6 +61,7 @@ machinery in this repo is a known-answer benchmark, not a device claim.
 | v13.2.0 | First positive lever: band-local conformal projection (Jacobi solve of the injected phi band, guard-masked) — H_f/H0 @ 1000 = 0.9319 vs baseline 1.0756 (−13.4%), below the run's own step-0 reference |
 | v13.3.0 | Exact γ̃-covariant operator + iso-reference metric: NEUTRAL (0.9382 vs 0.9319 flat) — the projection gain is operator-robust; ~10% of the sub-1.0 effect is definitional |
 | v13.4.0 | Momentum Vector-Poisson band correction: NEUTRAL on H (0.9371 vs 0.9382) — band Ã-divergence cleanable (ratio 0.43/step) but carries no H signal; AMR lever longlist exhausted |
+| v14.0.0 | Full-inspiral stage-0: unprojected long run blows up at t=5.6 IN THE BAND (fine band max \|H\| 0.44→2.32, e-fold ~0.4 M; coarse healthy); orbit-gauge signal real (ω +0.13..0.15 ≈ Newtonian); critical path = projection-on long runs |
 
 See `docs/limitations.md` for the full scope/NOT-delivered register per
 version, and `docs/validation.md` for the PASS/FAIL register.
