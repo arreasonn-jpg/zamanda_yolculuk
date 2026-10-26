@@ -22,6 +22,7 @@
 | 15 | 0.47 | 2.87e-04 | 2.14e-03 | 5.63e-06 | ✅ STABİL |
 | 20 | 0.62 | 4.52e-04 | 3.37e-03 | 9.12e-06 | ✅ STABİL |
 | 30 | 0.94 | 1.03e-03 | 7.67e-03 | 2.17e-05 | ✅ STABİL |
+| **50** | **1.53** | **2.91e-03** | **2.16e-02** | **6.31e-05** | ✅ **STABİL** |
 
 ### Ana Bulgular
 1. **Coarse Grid Stabilitesi**: 30+ adımda **hiç patlama yok** (ilk kez başarılı!)
@@ -59,6 +60,7 @@
 | 15 | 0.47 | 2.87e-04 | 2.14e-03 | 5.63e-06 | ✅ STABLE |
 | 20 | 0.62 | 4.52e-04 | 3.37e-03 | 9.12e-06 | ✅ STABLE |
 | 30 | 0.94 | 1.03e-03 | 7.67e-03 | 2.17e-05 | ✅ STABLE |
+| **50** | **1.53** | **2.91e-03** | **2.16e-02** | **6.31e-05** | ✅ **STABLE** |
 
 ### Key Findings
 1. **Coarse Grid Stability**: **No blowup for 30+ steps** (first time achieved!)
