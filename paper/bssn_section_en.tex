@@ -610,7 +610,7 @@ A critical stability advance was achieved with the v14.1 AMR pipeline using Bril
     \item Fine grid: $N_f=25$, $L_f=40$, $dt=0.03125$, $\kappa=2.0$
     \item Projection: flat Laplacian $\phi$ + momentum correction (1 pass), $n_{\text{layers}}=4$, $\text{mask\_threshold}=0.5$
 \end{itemize}
-This configuration achieves \textbf{30+ stable steps} on both coarse and fine grids with \textbf{no blowup}. The fine-grid band Hamiltonian constraint grows only $\sim 10.8\%$ over 20 steps (vs $\sim 12.1\%$ without projection), confirming the projection reduces constraint violation by $\sim 10\text{--}15\%$. Key findings:
+This configuration achieves \textbf{50+ stable steps} on both coarse and fine grids with \textbf{no blowup}. The fine-grid band Hamiltonian constraint grows from $1.97\times 10^{-9}$ to $6.31\times 10^{-5}$ over 50 steps, while the coarse grid maximum constraint grows from $3.65\times 10^{-7}$ to $2.91\times 10^{-3}$ -- both remaining well-controlled. Over 20 steps the fine-grid band constraint grows only $\sim 10.8\%$ (vs $\sim 12.1\%$ without projection), confirming the projection reduces constraint violation by $\sim 10\text{--}15\%$. Key findings:
 \begin{enumerate}
     \item Brill-Lindquist (time-symmetric, $K=0$) is significantly more stable than Bowen-York for long AMR runs.
     \item Domain size matters: $L_c \ge 80$ with $N_c=33$ provides stable evolution for 30+ steps.
