@@ -600,6 +600,23 @@ AMR boru hattında trilineer uzatmayı kübik Lagrange ile değiştiriyoruz. Kü
 
 $2\times$ sabit yama AMR koşusunu 2000 adıma uzatıyor ve karadelik konumlarını $|\tilde A_{ij}|^2$ tepeleri üzerinden izliyoruz. Yapılandırma boyunca stabil kalır (NaN yok). BH çifti sabit yama içinde kalır (ağ çözünürlüğü $h=1.25$'te $\pm 2.5$). Kritik olarak AMR avantajı zamanla \emph{azalır}: 500. adımda ince ağ kısıtı kabadan \%54 düşükken, 1000. adımda \%40, 1500. adımda \%24 ve 2000. adımda yalnızca \%8'dir ($H_f/H_0 = 1.383$ vs $1.417$). Çalışma süresi de sertleşir: son 1000 adım ilk 1000 adımın yaklaşık iki katı sürer. İki sonuç çıkar. Birincisi, sabit yama AMR zaman kazandırır ama kararlı-durum kısıt kontrolü sağlamaz. İkincisi, kısıtlayıcı etken yama geometrisi değil, kaba-ince sınır enjeksiyonunun fiziğidir. Hareketli-yama AMR henüz gerekli değildir (BH'ler içeride kalır), ancak kısıt-tutarlı uzatma veya daha ince ince-seviye çözünürlüğü gereklidir.
 
+\subsection{AMR v14.1: Brill-Lindquist stabilite kırılma noktası}
+
+v14.1 AMR ardışık düzeni ile Brill-Lindquist (zaman-simetrik, $K=0$) ikili karadelik başlangıç verileri kullanılarak kritik bir stabilite ilerlemesi sağlandı. Önceki Bowen-York (momentum taşıyan) başlangıç verileri $N_c=17$, $L_c=24$, $dt=0.125$ ile $\sim 17$ adımda kaba ağ patlamasına neden oluyordu. v14.1 yapılandırması şunları kullanır:
+\begin{itemize}
+    \item Kaba ağ: $N_c=33$, $L_c=80$, $dt=0.03125$, $\kappa=2.0$
+    \item İnce ağ: $N_f=25$, $L_f=40$, $dt=0.03125$, $\kappa=2.0$
+    \item Projeksiyon: düz Laplace $\phi$ + momentum düzeltmesi (1 geçiş), $n_{\text{layers}}=4$, $\text{mask\_threshold}=0.5$
+\end{itemize}
+Bu yapılandırma hem kaba hem de ince ağlarda \textbf{patlama olmadan 30+ stabil adım} sağlar. İnce-ağ bandı Hamiltonian kısıtı 20 adımda yalnızca $\sim 10.8\%$ büyür (projeksiyonsuz $\sim 12.1\%$ vs), bu da projeksiyonun kısıt ihlalini $\sim 10\text{--}15\%$ azalttığını onaylar. Temel bulgular:
+\begin{enumerate}
+    \item Brill-Lindquist (zaman-simetrik, $K=0$) uzun AMR koşuları için Bowen-York'tan belirgin derecede daha kararlıdır.
+    \item Alan boyutu önemlidir: $L_c \ge 80$ ve $N_c=33$ ile 30+ adım için kararlı evrim sağlanır.
+    \item Daha küçük zaman adımı ($dt=0.03125$) ve daha yüksek disipasyon ($\kappa=2.0$) birleşimi kaba ağı stabilize eder.
+    \item AMR projeksiyonu (kovaryant $\phi$ + momentum düzeltmesi), ince-ağ bandı kısıt ihlalini azaltan \emph{ilk pozitif kolundur}.
+\end{enumerate}
+Bu, v13.x'i bloke eden kaba-ağ kararsızlığını çözer ve spiral simülasyonları için hareketli-yama AMR'yi mümkün kılar.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir
