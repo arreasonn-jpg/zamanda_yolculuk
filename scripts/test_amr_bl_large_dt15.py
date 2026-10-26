@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+"""
+Quick AMR test with Brill-Lindquist, larger coarse grid, smaller dt, fewer steps.
+"""
+import numpy as np
+from zt005.amr_long_run import run_amr_long_run, AMRConfig
+from zt005.bssn_ic_binary import brill_lindquist_state
+from zt005.bssn_state_mp import BSSNStateMP
+from zt005.amr.refinement_tensor import prolongate_state
+from zt005.amr.refinement import prolongate
+
+config = AMRConfig(
+    N_c=33, L_c=160.0,
+    N_f=25, L_f=80.0,
+    dt=0.03125, n_steps=15,
+    kappa=2.0,
+    use_projection=True,
+    projection_type="covariant",
+    n_layers=4,
+    projection_sweeps=10,
+    projection_omega=0.8,
+    mask_threshold=0.5,
+    use_momentum_correction=True,
+    momentum_passes=1,
+    eta=1.0,
+    width_cells=3,
+    output_every=5,
+)
+
+def create_bl_initial_data(config: AMRConfig):
+    x_c = np.linspace(-config.L_c / 2, config.L_c / 2, config.N_c)
+    X_c, Y_c, Z_c = np.meshgrid(x_c, x_c, x_c, indexing="ij")
+    x_f = np.linspace(-config.L_f / 2, config.L_f / 2, config.N_f)
+    X_f, Y_f, Z_f = np.meshgrid(x_f, x_f, x_f, indexing="ij")
+    separation = 10.0
+    mass = 1.0
+    s_c_base = brill_lindquist_state(config.N_c, config.L_c, m1=mass, m2=mass, d=separation)
+    s_c = BSSNStateMP.from_base(s_c_base)
+    offset = ((config.N_c - config.N_f) // 2,) * 3
+    fine_dict = prolongate_state(s_c, config.N_f, offset)
+    B_f = np.zeros((config.N_f, config.N_f, config.N_f, 3))
+    for i in range(3):
+        B_f[..., i] = prolongate(s_c.B[..., i], config.N_f, offset)
+    fine_dict["B"] = B_f
+    s_f = BSSNStateMP(
+        phi=fine_dict["phi"], gtilde=fine_dict["gtilde"],
+        K=fine_dict["K"], Atilde=fine_dict["Atilde"],
+        Gamma=fine_dict["Gamma"], alpha=fine_dict["alpha"],
+        beta=fine_dict["beta"], B=fine_dict["B"],
+    )
+    return s_c, s_f, offset
+
+import zt005.amr_long_run as amr_module
+amr_module.create_initial_data = create_bl_initial_data
+
+print("=" * 60)
+print("AMR Test: Brill-Lindquist, N_c=33, L_c=160, dt=0.03125 - 15 steps")
+print("=" * 60)
+print(f"Coarse: N_c={config.N_c}, L_c={config.L_c}, h_c={config.L_c/config.N_c:.3f}")
+print(f"Fine:   N_f={config.N_f}, L_f={config.L_f}, h_f={config.L_f/config.N_f:.3f}")
+print(f"dt={config.dt}, steps={config.n_steps}, kappa={config.kappa}")
+print("=" * 60)
+
+run_amr_long_run(config)

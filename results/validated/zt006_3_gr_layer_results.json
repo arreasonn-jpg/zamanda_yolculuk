@@ -1,7 +1,7 @@
 {
   "stage": "ZT-006.3",
   "layer": "GR validation layer (phases 3/4/6 groundwork)",
-  "mode": "full",
+  "mode": "quick",
   "scope_note": "Known-answer validation only. No CTC or device conclusion is produced.",
   "metric_sanity": {
     "minkowski": {
@@ -37,18 +37,18 @@
   },
   "geodesic_norm_conservation": {
     "schwarzschild_analytic": {
-      "norm0": -1.0000000000000002,
-      "norm_drift_rel": 3.2640556923979596e-14,
+      "norm0": -1.0,
+      "norm_drift_rel": 3.2862601528904634e-14,
       "pass": true
     },
     "kerr_numeric": {
       "norm0": -1.0,
-      "norm_drift_rel": 6.382672168570025e-13,
+      "norm_drift_rel": 6.858957846134217e-13,
       "pass": true
     },
     "godel_numeric": {
       "norm0": -1.0,
-      "norm_drift_rel": 9.568745795718314e-11,
+      "norm_drift_rel": 9.565792602472811e-11,
       "pass": true
     },
     "morris_thorne_numeric": {
@@ -130,13 +130,13 @@
   "conservation_and_gauge": {
     "conservation_max_rel": 0.007871912039988826,
     "conservation_pass": true,
-    "lorenz_scaled_residual": 0.03052852200710853,
+    "lorenz_scaled_residual": 0.11171533817427247,
     "lorenz_pass": true
   },
   "overall": {
     "n_checks": 16,
     "n_pass": 16,
     "status": "PASS",
-    "runtime_s": 11.79
+    "runtime_s": 48.62
   }
 }
