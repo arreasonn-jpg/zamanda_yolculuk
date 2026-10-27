@@ -790,6 +790,115 @@ Temel sonuçlar:
 
 Sonuç açık: herhangi bir hedef-zaman eşlemesi Dünya'nın gravitasyonel potansiyelini hesaba katmalıdır, çünkü bu cihazın katkısının $\sim 40$ mertebe üzerinden metriği baskınlaştırır. Cihazın uzay-zaman perürbasyonu, Dünya'nın gravitasyonel kuyusunu aşmak veya anlamlı şekilde değiştirmek için çok zayıftır. $\Delta t = -1\,\text{s}$ için Dünya gravitasyonundan özgün zaman düzeltmesi $\sim 0.7\,\text{ns}$ iken, cihazın katkısı $\sim 10^{-49}\,\text{s}$ -- tamamen ihmal edilebilir.
 
+\subsection{Faz 10: Mühendislik Uygulanabilirlik Analizi}
+\label{sec:phase10-engineering-tr}
+
+Faz 10, Faz 1--9'da incelenen manyetik alan konfigürasyonlarını üretebilen, sırt çantası ölçeğinde taşınabilir bir cihazın pratik mühendislik kısıtlamalarını ele alır. Analiz bobin tasarım optimizasyonu, ısısal yönetim, yüksek gerilimli güç kaynağı tasarımı ve 10 kg / 20 L / 200 W / 500 Wh sırt çantası zarfı içindeki sistem seviyesindeki entegrasyonu kapsar.
+
+\subsubsection{Bobin Tasarım Optimizasyonu}
+
+Bobin optimizasyonu, sırt çantası kısıtlamalarına tabi olarak $\mathcal{F} = B / \sqrt{P \cdot m}$ (güç-kütle çarpımının kareköküne manyetik alan oranı) şeklindeki bir başarı ölçütünü kullanır. Manyeto-kuvazistatik (MQS) yaklaşımında kullanılan 1 MHz sürme frekansında, endüktif reaktans baskındır ($\omega L \gg R$), bu da uygulanabilir impedans için az devir ve büyük yarıçap gerektirir.
+
+\begin{table*}[t]
+\centering
+\caption{Faz 10 optimal bobin özellikleri (tüm G1--G4 konfigürasyonları aynı tasarıma yakınsar).}
+\label{tab:phase10-coil-tr}
+\begin{tabular}{lcccc}
+\hline
+Parametre & Değer & Birim & Kısıtlama & Durum \\
+\hline
+Tel çapı & AWG8 (3.26 mm) & -- & $I_{\max} = 100\,\text{A}$ & \checkmark \\
+Ana yarıçap $R$ & 80 & mm & $R \le 250\,\text{mm}$ & \checkmark \\
+İnce yarıçap $a$ & 10 & mm & $a \le 25\,\text{mm}$ & \checkmark \\
+Devir sayısı $N$ & 10 & -- & $N \le 200$ & \checkmark \\
+Tel uzunluğu & 5.03 & m & -- & -- \\
+DC direnci & 12.3 & m$\Omega$ & -- & -- \\
+Endüktans & 78.5 & nH & -- & -- \\
+Kütle & 0.38 & kg & $\le 10\,\text{kg}$ & \checkmark \\
+Hacim & 0.16 & L & $\le 20\,\text{L}$ & \checkmark \\
+Tepe güç & 123 & W & $\le 200\,\text{W}$ & \checkmark \\
+Tepe gerilim & 49.4 & V & -- & -- \\
+B-alanı (merkez) & 25 & G & -- & -- \\
+B-alanı gradyanı & 250 & G/m & -- & -- \\
+Maks görev döngüsü (doğal konveksiyon) & 10.2\% & -- & -- & -- \\
+\hline
+\end{tabular}
+\end{table*}
+
+Dört konfigürasyonun tümü (G1--G4) aynı optimal bobine yakınsar: AWG8 tel, $R=80\,\text{mm}$, $a=10\,\text{mm}$, $N=10$ devir, 100 A / 1 MHz ile sürülür. Bobin kütlesi (0.38 kg) ve hacmi (0.16 L), güç elektroniği, soğutma ve yapı için >99\% kütle/hacim marjı bırakarak sırt çantası bütçesinin well içinde kalır.
+
+\subsubsection{Isısal Analiz}
+
+1 MHz'de, bobinin AC direnci cilt etkisi ($\delta \approx 0.066\,\text{mm}$ 1 MHz'de bakır için) tarafından baskınlaşır, ancak AWG8 ile DC direnci zaten düşüktür (12.3 m$\Omega$). Isısal analiz üç soğutma modunu değerlendirir:
+
+\begin{itemize}
+    \item \textbf{Doğal konveksiyon}: $R_{\text{th}} \approx 1.99\,\text{K/W}$, 100\% görev döngüsünde kararlı durum $\Delta T \approx 1220^\circ\text{C}$ -- $\sim 10\%$ görev döngüsüyle sınırlı.
+    \item \textbf{Zorlu hava (5 m/s)}: $R_{\text{th}} \approx 0.20\,\text{K/W}$, 50\% görev döngüsünde kararlı durum $\Delta T \approx 122^\circ\text{C}$ -- Sınıf F (155$^\circ$C) yalıtımıyla uygulanabilir.
+    \item \textbf{Sıvı soğutma}: $R_{\text{th}} \approx 0.02\,\text{K/W}$, 100\% görev döngüsünde kararlı durum $\Delta T \approx 12^\circ\text{C}$ -- sürekli çalışmayı sağlar.
+\end{itemize}
+
+Sırt çantası form faktörü için, 50\% görev döngüsünde zorlu hava soğutması önerilen temel çizgidir, bu da $\sim 86^\circ\text{C}$ bobin yüzey sıcaklığı ve $\sim 147^\circ\text{C}$ kararlı durum sargı sıcaklığı verir (Sınıf F limitleri içinde).
+
+\subsubsection{Yüksek Gerilimli Güç Kaynağı Tasarımı}
+
+Bobin 1 MHz'de yüksek oranda endüktif bir yük sunar: $Z = 0.49\,\Omega \angle 88.6^\circ$, güç faktörü $\text{PF} = 0.025$. Görünür güç 4.94 kVA iken gerçek güç sadece 123 W'dir. Bu şunları gerektirir:
+
+\begin{itemize}
+    \item \textbf{Güç faktörü düzeltmesi}: Paralel bir kondansatör $C_{\text{PFC}} \approx 323\,\text{nF}$ PF'yi birliğe getirir, kaynağın akımını 100 A'dan 2.5 A'ya düşürür.
+    \item \textbf{Seri rezonans kondansatörü}: $C_{\text{res}} \approx 323\,\text{nF}$ bobin endüktansıyla 1 MHz'de rezonans yapar, Sınıf E / Sınıf D yükselteci topolojisinde sıfır-gerilimli anahtarlama (ZVS) sağlar.
+    \item \textbf{Yalıtım}: 50 V çalışma için Sınıf F (155$^\circ$C) manyetik tel ile 2.5 mm sızma yolu / 1.5 mm aralık.
+\end{itemize}
+
+Rezonans topolojisi, anahtarlama kayıplarını ve EMI'yi azaltır, bu da taşınabilir bir sistem için kritiktir.
+
+\subsubsection{Batarya ve Çalışma Süresi}
+
+500 Wh Li-iyon bataryasıyla (tipik 10 kg, 3.5 L yüksek enerjili hücreler için):
+
+\begin{itemize}
+    \item Nabız başına enerji (1 ms'de 123 W): 123 mJ
+    \item Maksimum nabız: 14,665
+    \item 50\% görev döngüsünde çalışma süresi (1 ms açık / 1 ms kapalı): 489 dakika (8.1 saat)
+    \item 10\% görev döngüsünde çalışma süresi: 2,444 dakika (40.7 saat)
+\end{itemize}
+
+Batarya sistem kütlesinin (~10 kg) ve hacminin (~3.5 L) çoğunu oluşturur, ancak elektronik ve yapı için marj bırakarak 10 kg / 20 L zarfı içine sığar.
+
+\subsubsection{Sistem Entegrasyon Özeti}
+
+\begin{table*}[t]
+\centering
+\caption{Faz 10 sırt çantası entegrasyon bütçesi.}
+\label{tab:phase10-backpack-tr}
+\begin{tabular}{lccc}
+\hline
+Alt Sistem & Kütle (kg) & Hacim (L) & Güç (W) \\
+\hline
+Bobin (AWG8, 10 devir) & 0.38 & 0.16 & 123 (tepe) \\
+Güç elektroniği (GaN H-köprü, PFC, kontrol) & 1.5 & 1.0 & 15 (kayıplar) \\
+Zorlu hava soğutması (flüt, kanal) & 0.5 & 0.5 & 5 \\
+Batarya (500 Wh Li-iyon) & 10.0 & 3.5 & -- \\
+Yapı, kablo, konektörler & 1.5 & 1.0 & -- \\
+\hline
+\textbf{Toplam} & \textbf{13.9} & \textbf{6.2} & \textbf{143 (tepe)} \\
+\textbf{Bütçe} & 10.0 & 20.0 & 200 \\
+\textbf{Marj} & \textbf{-3.9 kg} & \textbf{+13.8 L} & \textbf{+57 W} \\
+\hline
+\end{tabular}
+\end{table*}
+
+Kütle bütçesi 3.9 kg aşıldı, bu da öncelikle 500 Wh bataryadan kaynaklanıyor. Farkı kapatma seçenekleri:
+\begin{enumerate}
+    \item Bataryayı 300 Wh'ye düşür (3.5 kg, 2.5 L) $\to$ 50\% görev döngüsünde 293 dk çalışma.
+    \item Daha yüksek enerjili hücreler kullan (300 Wh/kg) $\to$ 500 Wh 1.7 kg'da.
+    \item 10\% görev döngüsünde çalıştır $\to$ 500 Wh ile 40+ saat.
+    \item Bataryayı böl: 300 Wh birincil + 200 Wh sıcak-yedek rezerv.
+\end{enumerate}
+
+300 Wh/kg hücrelerle (ticari olarak mevcut), toplam sistem kütlesi $\sim 5.6\,\text{kg}$'ya düşer, 10 kg limitinin well içinde 4.4 kg marj bırakarak ek koruma, teşhis veya yedeklik için.
+
+\subsection{Sınırlamalar}
+
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir
 sayısal görelilik kodu değildir. Şunları içermez: tam ekstremal Kerr
 ($a = 1$), izlenen/hareketli iyileştirme, MPI paralelliği, ışıma

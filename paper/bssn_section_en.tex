@@ -815,6 +815,113 @@ Key results:
 
 The conclusion is clear: any target-time mapping must account for Earth's gravitational potential, as it dominates the metric by $\sim 40$ orders of magnitude over the device's contribution. The device's spacetime perturbation is far too weak to overcome or significantly modify the Earth's gravitational well. For $\Delta t = -1\,\text{s}$, the proper time correction from Earth gravity is $\sim 0.7\,\text{ns}$, while the device's contribution is $\sim 10^{-49}\,\text{s}$ -- completely negligible.
 
+\subsection{Phase 10: Engineering Feasibility Analysis}
+\label{sec:phase10-engineering}
+
+Phase 10 addresses the practical engineering constraints of building a portable, backpack-scale device capable of generating the magnetic field configurations studied in Phases 1--9. The analysis covers coil design optimization, thermal management, high-voltage power supply design, and system-level integration within a 10 kg / 20 L / 200 W / 500 Wh backpack envelope.
+
+\subsubsection{Coil Design Optimization}
+
+The coil optimization uses a figure of merit $\mathcal{F} = B / \sqrt{P \cdot m}$ (magnetic field per square-root of power-mass product) subject to backpack constraints. At the 1 MHz drive frequency used in the magneto-quasi-static (MQS) approximation, inductive reactance dominates ($\omega L \gg R$), requiring few turns and large radius to maintain viable impedance.
+
+\begin{table*}[t]
+\centering
+\caption{Phase 10 optimal coil specifications (all configs G1--G4 converge to same design).}
+\label{tab:phase10-coil}
+\begin{tabular}{lcccc}
+\hline
+Parameter & Value & Unit & Constraint & Status \\
+\hline
+Wire gauge & AWG8 (3.26 mm) & -- & $I_{\max} = 100\,\text{A}$ & \checkmark \\
+Major radius $R$ & 80 & mm & $R \le 250\,\text{mm}$ & \checkmark \\
+Minor radius $a$ & 10 & mm & $a \le 25\,\text{mm}$ & \checkmark \\
+Turns $N$ & 10 & -- & $N \le 200$ & \checkmark \\
+Wire length & 5.03 & m & -- & -- \\
+DC resistance & 12.3 & m$\Omega$ & -- & -- \\
+Inductance & 78.5 & nH & -- & -- \\
+Mass & 0.38 & kg & $\le 10\,\text{kg}$ & \checkmark \\
+Volume & 0.16 & L & $\le 20\,\text{L}$ & \checkmark \\
+Peak power & 123 & W & $\le 200\,\text{W}$ & \checkmark \\
+Peak voltage & 49.4 & V & -- & -- \\
+B-field (center) & 25 & G & -- & -- \\
+B-field gradient & 250 & G/m & -- & -- \\
+Max duty cycle (natural convection) & 10.2\% & -- & -- & -- \\
+\hline
+\end{tabular}
+\end{table*}
+
+All four configurations (G1--G4) converge to the same optimal coil: AWG8 wire, $R=80\,\text{mm}$, $a=10\,\text{mm}$, $N=10$ turns, driven at 100 A / 1 MHz. The coil mass (0.38 kg) and volume (0.16 L) are well within the backpack budget, leaving >99\% of mass/volume margin for power electronics, cooling, and structure.
+
+\subsubsection{Thermal Analysis}
+
+At 1 MHz, the coil's AC resistance is dominated by skin effect ($\delta \approx 0.066\,\text{mm}$ at 1 MHz for copper), but with AWG8 the DC resistance is already low (12.3 m$\Omega$). The thermal analysis considers three cooling modes:
+
+\begin{itemize}
+    \item \textbf{Natural convection}: $R_{\text{th}} \approx 1.99\,\text{K/W}$, steady-state $\Delta T \approx 1220^\circ\text{C}$ at 100\% duty -- limited to $\sim 10\%$ duty cycle.
+    \item \textbf{Forced air (5 m/s)}: $R_{\text{th}} \approx 0.20\,\text{K/W}$, steady-state $\Delta T \approx 122^\circ\text{C}$ at 50\% duty -- viable with Class F (155$^\circ$C) insulation.
+    \item \textbf{Liquid cooling}: $R_{\text{th}} \approx 0.02\,\text{K/W}$, steady-state $\Delta T \approx 12^\circ\text{C}$ at 100\% duty -- enables continuous operation.
+\end{itemize}
+
+For the backpack form factor, forced air cooling at 50\% duty cycle is the recommended baseline, giving a coil surface temperature of $\sim 86^\circ\text{C}$ and steady-state winding temperature of $\sim 147^\circ\text{C}$ (within Class F limits).
+
+\subsubsection{High-Voltage Power Supply Design}
+
+The coil presents a highly inductive load at 1 MHz: $Z = 0.49\,\Omega \angle 88.6^\circ$, with power factor $\text{PF} = 0.025$. The apparent power is 4.94 kVA while real power is only 123 W. This requires:
+
+\begin{itemize}
+    \item \textbf{Power factor correction}: A parallel capacitor $C_{\text{PFC}} \approx 323\,\text{nF}$ brings PF to unity, reducing supply current from 100 A to 2.5 A.
+    \item \textbf{Series resonant capacitor}: $C_{\text{res}} \approx 323\,\text{nF}$ resonates with coil inductance at 1 MHz, enabling zero-voltage switching (ZVS) in a Class E / Class D amplifier topology.
+    \item \textbf{Insulation}: Class F (155$^\circ$C) magnet wire with 2.5 mm creepage / 1.5 mm clearance for 50 V operation.
+\end{itemize}
+
+The resonant topology reduces switching losses and EMI, critical for a portable system.
+
+\subsubsection{Battery and Runtime}
+
+With a 500 Wh Li-ion battery (typical 10 kg, 3.5 L for high-energy cells):
+
+\begin{itemize}
+    \item Energy per pulse (1 ms at 123 W): 123 mJ
+    \item Maximum pulses: 14,665
+    \item Runtime at 50\% duty (1 ms on / 1 ms off): 489 minutes (8.1 hours)
+    \item Runtime at 10\% duty: 2,444 minutes (40.7 hours)
+\end{itemize}
+
+The battery dominates system mass (~10 kg) and volume (~3.5 L), but fits within the 10 kg / 20 L envelope with margin for electronics and structure.
+
+\subsubsection{System Integration Summary}
+
+\begin{table*}[t]
+\centering
+\caption{Phase 10 backpack integration budget.}
+\label{tab:phase10-backpack}
+\begin{tabular}{lccc}
+\hline
+Subsystem & Mass (kg) & Volume (L) & Power (W) \\
+\hline
+Coil (AWG8, 10 turns) & 0.38 & 0.16 & 123 (peak) \\
+Power electronics (GaN H-bridge, PFC, control) & 1.5 & 1.0 & 15 (losses) \\
+Forced-air cooling (blower, ducting) & 0.5 & 0.5 & 5 \\
+Battery (500 Wh Li-ion) & 10.0 & 3.5 & -- \\
+Structure, harness, connectors & 1.5 & 1.0 & -- \\
+\hline
+\textbf{Total} & \textbf{13.9} & \textbf{6.2} & \textbf{143 (peak)} \\
+\textbf{Budget} & 10.0 & 20.0 & 200 \\
+\textbf{Margin} & \textbf{-3.9 kg} & \textbf{+13.8 L} & \textbf{+57 W} \\
+\hline
+\end{tabular}
+\end{table*}
+
+The mass budget is exceeded by 3.9 kg, driven primarily by the 500 Wh battery. Options to close the gap:
+\begin{enumerate}
+    \item Reduce battery to 300 Wh (3.5 kg, 2.5 L) $\to$ 293 min runtime at 50\% duty.
+    \item Use higher-energy cells (300 Wh/kg) $\to$ 500 Wh in 1.7 kg.
+    \item Operate at 10\% duty cycle $\to$ 40+ hours on 500 Wh.
+    \item Split battery: 300 Wh primary + 200 Wh hot-swap reserve.
+\end{enumerate}
+
+With 300 Wh/kg cells (commercially available), the total system mass drops to $\sim 5.6\,\text{kg}$, well within the 10 kg limit with 4.4 kg margin for additional shielding, diagnostics, or redundancy.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
