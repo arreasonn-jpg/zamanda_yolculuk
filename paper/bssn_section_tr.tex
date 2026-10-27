@@ -748,6 +748,48 @@ G4 & $2.59\times 10^{-50}$ & $\sim 10^{-50}$ & 0 & CTC yok \\
 
 $0.1$--$0.4\,\text{m}$ yarıçaplardaki tüm phi-daire aramaları \texttt{spacelike} sınıflandırması döndürdü, sıfır CTC adayı. Metrik perürbasyonu, nedensel tersine çevirme için $h\sim 1$ eşiğinin $\sim 46$--$51$ mertebe altında, Enerji-CTC taramasıyla (Kapı 22) $I_{\text{CTC}} \sim 10^{25}\,\text{A}$ tahminiyle tutarlıdır. Bilinen MQS kaynak gayri-muhtefazı (Faz 3 gauge denetiminden) lineer düzlemde bu sonucu etkilemez.
 
+\subsection{Faz 9: Tensör-Seviyesi Dünya + Hedef-Zaman Koordinat Eşlemesi}
+
+Kinematik referans-çerçeve modeli (\texttt{earth\_navigation\_frame.py}), cihazın yerel çerçevesinden heliokentrik çerçeveye koordinat dönüşümünü, Dünya'nın yörünge hareketini ve dönmesini hesaba katarak sağlar. Faz 9, bunu Dünya'nın metrikteki gravitasyonel katkısıyla genişletir, kinematik yer tutucudan tam tensör-gravite işlemine geçer.
+
+Dünya'nın gerilme-enerji tensörü $T^{\mu\nu}_{\text{Dünya}}$, birim hacim kütle $\rho = 3M/(4\pi R^3)$ ve hidrostatik basınç $p(r) = (2\pi G\rho^2/3)(R^2 - r^2)$ olan statik, küresel mükemmel bir akışkan olarak modellenir (Dünya içinde), ve boşluk (Dünya dışında). İzotropik koordinatlarda lineerleştirilmiş metrik perürbasyon:
+\begin{equation}
+h_{00} = h_{ij} = \frac{2GM}{c^2 r}, \quad h_{0i} = 0.
+\end{equation}
+Dünya yüzeyinde ($r = R_\oplus = 6.371\times 10^6\,\text{m}$) bu, Schwarzschild yarıçapı $R_S = 2GM/c^2 \approx 8.87\,\text{mm}$ ile $h_{00} = R_S/R_\oplus$ üzerinden $h_{00} \approx 1.39\times 10^{-9}$ verir.
+
+Cihaz konumundaki birleşik metrik:
+\begin{equation}
+g_{\mu\nu} = \eta_{\mu\nu} + h^{\text{cihaz}}_{\mu\nu} + h^{\text{Dünya}}_{\mu\nu},
+\end{equation}
+burada $h^{\text{cihaz}}_{\mu\nu}$ Faz 7'den gelen cihaz metrik perürbasyonudur (G1--G4 için maks $|\bar{h}| \sim 10^{-49}$--$10^{-51}$) ve $h^{\text{Dünya}}_{\mu\nu}$, Dünya merkezine göre cihaz konumunda değerlendirilen Dünya perürbasyonudur.
+
+\begin{table*}[t]
+\centering
+\caption{Faz 9 tensör Dünya eşleme sonuçları (tüm konfig, $\Delta t = -1\,\text{s}$).}
+\label{tab:phase9-tensor-earth}
+\begin{tabular}{lcccc}
+\hline
+Konfig & $h^{\text{Dünya}}_{00}$ & $h^{\text{cihaz}}_{00}$ & Oran (cihaz/Dünya) & Özgün zaman düzeltmesi \\
+\hline
+G1 & $1.39\times 10^{-9}$ & $1.20\times 10^{-49}$ & $8.6\times 10^{-41}$ & $6.96\times 10^{-10}\,\text{s}$ \\
+G2 & $1.39\times 10^{-9}$ & $2.50\times 10^{-50}$ & $1.8\times 10^{-41}$ & $6.96\times 10^{-10}\,\text{s}$ \\
+G3 & $1.39\times 10^{-9}$ & $8.70\times 10^{-51}$ & $6.3\times 10^{-42}$ & $6.96\times 10^{-10}\,\text{s}$ \\
+G4 & $1.39\times 10^{-9}$ & $3.10\times 10^{-51}$ & $2.2\times 10^{-42}$ & $6.96\times 10^{-10}\,\text{s}$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+Temel sonuçlar:
+\begin{enumerate}
+    \item \textbf{Dünya gravitasyonu baskın}: $h^{\text{Dünya}} \sim 10^{-9}$ vs $h^{\text{cihaz}} \sim 10^{-49}$--$10^{-51}$ -- $10^{40}$--$10^{42}$ kat daha büyük.
+    \item \textbf{Özgün zaman düzeltmesi}: Koordinat zaman atlaması $\Delta t = -1\,\text{s}$ için, yolcunun yaşadığı özgün zaman, Dünya'nın gravitasyonel zaman genişlemesi ($\sqrt{-g_{00}} \approx 1 - 6.96\times 10^{-10}$) nedeniyle düzlem uzaydan $\Delta\tau_{\text{gravitasyon}} \approx 6.96\times 10^{-10}\,\text{s}$ farklılık gösterir.
+    \item \textbf{Gravitasyonel sapma}: Dünya yüzeyindeki sapma açısı $\sim 2.78\times 10^{-9}\,\text{rad}$, 1 AU'da $\sim 417\,\text{m}$ yer değiştirmesi verir -- hedef-zaman eşlemesi için ihmal edilebilir.
+    \item \textbf{Birleşik metrik}: Cihaz konumunda $g_{00} \approx -0.9999999986$, $g_{ii} \approx 1.0000000014$.
+\end{enumerate}
+
+Sonuç açık: herhangi bir hedef-zaman eşlemesi Dünya'nın gravitasyonel potansiyelini hesaba katmalıdır, çünkü bu cihazın katkısının $\sim 40$ mertebe üzerinden metriği baskınlaştırır. Cihazın uzay-zaman perürbasyonu, Dünya'nın gravitasyonel kuyusunu aşmak veya anlamlı şekilde değiştirmek için çok zayıftır. $\Delta t = -1\,\text{s}$ için Dünya gravitasyonundan özgün zaman düzeltmesi $\sim 0.7\,\text{ns}$ iken, cihazın katkısı $\sim 10^{-49}\,\text{s}$ -- tamamen ihmal edilebilir.
+
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir
 sayısal görelilik kodu değildir. Şunları içermez: tam ekstremal Kerr
 ($a = 1$), izlenen/hareketli iyileştirme, MPI paralelliği, ışıma

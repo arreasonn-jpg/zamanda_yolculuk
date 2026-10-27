@@ -773,6 +773,48 @@ G4 & $2.59\times 10^{-50}$ & $\sim 10^{-50}$ & 0 & No CTC \\
 
 All phi-circle searches at radii $0.1$--$0.4\,\text{m}$ returned \texttt{spacelike} classification with zero CTC candidates. The metric perturbation is $\sim 46$--$51$ orders of magnitude below the $h\sim 1$ threshold for causal inversion, consistent with the energy-to-CTC scan (Gate 22) which predicts $I_{\text{CTC}} \sim 10^{25}\,\text{A}$. The MQS source non-conservation (known from Phase 3 gauge audit) does not affect this conclusion at linear order.
 
+\subsection{Phase 9: Tensor-Level Earth + Target-Time Coordinate Mapping}
+
+The kinematic reference-frame model (\texttt{earth\_navigation\_frame.py}) provides the coordinate transformation from the device's local frame to the heliocentric frame, accounting for Earth's orbital motion and rotation. Phase 9 extends this with the Earth's gravitational contribution to the metric, moving from a kinematic placeholder to a full tensor-gravity treatment.
+
+The Earth's stress-energy tensor $T^{\mu\nu}_{\text{Earth}}$ is modeled as a static, spherical perfect fluid with uniform density $\rho = 3M/(4\pi R^3)$ and hydrostatic pressure $p(r) = (2\pi G\rho^2/3)(R^2 - r^2)$ inside the Earth, and vacuum outside. The linearized metric perturbation in isotropic coordinates is:
+\begin{equation}
+h_{00} = h_{ij} = \frac{2GM}{c^2 r}, \quad h_{0i} = 0.
+\end{equation}
+At the Earth's surface ($r = R_\oplus = 6.371\times 10^6\,\text{m}$), this gives $h_{00} \approx 1.39\times 10^{-9}$, matching the Schwarzschild radius $R_S = 2GM/c^2 \approx 8.87\,\text{mm}$ via $h_{00} = R_S/R_\oplus$.
+
+The combined metric at the device location is:
+\begin{equation}
+g_{\mu\nu} = \eta_{\mu\nu} + h^{\text{device}}_{\mu\nu} + h^{\text{Earth}}_{\mu\nu},
+\end{equation}
+where $h^{\text{device}}_{\mu\nu}$ is the device metric perturbation from Phase 7 (max $|\bar{h}| \sim 10^{-49}$ to $10^{-51}$ for G1--G4) and $h^{\text{Earth}}_{\mu\nu}$ is the Earth's perturbation evaluated at the device position relative to Earth's center.
+
+\begin{table*}[t]
+\centering
+\caption{Phase 9 tensor Earth mapping results (all configs, $\Delta t = -1\,\text{s}$).}
+\label{tab:phase9-tensor-earth}
+\begin{tabular}{lcccc}
+\hline
+Config & $h^{\text{Earth}}_{00}$ & $h^{\text{device}}_{00}$ & Ratio (device/Earth) & Proper time correction \\
+\hline
+G1 & $1.39\times 10^{-9}$ & $1.20\times 10^{-49}$ & $8.6\times 10^{-41}$ & $6.96\times 10^{-10}\,\text{s}$ \\
+G2 & $1.39\times 10^{-9}$ & $2.50\times 10^{-50}$ & $1.8\times 10^{-41}$ & $6.96\times 10^{-10}\,\text{s}$ \\
+G3 & $1.39\times 10^{-9}$ & $8.70\times 10^{-51}$ & $6.3\times 10^{-42}$ & $6.96\times 10^{-10}\,\text{s}$ \\
+G4 & $1.39\times 10^{-9}$ & $3.10\times 10^{-51}$ & $2.2\times 10^{-42}$ & $6.96\times 10^{-10}\,\text{s}$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+Key results:
+\begin{enumerate}
+    \item \textbf{Earth gravity dominates}: $h^{\text{Earth}} \sim 10^{-9}$ vs $h^{\text{device}} \sim 10^{-49}$ to $10^{-51}$ -- a factor of $10^{40}$--$10^{42}$ larger.
+    \item \textbf{Proper time correction}: For a coordinate time jump $\Delta t = -1\,\text{s}$, the proper time experienced by the traveler differs from flat space by $\Delta\tau_{\text{gravity}} \approx 6.96\times 10^{-10}\,\text{s}$ due to Earth's gravitational time dilation ($\sqrt{-g_{00}} \approx 1 - 6.96\times 10^{-10}$).
+    \item \textbf{Gravitational deflection}: The deflection angle at Earth's surface is $\sim 2.78\times 10^{-9}\,\text{rad}$, giving a displacement of $\sim 417\,\text{m}$ at 1 AU -- negligible for the target-time mapping.
+    \item \textbf{Combined metric}: $g_{00} \approx -0.9999999986$, $g_{ii} \approx 1.0000000014$ at the device location.
+\end{enumerate}
+
+The conclusion is clear: any target-time mapping must account for Earth's gravitational potential, as it dominates the metric by $\sim 40$ orders of magnitude over the device's contribution. The device's spacetime perturbation is far too weak to overcome or significantly modify the Earth's gravitational well. For $\Delta t = -1\,\text{s}$, the proper time correction from Earth gravity is $\sim 0.7\,\text{ns}$, while the device's contribution is $\sim 10^{-49}\,\text{s}$ -- completely negligible.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

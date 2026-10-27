@@ -1,0 +1,44 @@
+{
+  "stage": "Phase 9 - Tensor Earth Mapping",
+  "config": "G3",
+  "kinematic": {
+    "initial_geodetic": {
+      "lat_deg": 41.0082,
+      "lon_deg": 28.9784,
+      "alt_m": 50.0
+    },
+    "target_dt_s": -1.0,
+    "co_moving_lock": false,
+    "earth_orbital_speed_m_s": 29784.73548736592,
+    "earth_orbital_displacement_m": 29784.73548736587,
+    "earth_spin_displacement_m": 351.48226595134275,
+    "total_heliocentric_displacement_m": 29784.73548736578,
+    "arrival_geodetic": {
+      "lat_deg": 41.0082,
+      "lon_deg": 28.974221925352097,
+      "alt_m": 50.0
+    },
+    "surface_displacement_m": 351.48226595134275,
+    "physical_interpretation": "Over -1.00 s, Earth moves 29.78 km along its orbit and the surface rotates 351.5 m. No frame lock: traveler arrives 29.8 km off in space!"
+  },
+  "earth_gravity": {
+    "h_00_at_surface": 1.392694277843732e-09,
+    "schwarzschild_radius_m": 0.0088701028718461,
+    "time_dilation_factor": 6.96347202122638e-10,
+    "deflection_angle_rad": 2.784524524202197e-09,
+    "deflection_at_1au_m": 416.5589397325793
+  },
+  "device_gravity": {
+    "max_hbar": 8.7e-51,
+    "h_00_at_center": 8.7e-51
+  },
+  "combined": {
+    "g_00": -0.9999999986073057,
+    "proper_time_rate": 0.9999999993036528,
+    "coordinate_dt_s": -1.0,
+    "proper_dt_with_earth_s": -0.9999999993036528,
+    "proper_dt_flat_s": -1.0,
+    "gravity_correction_s": 6.96347202122638e-10
+  },
+  "conclusion": "Earth gravity dominates metric (h_earth ~ 1.4e-09 vs h_device ~ 8.7e-51). Device perturbation is 6.2e-42x smaller. Target-time mapping must account for Earth's gravitational potential. For \u0394t = -1.0 s, proper time correction from Earth gravity is 6.96e-10 s. Gravitational deflection at 1 AU is 4.17e+02 m (negligible)."
+}
