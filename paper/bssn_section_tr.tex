@@ -705,7 +705,26 @@ COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
 
 $L_c=160$ ile kaba ağ 45. adıma kadar dayanır ($L_c=120$'de 34. adım, $L_c=80$'de 24. adımdaydı), $L_c=120$'ye göre $\sim 32\%$, $L_c=80$'e göre $\sim 87\%$ iyileşme. İnce-ağ bandı kısıtı dikkat çekici derecede kararlı kalır $\sim 2.97\times 10^{-6}$ (45 adımda büyüme faktörü $0.996\times$), ve COM takibi boyunca mükemmeldir. Kaba ağ nihayet 45. adımda patlar ($H_{c,\max}$: $0.034 \to 0.15 \to 1.6 \to 107 \to 2.2\times 10^5 \to \text{NaN}$). Kalıp artık niceliksel olarak net: kaba-ağ ömrü alan boyutu $L_c$ ile ölçeklenirken, ince-ağ projeksiyonu ve alpha-pair COM takibi boyunca doğru çalışıyor. Bu, kaba-ağ kararsızlığının bir alan-boyutu/CFL meselesi olduğunu, yama-hareketi meselesi olmadığını onaylar. 50+ adım gerektiren üretim koşulları için ya $L_c \ge 200$ ya da $N_c \ge 49$ (daha küçük $h_c$) gerekir.
 
-\subsection{Sınırlamalar}
+\subsubsection{$L_c=200$ ile tam 50 adım stabilitesi}
+
+$L_c=200$ ile kaba ağ tam 50 adım stabilitesine ulaşır. Kaba-ağ Hamiltonyen kısıtı $H_{c,\max} \sim 6.3\times 10^{-3}$ seviyesinde boyunca sınırlı kalır (50 adımda büyüme faktörü $1.02\times$). İnce-ağ bandı kısıtı dikkat çekici derecede kararlıdır $\sim 2.39\times 10^{-6}$ (50 adımda büyüme faktörü $0.995\times$). COM takibi mükemmel kalır (COM $= 0.000$) ve ikili ayrışma $\sim 20.27$--$20.29$ seviyesinde sabittir. Bu, $L_c=200$ ve $N_c=33$ ($h_c=6.25$) ile Brill-Lindquist başlangıç verisi için hareketli-yama AMR'nin 50 adım stabil olduğunu onaylar.
+
+\begin{table*}[t]
+\centering
+\caption{Brill-Lindquist ile hareketli-yama AMR (50 adım, $L_c=200$, $dt=0.03125$).}
+\label{tab:amr-moving-50-Lc200}
+\begin{tabular}{lrrr}
+\hline
+Metrik & Adım 0 & Adım 25 & Adım 49 \\
+\hline
+$H_{c,\max}$ & $6.20\times 10^{-3}$ & $6.23\times 10^{-3}$ & $6.30\times 10^{-3}$ \\
+$H_{f,\max}$ & $2.18\times 10^{-2}$ & $2.20\times 10^{-2}$ & $2.24\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $2.40\times 10^{-6}$ & $2.39\times 10^{-6}$ & $2.39\times 10^{-6}$ \\
+Ayrışma & $20.29$ & $20.28$ & $20.27$ \\
+COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir
 sayısal görelilik kodu değildir. Şunları içermez: tam ekstremal Kerr

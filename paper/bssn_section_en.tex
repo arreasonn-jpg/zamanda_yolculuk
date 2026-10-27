@@ -730,6 +730,27 @@ COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
 
 With $L_c=160$ the coarse grid survives to step 45 (vs step 34 at $L_c=120$, step 24 at $L_c=80$), a $\sim 32\%$ improvement over $L_c=120$ and $\sim 87\%$ over $L_c=80$. The fine-grid band constraint remains remarkably stable at $\sim 2.97\times 10^{-6}$ (growth factor $0.996\times$ over 45 steps), and COM tracking is perfect throughout. The coarse grid eventually blows up at step 45 ($H_{c,\max}$: $0.034 \to 0.15 \to 1.6 \to 107 \to 2.2\times 10^5 \to \text{NaN}$). The pattern is now quantitatively clear: coarse-grid lifetime scales with domain size $L_c$, while the fine-grid projection and alpha-pair COM tracking work correctly throughout. This confirms the coarse-grid instability is a domain-size/CFL issue, not a patch-movement issue. For production runs requiring 50+ steps, either $L_c \ge 200$ or $N_c \ge 49$ (smaller $h_c$) would be needed.
 
+\subsubsection{Full 50-step stability with $L_c=200$}
+
+With $L_c=200$ the coarse grid achieves full 50-step stability. The coarse-grid Hamiltonian constraint remains bounded at $H_{c,\max} \sim 6.3\times 10^{-3}$ throughout (growth factor $1.02\times$ over 50 steps). The fine-grid band constraint is remarkably stable at $\sim 2.39\times 10^{-6}$ (growth factor $0.995\times$ over 50 steps). COM tracking remains perfect (COM $= 0.000$) and binary separation is constant at $\sim 20.27$--$20.29$. This confirms that $L_c=200$ with $N_c=33$ ($h_c=6.25$) is sufficient for 50-step moving-patch AMR stability with Brill-Lindquist initial data.
+
+\begin{table*}[t]
+\centering
+\caption{Moving-patch AMR with Brill-Lindquist (50 steps, $L_c=200$, $dt=0.03125$).}
+\label{tab:amr-moving-50-Lc200}
+\begin{tabular}{lrrr}
+\hline
+Metric & Step 0 & Step 25 & Step 49 \\
+\hline
+$H_{c,\max}$ & $6.20\times 10^{-3}$ & $6.23\times 10^{-3}$ & $6.30\times 10^{-3}$ \\
+$H_{f,\max}$ & $2.18\times 10^{-2}$ & $2.20\times 10^{-2}$ & $2.24\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $2.40\times 10^{-6}$ & $2.39\times 10^{-6}$ & $2.39\times 10^{-6}$ \\
+Separation & $20.29$ & $20.28$ & $20.27$ \\
+COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
