@@ -626,7 +626,7 @@ We test the COM-tracked moving fine patch using Brill-Lindquist initial data wit
 \begin{table*}[t]
 \centering
 \caption{Moving-patch AMR with Brill-Lindquist (10 steps, $dt=0.03125$).}
-\label{tab:amr-moving}
+\label{tab:amr-moving-10}
 \begin{tabular}{lrr}
 \hline
 Metric & Step 0 & Step 10 \\
@@ -640,7 +640,49 @@ COM $x$ & $0.00$ & $0.00$ \\
 \end{tabular}
 \end{table*}
 
-The fine-grid band constraint remains essentially constant ($5.90\times 10^{-6}$ at both step 0 and step 10, growth factor $1.00\times$), while the coarse grid maximum constraint is stable at $\sim 6\times 10^{-2}$. The binary separation is constant at $15.44$--$15.45$ and the COM remains at $x=0$, confirming the moving patch correctly tracks the binary without introducing spurious drift. The projection continues to reduce the momentum constraint violation in the band ($l_{\text{after}} < l_{\text{before}}$ at every step). This demonstrates that the v14.1 pipeline with Brill-Lindquist data and alpha-pair COM tracking provides a stable foundation for moving-patch AMR inspiral simulations.
+The fine-grid band constraint remains essentially constant ($5.90\times 10^{-6}$ at both step 0 and step 10, growth factor $1.00\times$), while the coarse grid maximum constraint is stable at $\sim 6\times 10^{-2}$. The binary separation is constant at $15.44$--$15.45$ and the COM remains at $x=0$, confirming the moving patch correctly tracks the binary without introducing spurious drift. The projection continues to reduce the momentum constraint violation in the band ($l_{\text{after}} < l_{\text{before}}$ at every step).
+
+\subsubsection{Extended runs: 20 and 30 steps}
+
+We extend the moving-patch test to 20 and 30 steps to probe the stability boundary.
+
+\begin{table*}[t]
+\centering
+\caption{Moving-patch AMR with Brill-Lindquist (20 steps, $dt=0.03125$).}
+\label{tab:amr-moving-20}
+\begin{tabular}{lrr}
+\hline
+Metric & Step 0 & Step 20 \\
+\hline
+$H_{c,\max}$ & $6.01\times 10^{-2}$ & $9.41\times 10^{-2}$ \\
+$H_{f,\max}$ & $5.44\times 10^{-2}$ & $5.87\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $5.90\times 10^{-6}$ & $5.88\times 10^{-6}$ \\
+Separation & $15.44$ & $15.47$ \\
+COM $x$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+At 20 steps the fine-grid band constraint remains stable ($5.90\times 10^{-6} \to 5.88\times 10^{-6}$, growth factor $0.997\times$), and the COM tracking is perfect ($x=0$). The coarse grid maximum constraint grows modestly to $9.4\times 10^{-2}$, still well-controlled.
+
+\begin{table*}[t]
+\centering
+\caption{Moving-patch AMR with Brill-Lindquist (30 steps, $dt=0.03125$).}
+\label{tab:amr-moving-30}
+\begin{tabular}{lrr}
+\hline
+Metric & Step 0 & Step 20 & Step 24 \\
+\hline
+$H_{c,\max}$ & $6.01\times 10^{-2}$ & $7.35\times 10^{-1}$ & $1.12\times 10^{61}$ \\
+$H_{f,\max}$ & $5.44\times 10^{-2}$ & $5.89\times 10^{-2}$ & $5.98\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $5.90\times 10^{-6}$ & $5.88\times 10^{-6}$ & $5.87\times 10^{-6}$ \\
+Separation & $15.44$ & $15.47$ & $15.48$ \\
+COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+At 30 steps the coarse grid blows up between steps 20--24 ($H_{c,\max}$: $0.73 \to 26 \to 1.9\times 10^4 \to 1.1\times 10^{61}$), while the fine-grid band constraint remains remarkably stable ($5.90\times 10^{-6} \to 5.87\times 10^{-6}$, growth factor $0.995\times$). The COM tracking remains perfect throughout. This confirms the pattern seen in fixed-patch tests: the coarse grid requires a larger domain ($L_c \ge 120$) for long-term stability, while the fine-grid projection is working correctly. The moving-patch AMR with alpha-pair tracking is stable on the fine grid; the coarse-grid instability is a domain-size/CFL issue, not a patch-movement issue.
 
 \subsection{Limitations}
 

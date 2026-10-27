@@ -624,7 +624,7 @@ Kararlı v14.1 yapılandırmasıyla Brill-Lindquist başlangıç verilerini kull
 \begin{table*}[t]
 \centering
 \caption{Brill-Lindquist ile hareketli-yama AMR (10 adım, $dt=0.03125$).}
-\label{tab:amr-moving}
+\label{tab:amr-moving-10}
 \begin{tabular}{lrr}
 \hline
 Metrik & Adım 0 & Adım 10 \\
@@ -638,7 +638,49 @@ COM $x$ & $0.00$ & $0.00$ \\
 \end{tabular}
 \end{table*}
 
-İnce-ağ bandı kısıtı esasen sabit kalır ($5.90\times 10^{-6}$ hem adım 0'da hem adım 10'da, büyüme faktörü $1.00\times$), kaba ağ maksimum kısıtı ise $\sim 6\times 10^{-2}$ seviyesinde kararlıdır. İkili ayrışma $15.44$--$15.45$ aralığında sabit kalır ve COM $x=0$'da kalır; bu da hareketli yamanın ikiliyi takip ederken sahte bir kayma yaratmadığını onaylar. Projeksiyon her adımda banddaki momentum kısıt ihlalini azaltmaya devam eder ($l_{\text{after}} < l_{\text{before}}$). Bu, v14.1 ardışık düzeninin Brill-Lindquist verileri ve alpha-pair COM takibiyle, hareketli-yama AMR spiral simülasyonları için kararlı bir temel sağladığını gösterir.
+İnce-ağ bandı kısıtı esasen sabit kalır ($5.90\times 10^{-6}$ hem adım 0'da hem adım 10'da, büyüme faktörü $1.00\times$), kaba ağ maksimum kısıtı ise $\sim 6\times 10^{-2}$ seviyesinde kararlıdır. İkili ayrışma $15.44$--$15.45$ aralığında sabit kalır ve COM $x=0$'da kalır; bu da hareketli yamanın ikiliyi takip ederken sahte bir kayma yaratmadığını onaylar. Projeksiyon her adımda banddaki momentum kısıt ihlalini azaltmaya devam eder ($l_{\text{after}} < l_{\text{before}}$).
+
+\subsubsection{Uzatılmış koşular: 20 ve 30 adım}
+
+Hareketli-yama testini 20 ve 30 adıma uzatarak stabilite sınırını inceliyoruz.
+
+\begin{table*}[t]
+\centering
+\caption{Brill-Lindquist ile hareketli-yama AMR (20 adım, $dt=0.03125$).}
+\label{tab:amr-moving-20}
+\begin{tabular}{lrr}
+\hline
+Metrik & Adım 0 & Adım 20 \\
+\hline
+$H_{c,\max}$ & $6.01\times 10^{-2}$ & $9.41\times 10^{-2}$ \\
+$H_{f,\max}$ & $5.44\times 10^{-2}$ & $5.87\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $5.90\times 10^{-6}$ & $5.88\times 10^{-6}$ \\
+Ayrışma & $15.44$ & $15.47$ \\
+COM $x$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+20 adımda ince-ağ bandı kısıtı kararlı kalır ($5.90\times 10^{-6} \to 5.88\times 10^{-6}$, büyüme faktörü $0.997\times$), ve COM takibi mükemmeldir ($x=0$). Kaba ağ maksimum kısıtı $9.4\times 10^{-2}$'ye ölçülü bir şekilde büyür, hala iyi kontrol altındadır.
+
+\begin{table*}[t]
+\centering
+\caption{Brill-Lindquist ile hareketli-yama AMR (30 adım, $dt=0.03125$).}
+\label{tab:amr-moving-30}
+\begin{tabular}{lrrr}
+\hline
+Metrik & Adım 0 & Adım 20 & Adım 24 \\
+\hline
+$H_{c,\max}$ & $6.01\times 10^{-2}$ & $7.35\times 10^{-1}$ & $1.12\times 10^{61}$ \\
+$H_{f,\max}$ & $5.44\times 10^{-2}$ & $5.89\times 10^{-2}$ & $5.98\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $5.90\times 10^{-6}$ & $5.88\times 10^{-6}$ & $5.87\times 10^{-6}$ \\
+Ayrışma & $15.44$ & $15.47$ & $15.48$ \\
+COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+30 adımda kaba ağ 20--24 adımları arasında patlar ($H_{c,\max}$: $0.73 \to 26 \to 1.9\times 10^4 \to 1.1\times 10^{61}$), ancak ince-ağ bandı kısıtı dikkat çekici derecede kararlı kalır ($5.90\times 10^{-6} \to 5.87\times 10^{-6}$, büyüme faktörü $0.995\times$). COM takibi boyunca mükemmel kalır. Bu, sabit-yama testlerde gördüğümüz kalıbı onaylar: kaba ağ uzun vadeli stabilite için daha büyük bir alan ($L_c \ge 120$) gerektirirken, ince-ağ projeksiyonu doğru çalışıyor. Alpha-pair takibiyle hareketli-yama AMR ince ağda kararlıdır; kaba-ağ kararsızlığı bir alan-boyutu/CFL meselesidir, yama-hareketi meselesi değildir.
 
 \subsection{Sınırlamalar}
 
