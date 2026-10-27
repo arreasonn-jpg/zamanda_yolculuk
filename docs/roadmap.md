@@ -16,7 +16,7 @@ validation exists on record.
 | 8 | Energy scaling (P_in/loss/stored/radiated/thermal, η, E_{1s}) | ✅ completed — energy_budget.py for all configs; P_in=84W, η~10⁻⁸-10⁻¹⁰, h~10⁻⁵⁰-10⁻⁵² |
 | 9 | Earth + target-coordinate mapping (tensor level) | ✅ completed — Earth T^μν, linearized Schwarzschild h, combined metric; Earth dominates by 10⁴⁰-10⁴² |
 | 10 | Engineering feasibility (coils, conductors, thermal, HV, power, backpack constraint optimizer) | ✅ completed — coil design (AWG8, R=80mm, N=10), thermal (forced air 50% duty), HV supply (PF correction, resonant cap), battery (500 Wh, 489 min), backpack budget; papers updated EN/TR, PDFs recompiled |
-| 11 | Experimental apparatus (instrument-only; no human subjects) | 🔄 next |
+| 11 | Experimental apparatus (instrument-only; no human subjects) | ✅ completed — sensor suite (18 sensors, 5 categories), safety interlocks (8 + E-stop, triple-redundant), 80-ch DAQ (63 GB/hr), IP65 enclosure, test program (11 procedures), compliance (IEC 61010, FCC Class A); papers updated EN/TR, PDFs recompiled |
 
 ## Immediate next moves (in order)
 
@@ -29,7 +29,7 @@ validation exists on record.
 4. ~~**Energy bookkeeping skeleton** (Phase 8 constants and budgets)~~ ✅ completed — energy_budget.py for all configs; P_in=84W, η~10⁻⁸-10⁻¹⁰, h~10⁻⁵⁰-10⁻⁵².
 5. ~~**BSSN AMR frontier (v13/v14):**~~ ✅ v14.1 breakthrough with Brill-Lindquist; 50+ stable steps on L_c=200; moving-patch AMR working; projection reduces fine-grid band constraint by ~10-15%.
 6. ~~**Phase 10: Engineering feasibility**~~ ✅ completed — coil design optimization, thermal analysis, HV/power supply, backpack constraint optimizer; papers updated EN/TR, PDFs recompiled.
-7. **Phase 11: Experimental apparatus** — instrumentation design, safety protocols, data acquisition.
+7. ~~**Phase 11: Experimental apparatus**~~ ✅ completed — sensor suite, safety interlocks, DAQ, enclosure, test program, compliance; papers updated EN/TR, PDFs recompiled.
 
 ## Explicitly deferred
 

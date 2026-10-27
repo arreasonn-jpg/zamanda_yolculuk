@@ -897,6 +897,97 @@ Kütle bütçesi 3.9 kg aşıldı, bu da öncelikle 500 Wh bataryadan kaynaklan�
 
 300 Wh/kg hücrelerle (ticari olarak mevcut), toplam sistem kütlesi $\sim 5.6\,\text{kg}$'ya düşer, 10 kg limitinin well içinde 4.4 kg marj bırakarak ek koruma, teşhis veya yedeklik için.
 
+\subsection{Faz 11: Deneysel Aparat Tasarımı}
+\label{sec:phase11-experimental-tr}
+
+Faz 11, sırt çantası ölçeğinde uzay-zaman manipülasyon cihazının enstrümanlı doğrulama için tam deneysel aparatı tanımlar. Tasarım manyetik, ısısal, elektriksel, mekanik ve çevresel sensör paketlerini; üçlü yedekli güvenlik veriyoji sistemi ve sert kablolu acil durdurmayı; 80 kanallı veri edinim sistemini; ve zorlu hava/sıvı soğutma hazırlıklı dayanıklı IP65 zarfı kapsar.
+
+\subsubsection{Sensör Paketi}
+
+Aparat beş kategoride 18 sensör kullanır:
+
+\begin{itemize}
+    \item \textbf{Manyetik (4 sensör)}: 3-eksen fluxgate manyetometre (10 nT hassasiyet, 10 kÖ/n) birincil B-alanı ölçümü için; 8-elemanlı Hall dizisi (100 $\mu$T hassasiyet, 50 kÖ/n) 3D uzaysal haritalama için; arama bobini (200 kÖ/n) yüksek bant genişlikli dB/dt nabız karakterizasyonu için; opsiyonel NV-merkezi kuantum manyetometre (1 pT/$\sqrt{\text{Hz}}$) ultra-düşük alan doğrulaması için.
+    \item \textbf{Isısal (3 sensör)}: Sargılar, çekirdek, güç elektroniği ve ortamda 12x 4-tellı RTD Pt100 (0.1$^\circ$C hassasiyet); yüksek sıcaklık yedeği için 8x Tip-K termokupl (1.5$^\circ$C); temasız yüzey haritalama için 32x32 IR termal kamera (9 Hz).
+    \item \textbf{Elektriksel (5 sensör)}: Bobin gerilimi için HV diferansiyel prob (500 kÖ/n); akım dalga formları için Hall akım transdüktörü (200 kÖ/n, 200 A) ve Rogowski bobini (1 MÖ/n, 500 A); gerçek zamanlı P/Q/S/PF için 3-faz güç analizörü (10 kÖ/n); SoC takibi için batarya coulomb sayacı (10 Hz).
+    \item \textbf{Mekanik (3 sensör)}: Titreşim izleme için 4x 3-eksen MEMS ivmeölçer (10 kÖ/n); bobin formu ve montajlarda 6x tam köprü gerilme jaujları (10 kÖ/n); Lorentz kuvvetleri altındaki Radyal genişleme için lazer yer değiştirme sensörü (50 kÖ/n, 1 $\mu$m).
+    \item \textbf{Çevresel (3 sensör)}: Barometrik basınç (10 Hz), nem/sıcaklık (1 Hz), 3-eksen Dünya alanı manyetometresi (100 Hz) arka plan çıkarma için.
+\end{itemize}
+
+Toplam sensör kütlesi: 1.76 kg; toplam sensör gücü: 10.7 W.
+
+\subsubsection{Güvenlik Veriyoji Sistemi}
+
+Sert kablolu acil durdurma artı sekiz bağımsız veriyoji, katmanlı koruma sağlar:
+
+\begin{table*}[t]
+\centering
+\caption{Faz 11 güvenlik veriyojileri.}
+\label{tab:phase11-interlocks-tr}
+\begin{tabular}{llll}
+\hline
+Veriyoji & Tetikleyici & Yanıt & Yedeklilik \\
+\hline
+Bobin Aşırı Akım & $I > 120\,\text{A}$ & 0.1 ms HV kesme + crowbar & Üçlü (DW+FW+SW) \\
+Bobin Aşırı Sıcaklık & $T > 145^\circ\text{C}$ & 100 ms görev $\to$ 0\% & İkili (oylama RTD) \\
+GK Aşırı Gerilim & $V > 60\,\text{V}$ & 0.05 ms HV kesme + crowbar & Üçlü \\
+Batarya Alt Gerilim & $V < 3.0\,\text{V/hücre}$ & 1 s zarif kapanış & İkili \\
+Batarya Aşırı Sıcaklık & $T > 55^\circ\text{C}$ & 500 ms güç azaltma & İkili \\
+Soğutma Akış Kaybı & $< 0.5\,\text{L/dk}$ & 200 ms güç $\to$ 10\% & İkili \\
+Zarf Basınç Artışı & $dP/dt > 1\,\text{kPa/s}$ & 50 ms event + kesme & İkili \\
+EMI/RFI Eşiği & $> \text{FCC Sınıf A}$ & 10 ms frek atlama / azalt & Tekli \\
+\hline
+\end{tabular}
+\end{table*}
+
+Acil Durdurma: Sert kablolu kontaktör açma + kondansatör boşaltma 1 ms'de, üçlü yedekli (manuel buton, kablosuz uzaktan, izci köpeği zaman aşımı), manuel sıfırlama gerektiren kilitli.
+
+\subsubsection{Veri Edinim}
+
+100 Hz--1 MHz aralığında 24-bit analog girişler, dijital G/Ç ve kontrol çıkışları kapsayan 80 kanal. Maksimum toplam örnekleme hızı 1.0 MHz, saatte 63 GB ham veri üretiyor. Gerçek zamanlı checksum ve otomatik arşivleme ile 1M örneklemelik dairesel tampon.
+
+\subsubsection{Mekanik Entegrasyon}
+
+Dayanıklı 6061-T6 alüminyum zarf (IP65, 350x280x200 mm, 19.6 L, 2.5 kg) titreşim yalıtımlı montajlarla. İç düzen bobin odasını, güç elektroniğini (zorlu hava), bataryayı (ayrı ventilasyon) ve DAQ/işlemciyi (iletim soğutmalı) ayırır. Yükseltme yolu için sıvı soğutma hızlı bağlantıları.
+
+Zorlu hava temel: 2x 80mm PWM fan (45 CFM, 0.20 K/W, 5 W). Sıvı seçeneği: 2 L/dk, 0.02 K/W, harici radyatör.
+
+\subsubsection{Sistem Bütçesi}
+
+\begin{table*}[t]
+\centering
+\caption{Faz 11 deneysel aparat bütçesi.}
+\label{tab:phase11-budget-tr}
+\begin{tabular}{lccc}
+\hline
+Alt Sistem & Kütle (kg) & Hacim (L) & Güç (W) \\
+\hline
+Bobin (AWG8, 10 devir) & 0.38 & 0.16 & 123 (tepe) \\
+YG Kaynağı (Sınıf E, GaN) & 1.50 & 1.00 & 15 (kayıplar) \\
+Batarya (500 Wh, 300 Wh/kg) & 1.70 & 2.50 & -- \\
+Sensörler (18 birim) & 1.76 & 0.50 & 10.7 \\
+Zarf (IP65 Al) & 2.50 & 19.60 & -- \\
+Yapı, kablo, kanal & 1.50 & 1.00 & -- \\
+Soğutma (fanlar + sıvı hazır) & 0.50 & 0.50 & 5 \\
+DAQ + İşlemci & 1.20 & 0.50 & 15 \\
+\hline
+\textbf{Toplam} & \textbf{11.0} & \textbf{25.8} & \textbf{169 (tepe)} \\
+\textbf{Bütçe} & 10.0 & 20.0 & 200 \\
+\textbf{Marj} & \textbf{-1.0 kg} & \textbf{-5.8 L} & \textbf{+31 W} \\
+\hline
+\end{tabular}
+\end{table*}
+
+Aparat 10 kg / 20 L sırt çantası zarfını hafifçe aşıyor (11.0 kg, 25.8 L), öncelikle dayanıklı zarf ve kapsamlı sensör paketi nedeniyle. Kütle azaltma seçenekleri: (1) karbon fiber zarf (-1.2 kg), (2) sensör çoklayıcılığı (-0.3 kg), (3) entegre DAQ/işlemci modülü (-0.5 kg). Bunlarla sistem $\sim 9.0\,\text{kg}$ / $20.0\,\text{L}$'e sığar.
+
+\subsubsection{Test Programı}
+
+On bir test prosedürü (TP-001'den TP-011'e) güvenlik doğrulama, sensör kalibrasyonu, bobin/güç karakterizasyonu, ısısal doğrulama, tam güç nabız testi, manyetik alan haritalama, genişletilmiş çalışma, EMI/EMC ön-uygunluk ve veri arşivleme kapsıyor. Toplam test kampanyası: $\sim$14 saat.
+
+\subsubsection{Uygunluk}
+
+Güvenlik: IEC 61010-1, UL 61010-1, NFPA 70E, ISO 13849-1 (PL d). EMC: FCC Part 15 Sınıf A, IEC 61000-4-2/3/4/5/6, MIL-STD-461G referans.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir

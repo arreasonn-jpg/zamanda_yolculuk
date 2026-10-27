@@ -922,6 +922,97 @@ The mass budget is exceeded by 3.9 kg, driven primarily by the 500 Wh battery. O
 
 With 300 Wh/kg cells (commercially available), the total system mass drops to $\sim 5.6\,\text{kg}$, well within the 10 kg limit with 4.4 kg margin for additional shielding, diagnostics, or redundancy.
 
+\subsection{Phase 11: Experimental Apparatus Design}
+\label{sec:phase11-experimental}
+
+Phase 11 defines the complete experimental apparatus for instrument-only validation of the backpack-scale spacetime manipulation device. The design encompasses magnetic, thermal, electrical, mechanical, and environmental sensor suites; a triple-redundant safety interlock system with hardwired emergency stop; an 80-channel data acquisition system; and a ruggedized IP65 enclosure with forced-air/liquid cooling readiness.
+
+\subsubsection{Sensor Suite}
+
+The apparatus employs 18 sensors across five categories:
+
+\begin{itemize}
+    \item \textbf{Magnetic (4 sensors)}: 3-axis fluxgate magnetometer (10 nT accuracy, 10 kS/s) for primary B-field measurement; 8-element Hall array (100 $\mu$T accuracy, 50 kS/s) for 3D spatial mapping; search coil (200 kS/s) for high-bandwidth dB/dt pulse characterization; optional NV-center quantum magnetometer (1 pT/$\sqrt{\text{Hz}}$) for ultra-low field validation.
+    \item \textbf{Thermal (3 sensors)}: 12x 4-wire RTD Pt100 (0.1$^\circ$C accuracy) on windings, core, power electronics, and ambient; 8x Type-K thermocouples (1.5$^\circ$C) for high-temperature backup; 32x32 IR thermal camera (9 Hz) for non-contact surface mapping.
+    \item \textbf{Electrical (5 sensors)}: HV differential probe (500 kS/s) for coil voltage; Hall current transducer (200 kS/s, 200 A) and Rogowski coil (1 MS/s, 500 A) for current waveforms; 3-phase power analyzer (10 kS/s) for real-time P/Q/S/PF; battery coulomb counter (10 Hz) for SoC tracking.
+    \item \textbf{Mechanical (3 sensors)}: 4x 3-axis MEMS accelerometers (10 kS/s) for vibration monitoring; 6x full-bridge strain gauges (10 kS/s) on coil former and mounts; laser displacement sensor (50 kS/s, 1 $\mu$m) for radial expansion under Lorentz forces.
+    \item \textbf{Environmental (3 sensors)}: Barometric pressure (10 Hz), humidity/temperature (1 Hz), 3-axis Earth-field magnetometer (100 Hz) for background subtraction.
+\end{itemize}
+
+Total sensor mass: 1.76 kg; total sensor power: 10.7 W.
+
+\subsubsection{Safety Interlock System}
+
+Eight independent interlocks plus a hardwired emergency stop provide layered protection:
+
+\begin{table*}[t]
+\centering
+\caption{Phase 11 safety interlocks.}
+\label{tab:phase11-interlocks}
+\begin{tabular}{llll}
+\hline
+Interlock & Trigger & Response & Redundancy \\
+\hline
+Coil Overcurrent & $I > 120\,\text{A}$ & 0.1 ms HV cutoff + crowbar & Triple (HW+FW+SW) \\
+Coil Overtemperature & $T > 145^\circ\text{C}$ & 100 ms duty $\to$ 0\% & Dual (voting RTDs) \\
+PSU Overvoltage & $V > 60\,\text{V}$ & 0.05 ms HV cutoff + crowbar & Triple \\
+Battery Undervoltage & $V < 3.0\,\text{V/cell}$ & 1 s graceful shutdown & Dual \\
+Battery Overtemperature & $T > 55^\circ\text{C}$ & 500 ms power reduction & Dual \\
+Coolant Flow Loss & $< 0.5\,\text{L/min}$ & 200 ms power $\to$ 10\% & Dual \\
+Enclosure Pressure Rise & $dP/dt > 1\,\text{kPa/s}$ & 50 ms vent + cutoff & Dual \\
+EMI/RFI Threshold & $> \text{FCC Class A}$ & 10 ms freq hop / reduce & Single \\
+\hline
+\end{tabular}
+\end{table*}
+
+Emergency Stop: Hardwired contactor opening + capacitor discharge in 1 ms, triple-redundant (manual button, wireless remote, watchdog timeout), latching with manual reset required.
+
+\subsubsection{Data Acquisition}
+
+80 channels spanning analog inputs (24-bit at 100 Hz--1 MHz), digital I/O, and control outputs. Maximum aggregate sample rate 1.0 MHz, generating 63 GB/hour of raw data. 1M sample circular buffer with real-time checksumming and automated archival.
+
+\subsubsection{Mechanical Integration}
+
+Ruggedized 6061-T6 aluminum enclosure (IP65, 350x280x200 mm, 19.6 L, 2.5 kg) with vibration-isolated mounts. Internal layout separates coil chamber, power electronics (forced air), battery (dedicated ventilation), and DAQ/compute (conduction cooled). Liquid cooling quick-connects for upgrade path.
+
+Forced-air baseline: 2x 80mm PWM fans (45 CFM, 0.20 K/W, 5 W). Liquid option: 2 L/min, 0.02 K/W, external radiator.
+
+\subsubsection{System Budget}
+
+\begin{table*}[t]
+\centering
+\caption{Phase 11 experimental apparatus budget.}
+\label{tab:phase11-budget}
+\begin{tabular}{lccc}
+\hline
+Subsystem & Mass (kg) & Volume (L) & Power (W) \\
+\hline
+Coil (AWG8, 10 turns) & 0.38 & 0.16 & 123 (peak) \\
+HV Supply (Class E, GaN) & 1.50 & 1.00 & 15 (losses) \\
+Battery (500 Wh, 300 Wh/kg) & 1.70 & 2.50 & -- \\
+Sensors (18 units) & 1.76 & 0.50 & 10.7 \\
+Enclosure (IP65 Al) & 2.50 & 19.60 & -- \\
+Structure, harness, ducting & 1.50 & 1.00 & -- \\
+Cooling (fans + liquid ready) & 0.50 & 0.50 & 5 \\
+DAQ + Compute & 1.20 & 0.50 & 15 \\
+\hline
+\textbf{Total} & \textbf{11.0} & \textbf{25.8} & \textbf{169 (peak)} \\
+\textbf{Budget} & 10.0 & 20.0 & 200 \\
+\textbf{Margin} & \textbf{-1.0 kg} & \textbf{-5.8 L} & \textbf{+31 W} \\
+\hline
+\end{tabular}
+\end{table*}
+
+The apparatus slightly exceeds the 10 kg / 20 L backpack envelope (11.0 kg, 25.8 L), primarily due to the ruggedized enclosure and comprehensive sensor suite. Mass reduction options: (1) carbon-fiber enclosure (-1.2 kg), (2) sensor multiplexing (-0.3 kg), (3) integrated DAQ/compute module (-0.5 kg). With these, the system fits at $\sim 9.0\,\text{kg}$ / $20.0\,\text{L}$.
+
+\subsubsection{Test Program}
+
+Eleven test procedures (TP-001 through TP-011) covering safety verification, sensor calibration, coil/power characterization, thermal validation, full-power pulse test, magnetic field mapping, extended run, EMI/EMC pre-compliance, and data archival. Total test campaign: $\sim$14 hours.
+
+\subsubsection{Compliance}
+
+Safety: IEC 61010-1, UL 61010-1, NFPA 70E, ISO 13849-1 (PL d). EMC: FCC Part 15 Class A, IEC 61000-4-2/3/4/5/6, MIL-STD-461G reference.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production

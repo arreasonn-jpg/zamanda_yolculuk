@@ -1,0 +1,1502 @@
+{
+  "coil_spec": {
+    "wire_gauge": "AWG8",
+    "major_radius_mm": 80,
+    "minor_radius_mm": 10,
+    "turns": 10,
+    "current_a": 100,
+    "frequency_hz": 1000000.0,
+    "inductance_nh": 78.5,
+    "resistance_mohm": 12.3,
+    "mass_kg": 0.38,
+    "volume_l": 0.16
+  },
+  "hv_supply_spec": {
+    "topology": "Class E resonant with PFC",
+    "input_voltage_v": 48,
+    "output_voltage_v": 49.4,
+    "output_current_a": 100,
+    "switching_freq_hz": 1000000.0,
+    "efficiency": 0.92,
+    "pfc_capacitor_nf": 323,
+    "resonant_capacitor_nf": 323,
+    "gaN_fets": "4x EPC2045 (100V, 35A)",
+    "driver": "LMG1210 half-bridge driver",
+    "control": "STM32H7 + FPGA (pulse shaping)",
+    "mass_kg": 1.5,
+    "volume_l": 1.0
+  },
+  "battery_spec": {
+    "chemistry": "Li-ion NMC 21700",
+    "configuration": "13S4P (48V nominal, 20Ah)",
+    "capacity_wh": 500,
+    "max_continuous_a": 60,
+    "peak_a": 120,
+    "mass_kg": 3.5,
+    "volume_l": 2.5,
+    "bms": "Active balancing, CAN bus",
+    "cycle_life": "1000 cycles to 80%",
+    "cost_usd": 600
+  },
+  "pfc_capacitor_f": 3.23e-07,
+  "resonant_capacitor_f": 3.23e-07,
+  "magnetic_sensors": [
+    {
+      "name": "Fluxgate Magnetometer (3-axis)",
+      "quantity": "B-field vector",
+      "range_min": -0.0001,
+      "range_max": 0.0001,
+      "accuracy": 1e-08,
+      "sample_rate_hz": 10000,
+      "interface": "SPI",
+      "power_w": 0.15,
+      "mass_g": 25,
+      "cost_usd": 180,
+      "notes": "Primary B-field measurement at coil center and gradient positions"
+    },
+    {
+      "name": "Hall Effect Sensor Array (8x)",
+      "quantity": "B-field mapping",
+      "range_min": -0.05,
+      "range_max": 0.05,
+      "accuracy": 0.0001,
+      "sample_rate_hz": 50000,
+      "interface": "I2C",
+      "power_w": 0.05,
+      "mass_g": 5,
+      "cost_usd": 12,
+      "notes": "Spatial mapping around coil; 8 sensors in 3D grid"
+    },
+    {
+      "name": "Search Coil (dB/dt)",
+      "quantity": "dB/dt",
+      "range_min": -10,
+      "range_max": 10,
+      "accuracy": 0.01,
+      "sample_rate_hz": 200000,
+      "interface": "BNC/ADC",
+      "power_w": 0.0,
+      "mass_g": 50,
+      "cost_usd": 85,
+      "notes": "High-bandwidth dB/dt for pulse characterization"
+    },
+    {
+      "name": "NV Center Magnetometer (optional)",
+      "quantity": "B-field vector",
+      "range_min": -0.001,
+      "range_max": 0.001,
+      "accuracy": 1e-12,
+      "sample_rate_hz": 1000,
+      "interface": "USB",
+      "power_w": 2.0,
+      "mass_g": 200,
+      "cost_usd": 15000,
+      "notes": "Quantum sensor for ultra-low field validation; optional upgrade"
+    }
+  ],
+  "thermal_sensors": [
+    {
+      "name": "RTD Pt100 (4-wire) x12",
+      "quantity": "Temperature",
+      "range_min": -50,
+      "range_max": 200,
+      "accuracy": 0.1,
+      "sample_rate_hz": 100,
+      "interface": "SPI/ADC",
+      "power_w": 0.01,
+      "mass_g": 10,
+      "cost_usd": 25,
+      "notes": "Coil winding (4), core (2), power electronics (4), ambient (2)"
+    },
+    {
+      "name": "Thermocouple Type K x8",
+      "quantity": "Temperature",
+      "range_min": -200,
+      "range_max": 1200,
+      "accuracy": 1.5,
+      "sample_rate_hz": 1000,
+      "interface": "ADC",
+      "power_w": 0.0,
+      "mass_g": 5,
+      "cost_usd": 8,
+      "notes": "High-temp backup on coil surface and power components"
+    },
+    {
+      "name": "IR Thermal Camera (32x32)",
+      "quantity": "Surface temp map",
+      "range_min": -20,
+      "range_max": 300,
+      "accuracy": 1.0,
+      "sample_rate_hz": 9,
+      "interface": "I2C",
+      "power_w": 0.5,
+      "mass_g": 45,
+      "cost_usd": 120,
+      "notes": "Non-contact surface temperature mapping"
+    }
+  ],
+  "electrical_sensors": [
+    {
+      "name": "High-Voltage Differential Probe",
+      "quantity": "Voltage",
+      "range_min": -1000,
+      "range_max": 1000,
+      "accuracy": 0.5,
+      "sample_rate_hz": 500000,
+      "interface": "BNC/ADC",
+      "power_w": 0.5,
+      "mass_g": 150,
+      "cost_usd": 450,
+      "notes": "Coil voltage waveform capture"
+    },
+    {
+      "name": "Current Transducer (Hall, 200A)",
+      "quantity": "Current",
+      "range_min": -200,
+      "range_max": 200,
+      "accuracy": 0.5,
+      "sample_rate_hz": 200000,
+      "interface": "BNC/ADC",
+      "power_w": 0.3,
+      "mass_g": 80,
+      "cost_usd": 180,
+      "notes": "Coil current waveform; galvanic isolation"
+    },
+    {
+      "name": "Rogowski Coil (500A)",
+      "quantity": "Current (AC)",
+      "range_min": -500,
+      "range_max": 500,
+      "accuracy": 1.0,
+      "sample_rate_hz": 1000000,
+      "interface": "BNC/ADC",
+      "power_w": 0.1,
+      "mass_g": 60,
+      "cost_usd": 220,
+      "notes": "High-bandwidth AC current for harmonic analysis"
+    },
+    {
+      "name": "Power Analyzer (3-phase)",
+      "quantity": "P, Q, S, PF",
+      "range_min": 0,
+      "range_max": 5000,
+      "accuracy": 0.2,
+      "sample_rate_hz": 10000,
+      "interface": "Ethernet",
+      "power_w": 5.0,
+      "mass_g": 800,
+      "cost_usd": 3500,
+      "notes": "Real-time power quality monitoring"
+    },
+    {
+      "name": "Battery Monitor (Coulomb Counter)",
+      "quantity": "SoC, Current, Voltage",
+      "range_min": 0,
+      "range_max": 100,
+      "accuracy": 1.0,
+      "sample_rate_hz": 10,
+      "interface": "I2C",
+      "power_w": 0.02,
+      "mass_g": 15,
+      "cost_usd": 35,
+      "notes": "Battery state of charge and health tracking"
+    }
+  ],
+  "mechanical_sensors": [
+    {
+      "name": "MEMS Accelerometer (3-axis) x4",
+      "quantity": "Acceleration",
+      "range_min": -16,
+      "range_max": 16,
+      "accuracy": 0.001,
+      "sample_rate_hz": 10000,
+      "interface": "SPI",
+      "power_w": 0.01,
+      "mass_g": 3,
+      "cost_usd": 15,
+      "notes": "Coil vibration (2), enclosure (2); structural monitoring"
+    },
+    {
+      "name": "Strain Gauge (full bridge) x6",
+      "quantity": "Strain",
+      "range_min": -5000,
+      "range_max": 5000,
+      "accuracy": 1.0,
+      "sample_rate_hz": 10000,
+      "interface": "ADC",
+      "power_w": 0.05,
+      "mass_g": 2,
+      "cost_usd": 45,
+      "notes": "Coil former strain, mounting points"
+    },
+    {
+      "name": "Laser Displacement Sensor",
+      "quantity": "Displacement",
+      "range_min": -5,
+      "range_max": 5,
+      "accuracy": 1e-06,
+      "sample_rate_hz": 50000,
+      "interface": "Ethernet",
+      "power_w": 2.0,
+      "mass_g": 300,
+      "cost_usd": 2500,
+      "notes": "Coil radial expansion under Lorentz forces"
+    }
+  ],
+  "environmental_sensors": [
+    {
+      "name": "Barometric Pressure Sensor",
+      "quantity": "Pressure",
+      "range_min": 300,
+      "range_max": 1100,
+      "accuracy": 0.5,
+      "sample_rate_hz": 10,
+      "interface": "I2C",
+      "power_w": 0.003,
+      "mass_g": 2,
+      "cost_usd": 8,
+      "notes": "Altitude/pressure compensation for magnetic sensors"
+    },
+    {
+      "name": "Humidity/Temperature Sensor",
+      "quantity": "RH, Temp",
+      "range_min": 0,
+      "range_max": 100,
+      "accuracy": 2.0,
+      "sample_rate_hz": 1,
+      "interface": "I2C",
+      "power_w": 0.001,
+      "mass_g": 3,
+      "cost_usd": 6,
+      "notes": "Environmental monitoring for sensor drift correction"
+    },
+    {
+      "name": "3-Axis Magnetometer (Earth field)",
+      "quantity": "Earth B-field",
+      "range_min": -5e-05,
+      "range_max": 5e-05,
+      "accuracy": 5e-08,
+      "sample_rate_hz": 100,
+      "interface": "I2C",
+      "power_w": 0.002,
+      "mass_g": 5,
+      "cost_usd": 12,
+      "notes": "Earth field reference for background subtraction"
+    }
+  ],
+  "interlocks": [
+    {
+      "name": "Coil Overcurrent",
+      "trigger_condition": "I_coil > 120 A (120% rated)",
+      "response_time_ms": 0.1,
+      "action": "Immediate HV supply shutdown + crowbar",
+      "redundancy_level": 3,
+      "notes": "Triple-redundant: HW comparator + FW watchdog + SW monitor"
+    },
+    {
+      "name": "Coil Overtemperature",
+      "trigger_condition": "T_winding > 145 C (Class F limit - 10 C margin)",
+      "response_time_ms": 100,
+      "action": "Reduce duty cycle to 0% + forced air max",
+      "redundancy_level": 2,
+      "notes": "Dual RTD per winding location; voting logic"
+    },
+    {
+      "name": "Power Supply Overvoltage",
+      "trigger_condition": "V_coil > 60 V (120% rated)",
+      "response_time_ms": 0.05,
+      "action": "HV supply shutdown + crowbar",
+      "redundancy_level": 3,
+      "notes": "Fast HW overvoltage protection"
+    },
+    {
+      "name": "Battery Undervoltage",
+      "trigger_condition": "V_batt < 3.0 V/cell",
+      "response_time_ms": 1000,
+      "action": "Graceful shutdown sequence",
+      "redundancy_level": 2,
+      "notes": "Prevents deep discharge damage"
+    },
+    {
+      "name": "Battery Overtemperature",
+      "trigger_condition": "T_batt > 55 C",
+      "response_time_ms": 500,
+      "action": "Reduce power + increase cooling",
+      "redundancy_level": 2,
+      "notes": "Li-ion thermal runaway prevention"
+    },
+    {
+      "name": "Coolant Flow Loss (if liquid)",
+      "trigger_condition": "Flow < 0.5 L/min",
+      "response_time_ms": 200,
+      "action": "Immediate power reduction to 10%",
+      "redundancy_level": 2,
+      "notes": "Flow sensor + temperature rise cross-check"
+    },
+    {
+      "name": "Enclosure Pressure Rise",
+      "trigger_condition": "dP/dt > 1 kPa/s",
+      "response_time_ms": 50,
+      "action": "Emergency vent + power cutoff",
+      "redundancy_level": 2,
+      "notes": "Arc fault / catastrophic failure detection"
+    },
+    {
+      "name": "EMI/RFI Threshold",
+      "trigger_condition": "Radiated > FCC Part 15 Class A limit",
+      "response_time_ms": 10,
+      "action": "Frequency hop / power reduction",
+      "redundancy_level": 1,
+      "notes": "Real-time spectrum monitor; adaptive mitigation"
+    }
+  ],
+  "emergency_stop": {
+    "name": "Emergency Stop (E-Stop)",
+    "trigger_condition": "Manual button press OR remote wireless signal OR watchdog timeout",
+    "response_time_ms": 1,
+    "action": "Hard power cutoff (contactor open) + capacitor discharge",
+    "redundancy_level": 3,
+    "notes": "Hardwired, failsafe, latching; requires manual reset; wireless backup"
+  },
+  "daq_channels": [
+    {
+      "name": "Fluxgate_X",
+      "sensor": "Fluxgate Magnetometer",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -10,
+        10
+      ],
+      "notes": "Bx component"
+    },
+    {
+      "name": "Fluxgate_Y",
+      "sensor": "Fluxgate Magnetometer",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -10,
+        10
+      ],
+      "notes": "By component"
+    },
+    {
+      "name": "Fluxgate_Z",
+      "sensor": "Fluxgate Magnetometer",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -10,
+        10
+      ],
+      "notes": "Bz component"
+    },
+    {
+      "name": "Hall_0_X",
+      "sensor": "Hall Effect Sensor 0",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 0 X-axis"
+    },
+    {
+      "name": "Hall_0_Y",
+      "sensor": "Hall Effect Sensor 0",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 0 Y-axis"
+    },
+    {
+      "name": "Hall_0_Z",
+      "sensor": "Hall Effect Sensor 0",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 0 Z-axis"
+    },
+    {
+      "name": "Hall_1_X",
+      "sensor": "Hall Effect Sensor 1",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 1 X-axis"
+    },
+    {
+      "name": "Hall_1_Y",
+      "sensor": "Hall Effect Sensor 1",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 1 Y-axis"
+    },
+    {
+      "name": "Hall_1_Z",
+      "sensor": "Hall Effect Sensor 1",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 1 Z-axis"
+    },
+    {
+      "name": "Hall_2_X",
+      "sensor": "Hall Effect Sensor 2",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 2 X-axis"
+    },
+    {
+      "name": "Hall_2_Y",
+      "sensor": "Hall Effect Sensor 2",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 2 Y-axis"
+    },
+    {
+      "name": "Hall_2_Z",
+      "sensor": "Hall Effect Sensor 2",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 2 Z-axis"
+    },
+    {
+      "name": "Hall_3_X",
+      "sensor": "Hall Effect Sensor 3",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 3 X-axis"
+    },
+    {
+      "name": "Hall_3_Y",
+      "sensor": "Hall Effect Sensor 3",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 3 Y-axis"
+    },
+    {
+      "name": "Hall_3_Z",
+      "sensor": "Hall Effect Sensor 3",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 3 Z-axis"
+    },
+    {
+      "name": "Hall_4_X",
+      "sensor": "Hall Effect Sensor 4",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 4 X-axis"
+    },
+    {
+      "name": "Hall_4_Y",
+      "sensor": "Hall Effect Sensor 4",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 4 Y-axis"
+    },
+    {
+      "name": "Hall_4_Z",
+      "sensor": "Hall Effect Sensor 4",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 4 Z-axis"
+    },
+    {
+      "name": "Hall_5_X",
+      "sensor": "Hall Effect Sensor 5",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 5 X-axis"
+    },
+    {
+      "name": "Hall_5_Y",
+      "sensor": "Hall Effect Sensor 5",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 5 Y-axis"
+    },
+    {
+      "name": "Hall_5_Z",
+      "sensor": "Hall Effect Sensor 5",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 5 Z-axis"
+    },
+    {
+      "name": "Hall_6_X",
+      "sensor": "Hall Effect Sensor 6",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 6 X-axis"
+    },
+    {
+      "name": "Hall_6_Y",
+      "sensor": "Hall Effect Sensor 6",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 6 Y-axis"
+    },
+    {
+      "name": "Hall_6_Z",
+      "sensor": "Hall Effect Sensor 6",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 6 Z-axis"
+    },
+    {
+      "name": "Hall_7_X",
+      "sensor": "Hall Effect Sensor 7",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 7 X-axis"
+    },
+    {
+      "name": "Hall_7_Y",
+      "sensor": "Hall Effect Sensor 7",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 7 Y-axis"
+    },
+    {
+      "name": "Hall_7_Z",
+      "sensor": "Hall Effect Sensor 7",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Hall sensor 7 Z-axis"
+    },
+    {
+      "name": "Search_Coil",
+      "sensor": "Search Coil",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 200000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -10,
+        10
+      ],
+      "notes": "dB/dt high bandwidth"
+    },
+    {
+      "name": "Coil_Voltage",
+      "sensor": "HV Differential Probe",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 500000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -10,
+        10
+      ],
+      "notes": "Coil voltage waveform"
+    },
+    {
+      "name": "Coil_Current_Hall",
+      "sensor": "Current Transducer",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 200000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -10,
+        10
+      ],
+      "notes": "Coil current (Hall)"
+    },
+    {
+      "name": "Coil_Current_Rogowski",
+      "sensor": "Rogowski Coil",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -10,
+        10
+      ],
+      "notes": "Coil current (Rogowski, high BW)"
+    },
+    {
+      "name": "RTD_0",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 0"
+    },
+    {
+      "name": "RTD_1",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 1"
+    },
+    {
+      "name": "RTD_2",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 2"
+    },
+    {
+      "name": "RTD_3",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 3"
+    },
+    {
+      "name": "RTD_4",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 4"
+    },
+    {
+      "name": "RTD_5",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 5"
+    },
+    {
+      "name": "RTD_6",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 6"
+    },
+    {
+      "name": "RTD_7",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 7"
+    },
+    {
+      "name": "RTD_8",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 8"
+    },
+    {
+      "name": "RTD_9",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 9"
+    },
+    {
+      "name": "RTD_10",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 10"
+    },
+    {
+      "name": "RTD_11",
+      "sensor": "RTD Pt100",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "RTD channel 11"
+    },
+    {
+      "name": "TC_0",
+      "sensor": "Thermocouple Type K",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Thermocouple 0"
+    },
+    {
+      "name": "TC_1",
+      "sensor": "Thermocouple Type K",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Thermocouple 1"
+    },
+    {
+      "name": "TC_2",
+      "sensor": "Thermocouple Type K",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Thermocouple 2"
+    },
+    {
+      "name": "TC_3",
+      "sensor": "Thermocouple Type K",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Thermocouple 3"
+    },
+    {
+      "name": "TC_4",
+      "sensor": "Thermocouple Type K",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Thermocouple 4"
+    },
+    {
+      "name": "TC_5",
+      "sensor": "Thermocouple Type K",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Thermocouple 5"
+    },
+    {
+      "name": "TC_6",
+      "sensor": "Thermocouple Type K",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Thermocouple 6"
+    },
+    {
+      "name": "TC_7",
+      "sensor": "Thermocouple Type K",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Thermocouple 7"
+    },
+    {
+      "name": "Accel_0_X",
+      "sensor": "MEMS Accelerometer 0",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 0 X"
+    },
+    {
+      "name": "Accel_0_Y",
+      "sensor": "MEMS Accelerometer 0",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 0 Y"
+    },
+    {
+      "name": "Accel_0_Z",
+      "sensor": "MEMS Accelerometer 0",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 0 Z"
+    },
+    {
+      "name": "Accel_1_X",
+      "sensor": "MEMS Accelerometer 1",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 1 X"
+    },
+    {
+      "name": "Accel_1_Y",
+      "sensor": "MEMS Accelerometer 1",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 1 Y"
+    },
+    {
+      "name": "Accel_1_Z",
+      "sensor": "MEMS Accelerometer 1",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 1 Z"
+    },
+    {
+      "name": "Accel_2_X",
+      "sensor": "MEMS Accelerometer 2",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 2 X"
+    },
+    {
+      "name": "Accel_2_Y",
+      "sensor": "MEMS Accelerometer 2",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 2 Y"
+    },
+    {
+      "name": "Accel_2_Z",
+      "sensor": "MEMS Accelerometer 2",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 2 Z"
+    },
+    {
+      "name": "Accel_3_X",
+      "sensor": "MEMS Accelerometer 3",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 3 X"
+    },
+    {
+      "name": "Accel_3_Y",
+      "sensor": "MEMS Accelerometer 3",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 3 Y"
+    },
+    {
+      "name": "Accel_3_Z",
+      "sensor": "MEMS Accelerometer 3",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Accelerometer 3 Z"
+    },
+    {
+      "name": "Strain_0",
+      "sensor": "Strain Gauge 0",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Strain gauge 0"
+    },
+    {
+      "name": "Strain_1",
+      "sensor": "Strain Gauge 1",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Strain gauge 1"
+    },
+    {
+      "name": "Strain_2",
+      "sensor": "Strain Gauge 2",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Strain gauge 2"
+    },
+    {
+      "name": "Strain_3",
+      "sensor": "Strain Gauge 3",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Strain gauge 3"
+    },
+    {
+      "name": "Strain_4",
+      "sensor": "Strain Gauge 4",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Strain gauge 4"
+    },
+    {
+      "name": "Strain_5",
+      "sensor": "Strain Gauge 5",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10000,
+      "resolution_bits": 24,
+      "voltage_range_v": [
+        -0.05,
+        0.05
+      ],
+      "notes": "Strain gauge 5"
+    },
+    {
+      "name": "Laser_Displacement",
+      "sensor": "Laser Displacement Sensor",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 50000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -10,
+        10
+      ],
+      "notes": "Coil radial displacement"
+    },
+    {
+      "name": "Baro_Pressure",
+      "sensor": "Barometric Pressure",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 10,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "Atmospheric pressure"
+    },
+    {
+      "name": "Humidity",
+      "sensor": "Humidity Sensor",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1,
+      "resolution_bits": 12,
+      "voltage_range_v": [
+        0,
+        3.3
+      ],
+      "notes": "Relative humidity"
+    },
+    {
+      "name": "Env_Temp",
+      "sensor": "Humidity Sensor",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 1,
+      "resolution_bits": 12,
+      "voltage_range_v": [
+        0,
+        3.3
+      ],
+      "notes": "Ambient temperature"
+    },
+    {
+      "name": "Earth_B_X",
+      "sensor": "Earth Magnetometer",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Earth field X"
+    },
+    {
+      "name": "Earth_B_Y",
+      "sensor": "Earth Magnetometer",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Earth field Y"
+    },
+    {
+      "name": "Earth_B_Z",
+      "sensor": "Earth Magnetometer",
+      "channel_type": "analog_in",
+      "sample_rate_hz": 100,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        -5,
+        5
+      ],
+      "notes": "Earth field Z"
+    },
+    {
+      "name": "HV_Enable",
+      "sensor": "Control",
+      "channel_type": "digital_out",
+      "sample_rate_hz": 1,
+      "resolution_bits": 1,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "HV supply enable"
+    },
+    {
+      "name": "PWM_Drive",
+      "sensor": "Control",
+      "channel_type": "digital_out",
+      "sample_rate_hz": 1000000,
+      "resolution_bits": 1,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "Gate drive PWM"
+    },
+    {
+      "name": "E_Stop_Status",
+      "sensor": "E-Stop",
+      "channel_type": "digital_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 1,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "E-stop status monitor"
+    },
+    {
+      "name": "Interlock_Status",
+      "sensor": "Interlocks",
+      "channel_type": "digital_in",
+      "sample_rate_hz": 1000,
+      "resolution_bits": 16,
+      "voltage_range_v": [
+        0,
+        5
+      ],
+      "notes": "Interlock status bitfield"
+    }
+  ],
+  "daq_sample_rate_hz": 1000000,
+  "daq_buffer_size": 1000000,
+  "storage_gb_per_hour": 62.9497872,
+  "enclosure_spec": {
+    "type": "Ruggedized aluminum enclosure (IP65)",
+    "dimensions_mm": {
+      "width": 350,
+      "depth": 280,
+      "height": 200
+    },
+    "volume_l": 19.6,
+    "mass_kg": 2.5,
+    "material": "6061-T6 aluminum, anodized",
+    "sealing": "Silicone gasket, IP65",
+    "mounting": "4x M8 vibration-isolated mounts",
+    "internal_layout": {
+      "coil_chamber": "Central, 180mm dia x 60mm",
+      "power_electronics": "Side compartment, forced air",
+      "battery": "Bottom compartment, separate ventilation",
+      "daq_compute": "Top compartment, conduction cooled"
+    },
+    "cable_glands": "8x M20 (power), 4x M12 (signal), 2x M16 (fiber)",
+    "cooling_interface": "2x 80mm fan mounts + liquid cooling quick-connects",
+    "cost_usd": 850
+  },
+  "cooling_spec": {
+    "primary": "Forced air (2x 80mm PWM fans, 5 m/s)",
+    "airflow_cfm": 45,
+    "thermal_resistance_k_w": 0.2,
+    "fan_power_w": 5,
+    "fan_control": "PWM, temperature-regulated",
+    "secondary": "Liquid cooling ready (quick-connects, 1/4\" tubing)",
+    "liquid_flow_lpm": 2.0,
+    "liquid_thermal_resistance_k_w": 0.02,
+    "coolant": "50/50 ethylene glycol/water",
+    "radiator": "External 120mm radiator (optional)",
+    "temperature_monitoring": "12x RTD + 8x TC + IR camera",
+    "overtemp_shutdown": "145 C winding, 55 C battery",
+    "cost_usd": 180
+  },
+  "total_mass_kg": 11.14,
+  "total_volume_l": 23.26,
+  "test_procedures": [
+    {
+      "id": "TP-001",
+      "name": "Pre-Test Safety Verification",
+      "description": "Verify all interlocks, E-stop, grounding, insulation resistance",
+      "duration_min": 30,
+      "prerequisites": [
+        "Visual inspection",
+        "Continuity test",
+        "Hipot test (500V DC)"
+      ],
+      "pass_criteria": "All interlocks functional, R_iso > 100 Mohm, ground < 0.1 ohm"
+    },
+    {
+      "id": "TP-002",
+      "name": "Sensor Calibration",
+      "description": "Calibrate all sensors against traceable references",
+      "duration_min": 120,
+      "prerequisites": [
+        "Calibration equipment",
+        "Reference standards"
+      ],
+      "pass_criteria": "All sensors within spec accuracy; calibration certs recorded"
+    },
+    {
+      "id": "TP-003",
+      "name": "Coil Characterization (Cold)",
+      "description": "Measure R, L, Q at low current (1A) vs frequency",
+      "duration_min": 45,
+      "prerequisites": [
+        "LCR meter",
+        "Function generator"
+      ],
+      "pass_criteria": "R_dc = 12.3 mOhm +/- 5%, L = 78.5 nH +/- 5%, Q > 50 at 1 MHz"
+    },
+    {
+      "id": "TP-004",
+      "name": "Power Supply Characterization",
+      "description": "Verify HV supply output, PF correction, resonant operation",
+      "duration_min": 60,
+      "prerequisites": [
+        "Power analyzer",
+        "Oscilloscope",
+        "Resistive load"
+      ],
+      "pass_criteria": "V_out = 49.4V +/- 2%, PF > 0.95 with PFC, ZVS confirmed"
+    },
+    {
+      "id": "TP-005",
+      "name": "Low-Power Functional Test",
+      "description": "Full system test at 10% current (10A), 1% duty",
+      "duration_min": 30,
+      "prerequisites": [
+        "TP-001 to TP-004 passed"
+      ],
+      "pass_criteria": "All sensors reading, interlocks active, waveforms clean"
+    },
+    {
+      "id": "TP-006",
+      "name": "Thermal Characterization",
+      "description": "Steady-state thermal at 25%, 50%, 75% duty cycle",
+      "duration_min": 240,
+      "prerequisites": [
+        "TP-005 passed",
+        "Thermal equilibrium at each step"
+      ],
+      "pass_criteria": "T_winding < 145C at 50% duty, thermal model validated"
+    },
+    {
+      "id": "TP-007",
+      "name": "Full-Power Pulse Test",
+      "description": "Single 1ms pulse at 100A, capture all waveforms",
+      "duration_min": 15,
+      "prerequisites": [
+        "TP-006 passed"
+      ],
+      "pass_criteria": "I_peak = 100A +/- 2%, V_peak = 49.4V +/- 5%, no interlock trips"
+    },
+    {
+      "id": "TP-008",
+      "name": "Magnetic Field Mapping",
+      "description": "3D B-field map at 100A, compare to simulation",
+      "duration_min": 90,
+      "prerequisites": [
+        "TP-007 passed",
+        "Hall array calibrated"
+      ],
+      "pass_criteria": "B_center = 25 G +/- 5%, gradient = 250 G/m +/- 10%"
+    },
+    {
+      "id": "TP-009",
+      "name": "Extended Run Test",
+      "description": "Continuous operation at 50% duty for 30 minutes",
+      "duration_min": 45,
+      "prerequisites": [
+        "TP-008 passed"
+      ],
+      "pass_criteria": "Stable temperatures, no drift, battery SoC tracked"
+    },
+    {
+      "id": "TP-010",
+      "name": "EMI/EMC Pre-Compliance",
+      "description": "Radiated/conducted emissions scan",
+      "duration_min": 120,
+      "prerequisites": [
+        "TP-009 passed",
+        "EMI test facility"
+      ],
+      "pass_criteria": "Below FCC Part 15 Class A limits with 6 dB margin"
+    },
+    {
+      "id": "TP-011",
+      "name": "Data Validation & Archival",
+      "description": "Verify data integrity, checksum, archive raw + processed",
+      "duration_min": 30,
+      "prerequisites": [
+        "All test data collected"
+      ],
+      "pass_criteria": "Zero data loss, checksums match, metadata complete"
+    }
+  ],
+  "safety_standards": [
+    "IEC 61010-1 (Measurement equipment safety)",
+    "IEC 60601-1 (Medical electrical equipment - reference for insulation)",
+    "UL 61010-1",
+    "NFPA 70E (Electrical safety in workplace)",
+    "ISO 13849-1 (Safety-related control systems, PL d)"
+  ],
+  "emc_standards": [
+    "FCC Part 15 Class A (Radiated/conducted emissions)",
+    "IEC 61000-4-2 (ESD immunity)",
+    "IEC 61000-4-3 (Radiated immunity)",
+    "IEC 61000-4-4 (EFT/Burst immunity)",
+    "IEC 61000-4-5 (Surge immunity)",
+    "IEC 61000-4-6 (Conducted immunity)",
+    "MIL-STD-461G (Military EMC - reference)"
+  ]
+}
