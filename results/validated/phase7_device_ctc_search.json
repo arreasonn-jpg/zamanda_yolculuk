@@ -1,0 +1,88 @@
+{
+  "stage": "Phase 7 - Device CTC Search",
+  "config": "G4",
+  "grid": {
+    "n": 17,
+    "radius_m": 0.5,
+    "n_time": 5
+  },
+  "hbar_stats": {
+    "min": -1.2158199338298641e-50,
+    "max": 2.5942242669204915e-50,
+    "mean_abs": 2.350806585532566e-51
+  },
+  "ctc_search": [
+    {
+      "radius": 0.1,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.13333333333333336,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.16666666666666669,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.2,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.23333333333333336,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.2666666666666667,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.30000000000000004,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.33333333333333337,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.3666666666666667,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    },
+    {
+      "radius": 0.4,
+      "closed": true,
+      "overall": "spacelike",
+      "is_ctc_candidate": false,
+      "proper_time": 0.0
+    }
+  ],
+  "any_ctc_candidate": false,
+  "scope_note": "Linearized gravity on Minkowski background. No CTC expected. MQS source non-conservation known."
+}

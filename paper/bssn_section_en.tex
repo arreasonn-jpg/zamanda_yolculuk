@@ -751,6 +751,28 @@ COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
 \end{tabular}
 \end{table*}
 
+\subsection{Phase 7: Device-Generated Spacetime Search}
+
+The validated GR pipeline (retarded linearized Einstein solver + CTC search) was applied to the actual device stress-energy tensor for all four coil configurations (G1--G4). The full chain $I \to (E,B) \to T^{\mu\nu} \to \bar{h}^{\mu\nu} \to g_{\mu\nu} \to \text{CTC search}$ was executed on a $17^3$ grid with radius $0.5\,\text{m}$ at $100\,\text{A}$ peak current.
+
+\begin{table*}[t]
+\centering
+\caption{Phase 7 device CTC search results (linearized gravity on Minkowski, $100\,\text{A}$).}
+\label{tab:phase7-ctc-search}
+\begin{tabular}{lcccc}
+\hline
+Config & Max $|\bar{h}|$ & $h_{00}$ scale & CTC candidates & Verdict \\
+\hline
+G1 & $2.18\times 10^{-49}$ & $\sim 10^{-49}$ & 0 & No CTC \\
+G2 & $2.90\times 10^{-50}$ & $\sim 10^{-50}$ & 0 & No CTC \\
+G3 & $1.31\times 10^{-51}$ & $\sim 10^{-51}$ & 0 & No CTC \\
+G4 & $2.59\times 10^{-50}$ & $\sim 10^{-50}$ & 0 & No CTC \\
+\hline
+\end{tabular}
+\end{table*}
+
+All phi-circle searches at radii $0.1$--$0.4\,\text{m}$ returned \texttt{spacelike} classification with zero CTC candidates. The metric perturbation is $\sim 46$--$51$ orders of magnitude below the $h\sim 1$ threshold for causal inversion, consistent with the energy-to-CTC scan (Gate 22) which predicts $I_{\text{CTC}} \sim 10^{25}\,\text{A}$. The MQS source non-conservation (known from Phase 3 gauge audit) does not affect this conclusion at linear order.
+
 \subsection{Limitations}
 
 The BSSN implementation is a stable skeleton, not a production
