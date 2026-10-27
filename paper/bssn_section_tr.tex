@@ -682,6 +682,29 @@ COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
 
 30 adımda kaba ağ 20--24 adımları arasında patlar ($H_{c,\max}$: $0.73 \to 26 \to 1.9\times 10^4 \to 1.1\times 10^{61}$), ancak ince-ağ bandı kısıtı dikkat çekici derecede kararlı kalır ($5.90\times 10^{-6} \to 5.87\times 10^{-6}$, büyüme faktörü $0.995\times$). COM takibi boyunca mükemmel kalır. Bu, sabit-yama testlerde gördüğümüz kalıbı onaylar: kaba ağ uzun vadeli stabilite için daha büyük bir alan ($L_c \ge 120$) gerektirirken, ince-ağ projeksiyonu doğru çalışıyor. Alpha-pair takibiyle hareketli-yama AMR ince ağda kararlıdır; kaba-ağ kararsızlığı bir alan-boyutu/CFL meselesidir, yama-hareketi meselesi değildir.
 
+\subsubsection{Uzatılmış koşul: 50 adım, $L_c=160$}
+
+Alan-boyutu hipotezini daha da test etmek için, 50 adımlık hareketli-yama testini $L_c=160$ ile tekrar ediyoruz ($N_c=33$ sabit, yani $h_c=5.0$). İnce ağ $N_f=25$, $L_f=40$ olarak kalır.
+
+\begin{table*}[t]
+\centering
+\caption{Brill-Lindquist ile hareketli-yama AMR (50 adım, $L_c=160$, $dt=0.03125$).}
+\label{tab:amr-moving-50-Lc160}
+\begin{tabular}{lrrr}
+\hline
+Metrik & Adım 0 & Adım 40 & Adım 45 \\
+\hline
+$H_{c,\max}$ & $9.80\times 10^{-3}$ & $3.41\times 10^{-2}$ & $\text{NaN}$ \\
+$H_{f,\max}$ & $2.78\times 10^{-2}$ & $2.89\times 10^{-2}$ & $2.91\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $2.98\times 10^{-6}$ & $2.97\times 10^{-6}$ & $2.97\times 10^{-6}$ \\
+Ayrışma & $19.86$ & $19.87$ & $19.88$ \\
+COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+$L_c=160$ ile kaba ağ 45. adıma kadar dayanır ($L_c=120$'de 34. adım, $L_c=80$'de 24. adımdaydı), $L_c=120$'ye göre $\sim 32\%$, $L_c=80$'e göre $\sim 87\%$ iyileşme. İnce-ağ bandı kısıtı dikkat çekici derecede kararlı kalır $\sim 2.97\times 10^{-6}$ (45 adımda büyüme faktörü $0.996\times$), ve COM takibi boyunca mükemmeldir. Kaba ağ nihayet 45. adımda patlar ($H_{c,\max}$: $0.034 \to 0.15 \to 1.6 \to 107 \to 2.2\times 10^5 \to \text{NaN}$). Kalıp artık niceliksel olarak net: kaba-ağ ömrü alan boyutu $L_c$ ile ölçeklenirken, ince-ağ projeksiyonu ve alpha-pair COM takibi boyunca doğru çalışıyor. Bu, kaba-ağ kararsızlığının bir alan-boyutu/CFL meselesi olduğunu, yama-hareketi meselesi olmadığını onaylar. 50+ adım gerektiren üretim koşulları için ya $L_c \ge 200$ ya da $N_c \ge 49$ (daha küçük $h_c$) gerekir.
+
 \subsection{Sınırlamalar}
 
 BSSN gerçeklemesi kararlı bir iskelettir; üretim seviyesinde bir

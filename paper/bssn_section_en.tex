@@ -705,7 +705,30 @@ COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
 \end{tabular}
 \end{table*}
 
-With $L_c=120$ the coarse grid survives to step 34 (vs step 24 at $L_c=80$), a $\sim 40\%$ improvement. The fine-grid band constraint remains stable at $\sim 3.95\times 10^{-6}$ (growth factor $0.997\times$ over 34 steps), and COM tracking is perfect. The coarse grid eventually blows up at step 34 ($H_{c,\max} \to \text{NaN}$), confirming that even $L_c=120$ is insufficient for 50 steps at this resolution. The pattern is clear: the coarse grid requires either larger $L_c$ or smaller $h_c$ (larger $N_c$) for long-term stability, while the fine-grid projection and alpha-pair COM tracking work correctly throughout. This is a domain-size/CFL issue, not a patch-movement issue.
+With $L_c=120$ the coarse grid survives to step 34 (vs step 24 at $L_c=80$), a $\sim 40\%$ improvement. The fine-grid band constraint remains stable at $\sim 3.95\times 10^{-6}$ (growth factor $0.997\times$ over 34 steps), and COM tracking is perfect. The coarse grid eventually blows up at step 34 ($H_{c,\max} \to \text{NaN}$), confirming that even $L_c=120$ is insufficient for 50 steps at this resolution.
+
+\subsubsection{Extended run with larger coarse domain: 50 steps, $L_c=160$}
+
+To further test the domain-size hypothesis, we repeat the 50-step moving-patch test with $L_c=160$ (keeping $N_c=33$, so $h_c=5.0$). The fine grid remains $N_f=25$, $L_f=40$.
+
+\begin{table*}[t]
+\centering
+\caption{Moving-patch AMR with Brill-Lindquist (50 steps, $L_c=160$, $dt=0.03125$).}
+\label{tab:amr-moving-50-Lc160}
+\begin{tabular}{lrrr}
+\hline
+Metric & Step 0 & Step 40 & Step 45 \\
+\hline
+$H_{c,\max}$ & $9.80\times 10^{-3}$ & $3.41\times 10^{-2}$ & $\text{NaN}$ \\
+$H_{f,\max}$ & $2.78\times 10^{-2}$ & $2.89\times 10^{-2}$ & $2.91\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $2.98\times 10^{-6}$ & $2.97\times 10^{-6}$ & $2.97\times 10^{-6}$ \\
+Separation & $19.86$ & $19.87$ & $19.88$ \\
+COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+With $L_c=160$ the coarse grid survives to step 45 (vs step 34 at $L_c=120$, step 24 at $L_c=80$), a $\sim 32\%$ improvement over $L_c=120$ and $\sim 87\%$ over $L_c=80$. The fine-grid band constraint remains remarkably stable at $\sim 2.97\times 10^{-6}$ (growth factor $0.996\times$ over 45 steps), and COM tracking is perfect throughout. The coarse grid eventually blows up at step 45 ($H_{c,\max}$: $0.034 \to 0.15 \to 1.6 \to 107 \to 2.2\times 10^5 \to \text{NaN}$). The pattern is now quantitatively clear: coarse-grid lifetime scales with domain size $L_c$, while the fine-grid projection and alpha-pair COM tracking work correctly throughout. This confirms the coarse-grid instability is a domain-size/CFL issue, not a patch-movement issue. For production runs requiring 50+ steps, either $L_c \ge 200$ or $N_c \ge 49$ (smaller $h_c$) would be needed.
 
 \subsection{Limitations}
 
