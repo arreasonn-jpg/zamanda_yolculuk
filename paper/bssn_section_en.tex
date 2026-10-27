@@ -625,22 +625,22 @@ We test the COM-tracked moving fine patch using Brill-Lindquist initial data wit
 
 \begin{table*}[t]
 \centering
-\caption{Moving-patch AMR with Brill-Lindquist (5 steps, $dt=0.03125$).}
+\caption{Moving-patch AMR with Brill-Lindquist (10 steps, $dt=0.03125$).}
 \label{tab:amr-moving}
 \begin{tabular}{lrr}
 \hline
-Metric & Step 0 & Step 5 \\
+Metric & Step 0 & Step 10 \\
 \hline
-$H_{c,\max}$ & $6.01\times 10^{-2}$ & $6.01\times 10^{-2}$ \\
-$H_{f,\max}$ & $5.44\times 10^{-2}$ & $5.52\times 10^{-2}$ \\
+$H_{c,\max}$ & $6.01\times 10^{-2}$ & $6.03\times 10^{-2}$ \\
+$H_{f,\max}$ & $5.44\times 10^{-2}$ & $5.62\times 10^{-2}$ \\
 $H_{f,\text{band}}$ & $5.90\times 10^{-6}$ & $5.90\times 10^{-6}$ \\
-Separation & $15.44$ & $15.44$ \\
+Separation & $15.44$ & $15.45$ \\
 COM $x$ & $0.00$ & $0.00$ \\
 \hline
 \end{tabular}
 \end{table*}
 
-The fine-grid band constraint remains essentially constant ($5.90\times 10^{-6}$ at both step 0 and step 5, growth factor $1.00\times$), while the coarse grid maximum constraint is stable at $\sim 6\times 10^{-2}$. The binary separation is constant at $15.44$ and the COM remains at $x=0$, confirming the moving patch correctly tracks the binary without introducing spurious drift. The projection continues to reduce the momentum constraint violation in the band ($l_{\text{after}} < l_{\text{before}}$ at every step). This demonstrates that the v14.1 pipeline with Brill-Lindquist data and alpha-pair COM tracking provides a stable foundation for moving-patch AMR inspiral simulations.
+The fine-grid band constraint remains essentially constant ($5.90\times 10^{-6}$ at both step 0 and step 10, growth factor $1.00\times$), while the coarse grid maximum constraint is stable at $\sim 6\times 10^{-2}$. The binary separation is constant at $15.44$--$15.45$ and the COM remains at $x=0$, confirming the moving patch correctly tracks the binary without introducing spurious drift. The projection continues to reduce the momentum constraint violation in the band ($l_{\text{after}} < l_{\text{before}}$ at every step). This demonstrates that the v14.1 pipeline with Brill-Lindquist data and alpha-pair COM tracking provides a stable foundation for moving-patch AMR inspiral simulations.
 
 \subsection{Limitations}
 

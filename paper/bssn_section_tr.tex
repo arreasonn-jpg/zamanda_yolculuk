@@ -623,22 +623,22 @@ Kararlı v14.1 yapılandırmasıyla Brill-Lindquist başlangıç verilerini kull
 
 \begin{table*}[t]
 \centering
-\caption{Brill-Lindquist ile hareketli-yama AMR (5 adım, $dt=0.03125$).}
+\caption{Brill-Lindquist ile hareketli-yama AMR (10 adım, $dt=0.03125$).}
 \label{tab:amr-moving}
 \begin{tabular}{lrr}
 \hline
-Metrik & Adım 0 & Adım 5 \\
+Metrik & Adım 0 & Adım 10 \\
 \hline
-$H_{c,\max}$ & $6.01\times 10^{-2}$ & $6.01\times 10^{-2}$ \\
-$H_{f,\max}$ & $5.44\times 10^{-2}$ & $5.52\times 10^{-2}$ \\
+$H_{c,\max}$ & $6.01\times 10^{-2}$ & $6.03\times 10^{-2}$ \\
+$H_{f,\max}$ & $5.44\times 10^{-2}$ & $5.62\times 10^{-2}$ \\
 $H_{f,\text{band}}$ & $5.90\times 10^{-6}$ & $5.90\times 10^{-6}$ \\
-Ayrışma & $15.44$ & $15.44$ \\
+Ayrışma & $15.44$ & $15.45$ \\
 COM $x$ & $0.00$ & $0.00$ \\
 \hline
 \end{tabular}
 \end{table*}
 
-İnce-ağ bandı kısıtı esasen sabit kalır ($5.90\times 10^{-6}$ hem adım 0'da hem adım 5'te, büyüme faktörü $1.00\times$), kaba ağ maksimum kısıtı ise $\sim 6\times 10^{-2}$ seviyesinde kararlıdır. İkili ayrışma $15.44$'te sabit kalır ve COM $x=0$'da kalır; bu da hareketli yamanın ikiliyi takip ederken sahte bir kayma yaratmadığını onaylar. Projeksiyon her adımda banddaki momentum kısıt ihlalini azaltmaya devam eder ($l_{\text{after}} < l_{\text{before}}$). Bu, v14.1 ardışık düzeninin Brill-Lindquist verileri ve alpha-pair COM takibiyle, hareketli-yama AMR spiral simülasyonları için kararlı bir temel sağladığını gösterir.
+İnce-ağ bandı kısıtı esasen sabit kalır ($5.90\times 10^{-6}$ hem adım 0'da hem adım 10'da, büyüme faktörü $1.00\times$), kaba ağ maksimum kısıtı ise $\sim 6\times 10^{-2}$ seviyesinde kararlıdır. İkili ayrışma $15.44$--$15.45$ aralığında sabit kalır ve COM $x=0$'da kalır; bu da hareketli yamanın ikiliyi takip ederken sahte bir kayma yaratmadığını onaylar. Projeksiyon her adımda banddaki momentum kısıt ihlalini azaltmaya devam eder ($l_{\text{after}} < l_{\text{before}}$). Bu, v14.1 ardışık düzeninin Brill-Lindquist verileri ve alpha-pair COM takibiyle, hareketli-yama AMR spiral simülasyonları için kararlı bir temel sağladığını gösterir.
 
 \subsection{Sınırlamalar}
 
