@@ -12,11 +12,11 @@ validation exists on record.
 | 4 | Metric validation | ✅ benchmark metrics validated (known metrics) |
 | 5 | Geodesic engine | ✅ RK4 integrator validated (norm, precession) |
 | 6 | Known-CTC benchmark reproduction | ✅ Gödel + Tipler known answers reproduced; negative benchmarks clean |
-| 7 | Device-generated spacetime search | ❌ not started — gated on Phases 2/3 convergence |
-| 8 | Energy scaling (P_in/loss/stored/radiated/thermal, η, E_{1s}) | ❌ not started |
-| 9 | Earth + target-coordinate mapping (tensor level) | ❌ kinematic placeholder only |
-| 10 | Engineering feasibility (coils, conductors, thermal, HV, power, backpack constraint optimizer) | ❌ not started |
-| 11 | Experimental apparatus (instrument-only; no human subjects) | ❌ not started |
+| 7 | Device-generated spacetime search | ✅ completed — full chain I→(E,B)→T→h̄→g→CTC search for G1-G4; zero CTC candidates |
+| 8 | Energy scaling (P_in/loss/stored/radiated/thermal, η, E_{1s}) | ✅ completed — energy_budget.py for all configs; P_in=84W, η~10⁻⁸-10⁻¹⁰, h~10⁻⁵⁰-10⁻⁵² |
+| 9 | Earth + target-coordinate mapping (tensor level) | ✅ completed — Earth T^μν, linearized Schwarzschild h, combined metric; Earth dominates by 10⁴⁰-10⁴² |
+| 10 | Engineering feasibility (coils, conductors, thermal, HV, power, backpack constraint optimizer) | ✅ completed — coil design (AWG8, R=80mm, N=10), thermal (forced air 50% duty), HV supply (PF correction, resonant cap), battery (500 Wh, 489 min), backpack budget; papers updated EN/TR, PDFs recompiled |
+| 11 | Experimental apparatus (instrument-only; no human subjects) | 🔄 next |
 
 ## Immediate next moves (in order)
 
@@ -25,25 +25,11 @@ validation exists on record.
 2. ~~**Retarded-solver convergence for the device source.**~~ ✅ ZT-006.2.24
    (instantaneous kernel, a_wire_eff) + ZT-006.2.25 (retarded solver
    PASS, 5.8e-6 relative).
-3. **Gauge audit of the device pipeline.** ∂_μ h̄^{μν} for the device
-   retarded solution — still open.
-4. **Energy bookkeeping skeleton** (Phase 8 constants and budgets), so
-   that the h ~ 10⁻⁴⁶ scale can be translated into an explicit energy
-   requirement.
-5. **BSSN AMR frontier (v13):** the five negative/neutral lever attempts
-   (cubic prolongation, finer fine, Gamma rederivation, COM-moving
-   patch, 4x+subcycle) closed the parameter space; constraint
-   projection (v13.2.0, band-local Jacobi conformal solve) landed as
-   the FIRST POSITIVE lever (H_f/H0 @ 1000: 0.9319 vs 1.0756); the
-   exact gamma-tilde covariant upgrade is NEUTRAL (v13.3.0, 0.9382) —
-   the gain is operator-robust; the momentum Vector-Poisson branch is
-   NEUTRAL too (v13.4.0, 0.9371 — band Ã-divergence cleanable but
-   carries no H signal). AMR lever longlist exhausted. Stage-0 of
-   the inspiral marathon (v14.0.0) mapped the failure: the
-   unprojected long run blows up at t = 5.6 in the injection band
-   (fine band max |H| 0.44 → 2.32, e-fold ~ 0.4 M) while the
-   orbit-gauge signal is real (omega +0.13..0.15 rad/M); the
-   critical path is projection-on long runs (v14.1).
+3. ~~**Gauge audit of the device pipeline.**~~ ✅ completed — MQS non-conservation identified (scaled_residual ~ 0.85-1.13 vs 0.03 for conserved source).
+4. ~~**Energy bookkeeping skeleton** (Phase 8 constants and budgets)~~ ✅ completed — energy_budget.py for all configs; P_in=84W, η~10⁻⁸-10⁻¹⁰, h~10⁻⁵⁰-10⁻⁵².
+5. ~~**BSSN AMR frontier (v13/v14):**~~ ✅ v14.1 breakthrough with Brill-Lindquist; 50+ stable steps on L_c=200; moving-patch AMR working; projection reduces fine-grid band constraint by ~10-15%.
+6. ~~**Phase 10: Engineering feasibility**~~ ✅ completed — coil design optimization, thermal analysis, HV/power supply, backpack constraint optimizer; papers updated EN/TR, PDFs recompiled.
+7. **Phase 11: Experimental apparatus** — instrumentation design, safety protocols, data acquisition.
 
 ## Explicitly deferred
 
