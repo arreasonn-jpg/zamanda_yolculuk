@@ -682,7 +682,30 @@ COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
 \end{tabular}
 \end{table*}
 
-At 30 steps the coarse grid blows up between steps 20--24 ($H_{c,\max}$: $0.73 \to 26 \to 1.9\times 10^4 \to 1.1\times 10^{61}$), while the fine-grid band constraint remains remarkably stable ($5.90\times 10^{-6} \to 5.87\times 10^{-6}$, growth factor $0.995\times$). The COM tracking remains perfect throughout. This confirms the pattern seen in fixed-patch tests: the coarse grid requires a larger domain ($L_c \ge 120$) for long-term stability, while the fine-grid projection is working correctly. The moving-patch AMR with alpha-pair tracking is stable on the fine grid; the coarse-grid instability is a domain-size/CFL issue, not a patch-movement issue.
+At 30 steps the coarse grid blows up between steps 20--24 ($H_{c,\max}$: $0.73 \to 26 \to 1.9\times 10^4 \to 1.1\times 10^{61}$), while the fine-grid band constraint remains remarkably stable ($5.90\times 10^{-6} \to 5.87\times 10^{-6}$, growth factor $0.995\times$). The COM tracking remains perfect throughout.
+
+\subsubsection{Extended run with larger coarse domain: 50 steps, $L_c=120$}
+
+To test whether the coarse-grid instability is purely a domain-size issue, we repeat the 50-step moving-patch test with $L_c=120$ (keeping $N_c=33$, so $h_c=3.75$). The fine grid remains $N_f=25$, $L_f=40$.
+
+\begin{table*}[t]
+\centering
+\caption{Moving-patch AMR with Brill-Lindquist (50 steps, $L_c=120$, $dt=0.03125$).}
+\label{tab:amr-moving-50}
+\begin{tabular}{lrrr}
+\hline
+Metric & Step 0 & Step 30 & Step 34 \\
+\hline
+$H_{c,\max}$ & $1.89\times 10^{-2}$ & $1.59\times 10^{-1}$ & $\text{NaN}$ \\
+$H_{f,\max}$ & $3.11\times 10^{-2}$ & $3.13\times 10^{-2}$ & $3.15\times 10^{-2}$ \\
+$H_{f,\text{band}}$ & $3.95\times 10^{-6}$ & $3.95\times 10^{-6}$ & $3.94\times 10^{-6}$ \\
+Separation & $18.44$ & $18.98$ & $18.99$ \\
+COM $x$ & $0.00$ & $0.00$ & $0.00$ \\
+\hline
+\end{tabular}
+\end{table*}
+
+With $L_c=120$ the coarse grid survives to step 34 (vs step 24 at $L_c=80$), a $\sim 40\%$ improvement. The fine-grid band constraint remains stable at $\sim 3.95\times 10^{-6}$ (growth factor $0.997\times$ over 34 steps), and COM tracking is perfect. The coarse grid eventually blows up at step 34 ($H_{c,\max} \to \text{NaN}$), confirming that even $L_c=120$ is insufficient for 50 steps at this resolution. The pattern is clear: the coarse grid requires either larger $L_c$ or smaller $h_c$ (larger $N_c$) for long-term stability, while the fine-grid projection and alpha-pair COM tracking work correctly throughout. This is a domain-size/CFL issue, not a patch-movement issue.
 
 \subsection{Limitations}
 
