@@ -1,0 +1,2235 @@
+\documentclass[epj]{svjour}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+%\usepackage{xurl}      
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\graphicspath{{figures/}}
+
+\tolerance=2000
+\emergencystretch=3em
+\raggedbottom
+
+\begin{document}
+
+% PTUM_LIBRARY_FINAL_v1.1_CLEAN
+% Self-contained library-final manuscript source.
+% This version removes the obsolete external-supplement pointer,
+% moves implementation details into the appendix, and preserves
+% explicit claim boundaries for later submission work.
+
+\title{Phase Transition Universes Model:\\
+A Discharge-Based Cosmological Creation Scenario\\
+with a Unified Dark Sector}
+
+\titlerunning{PTUM: A Discharge-Based Cosmological Creation Scenario}
+
+\authorrunning{E. Esa}
+
+\author{Erdem Esa}
+
+\offprints{E. Esa}
+
+\institute{Independent Researcher, Istanbul, Turkey\\
+\email{erdem.esa.71@gmail.com}}
+
+\date{}
+
+\abstract{%
+The dark sector of the standard cosmological model comprises dark matter, dark energy, and possible dark radiation, whose common origin remains unexplained. We present the Phase Transition Universes Model (PTUM), a discharge-based cosmological creation scenario where a scalar quantum fuel field $\Phi$ accumulates, reaches a critical threshold, and undergoes a tachyonic transition. Within this effective description, the discharge event leaves behind a dark-matter candidate sector ($\chi$), a residual dark-energy sector ($\Phi_{\rm res}$), and a relativistic proxy-fluid dark radiation component (pfd, $\psi$). A falsifiable prediction of PTUM is that, within the effective linear proxy-fluid description, the pfd component carries $w=1/3$, $c_s^2=1/3$, and zero anisotropic stress ($\sigma=0$). This produces no neutrino-induced CMB acoustic peak phase shift, distinguishing it from free-streaming dark radiation---a signature that may be tested at high significance by next-generation CMB experiments such as CMB-S4, depending on the realized pfd abundance. We implement the effective phenomenological system in \texttt{CLASS} at background and perturbation levels. The creation sector supports a plateau-type slow-roll phase compatible with current CMB constraints, fixing the discharge scale to $V_0^{1/4}\sim 10^{15}$--$10^{16}\,\mathrm{GeV}$. The dark-energy sector admits a broad near-$\Lambda$ viable region with $w_{\rm DE}\approx -1$. A Bayesian benchmark analysis using Planck 2018, BAO, and Pantheon+ data yields $\Delta N_{\rm fluid} < 0.31$ at $95\%$ credibility. Model comparison gives $\Delta\chi^2 = -0.26$ and $\Delta\mathrm{AIC}=2.26$; current data therefore show a weak preference for $\Lambda$CDM while leaving PTUM viable as a falsifiable effective extension. Within the scanned benchmark regime, the sectors satisfy EFT validity, BBN consistency, and linear stability. The formulation should be read as an effective phenomenological framework rather than as a first-principles derivation of the pre-discharge background, a solution of the cosmological-constant hierarchy, or a UV completion.%
+} % abstract'ın kapanış parantezi
+\PACS{
+      {98.80.Cq}{Particle-theory and field-theory models of the early Universe} \and
+      {95.36.+x}{Dark energy} \and
+      {95.35.+d}{Dark matter} \and
+      {98.80.Es}{Observational cosmology}
+     } % end of PACS
+\maketitle
+
+%============================================================
+\section{Introduction}
+\label{sec:intro}
+%============================================================
+
+The standard cosmological model accounts for the later evolution of
+the Universe through a combination of radiation, baryons, cold dark
+matter, and a cosmological constant~\cite{Planck2018params}, yet it
+does not explain why the Universe began in a hot, dense state. More
+pointedly, the dark sector---which dominates the cosmic energy
+budget---is composed of at least two phenomenologically distinct
+components whose microscopic origins are unrelated within
+$\Lambda$CDM. Dark matter is introduced as a pressureless fluid
+needed to explain structure formation and galactic rotation curves;
+dark energy is introduced as a negative-pressure component needed to
+explain the accelerating expansion. Whether these components share a
+common physical origin, and whether the hot Big Bang itself can be
+understood as a dynamical event rather than an initial condition, are
+among the deepest open questions in theoretical cosmology.
+
+Several approaches to these questions have been explored. Quintessence
+and dynamical dark-energy models replace the cosmological constant
+with a slowly rolling scalar field~\cite{RatraPeebles,Caldwell1998},
+while unified dark-sector models attempt to describe dark matter and
+dark energy through a single fluid~\cite{Kamenshchik2001,Bento2002}.
+Extra relativistic species parametrised by
+$\Delta N_{\rm eff}$~\cite{Mangano2005,Cyburt2016} probe the
+radiation content of the early Universe. However, none of these
+frameworks addresses the origin of the hot expanding state itself, nor
+do they predict specific relationships between the dark-sector
+components. The question of \emph{why} the dark sector has its
+observed composition remains unanswered.
+
+The Phase Transition Universes Model (PTUM) was developed to address
+these issues from a different starting point. Instead of treating dark
+matter and dark energy as independent sectors added to a pre-existing
+cosmological framework, PTUM proposes a discharge-based creation
+mechanism in which \emph{all} dark-sector components arise from a
+single cosmogonic event. In this picture, a scalar quantum fuel field
+$\Phi$ accumulates in a metastable multiverse-like background and,
+once a critical threshold is reached, undergoes a tachyonic transition
+that activates string-like proxy modes. The resulting discharge is modeled as
+separating into:
+
+\begin{itemize}
+\item a clustering passive component $\rightarrow$ a dark-matter candidate sector~($\chi$),
+\item a residual negative-pressure component $\rightarrow$
+      dark energy~($\Phi_{\rm res}$),
+\item a radiation-like transient component $\rightarrow$
+      proxy-fluid dark radiation~(pfd, $\psi$).
+\end{itemize}
+
+The most distinctive---and directly falsifiable---observable
+consequence of this framework is the pfd sector. Unlike standard
+extra dark radiation, which is usually assumed to free-stream and
+hence to develop non-zero anisotropic
+stress~\cite{Bashinsky2004,Baumann2016,Follin2015}, the PTUM
+proxy-fluid behaves as a relativistic \emph{perfect} fluid with
+\begin{equation}
+w = \tfrac{1}{3},\qquad
+c_s^{2} = \tfrac{1}{3},\qquad
+\sigma = 0\,.
+\label{eq:pfd_signature}
+\end{equation}
+Free-streaming dark radiation generates a characteristic phase shift
+of the CMB acoustic peaks through its anisotropic
+stress~\cite{Bashinsky2004,Baumann2016,Follin2015}; the pfd
+component, having $\sigma=0$ in the effective linear fluid description,
+produces \emph{no such shift}. This absence would constitute a
+distinctive discriminator: if additional relativistic degrees of freedom
+are detected in CMB data, the presence or absence of the associated
+phase shift separates free-streaming from fluid dark radiation. As we
+show in Section~\ref{sec:forecast}, CMB-S4 may make this distinction
+at high significance for $\Delta N_{\rm fluid}\gtrsim 0.20$,
+depending on the realized pfd abundance, making PTUM a concretely
+testable cosmological framework.
+
+The aim of the present paper is therefore broader than a
+phenomenological dark-radiation study. We pursue three linked goals:
+
+\begin{enumerate}[label=(\roman*)]
+\item to formulate PTUM as a cosmological creation scenario based on
+      a discharge event, establishing the theoretical framework and
+      its effective field theory;
+\item to show that the resulting effective dark-sector structure is
+      internally consistent within the tested parameter regime, with
+      perturbation stability, EFT validity, and compatibility with
+      BBN and isocurvature constraints;
+\item to test the observable consequences of the model against
+      current cosmological data through a Bayesian benchmark analysis,
+      profile likelihood, and dataset-split diagnostics.
+\end{enumerate}
+
+\paragraph{Scope and claim boundaries.}
+Throughout this work, PTUM is treated as an effective cosmological framework,
+not as a completed first-principles theory of the origin of the Universe. The
+model does not derive the metastable pre-discharge background, does not solve
+the cosmological-constant hierarchy by itself, and does not specify a UV
+completion. Its present claims are narrower: it defines a threshold-triggered
+phase-transition scenario, implements the associated proxy-fluid perturbations,
+and identifies an observational discriminator between fluid and free-streaming
+dark radiation.
+
+
+To this end, we proceed in two steps. First, we construct the
+effective field theory of PTUM, derive its equations of motion, study
+the primordial creation sector---including exact-background
+inflationary dynamics---and identify the parameter region in which the
+late-time dark-energy sector remains observationally viable. Second,
+we implement the proxy-fluid perturbations in the \texttt{CLASS}
+Boltzmann code~\cite{Blas2011,Lesgourgues2011}, compute the
+cosmological signatures, and constrain the model using a Bayesian benchmark
+analysis with \texttt{Cobaya}~\cite{Torrado2021}. The resulting
+constraints are cross-checked through profile likelihood extraction
+and dataset-split analysis, and confronted with BBN, isocurvature, and
+linear stability requirements.
+
+We find that PTUM is observationally viable: the pfd abundance is
+bounded to $\Delta N_{\rm fluid}<0.31$ at 95\% credibility from the
+full data combination, model comparison gives
+$\Delta\mathrm{AIC}=2.26$ relative to $\Lambda$CDM, and all
+consistency checks are satisfied. The Hubble constant shifts upward by
+$\sim\!0.8\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$ relative to $\Lambda$CDM,
+partially alleviating the Hubble tension without being designed to do
+so. The discharge energy scale is fixed to
+$V_0^{1/4}\sim 10^{15}$--$10^{16}\;\mathrm{GeV}$ by the observed
+scalar amplitude, and the creation sector is compatible with current
+bounds on the scalar spectral index and the tensor-to-scalar ratio.
+
+The paper is organized as follows.
+Section~\ref{sec:conceptual} summarizes the physical picture of PTUM.
+Section~\ref{sec:eft} presents the effective field theory,
+equations of motion, and symmetry structure.
+Section~\ref{sec:primordial} studies the primordial creation sector.
+Section~\ref{sec:late} analyses the late-time dark-energy and
+dark-sector structure.
+Section~\ref{sec:pert} describes the perturbation framework and
+\texttt{CLASS} implementation.
+Section~\ref{sec:sigs} presents the cosmological signatures.
+Section~\ref{sec:mcmc} gives the Bayesian constraints, profile
+likelihood, dataset-split analysis, and model comparison.
+Section~\ref{sec:stability} collects the stability and consistency
+tests.
+We discuss the interpretation, limitations, and future prospects in
+Section~\ref{sec:discussion} and conclude in
+Section~\ref{sec:conclusion}.
+
+%============================================================
+\section{Conceptual overview of PTUM}
+\label{sec:conceptual}
+%============================================================
+
+PTUM begins with a multiverse-like background containing a scalar
+quantum fuel field \(\Phi\). The central idea is that local
+accumulation of this field drives a threshold-triggered discharge
+process. Once a critical configuration is reached, the effective
+mass of a proxy activation mode becomes negative, generating a
+tachyonic transition that activates string-like degrees of freedom.
+
+The basic sequence is:
+
+\begin{description}
+\item[(a) Fuel accumulation.] The scalar fuel field \(\Phi\) accumulates
+in a metastable environment. The effective potential is chosen such
+that it is approximately quadratic at small field values but saturates
+to a plateau at large field values.
+
+\item[(b) Threshold discharge.] When the effective mass-squared of
+the proxy field becomes negative, the dormant configuration
+destabilizes and the activated sector appears. This transition plays
+the role of the creation trigger.
+
+\item[(c) Residual splitting.] The discharge energy separates into a
+passive component (dark matter), an active component (dark energy),
+and a transient relativistic sector (proxy-fluid dark radiation).
+\end{description}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.88\textwidth]{fig_model_flowchart.pdf}
+\caption{Conceptual flow of the PTUM scenario: accumulation of the
+quantum fuel field, threshold discharge, activation of proxy
+string-like modes, and residual splitting into dark matter, dark
+energy, and proxy-fluid dark radiation.}
+\label{fig:flowchart}
+\end{figure*}
+
+This picture gives PTUM a structural unification property: the dark
+sector is not postulated as a collection of disconnected components,
+but emerges from one creation event.
+
+%============================================================
+\section{Effective field theory and equations of motion}
+\label{sec:eft}
+%============================================================
+
+\subsection{Field content}
+
+The minimal PTUM field content consists of four sectors:
+
+\begin{itemize}
+\item \(\Phi\): quantum fuel field,
+\item \(\psi\): activated string-like proxy mode,
+\item \(\chi\): dark-matter field,
+\item \(\Phi_{\rm res}\): residual energy field (dark energy).
+\end{itemize}
+
+\begin{table}[t]
+\centering
+\small
+\caption{Minimal PTUM field and sector registry.}
+\label{tab:ptum_field_registry}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{0.20\linewidth}>{\raggedright\arraybackslash}p{0.26\linewidth}>{\raggedright\arraybackslash}p{0.40\linewidth}@{}}
+\toprule
+Symbol & Sector & Effective role \\
+\midrule
+$\Phi$ & fuel field & accumulates and controls threshold crossing \\
+$\psi$ & proxy activation mode & tachyonic activation; proxy-fluid radiation \\
+$\chi$ & dark-matter candidate & passive post-discharge matter-like sector \\
+$\Phi_{\rm res}$ & residual field & near-$\Lambda$ dark-energy-like sector \\
+$\Delta N_{\rm fluid}$ & pfd abundance & maps proxy radiation to CMB/BBN observables \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{PTUM Lagrangian}
+
+The total effective Lagrangian is
+\begin{equation}
+\mathcal{L}_{\rm PTUM}
+=\mathcal{L}_{\rm fuel}
++\mathcal{L}_{\rm activation}
++\mathcal{L}_{\rm DM}
++\mathcal{L}_{\rm DE}.
+\end{equation}
+
+The fuel sector is
+\begin{equation}
+\mathcal{L}_{\rm fuel}
+=\tfrac{1}{2}(\partial_\mu\Phi)^2
+-V_{\rm eff}(\Phi),
+\end{equation}
+with
+\begin{equation}
+\begin{split}
+V_{\rm eff}(\Phi)
+&=V_0\!\left(1-e^{-\lambda\Phi^2}\right) \\
+&\quad +\frac{1}{64\pi^2}
+\sum_i n_i\,m_{{\rm eff},i}^4(\Phi)
+\left[\ln\frac{m_{{\rm eff},i}^2(\Phi)}{\mu_R^2}
+-\tfrac{3}{2}\right].
+\end{split}
+\label{eq:veff}
+\end{equation}
+The leading tree-level part is plateau-like; the second term
+represents Coleman--Weinberg corrections~\cite{ColemanWeinberg}.
+
+The activation sector is
+\begin{equation}
+\mathcal{L}_{\rm activation}
+=\tfrac{1}{2}(\partial_\mu\psi)^2
+-\frac{m^2}{2}\psi^2\!\left(1-\frac{\alpha\Phi^2}{E_{\rm th}^2}\right)
+-\frac{\lambda_\psi}{4}\psi^4,
+\label{eq:lact}
+\end{equation}
+with effective mass
+\begin{equation}
+m_{\rm eff}^2(\Phi)
+=m^2\!\left(1-\frac{\alpha\Phi^2}{E_{\rm th}^2}\right).
+\end{equation}
+Equivalently, the effective discharge trigger can be written as
+\begin{equation}
+\boxed{
+ m_{\rm eff}^2(\Phi)<0
+ \quad\Longleftrightarrow\quad
+ \Phi>\Phi_c\equiv \frac{E_{\rm th}}{\sqrt{\alpha}} .
+}
+\label{eq:ptum_threshold_box}
+\end{equation}
+This condition defines the transition from the dormant proxy phase to the
+activated proxy phase. It should be interpreted as an effective threshold
+criterion, not as a microscopic derivation of the pre-discharge background.
+Here, $E_{\rm th}$ is the dimensionful discharge threshold scale (naturally related to the creation energy $V_0^{1/4}$), and $\alpha$ is a dimensionless coupling constant. The tachyonic instability is triggered when the fuel field crosses the critical threshold $\Phi = E_{\rm th}/\sqrt{\alpha}$. The transition timescale is assumed to be much shorter than the local Hubble time ($H^{-1}$), allowing the discharge to be treated as a nearly instantaneous phase transition at the background level that partitions the available energy into the residual dark sector and standard radiation. For \(m_{\rm eff}^2>0\) the proxy mode is dormant; for \(m_{\rm eff}^2<0\) it is activated by the tachyonic instability.
+
+The dark-matter sector is
+\begin{equation}
+\mathcal{L}_{\rm DM}
+=\tfrac{1}{2}(\partial_\mu\chi)^2
+-\tfrac{1}{2}m_\chi^2\chi^2
+-g_{\rm DM}\chi^2\Phi_{\rm res}^2,
+\end{equation}
+and the dark-energy sector is
+\begin{equation}
+\mathcal{L}_{\rm DE}
+=\tfrac{1}{2}(\partial_\mu\Phi_{\rm res})^2
+-W(\Phi_{\rm res}),
+\end{equation}
+with
+\begin{equation}
+\begin{split}
+W(\Phi_{\rm res})
+&=W_0\,e^{-\kappa\Phi_{\rm res}^2}
+\!\left(1-e^{-\lambda_{\rm res}\Phi_{\rm res}^2}\right) \\
+&\quad +\Lambda_{\rm NP}^4\,e^{-S_E}
+\cos\!\left(\frac{\Phi_{\rm res}}{f_{\rm res}}\right).
+\end{split}
+\label{eq:wpot}
+\end{equation}
+
+\subsection{Equations of motion}
+
+The field equations in a flat FRW universe,
+\(ds^2=-dt^2+a^2(t)d\mathbf{x}^2\), read
+\begin{align}
+\ddot\Phi+3H\dot\Phi
++\frac{\partial V_{\rm eff}}{\partial\Phi}
++\frac{\alpha m^2}{E_{\rm th}^2}\Phi\psi^2
+&=0,
+\label{eq:frw1}
+\\
+\ddot\psi+3H\dot\psi
++m^2\!\left(1-\frac{\alpha\Phi^2}{E_{\rm th}^2}\right)\psi
++\lambda_\psi\psi^3
+&=0,
+\label{eq:frw2}
+\\
+\ddot\chi+3H\dot\chi+m_\chi^2\chi
++2g_{\rm DM}\chi\Phi_{\rm res}^2
+&=0,
+\label{eq:frw3}
+\\
+\ddot\Phi_{\rm res}+3H\dot\Phi_{\rm res}
++\frac{\partial W}{\partial\Phi_{\rm res}}
++2g_{\rm DM}\chi^2\Phi_{\rm res}
+&=0.
+\label{eq:frw4}
+\end{align}
+
+\subsection{Quartic attractor and the proxy-fluid sector}
+
+A key result is that coherent oscillations of \(\psi\) in a quartic
+potential behave effectively as radiation~\cite{Turner1983}:
+\begin{equation}
+w_\psi=\tfrac{1}{3},\qquad \rho_\psi\propto a^{-4}.
+\end{equation}
+However, unlike free-streaming radiation, the coherent scalar
+condensate does not develop a full Boltzmann hierarchy and therefore
+contributes no anisotropic stress:
+\begin{equation}
+\sigma_\psi=0.
+\end{equation}
+In the effective linear fluid closure used below, this sector is therefore
+specified by
+\begin{equation}
+\boxed{
+ w_\psi=\frac{1}{3},\qquad
+ c_{s,\psi}^2=\frac{1}{3},\qquad
+ \sigma_\psi=0 .
+}
+\label{eq:pfd_closure_box}
+\end{equation}
+The third condition is the key discriminator: the proxy-fluid component does not
+carry a free-streaming hierarchy and therefore does not generate the
+neutrino-like CMB acoustic phase shift associated with anisotropic stress.
+This defines the proxy-fluid dark-radiation sector. The absence of
+anisotropic stress is the defining observational signature of the
+pfd component: free-streaming dark radiation with the same energy
+density would produce a characteristic CMB acoustic-peak phase
+shift~\cite{Bashinsky2004,Follin2015}, whereas pfd does not.
+
+The difference between the PTUM proxy-fluid component and a conventional
+free-streaming relativistic species is summarized schematically in
+Fig.~\ref{fig:ptum_proxy_fluid_vs_free_streaming}. The two cases may contribute
+a similar amount of extra radiation density, but they differ at the perturbative
+level: the proxy-fluid sector has no effective anisotropic stress in the linear
+fluid description, while a free-streaming component sources a neutrino-like
+acoustic phase shift.
+
+\begin{figure*}[p]
+\centering
+\includegraphics[
+width=0.98\textwidth,
+height=0.62\textheight,
+keepaspectratio
+]{figures/PTUM_F3_proxy_fluid_vs_free_streaming_dark_radiation.pdf}
+\caption{
+Proxy-fluid versus free-streaming dark radiation. In the effective linear
+fluid description, the PTUM proxy component has
+$w_\psi=1/3$, $c_{s,\psi}^2=1/3$, and $\sigma_\psi=0$, and therefore does
+not induce the neutrino-like CMB acoustic phase shift characteristic of
+free-streaming relativistic species. The key discriminator is whether an
+extra relativistic component produces a measurable acoustic phase shift, not
+only whether it contributes to the radiation density.
+}
+\label{fig:ptum_proxy_fluid_vs_free_streaming}
+\end{figure*}
+
+
+\subsection{Operational stability and observable closure of the discharge sector}
+\label{subsec:ptum_operational_stability}
+
+The preceding subsections define PTUM as a threshold-triggered discharge
+mechanism: the fuel field $\Phi$ accumulates, the proxy field $\psi$ becomes
+tachyonically active when its effective mass squared changes sign, and the
+post-discharge energy is partitioned into dark matter, residual dark energy,
+and proxy-fluid dark radiation.  The present subsection records the minimal
+internal stability conditions required for this effective description to be
+well defined.  No additional field, sector, or cross-model structure is
+introduced here.
+
+The discharge threshold is determined by the proxy-field effective mass,
+\begin{equation}
+m_{\rm eff}^2(\Phi)
+=
+m^2
+\left(
+1-\frac{\alpha\Phi^2}{E_{\rm th}^2}
+\right),
+\label{eq:PTUM_meff_operational}
+\end{equation}
+so that the critical field value is
+\begin{equation}
+\Phi_c
+=
+\frac{E_{\rm th}}{\sqrt{\alpha}} .
+\label{eq:PTUM_critical_phi_operational}
+\end{equation}
+For $|\Phi|<\Phi_c$ the proxy sector is dormant, while for
+$|\Phi|>\Phi_c$ the tachyonic sign change activates the discharge channel.
+The activation potential may be written as
+\begin{equation}
+V_{\rm act}(\psi;\Phi)
+=
+\frac{1}{2}m_{\rm eff}^2(\Phi)\psi^2
++
+\frac{\lambda_\psi}{4}\psi^4 .
+\label{eq:PTUM_activation_potential_operational}
+\end{equation}
+When $m_{\rm eff}^2<0$, the post-activation minimum is
+\begin{equation}
+\psi_0^2
+=
+-\frac{m_{\rm eff}^2(\Phi)}{\lambda_\psi},
+\label{eq:PTUM_proxy_minimum_operational}
+\end{equation}
+and local stability of the activated state requires
+\begin{equation}
+\left.
+\frac{\partial^2 V_{\rm act}}{\partial \psi^2}
+\right|_{\psi=\psi_0}
+=
+-2m_{\rm eff}^2(\Phi)
+>
+0 .
+\label{eq:PTUM_potential_stability_operational}
+\end{equation}
+Thus the tachyonic sign change is not treated as an endpoint instability;
+it is a trigger for a transition to a locally stable post-discharge state
+inside the effective theory.
+
+Averaged over coherent oscillations in the quartic potential, the proxy sector
+behaves as radiation,
+\begin{equation}
+w_\psi=\frac{1}{3},
+\qquad
+\rho_\psi\propto a^{-4}.
+\label{eq:PTUM_quartic_fluid_operational}
+\end{equation}
+In the effective linear closure used in the Boltzmann implementation, the
+proxy component is represented as a perfect relativistic fluid,
+\begin{equation}
+c_{s,\psi}^2=\frac{1}{3},
+\qquad
+\sigma_\psi=0 .
+\label{eq:PTUM_proxy_signature_operational}
+\end{equation}
+This last condition is the key observable distinction between PTUM proxy-fluid
+dark radiation and free-streaming dark radiation.
+
+Combining the internal and observable requirements, the operational PTUM
+closure used in the remainder of this paper is
+\begin{equation}
+\boxed{
+\begin{gathered}
+\text{activation: } m_{\rm eff}^2(\Phi)<0,\\[2pt]
+\text{stability: } -2m_{\rm eff}^2(\Phi)>0,\\[2pt]
+\text{fluid closure: } w_\psi=1/3,\; c_{s,\psi}^2=1/3,\; \sigma_\psi=0 .
+\end{gathered}}
+\label{eq:ptum_operational_closure}
+\end{equation}
+The first two lines are internal EFT consistency requirements.  The final line
+is the perturbative input tested through the CMB acoustic-phase discriminator
+and the late-time expansion analysis below.
+
+\subsection{Symmetry structure}
+
+The symmetry structure of the effective theory includes:
+
+\begin{itemize}
+\item an exact \(\mathbb{Z}_2\) symmetry \(\Phi\to-\Phi\),
+\item a spontaneously broken \(\mathbb{Z}_2\) symmetry
+      \(\psi\to-\psi\),
+\item an exact \(\mathbb{Z}_2\) symmetry \(\chi\to-\chi\) ensuring
+      dark-matter stability,
+\item an approximate shift symmetry
+      \(\Phi_{\rm res}\to\Phi_{\rm res}+c\) protecting the
+      dark-energy sector.
+\end{itemize}
+
+\subsection{UV perspective and effective field theory scope}
+\label{sec:uv_perspective}
+
+The PTUM Lagrangian is constructed as a low-energy effective field
+theory valid at energy scales $E \ll M_{\rm Pl}$. We do not claim
+that PTUM constitutes a UV-complete theory; rather, it parametrises
+the phenomenological consequences that a broad class of UV
+completions would produce at cosmological scales. Several structural
+features of PTUM find natural counterparts in well-studied
+high-energy frameworks, which we briefly discuss below. The UV comments in
+this subsection are therefore interpretive guideposts rather than required
+assumptions of the model. PTUM should remain testable at the EFT and
+Boltzmann-implementation level even if no particular string-theoretic,
+swampland, or higher-dimensional embedding is adopted.
+
+\noindent\textbf{Tachyonic transition and string theory.}
+The activation mechanism through which the fuel field $\Phi$ triggers
+the proxy mode $\psi$ via a tachyonic mass term bears a close
+structural resemblance to the open-string tachyon condensation that
+arises in D-brane--anti-D-brane systems
+\cite{Sen2002,Dvali1999,KKLMMT2003}. In the Dvali--Tye scenario, the
+inter-brane separation plays the role of an inflaton, and brane
+annihilation ends inflation through tachyon condensation. In PTUM,
+$\Phi$ plays an analogous role to the inter-brane modulus, while
+$\psi$ corresponds to the open-string tachyon that becomes active
+once $\Phi$ crosses a critical threshold. We emphasise that this
+correspondence is at the level of structural analogy rather than
+rigorous derivation; a full embedding into a specific string
+compactification is left for future work.
+
+\noindent\textbf{Swampland considerations.}
+The fuel potential $V(\Phi) = V_0(1 - e^{-\lambda\Phi^2})$ satisfies
+the de Sitter Swampland Conjecture \cite{Obied2018,Ooguri2019} in
+the large-field regime where $|V'|/V \gtrsim \mathcal{O}(1)$, while
+the inflationary slow-roll regime ($\epsilon, |\eta| \ll 1$) is
+maintained for a finite number of $e$-folds. The refined de Sitter
+conjecture, which allows $\min(\nabla_i \nabla_j V) \leq
+-c'\,V/M_{\rm Pl}^2$, is satisfied throughout the slow-roll phase
+for $c' \sim \mathcal{O}(\eta)$. A systematic analysis of the full
+PTUM potential landscape against swampland criteria is deferred to
+future work.
+
+\noindent\textbf{Field excursions and shift symmetry.}
+For small values of the coupling $\lambda \lesssim 0.05$, the fuel
+field undergoes super-Planckian excursions $\Delta\Phi > M_{\rm Pl}$
+during the inflationary phase. This is a generic feature of
+large-field inflation models and is not specific to PTUM. Such
+excursions can be protected against dangerous higher-dimensional
+operators by an approximate shift symmetry $\Phi \to \Phi + c$,
+which is broken only by the exponential potential. This is the same
+protective mechanism invoked in natural inflation
+\cite{Freese1990} and axion monodromy \cite{Silverstein2008} models.
+
+\noindent\textbf{EFT validity summary.}
+As demonstrated in Section~\ref{sec:stability}, all PTUM energy
+scales satisfy $H_* \ll M_{\rm Pl}$, all couplings remain
+perturbative, and the theory is free from ghost, gradient, and
+tachyonic instabilities. The EFT is therefore self-consistent within
+its domain of applicability. The question of which specific UV
+completion gives rise to the PTUM effective Lagrangian is an
+important but separate question that does not affect the
+observational predictions derived in this work.
+
+%============================================================
+\section{Primordial consistency of the creation sector}
+\label{sec:primordial}
+%============================================================
+
+The primordial consistency of PTUM is tested by treating the fuel
+potential as the effective generator of an early accelerated phase.
+We ask whether the creation sector can be normalized consistently
+to the observed primordial scalar amplitude and whether its
+predictions for \(n_s\) and \(r\) fall within the
+Planck/BICEP-allowed region.
+
+\subsection{Slow-roll analysis}
+
+At tree level, the fuel potential is
+\begin{equation}
+V(\Phi)=V_0\!\left(1-e^{-\lambda\Phi^2}\right).
+\label{eq:fuelpot}
+\end{equation}
+This is a plateau-type potential: approximately quadratic at small
+\(\Phi\) and saturating to a constant at large \(\Phi\). Such
+plateau structures are strongly favored by CMB data~\cite{BICEPKeck2021}.
+
+We define the potential slow-roll parameters
+\begin{equation}
+\epsilon_V=\tfrac{1}{2}\!\left(\frac{V_{,\Phi}}{V}\right)^2,\qquad
+\eta_V=\frac{V_{,\Phi\Phi}}{V},
+\end{equation}
+and the standard approximate observables
+\begin{equation}
+n_s\simeq1-6\epsilon_V+2\eta_V,\qquad r\simeq16\epsilon_V.
+\end{equation}
+A scan over \(\lambda\) shows that for \(\lambda\gtrsim0.02\) the
+PTUM creation sector naturally predicts \(n_s\sim0.957\)--\(0.961\)
+and \(r\ll0.036\), compatible with current
+constraints~\cite{BICEPKeck2021,Planck2018params}.
+
+\subsection{Non-Gaussianity}
+
+Because the creation sector is a canonical single-field slow-roll
+model, the non-Gaussianity parameters satisfy the Maldacena
+consistency relation~\cite{Maldacena2003}:
+\begin{equation}
+f_{\rm NL}^{\rm local}
+=\tfrac{5}{12}(1-n_s)\sim0.017\text{--}0.018,\qquad
+f_{\rm NL}^{\rm equil}\sim10^{-3}.
+\end{equation}
+These values are well within current Planck bounds
+(\(|f_{\rm NL}^{\rm local}|<5.1\),
+\(|f_{\rm NL}^{\rm equil}|<47\) at 95\%~CL~\cite{PlanckNG})
+by factors of order \(10^2\)--\(10^3\), and lie far below the
+sensitivity of any planned experiment. This constitutes a clean
+null prediction of PTUM.
+
+\subsection{Exact-background consistency}
+
+To verify the slow-roll treatment we performed an exact-background
+integration using the bounded variable
+\begin{equation}
+X\equiv\frac{\dot\Phi}{\sqrt{6}\,H},\qquad \epsilon_H=3X^2.
+\end{equation}
+The exact background equations in terms of \(N=\ln a\) are
+\begin{align}
+\frac{d\Phi}{dN}&=\sqrt{6}\,X,\\[4pt]
+\frac{dX}{dN}&=(1-X^2)\!\left(\sqrt{\tfrac{3}{2}}\,s(\Phi)-3X\right),
+\end{align}
+where \(s(\Phi)\equiv-V_{,\Phi}/V\). For each \(\lambda\) we searched
+for an initial field value \(\Phi_i\) yielding \(N_{\rm end}\sim60\)
+and evaluated the observables 55 e-folds before the end. Results are
+given in Table~\ref{tab:exactscan}.
+
+\begin{table*}
+\caption{Exact-background primordial scan of the PTUM creation
+sector. The exact and slow-roll predictions agree to within
+\(\Delta n_s\simeq5\times10^{-4}\) and
+\(|\Delta r|/r\simeq1.5\%\).}
+\label{tab:exactscan}
+\centering
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}ccccccccc}
+\hline\noalign{\smallskip}
+\(\lambda\) & \(\Phi_i\) & \(N_{\rm end}\) & \(\Phi_*\) &
+\(\epsilon_*\) & \(n_s^{\rm ex}\) & \(n_s^{\rm SR}\) &
+\(r^{\rm ex}\) & Status \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+0.020 & 10.722 & 60.14 & 10.465 & \(1.37\times10^{-3}\) &
+0.9581 & 0.9576 & 0.02195 & Compat. \\
+0.050 &  8.325 & 59.96 &  8.185 & \(4.37\times10^{-4}\) &
+0.9565 & 0.9559 & 0.00699 & Boundary \\
+0.100 &  6.612 & 59.84 &  6.527 & \(1.72\times10^{-4}\) &
+0.9564 & 0.9559 & 0.00276 & Boundary \\
+0.200 &  5.137 & 60.38 &  5.078 & \(6.82\times10^{-5}\) &
+0.9570 & 0.9564 & 0.00109 & Compat. \\
+0.500 &  3.579 & 59.52 &  3.551 & \(2.08\times10^{-5}\) &
+0.9579 & 0.9574 & 0.000333 & Compat. \\
+1.000 &  2.691 & 59.32 &  2.673 & \(8.76\times10^{-6}\) &
+0.9586 & 0.9580 & 0.000140 & Compat. \\
+2.000 &  2.012 & 60.99 &  1.996 & \(3.77\times10^{-6}\) &
+0.9591 & 0.9586 & 0.000060 & Compat. \\
+5.000 &  1.350 & 58.88 &  1.344 & \(1.28\times10^{-6}\) &
+0.9597 & 0.9592 & 0.000020 & Compat. \\
+\noalign{\smallskip}\hline
+\end{tabular*}
+\end{table*}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_ns_r_plane_exact.pdf}
+\caption{PTUM predictions in the \(n_s\)--\(r\) plane using the
+exact-background calculation. Blue bands indicate the
+Planck-preferred region; the green shading marks the BICEP/Keck
+upper bound on \(r\). For \(\lambda\gtrsim0.02\), PTUM lies in or
+very near the observationally allowed region.}
+\label{fig:nsr_exact}
+\end{figure}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_exact_vs_SR_all_lambda.pdf}
+\caption{Comparison of exact-background and slow-roll primordial
+predictions across the full \(\lambda\) scan. The slow-roll
+approximation underestimates \(n_s\) by \(\sim5\times10^{-4}\) and
+overestimates \(r\) by \(\sim1.4\%\), confirming its quantitative
+reliability for the PTUM creation sector.}
+\label{fig:exactvssr}
+\end{figure*}
+
+\subsection{Primordial normalization and creation scale}
+
+Matching the observed scalar amplitude
+\(A_s\simeq2.1\times10^{-9}\) via
+\begin{equation}
+A_s\simeq\frac{V_*}{24\pi^2 M_{\rm Pl}^4\,\epsilon_*},
+\end{equation}
+gives
+\begin{equation}
+V_0^{1/4}\sim2\times10^{15}\text{--}1.3\times10^{16}\ {\rm GeV},
+\qquad
+H_*\sim10^{12}\text{--}10^{13}\ {\rm GeV}.
+\end{equation}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_PTUM_creation_scale.pdf}
+\caption{Characteristic PTUM creation scales inferred from the
+observed scalar amplitude. The PTUM creation event lies in a
+GUT-adjacent energy band, well below the Planck scale.}
+\label{fig:creation}
+\end{figure}
+
+This places the PTUM discharge event in a physically meaningful
+GUT-adjacent regime. The EFT hierarchy is satisfied throughout the benchmark regime:
+\(H_*/M_{\rm Pl}\sim4\times10^{-6}\ll1\) and
+\(V_0/M_{\rm Pl}^4\sim10^{-10}\ll1\).
+
+%============================================================
+\section{Late-time dark sector viability}
+\label{sec:late}
+%============================================================
+
+\subsection{Dark-energy sector}
+
+The PTUM dark-energy potential~\eqref{eq:wpot} was scanned over the
+\((\kappa,\lambda_{\rm res})\) plane. In 89.6\% of the scanned
+parameter space there exists a field value giving
+\(1+w_{\rm DE}<0.01\), and in 95.1\% there exists one giving
+\(1+w_{\rm DE}<0.05\).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_DE_viable_region.pdf}
+\caption{Viable-region scan of the PTUM dark-energy sector.
+Left: best achievable \(\log_{10}(1+w_{\rm DE})\) in the
+\((\kappa,\lambda_{\rm res})\) plane. Right: corresponding optimal
+field value \(\Phi_{\rm res}\). The wide viable region shows that
+near-\(\Lambda\) behavior is not confined to a fine-tuned point.}
+\label{fig:DEviable}
+\end{figure}
+
+\subsection{Dark-sector evolution function}
+
+Using the CLASS best-fit background solution we define the
+dark-energy fraction
+\begin{equation}
+\gamma(z)
+\equiv
+\frac{\rho_{\rm DE}(z)}{\rho_{\rm DM}(z)+\rho_{\rm DE}(z)}.
+\end{equation}
+The numerical evolution is accurately described by
+\begin{equation}
+\gamma(z)
+=\frac{1}{1+c\,(1+z)^3},
+\qquad
+c=\frac{\rho_{{\rm DM},0}}{\rho_{{\rm DE},0}},
+\label{eq:gamma}
+\end{equation}
+with best-fit value \(c=0.3854\), yielding \(\gamma(0)=0.722\).
+The analytic form is verified against the full CLASS output at the
+level of numerical precision (residuals
+\(|\Delta\gamma/\gamma|<10^{-14}\) across \(z=0\)--\(5\)).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.85\columnwidth]{fig_gamma_z_numerical_vs_analytic.pdf}
+\caption{The PTUM dark-sector evolution function \(\gamma(z)\)
+compared with the CLASS numerical solution. The analytic
+form~\eqref{eq:gamma} matches the Boltzmann output within machine
+precision across the full redshift range shown.}
+\label{fig:gamma}
+\end{figure}
+
+\subsection{Post-creation energy partition}
+
+The discharge energy distributes into four sectors: SM radiation
+(dominant), dark matter \(\chi\), pfd \(\psi\), and residual dark
+energy \(\Phi_{\rm res}\). The pfd fraction relative to radiation is
+\begin{equation}
+\frac{\rho_\psi}{\rho_{\rm rad}}
+=\frac{\Delta N_{\rm fluid}}{N_{\rm eff}^{\rm std}}
+\sim3\text{--}11\%
+\quad(0.10\le\Delta N_{\rm fluid}\le0.31),
+\end{equation}
+requiring an effective coupling \(\mu/\Lambda\sim0.18\text{--}0.33\),
+which is natural (\(\mathcal{O}(0.1)\), no fine-tuning). The
+residual dark-energy fraction is
+\(V_{\rm res}/V_0\sim10^{-108}\), which re-parameterizes rather
+than solves the cosmological constant problem.
+
+\subsection{Proxy-fluid dark radiation}
+
+The pfd sector is parameterized by
+\begin{equation}
+\Delta N_{\rm fluid}
+=\frac{\rho_{\rm pfd}}
+{\tfrac{7}{8}\!\left(\tfrac{4}{11}\right)^{4/3}\!\rho_\gamma}.
+\end{equation}
+Its defining properties are \(w=1/3\), \(c_s^2=1/3\),
+and \(\sigma=0\).
+
+%============================================================
+\section{Perturbations and numerical implementation}
+\label{sec:pert}
+%============================================================
+
+We implemented the PTUM proxy-fluid dark-radiation sector in
+CLASS~v3.2.0~\cite{Blas2011,Lesgourgues2011}. In synchronous
+gauge~\cite{MaBertschinger}, the scalar perturbations obey
+\begin{align}
+\dot\delta_{\rm pfd}
+&=-\tfrac{4}{3}\!\left(\theta_{\rm pfd}+\tfrac{\dot h}{2}\right),
+\\[4pt]
+\dot\theta_{\rm pfd}
+&=\tfrac{k^2}{4}\delta_{\rm pfd}.
+\end{align}
+
+\subsection{Proxy-fluid dark radiation: origin of $\sigma_\psi=0$}
+\label{sec:pfd_derivation}
+
+The defining observational property of the pfd component is the
+absence of anisotropic stress, $\sigma_\psi=0$. Within the effective coherent-field description, this is not introduced
+as an independent assumption; it follows from the nature of the source
+field and the regime in which it evolves. Here we derive this result from the
+equations of motion.
+
+\subsubsection{Effective energy-momentum tensor}
+
+Consider the proxy field $\psi$ oscillating coherently in its quartic
+potential $V(\psi)=\frac{1}{4}\lambda_\psi\psi^4$. The canonical
+energy-momentum tensor is
+\begin{equation}
+T_{\mu\nu}^{(\psi)}
+=\partial_\mu\psi\,\partial_\nu\psi
+-g_{\mu\nu}\Bigl[\tfrac12(\partial_\rho\psi)^{2}
+-V(\psi)\Bigr].
+\end{equation}
+For a spatially homogeneous field $\psi=\psi(t)$ oscillating in the
+quartic potential, the spatial average over one oscillation period
+gives the effective fluid description. Using the fact that
+$\langle\dot\psi^2\rangle=\langle V(\psi)\rangle$ for $w=1/3$
+oscillations, the pressure and energy density satisfy
+$p_\psi=\rho_\psi/3$ and the anisotropic stress vanishes in the
+effective fluid description:
+\begin{equation}
+\sigma_\psi \equiv 
+\frac{\rho_\psi-p_\psi-2p_\perp}{\rho_\psi+p_\psi}=0\,,
+\end{equation}
+because the energy-momentum tensor of a spatially homogeneous
+coherent field is isotropic at the background level.
+
+This is the key physical point: unlike a collection of free-streaming
+particles, which carry momentum correlations through their individual
+trajectories and thereby generate non-zero $\sigma$, a coherent
+condensate does not have independent degrees of freedom below the
+coherence scale. The pressure is everywhere $p=\rho/3$ and there are
+no viscous or anisotropic contributions from particle collisions.
+
+\subsubsection{Perturbation hierarchy}
+
+At the linear perturbation level we write $\psi=\bar\psi(t)+\delta\psi$.
+The perturbed energy-momentum tensor contains
+$\delta\rho_\psi$, $\delta p_\psi$, velocity $\theta_\psi$, and shear
+$\sigma_\psi$. The conservation equation
+$\nabla_\mu T^{\mu\nu(\psi)}=0$ gives two first-order equations
+for $\delta_\psi\equiv\delta\rho_\psi/\bar\rho_\psi$ and
+$\theta_\psi\equiv ik\delta v_\psi$:
+\begin{align}
+\dot\delta_\psi
+&=-\frac{4}{3}\Bigl(\theta_\psi+\frac{\dot h}{2}\Bigr)\,,
+\label{eq:delta_pfd_main}\\[4pt]
+\dot\theta_\psi
+&=\frac{k^2}{4}\,\delta_\psi\,.
+\label{eq:theta_pfd_main}
+\end{align}
+Higher multipoles ($F_\ell$ with $\ell\ge2$) satisfy
+$\dot F_\ell\propto k F_{\ell-1}-(\ell+1)H F_\ell$ and do not source
+the Einstein equations for scalar modes. These higher multipoles are
+present but they do not contribute to $\sigma_\psi$ in the coherent
+oscillation limit because the condensate has no particle-streaming
+velocity dispersion. They are therefore omitted from the evolution
+equations used in the \texttt{CLASS} implementation.
+
+The conditions under which this approximation holds are:
+\begin{itemize}
+\item \textbf{Coherence:} The coherence length of the $\psi$
+condensate exceeds the Hubble radius, so that the field oscillates as
+a single macroscopic mode. This is naturally satisfied when the
+field is homogeneous at the scale of the observable patch at the time
+of oscillatory onset.
+\item \textbf{Non-interacting:} The $\psi$ field has no significant
+self-interaction beyond the $\lambda_\psi\psi^4$ potential term.
+If $\lambda_\psi\psi^4$ is the only relevant interaction, the
+condensate remains collisionless and coherent.
+\item \textbf{Subluminal sound horizon:} The physical sound horizon
+$c_s t$ of the condensate is sub-Hubble, ensuring that the perfect
+fluid approximation is valid.
+\end{itemize}
+
+The sound speed follows from the perturbation equations:
+$c_s^2=\dot p_\psi/\dot\rho_\psi=1/3$, as expected for a
+relativistic coherent oscillator. This value is positive and
+constant, confirming gradient stability ($c_s^2>0$) throughout the
+evolution.
+
+We emphasise that this is the same physics underlying the standard
+treatment of scalar field dark energy (quintessence) and inflation
+ensuring $c_s^2=1$ for the inflaton. The pfd case is distinguished
+only by the fact that the condensate is in the $w=1/3$ regime rather
+than $w\simeq-1$ or $w\simeq0$.
+
+The fluid is therefore a \emph{relativistic perfect fluid} with
+$c_s^2=1/3$ and $\sigma=0$, and its perturbation equations reduce
+to the two coupled first-order equations (\ref{eq:delta_pfd_main})--(\ref{eq:theta_pfd_main}), with no shear term and no higher-multipole hierarchy. 
+
+The implementation supplies adiabatic initial conditions (consistent
+with the single-field creation mechanism, which yields purely
+adiabatic perturbations to leading order in slow-roll) and couples
+the pfd fluid consistently to the Einstein source terms. Exact
+\(\Lambda\)CDM recovery for \(\Delta N_{\rm fluid}=0\) was verified.
+
+A technically important issue was the state-vector layout. An early
+implementation inserted pfd variables inside the ultra-relativistic
+hierarchy, breaking the contiguous index assumptions used by CLASS
+and producing singular-matrix failures. The final implementation
+places pfd in an independent fluid block, fully resolving the
+instability.
+
+%============================================================
+\section{Cosmological signatures}
+\label{sec:sigs}
+%============================================================
+
+\subsection{CMB residuals}
+
+Raw CMB TT and matter-power residuals were computed for
+\(\Delta N_{\rm fluid}=0.01\), \(0.02\), \(0.05\), \(0.10\),
+\(0.20\), keeping the standard cosmological parameters fixed.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_multi_dN_residuals_raw.pdf}
+\caption{Raw CMB TT residuals (left) and matter-power residuals
+(right) for PTUM proxy-fluid dark radiation over
+\(\Delta N_{\rm fluid}=0.01\)--\(0.20\). The response scales
+approximately linearly with \(\Delta N_{\rm fluid}\).}
+\label{fig:multiDN}
+\end{figure*}
+
+\subsection{Lensing potential}
+
+The CMB lensing potential power spectrum \(C_L^{\phi\phi}\) is
+suppressed by pfd through its effect on late-time structure growth.
+At \(L=500\) the fractional suppression is
+\begin{equation}
+\begin{aligned}
+\frac{\Delta C_L^{\phi\phi}}{C_L^{\phi\phi}}
+&\simeq -1.46\%\quad(\Delta N=0.10),\\
+&\simeq -4.67\%\quad(\Delta N=0.31).
+\end{aligned}
+\end{equation}
+The suppression scales approximately linearly with
+\(\Delta N_{\rm fluid}\) and is detectable with CMB-S4 lensing
+reconstruction for \(\Delta N_{\rm fluid}\gtrsim0.10\).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_lensing_potential_PTUM.pdf}
+\caption{Fractional residuals of the CMB lensing potential power
+spectrum \(C_L^{\phi\phi}\) for PTUM relative to \(\Lambda\)CDM.
+The suppression grows with \(\Delta N_{\rm fluid}\) and reaches
+\(\sim5\%\) at \(L\sim1000\) for \(\Delta N=0.31\).}
+\label{fig:lensing_pp}
+\end{figure}
+
+\subsection{Fluid versus free-streaming dark radiation}
+
+The key observable distinction between pfd and standard
+neutrino-like dark radiation is the absence of anisotropic stress
+in the pfd case. Free-streaming dark radiation with extra energy
+fraction \(\Delta N_{\rm eff}\) induces a CMB acoustic-peak phase
+shift
+\begin{equation}
+\begin{split}
+\delta\phi_{\rm peak}
+&\approx 0.19\pi\,R_{\rm extra}, \\
+R_{\rm extra}
+&=\frac{\Delta N_{\rm fluid}\,\tfrac{7}{8}
+\!\left(\tfrac{4}{11}\right)^{4/3}}
+{\sum_i\Omega_{i,{\rm rad}}},
+\end{split}
+\end{equation}
+whereas pfd with \(\sigma=0\) produces no such shift.
+
+The observational distinction between a proxy-fluid component and a free-streaming relativistic species can be expressed directly in terms of the acoustic phase of the CMB temperature spectrum. For a fixed additional radiation abundance, a free-streaming component shifts the acoustic peaks through anisotropic-stress effects, whereas the PTUM proxy-fluid component preserves the standard peak phase within the effective linear fluid description. This diagnostic is illustrated schematically in Fig.~\ref{fig:ptum_cmb_phase_shift_diagnostic}.
+
+\begin{figure*}[t!]
+\centering
+\includegraphics[
+width=0.92\textwidth,
+height=0.52\textheight,
+keepaspectratio
+]{figures/PTUM_F4_CMB_phase_shift_diagnostic.pdf}
+\caption{
+CMB acoustic phase-shift diagnostic. A free-streaming relativistic component
+generates anisotropic stress and produces a neutrino-like displacement of the
+acoustic peak structure relative to the baseline spectrum. In contrast, the
+PTUM proxy-fluid component has $\sigma_\psi=0$ within the effective linear
+fluid approximation and therefore does not induce the same phase shift. The
+curves shown here are schematic diagnostics rather than numerical CLASS
+outputs.
+}
+\label{fig:ptum_cmb_phase_shift_diagnostic}
+\end{figure*}
+
+
+The predicted phase shifts are listed in
+Table~\ref{tab:phaseshift}.
+
+At fixed cosmological parameters, a systematic comparison of TT
+and EE power spectra shows that the absence of the sigma-induced
+phase shift in the pfd case leads to smaller spectral distortions
+than in the free-streaming case with the same \(\Delta N\). The
+difference is dominated by the EE polarization spectrum and grows
+rapidly with \(\Delta N_{\rm fluid}\), indicating that current and
+future high-resolution CMB data should be able to discriminate
+between the two scenarios. This distinction is most directly
+accessible through the CMB acoustic-peak phase, which serves as
+the primary observational discriminator of pfd.
+
+\begin{table}
+\caption{Phase shift between fluid (pfd) and free-streaming dark
+radiation for representative values of \(\Delta N_{\rm fluid}\),
+together with the detection significance for CMB-S4 and CMB-HD.}
+\label{tab:phaseshift}
+\centering
+\begin{tabular}{cccc}
+\hline\noalign{\smallskip}
+\(\Delta N_{\rm fluid}\) & Phase shift & CMB-S4 & CMB-HD \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+0.05 & \(0.23^\circ\) & no (0.8\(\sigma\)) & marginal (1.5\(\sigma\)) \\
+0.10 & \(0.45^\circ\) & no (1.5\(\sigma\)) & detect (3.0\(\sigma\)) \\
+0.20 & \(0.89^\circ\) & marginal (3.0\(\sigma\)) & detect (6.0\(\sigma\)) \\
+0.31 & \(1.40^\circ\) & detect (4.5\(\sigma\)) & detect (9.2\(\sigma\)) \\
+\noalign{\smallskip}\hline
+
+\end{tabular}
+\end{table}
+
+\subsection{Decision-level observational tests}
+\label{sec:decision_tests}
+
+The proxy-fluid interpretation should be evaluated through a small number of
+separable observational outcomes.  This is important because PTUM is not a
+single yes-or-no deformation of \(\Lambda\)CDM: its background expansion,
+radiation abundance, perturbative closure, and phase-shift signature probe
+different parts of the effective construction.  Table~\ref{tab:decision_tests}
+collects the corresponding decision tests.
+
+\begin{table*}[t]
+\caption{Decision-level observational tests for the PTUM proxy-fluid sector.
+The table separates viability tests, discriminators, and direct failure modes.}
+\label{tab:decision_tests}
+\centering
+\small
+\begin{tabular}{p{0.20\textwidth}p{0.24\textwidth}p{0.23\textwidth}p{0.19\textwidth}}
+\hline\noalign{\smallskip}
+Test & PTUM expectation & Distinguishing information & Failure mode \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+Radiation abundance & A bounded positive or vanishing
+\(\Delta N_{\rm fluid}\) & Determines whether the proxy-fluid channel is
+cosmologically relevant & No allowed region after CMB, BBN, BAO, SNe, and lensing \\
+Acoustic phase & No neutrino-like phase shift from the proxy component & Separates fluid radiation from free-streaming radiation & Extra radiation is detected with a free-streaming phase shift \\
+Perturbative closure & \(w_\psi=1/3\), \(c_{s,\psi}^2=1/3\), \(\sigma_\psi=0\) & Tests the perfect-fluid proxy assumption & Nonzero effective anisotropic stress is required \\
+Late-time expansion & Near-\(\Lambda\) residual sector with viable \(w_{\rm DE}\) & Checks whether the residual field can mimic dark energy & No viable near-\(\Lambda\) region remains \\
+Internal EFT consistency & Positive post-saturation fluctuation scale and stable modes & Checks whether the threshold discharge is dynamically safe & Residual tachyonic, ghost, or gradient instability \\
+\noalign{\smallskip}\hline
+\end{tabular}
+\end{table*}
+
+The cleanest possible support for the PTUM proxy-fluid sector would not be a
+generic excess in \(N_{\rm eff}\) alone.  It would be the combination of an
+allowed extra relativistic component, the absence of the corresponding
+free-streaming acoustic phase shift, and a stable effective-fluid closure with
+\(\sigma_\psi=0\).  Conversely, a robust detection of an additional
+neutrino-like free-streaming component would not merely tighten the pfd
+abundance bound; it would directly disfavor the proxy-fluid interpretation of
+that component.
+
+%============================================================
+\section{Bayesian constraints and model comparison}
+\label{sec:mcmc}
+%============================================================
+
+\subsection{Likelihood setup}
+
+We performed a Bayesian benchmark analysis using
+Cobaya~\cite{Torrado2021} with the PTUM-modified CLASS backend.
+The likelihood combination includes Planck~2018 high-\(\ell\)
+TTTEEE-lite, low-\(\ell\) EE, CMB lensing~\cite{PlanckLike},
+6dF, SDSS DR7 MGS, and SDSS DR12
+BAO~\cite{Beutler2011,Ross2015,Alam2017}, and Pantheon+
+supernovae~\cite{Brout2022}.
+
+\subsection{Posterior constraints}
+
+The marginalized PTUM constraints are
+\begin{align}
+\omega_b &= 0.02244^{+0.00014}_{-0.00016},\\
+\omega_{\rm cdm} &= 0.1222^{+0.0013}_{-0.0023},\\
+H_0 &= 68.64^{+0.55}_{-0.87}\ {\rm km\,s^{-1}\,Mpc^{-1}},\\
+n_s &= 0.9639\pm0.0036,\\
+\tau_{\rm reio} &= 0.0529\pm0.0071,\\
+\Delta N_{\rm fluid} &< 0.31\quad(95\%\ {\rm CL}).
+\label{eq:bound}
+\end{align}
+For the \(\Lambda\)CDM reference run:
+\begin{align}
+\omega_b &= 0.02235\pm0.00013,\\
+\omega_{\rm cdm} &= 0.12004\pm0.00087,\\
+H_0 &= 67.85\pm0.39\ {\rm km\,s^{-1}\,Mpc^{-1}},\\
+n_s &= 0.9635\pm0.0037,\\
+\tau_{\rm reio} &= 0.0533^{+0.0065}_{-0.0075}.
+\end{align}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{ptum_final_triangle.pdf}
+\caption{Posterior distributions from the full PTUM likelihood
+analysis. The pfd amplitude peaks near zero and has a broad upper
+tail, consistent with an upper-limit result.}
+\label{fig:ptumtriangle}
+\end{figure}
+
+\subsection{Dataset-split analysis}
+
+To identify which data combination drives the
+\(\Delta N_{\rm fluid}\) bound, we compare results from different
+dataset combinations using converged PTUM chains. The results
+are summarized in Table~\ref{tab:datasplit}.
+
+\begin{table}
+\caption{Dataset-split comparison. Weighted posterior means are
+shown; the last column gives the 95\% CL upper limit on
+\(\Delta N_{\rm fluid}\).}
+\label{tab:datasplit}
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabular}{@{}lcccc@{}}
+\hline\noalign{\smallskip}
+Data & \(H_0\) & \(\omega_c\) & \(n_s\) & \(\Delta N^{95}\) \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+P+B       & 68.91 & 0.1227 & 0.965 & 0.38 \\
+P+L+B+S   & 68.64 & 0.1222 & 0.964 & 0.31 \\
+\(\Lambda\)CDM & 67.85 & 0.1200 & 0.964 & -- \\
+\noalign{\smallskip}\hline
+\end{tabular}
+\end{table}
+
+Here P denotes Planck TTTEEE-lite + low-\(\ell\) EE, L denotes
+Planck lensing, B denotes BAO (6dF + DR7 MGS + DR12), and S
+denotes Pantheon+ supernovae.
+
+A Planck+BAO combination already imposes a meaningful upper bound,
+\(\Delta N_{\rm fluid}<0.38\) (95\% CL), while the addition of
+Planck lensing and Pantheon+ tightens this to
+\(\Delta N_{\rm fluid}<0.31\), a 18\% improvement. This indicates
+that the PTUM pfd constraint is primarily CMB-driven, with
+low-redshift probes acting mainly as geometric consistency priors
+and moderate posterior sharpeners. The Hubble constant shift
+is present already at the Planck+BAO level
+(\(H_0=68.91\,{\rm km\,s^{-1}\,Mpc^{-1}}\)), confirming it as an
+intrinsic feature of the model rather than an artifact of the
+low-redshift dataset.
+
+\subsection{Profile likelihood}
+
+The profile likelihood of \(\Delta N_{\rm fluid}\) was constructed
+from the PTUM chains by extracting the maximum posterior value in
+successive \(\Delta N_{\rm fluid}\) bins. The resulting profile is
+shown in Fig.\ref{fig:profile_dN}. The profile minimum lies near
+\(\Delta N_{\rm fluid}\approx0.07\), indicating a mild non-zero
+preference that is well within the \(1\sigma\) region. The profile
+\(\Delta\chi^2=4\) level is reached near
+\(\Delta N_{\rm fluid}\approx0.30\), consistent with the
+marginal 95\% CL upper limit. The 68\% CL upper limit from the
+marginal posterior is \(\Delta N_{\rm fluid}<0.15\).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_profile_likelihood_dN.pdf}
+\caption{Left: profile likelihood of \(\Delta N_{\rm fluid}\)
+constructed from the PTUM chains. The profile \(\Delta\chi^2=4\)
+level (corresponding to 95\% CL for one parameter) is reached near
+\(\Delta N_{\rm fluid}\approx0.30\), consistent with the marginal
+posterior bound. Right: marginal posterior PDF with 68\% and 95\%
+credible regions shaded.}
+\label{fig:profile_dN}
+\end{figure}
+
+\subsection{Prior robustness}
+
+The constraint \(\Delta N_{\rm fluid}<0.31\) is data-driven rather
+than prior-driven. Under flat priors Uniform\([0,0.5]\),
+Uniform\([0,1]\), and Uniform\([0,3]\), the 95\% upper limit
+remains at \(0.31\)--\(0.39\), unchanged at the level of the
+posterior width. The dominant constraining dataset is the CMB
+TT+TE+EE likelihood through Silk damping at high \(\ell\); BAO and
+SN data provide geometric consistency but minimal direct sensitivity
+to \(\Delta N_{\rm fluid}\).
+
+\subsection{Model comparison}
+
+The minimum \(\chi^2\) values are
+\(\chi^2_{\rm PTUM}=2397.22\) and
+\(\chi^2_{\Lambda{\rm CDM}}=2396.96\), giving
+\begin{equation}
+\Delta\chi^2=-0.26,\qquad \Delta{\rm AIC}=2.26.
+\end{equation}
+This indicates only a weak preference for the simpler model and
+does not constitute a decisive exclusion of PTUM. The current data
+provide a meaningful upper bound on the pfd abundance while leaving
+the model observationally viable within the parameter region studied.
+This interpretation is deliberately conservative: current data support
+viability of the effective proxy-fluid construction, not a detection of
+that sector and not a statistical preference over \(\Lambda\)CDM.
+
+\subsection{Cosmological tensions}
+
+PTUM shifts \(H_0\) upward by
+\(+0.79\,{\rm km\,s^{-1}\,Mpc^{-1}}\) relative to \(\Lambda\)CDM
+(toward the SH0ES value), reducing the Hubble tension from
+\(4.7\sigma\) to \(3.5\sigma\) (25\% reduction). The \(S_8\)
+tension is essentially unchanged (\(2.4\sigma\) in both models).
+PTUM was not designed as a tension-solving model; these effects are
+incidental consequences of the extra radiation component.
+
+%============================================================
+\section{Stability and consistency tests}
+\label{sec:stability}
+%============================================================
+
+\subsection{Linear perturbation stability}
+
+All four PTUM sectors are free of ghost and gradient instabilities.
+The relevant quantities are summarized in Table~\ref{tab:stability}.
+
+\begin{table}
+\caption{Linear perturbation stability for all PTUM sectors.}
+\label{tab:stability}
+\centering
+\begin{tabular}{lcccc}
+\hline\noalign{\smallskip}
+Sector & Ghost-free & \(c_s^2\) & Grad.-stable & \(\sigma\) \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+\(\Phi\) (creation)     & yes & 1   & yes & 0 \\
+\(\psi\) (pfd)          & yes & 1/3 & yes & 0 \\
+\(\chi\) (DM)           & yes & 0   & yes & 0 \\
+\(\Phi_{\rm res}\) (DE) & yes & 1   & yes & 0 \\
+\noalign{\smallskip}\hline
+\end{tabular}
+\end{table}
+
+The pfd dispersion relation \(\omega^2=(1/3)k^2\) gives propagating,
+stable acoustic oscillations for all \(k\). No tachyonic or
+viscous instabilities are present in any sector.
+
+\subsection{Isocurvature constraints}
+
+The single-field creation mechanism produces purely adiabatic
+perturbations to leading order in slow-roll. The sub-leading
+isocurvature fraction from reheating asymmetry is estimated as
+\(\beta_{\rm iso}\sim\epsilon^2\sim10^{-12}\)--\(10^{-6}\), which
+is \(10^4\)--\(10^5\) times below the Planck 95\% CL bounds on
+CDM and neutrino density isocurvature modes. The pfd isocurvature
+is additionally suppressed by the small pfd fraction
+(\(\Delta N/N_{\rm eff}\sim3\)--\(11\%\)).
+
+\subsection{BBN consistency}
+
+The PTUM bound \(\Delta N_{\rm fluid}<0.31\) is automatically
+consistent with Big Bang nucleosynthesis. The BBN-only 95\%~CL
+upper limit is \(\Delta N_{\rm eff}<0.40\)
+(Fields et al.\ 2020~\cite{Fields2020}), which is weaker than the
+CMB-derived bound. For the maximum allowed pfd abundance, the
+primordial helium fraction shifts by at most
+\(\delta Y_p\simeq+0.004\), corresponding to \(1.1\sigma\) of the
+current \(Y_p\) measurement uncertainty.
+
+\subsection{EFT validity}
+\label{sec:eft_validity}
+
+The PTUM EFT hierarchy \(H_*\ll V_0^{1/4}\ll M_{\rm Pl}\) is
+satisfied: \(H_*/M_{\rm Pl}\sim4\times10^{-6}\) and
+\(V_0/M_{\rm Pl}^4\sim10^{-10}\). All couplings are perturbative
+(\(\ll4\pi\)) with margins exceeding a factor of two. For
+\(\lambda\lesssim0.5\) the field excursion is super-Planckian
+(a standard feature of large-field inflation models, addressed by
+shift symmetry); for \(\lambda>1\) the excursion is sub-Planckian
+and the EFT is fully under control without additional symmetry
+input.
+
+%============================================================
+\section{Observational forecasts}
+\label{sec:forecast}
+%============================================================
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_forecast_PTUM.pdf}
+\caption{Detection capability matrix for PTUM observables with
+current and future experiments. Top left: tensor ratio \(r\) vs
+\(\lambda\) with detector reach bands; top right: projected
+\(\Delta N_{\rm fluid}\) upper-limit improvement; bottom left:
+fluid--free-streaming phase-shift detectability; bottom right:
+summary detection matrix.}
+\label{fig:forecast}
+\end{figure*}
+
+The PTUM creation sector predicts a specific \(r(\lambda)\)
+relation. For \(\lambda=0.02\) (\(r=0.022\)), LiteBIRD and CMB-S4
+can detect the tensor signal at \(11\sigma\) and \(22\sigma\),
+respectively; for \(\lambda=0.05\) (\(r=0.007\)), detection
+requires CMB-S4. For \(\lambda>0.5\), \(r<10^{-3}\) is beyond
+the reach of any currently planned experiment.
+
+CMB-S4 is projected to improve the \(\Delta N_{\rm fluid}\) bound
+by a factor of seven relative to the current result
+(\(\sigma(\Delta N)\simeq0.027\), 95\% CL \(<0.044\)), while
+CMB-HD offers a 14-fold improvement (\(<0.023\)). The fluid
+versus free-streaming phase shift is detectable by CMB-S4 at
+\(>3\sigma\) for \(\Delta N_{\rm fluid}\gtrsim0.20\) and at
+\(>3\sigma\) by CMB-HD for \(\Delta N_{\rm fluid}\gtrsim0.10\).
+
+Stage-IV galaxy surveys (DESI, Euclid, SKAO combined) can detect
+the \(f\sigma_8\) shift at \(\sim2\)--\(3\sigma\), while full
+Stage-IV combination can resolve the \(\Delta H_0=+0.79\) shift
+at \(\sim5\sigma\).
+
+\begin{center}
+\textit{Appendix material.} Additional implementation notes and
+consistency figures are included in the self-contained appendix below.
+\end{center}
+
+\section{Discussion}
+\label{sec:discussion}
+%============================================================
+
+The main result of this work is that PTUM can now be discussed as a
+quantitatively specified and observationally testable cosmological
+creation framework, rather than as a purely qualitative dark-sector
+scenario. The model is built around a single central idea: a
+discharge-based cosmogonic event generates the hot expanding
+Universe and leaves behind dark matter, dark energy, and a
+relativistic proxy-fluid dark-radiation component as residual
+products. In this sense, PTUM is not merely an extension of
+$\Lambda$CDM by an additional radiation parameter; its primary goal
+is to connect cosmogenesis and dark-sector structure within one
+effective description.
+
+Four distinct pillars have now been established:
+\begin{enumerate}[label=(\roman*)]
+\item the creation sector admits a plateau-type primordial potential
+      compatible with current CMB constraints on $n_s$ and $r$;
+\item the discharge scale is normalised to a concrete high-energy
+      band, $V_0^{1/4}\sim10^{15}$--$10^{16}\,\mathrm{GeV}$;
+\item the late-time dark-energy sector contains a broad viable
+      region with near-$\Lambda$ behaviour;
+\item the pfd sector has a closed perturbation-level
+      implementation, with observational bounds established through
+      Bayesian inference, profile-likelihood extraction, and
+      dataset-split analysis.
+\end{enumerate}
+
+A particularly important outcome is that PTUM makes a genuinely
+falsifiable prediction. The proxy-fluid component behaves as a
+relativistic perfect fluid with
+$w=1/3$, $c_s^2=1/3$, and $\sigma=0$, and therefore does not
+produce the neutrino-like acoustic phase shift characteristic of
+free-streaming dark radiation. This absence is the cleanest proposed observational discriminator
+of the model. Current data constrain the abundance of this
+component to $\Delta N_{\rm fluid}<0.31$ at 95\% credibility,
+while future CMB-S4 and CMB-HD observations can directly test the
+fluid-versus-free-streaming distinction if a non-zero dark-radiation
+signal is present.
+
+Methodologically, the numerical consistency of the framework is also
+an important result. The slow-roll treatment of the creation sector
+is validated by exact-background integration at the level
+$\Delta n_s\sim(5.2$--$5.8)\times10^{-4}$ and
+$|\Delta r|/r\sim1.3\%$--$1.5\%$, lending credibility to the
+derived discharge-scale estimates and $(n_s,r)$ predictions.
+Moreover, the modified \texttt{CLASS} implementation recovers
+$\Lambda$CDM exactly in the limit $\Delta N_{\rm fluid}=0$, and
+the perturbation sector remains ghost-free and gradient-stable
+throughout the parameter region studied.
+
+The data analysis clarifies where the present constraints originate.
+The dataset-split study shows that the PTUM pfd bound is primarily
+CMB-driven: the Planck$+$BAO combination alone yields
+$\Delta N_{\rm fluid}<0.38$ at 95\% credibility, while adding
+lensing and Pantheon$+$ tightens the limit to
+$\Delta N_{\rm fluid}<0.31$. The profile likelihood is fully
+consistent with the marginal posterior, with its minimum near
+$\Delta N_{\rm fluid}\approx0.07$, indicating that the inferred
+upper bound is not an artefact of prior volume.
+
+At the same time, the current model-comparison result should be
+interpreted with appropriate caution. PTUM is not preferred over
+$\Lambda$CDM by present data:
+$\Delta\chi^2=-0.26$ and $\Delta\mathrm{AIC}=2.26$ indicate a
+weak preference for the simpler standard model. This outcome is not
+unexpected, since PTUM introduces one additional phenomenological
+degree of freedom while remaining close to $\Lambda$CDM in the
+allowed region. The correct interpretation is therefore not that
+PTUM is supported by current data, but that it remains observationally viable
+and non-excluded within the parameter region studied while making sharper future
+predictions than many dark-sector extensions.
+
+PTUM also produces a mild upward shift in the inferred Hubble
+constant,
+$H_0 = 68.64^{+0.55}_{-0.87}\,\mathrm{km\,s^{-1}\,Mpc^{-1}}$,
+relative to the $\Lambda$CDM fit. This reduces the SH0ES tension
+from about $4.7\sigma$ to $\sim3.5\sigma$, i.e.\ by roughly
+25\%, although the model was not designed as a dedicated Hubble
+tension solution. By contrast, the $S_8$ tension remains
+essentially unchanged. PTUM should therefore be viewed primarily as
+a creation-based dark-sector framework rather than a targeted
+tension-resolution model.
+
+%============================================================
+\subsection{Model summary and internal consistency}
+\label{sec:summary}
+
+PTUM's core physical picture---fuel accumulation, tachyonic
+discharge, residual dark sector splitting---is internally consistent:
+all sectors are ghost-free and gradient-stable (Section~8.1),
+all couplings are perturbative and all energy scales satisfy
+$H_*\ll M_{\rm Pl}$ (Section~8.4), and the perturbative sector
+produces purely adiabatic perturbations with isocurvature fraction
+$\beta_{\rm iso}\sim10^{-12}$--$10^{-6}$, far below current bounds
+(Section~8.2). The BBN consistency check confirms
+$\Delta N_{\rm fluid}<0.31$ is automatically compatible with the
+BBN upper limit $\Delta N_{\rm eff}<0.40$ (Section~8.3).
+
+The cosmological constant problem is re-parameterised rather than
+solved: the residual dark-energy fraction
+$V_{\rm res}/V_0\sim10^{-108}$--$10^{-112}$ is extremely small,
+but PTUM does not provide a dynamical explanation for this hierarchy.
+The magnitude remains unexplained; what PTUM provides is a concrete
+interpretation of dark energy as a discharge residual and a broad parameter
+region in which $w_{\rm DE}\approx-1$ is obtained.
+Future data from DESI~\cite{DESI2024} and Euclid~\cite{Euclid2024}
+will test whether $w_{\rm DE}$ deviates from $-1$ at percent level;
+such a detection would constrain PTUM's viable region, while a
+precise confirmation of $w=-1$ would leave the problem open.
+
+Several limitations are explicitly acknowledged. The primordial
+analysis uses exact background evolution rather than a full
+Mukhanov--Sasaki mode-by-mode integration. The relation between
+the effective discharge picture and a concrete UV completion remains
+to be derived; the structural parallels with string tachyon
+condensation and LQC bounce scenarios in Section~\ref{sec:uv_perspective}
+should therefore be interpreted as motivation rather than derivation.
+The reheating sector and the microscopic dark-matter phenomenology
+of $\chi$ have not yet been analysed in comparable detail.
+Finally, a nested-sampling Bayesian evidence calculation is left to
+future work.
+
+%============================================================
+\subsection{Observational predictions and discriminators}
+\label{sec:predictions}
+
+The pfd sector provides the sharpest observational discriminator of
+PTUM. Because $\sigma_\psi=0$, the proxy-fluid produces no
+neutrino-induced CMB acoustic-peak phase shift, whereas free-streaming
+dark radiation with the same energy density does. This absence is
+directly testable by future CMB experiments. CMB-S4 can distinguish
+fluid from free-streaming at $>3\sigma$ for
+$\Delta N_{\rm fluid}\gtrsim0.20$, and CMB-HD extends this reach
+to $\Delta N_{\rm fluid}\gtrsim0.10$ (Section~\ref{sec:forecast}).
+The forecast matrix (Fig.\,\ref{fig:forecast}) summarises the
+detection thresholds for all PTUM observables.
+
+The creation sector predicts a specific tensor-to-scalar ratio
+$r(\lambda)$. For $\lambda=0.02$ ($r\approx0.022$), LiteBIRD and
+CMB-S4 can detect the signal; for $\lambda=0.05$ ($r\approx0.007$),
+detection requires CMB-S4. For $\lambda>0.5$, $r<10^{-3}$ is beyond
+the reach of any currently planned experiment.
+
+On cosmological tensions: PTUM shifts $H_0$ upward by
+$\sim0.8\,$km\,s$^{-1}$\,Mpc$^{-1}$, reducing the SH0ES tension
+from $4.7\sigma$ to $\sim3.5\sigma$ ($\sim25\%$ improvement).
+The $S_8$ tension remains essentially unchanged. This shift is an
+incidental geometric effect of the extra radiation component, not a
+designed tension solution.
+
+%============================================================
+\subsection{PTUM research programme: open questions and future directions}
+\label{sec:roadmap}
+
+PTUM is the first step of a broader research programme. The discharge
+mechanism touches on several deep questions in fundamental physics,
+each representing a natural direction for future investigation.
+These directions are outlined below not as claims made in this work
+but as motivated paths for the programme to pursue.
+
+\begin{description}
+
+\item[Singularity replacement.] 
+PTUM models the hot Big Bang as a finite-energy discharge transition
+rather than treating it as a primitive singular initial condition. This is analogous in spirit to
+the LQC bounce~\cite{Bojowald2001,Ashtekar2011}, though PTUM operates in the classical EFT regime
+($H_*/M_{\rm Pl}\sim10^{-6}$) without invoking quantum-gravity
+corrections. The pre-discharge phase and its spacetime structure
+remain to be specified; this requires a detailed model of the
+metastable background.
+
+\item[Dark matter phenomenology.] 
+The dark-matter field $\chi$ is produced as a superheavy relic
+($m_\chi\sim10^{9}$--$10^{13}\,$GeV) through parametric resonance
+during the discharge. Relic abundance, detection prospects, and the
+possible connection to topological defects formed at the discharge
+transition are left to a dedicated study.
+
+\item[Dark energy and the cosmological constant.] 
+PTUM represents dark energy as a residual field $W(\Phi_{\rm res})$
+with near-$\Lambda$ behaviour over $\sim90\%$ of the scanned
+parameter space. Whether the extreme hierarchy
+$V_{\rm res}/V_0\sim10^{-108}$ admits a dynamical explanation
+remains an open problem; DESI and Euclid constraints on $w_0$--$w_a$
+will test the viable parameter region in the near future.
+
+\item[String theory and swampland.] 
+The tachyonic activation mechanism bears structural resemblance to
+open-string tachyon condensation in D-brane--anti-D-brane systems.
+A full string-theoretic embedding would require specifying the
+K\"ahler potential, flux background, and moduli stabilisation
+procedure. Swampland criteria (distance conjecture, de Sitter
+conjecture) provide additional consistency checks that PTUM
+satisfies in its inflationary phase.
+
+\item[Baryogenesis.] 
+The discharge is a departure from thermal equilibrium by definition,
+satisfying the third Sakharov condition. If the fuel field is extended
+to include CP-violating phases, the discharge transition can generate
+a net baryon number analogously to the Affleck--Dine mechanism.
+Quantitative realisation requires a dedicated analysis of the
+CP-violating sector.
+
+\item[Entropy production and the arrow of time.] 
+The discharge is irreversible and produces entropy. A rough estimate
+gives $S_{\rm com}\sim10^{80}$ per comoving volume for the
+observed cosmic entropy budget, suggesting the discharge can account
+for the observed entropy without a separate low-entropy initial
+condition. A detailed entropy budget and its connection to the
+cosmogonically low-entropy fuel configuration remain to be
+quantified.
+
+\end{description}
+
+In summary, PTUM reframes dark energy as a residual-field sector,
+dark matter as a superheavy discharge-product candidate, and the hot
+Big Bang as a finite-energy trigger event within an effective
+cosmological framework. The research
+programme outlined here addresses the questions that this first step
+raises but does not resolve.
+
+%============================================================
+\subsection{Limitations and honest boundaries}
+\label{sec:limits}
+
+The programme must be honest about its current boundaries. PTUM
+does not derive the metastable background from first principles;
+does not solve the cosmological constant problem in the traditional
+sense; does not include a full Mukhanov--Sasaki primordial
+perturbation analysis; does not specify the reheating sector; and
+does not provide a concrete UV completion. These limitations define
+the scope of the present effective model.
+
+For internal auditing, the present version of PTUM should be judged by five
+separate questions rather than as a single all-or-nothing claim:
+\begin{enumerate}[label=(\roman*)]
+\item Does the EFT remain below its assumed cutoff and free of ghost or gradient
+instabilities?
+\item Does the threshold transition saturate into a locally stable post-discharge
+configuration with positive curvature at the activated minimum?
+\item Does the proxy-fluid sector close as a relativistic perfect fluid at the
+effective linear level?
+\item Do CMB, BBN, BAO, SNe, and lensing constraints leave a viable region for
+$\Delta N_{\rm fluid}$ and late-time expansion parameters?
+\item Can the proxy-fluid component be distinguished observationally from a
+free-streaming relativistic species through the acoustic phase-shift channel?
+\end{enumerate}
+A failure of one test should identify a specific weak point of the model rather
+than blur the status of the whole framework.  In particular, the model should
+not be defended by moving a failed perturbative prediction into the background
+sector or by reinterpreting a free-streaming signal as a proxy-fluid signal.
+
+What PTUM does do is provide a controlled effective model, an implemented
+Boltzmann-module prescription, a calibrated primordial scale, and a concrete
+observational discriminator. The next critical step is therefore
+empirical: future high-resolution CMB data will
+test whether any extra radiation component behaves as a fluid
+without anisotropic stress at the effective linear level or as a
+free-streaming species. In this
+sense, PTUM stands or falls on a clear observational criterion.
+
+\paragraph{Falsifiability of the proxy-fluid interpretation.}
+The proxy-fluid interpretation fails if future data detect an extra relativistic
+component whose perturbations behave as a free-streaming species rather than as
+an effective perfect fluid.  In particular, a neutrino-like acoustic phase shift
+associated with the additional radiation component would disfavor the PTUM
+proxy-fluid sector, whereas an extra fluid-like component with
+$w_\psi=1/3$, $c_{s,\psi}^2=1/3$, and $\sigma_\psi=0$ would support its
+distinctive signature.
+
+\subsection{Final internal-consistency audit}
+\label{sec:final_internal_audit}
+
+The final version of PTUM is organized around a small set of non-interchangeable
+definitions.  The audit table below states the intended meaning of each quantity
+inside the present cosmological model and the interpretation that should not be
+silently imported during reading or future extensions.
+
+\begin{table*}[t]
+\caption{Internal-consistency audit for the final PTUM research version.}
+\label{tab:ptum_final_audit}
+\centering
+\begin{tabular}{p{0.17\textwidth}p{0.36\textwidth}p{0.35\textwidth}}
+\hline\noalign{\smallskip}
+Item & PTUM meaning & Guardrail \\
+\noalign{\smallskip}\hline\noalign{\smallskip}
+$\Phi$ & Quantum fuel field controlling the discharge threshold & An effective scalar variable, not a completed microscopic derivation of the pre-discharge background \\
+$\psi$ & Activated proxy mode whose perturbations are represented as fluid-like dark radiation & Not a free-streaming neutrino-like hierarchy unless $\sigma_\psi\neq0$ is explicitly introduced \\
+$\chi$ & Passive post-discharge dark-matter candidate sector & Not used as evidence for a specific particle-identification claim \\
+$\Phi_{\rm res}$ & Residual near-$\Lambda$ dark-energy-like component & Not a solution of the cosmological-constant problem by itself \\
+$\Delta N_{\rm fluid}$ & Effective abundance of fluid-like dark radiation & Not identical to arbitrary $\Delta N_{\rm eff}$ unless the perturbative closure is specified \\
+Operational closure & Tachyonic activation, local post-discharge stability, and perfect-fluid perturbative closure & Not a UV completion or a proof that this is the unique possible potential form \\
+\noalign{\smallskip}\hline
+\end{tabular}
+\end{table*}
+
+The final claim boundary is therefore narrow but useful: PTUM is a testable
+effective phase-transition cosmology model whose sharpest discriminator is a
+fluid-like relativistic component with no free-streaming acoustic phase shift.
+It is not, at the present stage, a UV-complete cosmogony, a derivation of the
+metastable pre-discharge background, or a solution to the cosmological-constant
+hierarchy.  This restricted formulation is the version that should be carried
+forward as the PTUM library-final manuscript.
+
+%============================================================
+\section{Conclusion}
+\label{sec:conclusion}
+%============================================================
+
+We have presented the Phase Transition Universes Model as a
+discharge-based cosmological creation framework in which a single
+effective quantum-fuel discharge provides a phenomenological description
+of the onset of a hot expanding cosmological phase and sources a
+dark-matter candidate sector, a residual dark-energy sector, and a
+proxy-fluid dark-radiation sector as residual components. The analysis was carried from the
+level of effective field theory and background dynamics to
+perturbations, Boltzmann-code implementation, and benchmark comparison
+with current cosmological data.
+
+The main conclusions of this work are as follows:
+
+\begin{enumerate}[label=(\arabic*)]
+\item The PTUM fuel potential is a plateau-type creation potential
+      capable of supporting a primordial accelerated phase
+      consistent with present constraints on $(n_s,r)$.
+
+\item Exact-background calculations validate the slow-roll treatment
+      across $\lambda=0.02$--$5$, with
+      $\Delta n_s\sim(5.2$--$5.8)\times10^{-4}$ and
+      $|\Delta r|/r\sim1.3\%$--$1.5\%$.
+
+\item Matching the observed scalar amplitude fixes the creation
+      scale to
+      $V_0^{1/4}\sim 2\times10^{15}$--$1.3\times10^{16}\,
+      \mathrm{GeV}$, corresponding to
+      $H_*\sim10^{12}$--$10^{13}\,\mathrm{GeV}$.
+
+\item The late-time residual potential admits a broad viable region,
+      with $1+w_{\rm DE}<0.01$ over 89.6\% of the scanned
+      $(\kappa,\lambda_{\rm res})$ space, so that PTUM can
+      reproduce $w_{\rm DE}\approx -1$ over most of its allowed
+      parameter domain.
+
+\item The proxy-fluid dark-radiation component has the distinctive
+      effective-linear perturbative signature
+      $w=1/3$, $c_s^2=1/3$, and $\sigma=0$. Unlike free-streaming
+      dark radiation, it therefore produces no neutrino-induced CMB
+      acoustic phase shift. This is the principal observational
+      discriminator of PTUM.
+
+\item A Bayesian benchmark analysis using Planck~2018 TT,TE,EE-lite,
+      low-$\ell$ EE, CMB lensing, BAO, and Pantheon$+$ yields
+      $\Delta N_{\rm fluid}<0.31$ at 95\% credibility. This bound
+      is automatically consistent with BBN constraints.
+
+\item The dataset-split analysis shows that the pfd bound is mainly
+      CMB-driven: Planck$+$BAO alone gives
+      $\Delta N_{\rm fluid}<0.38$, while the full combined data
+      set tightens the limit to $\Delta N_{\rm fluid}<0.31$.
+      The profile likelihood is consistent with the marginal
+      posterior and reaches the $\Delta\chi^2=4$ level near
+      $\Delta N_{\rm fluid}\approx0.30$.
+
+\item Relative to $\Lambda$CDM, PTUM gives
+      $\Delta\chi^2=-0.26$ and
+      $\Delta\mathrm{AIC}=2.26$. Present data therefore show a
+      weak preference for $\Lambda$CDM, but do not exclude PTUM.
+      The model remains observationally viable.
+
+\item All sectors are perturbatively stable and EFT-consistent:
+      the theory is ghost-free, gradient-stable, adiabatic at
+      leading order, compatible with isocurvature bounds, and valid
+      in the regime $H_* \ll M_{\rm Pl}$ with perturbative
+      couplings.
+
+\item Future observations provide a forecast-level test. CMB-S4 can
+      improve the $\Delta N_{\rm fluid}$ sensitivity by roughly a
+      factor of $7$ and may distinguish fluid from free-streaming dark
+      radiation at high significance if
+      $\Delta N_{\rm fluid}\gtrsim0.20$, while CMB-HD can extend
+      this reach to $\Delta N_{\rm fluid}\gtrsim0.10$.
+\item The discharge-sector closure reduces to a compact EFT condition:
+      the tachyonic threshold activates the proxy phase, the activated minimum
+      is locally stable, and the resulting coherent component is tested through
+      the effective-linear proxy-fluid signature $w_\psi=1/3$,
+      $c_{s,\psi}^2=1/3$, and $\sigma_\psi=0$.
+\end{enumerate}
+
+Taken together, these results support PTUM as a viable effective
+phase-transition cosmology framework with a falsifiable proxy-fluid
+dark-radiation channel. Its present value lies not in outperforming
+$\Lambda$CDM with current data, but in organizing a discharge-based dark-sector
+scenario around a concrete perturbative discriminator. If future CMB
+observations reveal extra relativistic energy density without the corresponding
+free-streaming phase shift, PTUM-like fluid dark radiation would become a
+natural effective interpretation. If they do not, the allowed proxy-fluid
+parameter space will be sharply constrained. In either case, the framework
+remains in a well-defined predictive regime.
+
+\begin{acknowledgement}
+The author acknowledges the developers of
+CLASS~\cite{Blas2011,Lesgourgues2011} and
+Cobaya~\cite{Torrado2021} for providing open-source cosmological
+analysis tools. During the preparation of this work the author used
+large language model tools to assist with source-code debugging,
+Python scripting, and \LaTeX{} formatting. After using these tools,
+the author reviewed and edited the content as needed and takes full
+responsibility for the content of the publication.
+\end{acknowledgement}
+
+%============================================================
+% APPENDIX
+%============================================================
+
+\appendix
+
+%------------------------------------------------------------
+\appendix
+
+\section{CLASS implementation details}
+\label{app:class}
+%------------------------------------------------------------
+
+The observational predictions of PTUM are computed using a modified
+version of the Cosmic Linear Anisotropy Solving System
+(\texttt{CLASS}~v3.2.0)~\cite{Blas2011}. This appendix documents
+the implementation to ensure reproducibility.
+
+\subsection{Background module}
+
+The proxy-fluid dark radiation component is implemented as an
+additional perfect fluid with equation of state $w_\psi=1/3$ and
+energy density parametrised by the effective number of fluid
+degrees of freedom $\Delta N_{\rm fluid}$. The energy density at
+the reference epoch is
+\begin{equation}
+\rho_\psi
+= \frac{7}{8}\left(\frac{4}{11}\right)^{4/3}
+  \Delta N_{\rm fluid}\,\rho_\gamma\,,
+\label{eq:rho_pfd_app}
+\end{equation}
+where $\rho_\gamma$ is the photon energy density. This component
+scales as $\rho_\psi\propto a^{-4}$ and is added to the Friedmann
+equation alongside standard radiation, matter, and dark energy.
+
+\subsection{Perturbation module}
+
+At the perturbation level the pfd component is treated as a
+\emph{perfect fluid} with
+\begin{equation}
+c_s^2 = \tfrac{1}{3}\,,\qquad \sigma_\psi = 0\,,
+\label{eq:pfd_pert_app}
+\end{equation}
+where $c_s^2$ is the rest-frame sound speed and $\sigma_\psi$ is
+the anisotropic stress. This is the key distinction from
+free-streaming dark radiation (e.g.\ additional neutrino species),
+which carries non-zero anisotropic stress. The perturbation
+equations in synchronous gauge are
+\begin{align}
+\dot{\delta}_\psi
+  &= -\tfrac{4}{3}\bigl(\theta_\psi+\tfrac{\dot{h}}{2}\bigr)\,,
+\label{eq:delta_pfd_app}\\[4pt]
+\dot{\theta}_\psi
+  &= \tfrac{k^2}{4}\,\delta_\psi\,,
+\label{eq:theta_pfd_app}
+\end{align}
+corresponding to a relativistic perfect fluid with no higher
+multipoles.
+
+\subsection{State-vector layout}
+
+The pfd component is assigned a dedicated index in the
+\texttt{CLASS} state vector, positioned after the standard
+neutrino hierarchy. Initial conditions are set in the
+radiation-dominated era assuming adiabatic perturbations:
+\begin{equation}
+\delta_\psi^{(\rm ini)} = \delta_\gamma^{(\rm ini)}\,,
+\qquad
+\theta_\psi^{(\rm ini)} = \theta_\gamma^{(\rm ini)}\,.
+\end{equation}
+No additional free-streaming hierarchy is introduced for the proxy-fluid
+component. In the implementation, the pfd sector is evolved with density and
+velocity perturbations only, while its higher multipoles are absent by
+construction. This is not a numerical shortcut: it is the effective linear
+closure that defines the PTUM proxy-fluid discriminator.
+
+\subsection{Validation}
+
+The implementation has been validated through the following checks:
+
+\begin{enumerate}
+\item \textbf{$\Lambda$CDM recovery:} Setting
+      $\Delta N_{\rm fluid}=0$ recovers the standard \texttt{CLASS}
+      $\Lambda$CDM output to machine precision in both
+      $C_\ell^{TT}$ and $P(k)$.
+
+\item \textbf{Background consistency:} The Friedmann constraint
+      $\sum_i\Omega_i=1$ is satisfied to $<10^{-12}$ at all
+      redshifts.
+
+\item \textbf{Perturbation stability:} No numerical instabilities
+      arise for $\Delta N_{\rm fluid}\in[0,1]$ across the full
+      range of angular scales $\ell\in[2,5000]$.
+
+\item \textbf{Comparison with \texttt{ncdm} module:} The pfd
+      spectrum differs from the free-streaming
+      $\Delta N_{\rm eff}$ spectrum in the expected manner:
+      identical background evolution but suppressed phase shift
+      in $C_\ell^{TT}$ due to $\sigma=0$.
+\end{enumerate}
+
+\subsection{Code availability}
+\label{app:code-availability}
+
+The manuscript source, final figure artifacts, claim-boundary notes,
+and reproducibility scaffold are publicly available at
+\url{https://github.com/ErdemEsa/ptum-cosmology.git}. The repository
+includes the public PTUM code-release structure and a clean
+\texttt{CLASS}~v3.2.0 patch for the proxy-fluid dark-radiation sector.
+The patch introduces the effective-fluid parameter
+$\Delta N_{\rm fluid}$, the associated background contribution, and the
+linear perturbation variables for a perfect-fluid dark-radiation
+component with $w=1/3$, $c_s^2=1/3$, and $\sigma=0$. It was generated as
+a path-limited diff against a clean \texttt{CLASS}~v3.2.0 baseline and
+has been checked with \texttt{git apply --check} against the corresponding
+clean source tree. Thus, the public repository now provides the
+manuscript archive and the PTUM-modified \texttt{CLASS} patch needed to
+inspect and re-apply the core Boltzmann-code implementation.
+
+The production-level \texttt{Cobaya} configuration files and full MCMC
+chains are not included in this manuscript ZIP. They will be added to the
+same public repository or archived externally in a later reproducibility
+release. Until those production configuration files and chains are
+released, the Bayesian constraints reported here should be read as
+benchmark-level summaries rather than as a fully public end-to-end
+pipeline release.
+
+%------------------------------------------------------------
+\section{Appendix figures and consistency diagnostics}
+\label{app:figures}
+%------------------------------------------------------------
+
+The following figures are included in this appendix because they
+directly support the main-text consistency analysis. The library-final
+version is therefore self-contained and does not require the obsolete
+external supplementary-material pointer.
+
+%--- Appendix Figure A1 ---
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_BBN_consistency.pdf}
+\caption{BBN consistency check for PTUM. The shaded region shows
+the BBN-allowed range $\Delta N_{\rm eff}<0.40$ from primordial
+helium and deuterium abundances~\cite{Fields2020,Cyburt2016}. The
+vertical line marks the PTUM 95\% upper limit
+$\Delta N_{\rm fluid}<0.31$, which lies well within the
+BBN-allowed region. At the maximum allowed pfd abundance, the
+predicted shift in $Y_p$ is approximately $1.1\sigma$.}
+\label{fig:bbn}
+\end{figure}
+
+%--- Appendix Figure A2 ---
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{fig_fluid_vs_freestream.pdf}
+\caption{Comparison of CMB $TT$ (left) and $EE$ (right) power
+spectrum residuals for PTUM proxy-fluid dark radiation
+($\sigma=0$, solid) and free-streaming dark radiation
+($\sigma\neq0$, dashed) at $\Delta N=0.10$. The free-streaming
+component produces a characteristic phase shift of the acoustic
+peaks, while the proxy-fluid shifts peak amplitudes without
+displacing their positions. The distinction is especially
+pronounced in $EE$ at $\ell>1000$.}
+\label{fig:fluid_vs_fs}
+\end{figure*}
+
+%--- Appendix Figure A3 ---
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{lcdm_vs_ptum_triangle.pdf}
+\caption{Comparison of marginalised posterior distributions for
+$\Lambda$CDM (blue) and PTUM (red) from the full data
+combination. The standard parameters are consistent between the
+two models. PTUM shows a mild broadening in $\omega_{\rm cdm}$
+and $H_0$ due to the degeneracy with $\Delta N_{\rm fluid}$, and
+a systematic upward shift of $H_0$ by
+$\sim0.8\;\mathrm{km\,s^{-1}\,Mpc^{-1}}$.}
+\label{fig:lcdm_vs_ptum}
+\end{figure*}
+
+%--- Appendix Figure A4 ---
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_perturbation_stability.pdf}
+\caption{Linear perturbation stability diagnostics for all PTUM
+sectors. Top: squared sound speed $c_s^2$ as a function of scale
+factor, confirming $c_s^2>0$ (no gradient instability) throughout.
+Bottom: effective squared mass confirming the absence of tachyonic
+instabilities. All sectors are ghost-free by construction.}
+\label{fig:stability}
+\end{figure}
+
+%--- Appendix Figure A5 ---
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{fig_eft_validity.pdf}
+\caption{EFT validity diagnostics for PTUM. The inflationary
+Hubble scale $H_*$, potential energy $V_0^{1/4}$, slow-roll
+parameters $\epsilon$ and $|\eta|$, and coupling constants are
+shown as functions of $\lambda$. All quantities satisfy EFT
+consistency: $H_*\ll M_{\rm Pl}$, $V_0<M_{\rm Pl}^4$,
+$\epsilon,|\eta|\ll1$, and perturbative couplings. For
+$\lambda\lesssim0.05$ the field excursion is super-Planckian,
+protectable by an approximate shift
+symmetry~\cite{Freese1990,Silverstein2008}.}
+\label{fig:eft}
+\end{figure}
+
+%============================================================
+% REFERENCES
+%============================================================
+
+\begin{thebibliography}{99}
+
+% ---- Cosmological parameters / Planck ----
+\bibitem{Planck2018params}
+N.~Aghanim et al.\ [Planck Collaboration],
+Astron.\ Astrophys.\ \textbf{641}, A6 (2020).
+
+% ---- Quintessence / dynamical dark energy ----
+\bibitem{RatraPeebles}
+B.~Ratra, P.~J.~E.~Peebles,
+Phys.\ Rev.\ D \textbf{37}, 3406 (1988).
+
+\bibitem{Caldwell1998}
+R.~R.~Caldwell, R.~Dave, P.~J.~Steinhardt,
+Phys.\ Rev.\ Lett.\ \textbf{80}, 1582 (1998).
+
+% ---- Unified dark sector ----
+\bibitem{Kamenshchik2001}
+A.~Kamenshchik, U.~Moschella, V.~Pasquier,
+Phys.\ Lett.\ B \textbf{511}, 265 (2001).
+
+\bibitem{Bento2002}
+M.~C.~Bento, O.~Bertolami, A.~A.~Sen,
+Phys.\ Rev.\ D \textbf{66}, 043507 (2002).
+
+% ---- Neff / BBN ----
+\bibitem{Mangano2005}
+G.~Mangano, G.~Miele, S.~Pastor, T.~Pinto, O.~Pisanti,
+P.~D.~Serpico,
+Nucl.\ Phys.\ B \textbf{729}, 221 (2005).
+
+\bibitem{Cyburt2016}
+R.~H.~Cyburt, B.~D.~Fields, K.~A.~Olive, T.-H.~Yeh,
+Rev.\ Mod.\ Phys.\ \textbf{88}, 015004 (2016).
+
+% ---- CMB phase shift / dark radiation ----
+\bibitem{Bashinsky2004}
+S.~Bashinsky, U.~Seljak,
+Phys.\ Rev.\ D \textbf{69}, 083002 (2004).
+
+\bibitem{Baumann2016}
+D.~Baumann, D.~Green, J.~Meyers, B.~Wallisch,
+JCAP \textbf{01}, 007 (2016).
+
+\bibitem{Follin2015}
+B.~Follin, L.~Knox, M.~Millea, Z.~Pan,
+Phys.\ Rev.\ Lett.\ \textbf{115}, 091301 (2015).
+
+\bibitem{CyrRacine2014}
+F.-Y.~Cyr-Racine, K.~Sigurdson,
+Phys.\ Rev.\ D \textbf{87}, 103515 (2013).
+
+% ---- Boltzmann / MCMC tools ----
+\bibitem{Blas2011}
+D.~Blas, J.~Lesgourgues, T.~Tram,
+JCAP \textbf{07}, 034 (2011).
+
+\bibitem{Lesgourgues2011}
+J.~Lesgourgues,
+arXiv:1104.2932.
+
+\bibitem{Torrado2021}
+J.~Torrado, A.~Lewis,
+JCAP \textbf{05}, 057 (2021).
+
+% ---- Perturbation theory / field theory ----
+\bibitem{MaBertschinger}
+C.-P.~Ma, E.~Bertschinger,
+Astrophys.\ J.\ \textbf{455}, 7 (1995).
+
+\bibitem{Turner1983}
+M.~S.~Turner,
+Phys.\ Rev.\ D \textbf{28}, 1243 (1983).
+
+\bibitem{ColemanWeinberg}
+S.~R.~Coleman, E.~J.~Weinberg,
+Phys.\ Rev.\ D \textbf{7}, 1888 (1973).
+
+\bibitem{Maldacena2003}
+J.~M.~Maldacena,
+JHEP \textbf{05}, 013 (2003).
+
+% ---- Observational data ----
+\bibitem{PlanckLike}
+N.~Aghanim et al.\ [Planck Collaboration],
+Astron.\ Astrophys.\ \textbf{641}, A5 (2020).
+
+\bibitem{PlanckNG}
+Y.~Akrami et al.\ [Planck Collaboration],
+Astron.\ Astrophys.\ \textbf{641}, A9 (2020).
+
+\bibitem{Beutler2011}
+F.~Beutler et al.,
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{416}, 3017 (2011).
+
+\bibitem{Ross2015}
+A.~J.~Ross et al.,
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{449}, 835 (2015).
+
+\bibitem{Alam2017}
+S.~Alam et al.,
+Mon.\ Not.\ R.\ Astron.\ Soc.\ \textbf{470}, 2617 (2017).
+
+\bibitem{Brout2022}
+D.~Brout et al.,
+Astrophys.\ J.\ \textbf{938}, 110 (2022).
+
+\bibitem{BICEPKeck2021}
+P.~A.~R.~Ade et al.\ [BICEP/Keck Collaboration],
+Phys.\ Rev.\ Lett.\ \textbf{127}, 151301 (2021).
+
+\bibitem{Fields2020}
+B.~D.~Fields, K.~A.~Olive, T.-H.~Yeh, C.~Young,
+JCAP \textbf{03}, 010 (2020).
+
+% ---- Experimental programmes ----
+\bibitem{CMBS4}
+K.~Abazajian et al.,
+arXiv:1610.02743.
+
+\bibitem{DESI2024}
+DESI Collaboration,
+arXiv:2404.03000.
+
+\bibitem{Euclid2024}
+Euclid Collaboration,
+Astron.\ Astrophys.\ \textbf{642}, A191 (2020).
+
+% ---- Cosmological frameworks ----
+\bibitem{Susskind2003}
+L.~Susskind,
+arXiv:hep-th/0302219.
+
+\bibitem{Smolin1997}
+L.~Smolin,
+\textit{The Life of the Cosmos}
+(Oxford University Press, Oxford, 1997).
+
+% ---- UV perspective: string theory ----
+\bibitem{Sen2002}
+A.~Sen,
+JHEP \textbf{0207}, 065 (2002).
+
+\bibitem{Dvali1999}
+G.~Dvali, S.-H.~H.~Tye,
+Phys.\ Lett.\ B \textbf{450}, 72 (1999).
+
+\bibitem{KKLMMT2003}
+S.~Kachru, R.~Kallosh, A.~Linde, J.~Maldacena, L.~McAllister,
+S.~P.~Trivedi,
+JCAP \textbf{0310}, 013 (2003).
+
+% ---- UV perspective: swampland ----
+\bibitem{Obied2018}
+G.~Obied, H.~Ooguri, L.~Spodyneiko, C.~Vafa,
+arXiv:1806.08362.
+
+\bibitem{Ooguri2019}
+H.~Ooguri, E.~Palti, G.~Shiu, C.~Vafa,
+Phys.\ Lett.\ B \textbf{788}, 180 (2019).
+
+% ---- UV perspective: shift symmetry ----
+\bibitem{Freese1990}
+K.~Freese, J.~A.~Frieman, A.~V.~Olinto,
+Phys.\ Rev.\ Lett.\ \textbf{65}, 3233 (1990).
+
+\bibitem{Silverstein2008}
+E.~Silverstein, A.~Westphal,
+Phys.\ Rev.\ D \textbf{78}, 106003 (2008).
+
+% ---- LQC Bounce ----
+
+\bibitem{Bojowald2001}
+M.~Bojowald,
+Phys.\ Rev.\ Lett.\ \textbf{86}, 5227 (2001).
+
+\bibitem{Ashtekar2011}
+A.~Ashtekar, P.~Singh,
+Class.\ Quantum Grav.\ \textbf{28}, 213001 (2011).
+
+% ---- Black hole information paradox ----
+
+\bibitem{Hawking1975}
+S.~W.~Hawking,
+Commun.\ Math.\ Phys.\ \textbf{43}, 199 (1975).
+
+\bibitem{Hawking1976}
+S.~W.~Hawking,
+Phys.\ Rev.\ D \textbf{14}, 2460 (1976).
+
+% ---- LZ direct detection ----
+
+\bibitem{LZ2022}
+LZ Collaboration,
+Phys.\ Rev.\ Lett.\ \textbf{131}, 041002 (2023).
+
+\end{thebibliography}
+
+\end{document}

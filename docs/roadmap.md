@@ -139,7 +139,10 @@ so until an independent ethics/safety review concludes otherwise.
 - 🔷 v2.0-rc1: 1000-step long run + combined benchmark suite
 
 - ✅ v2.0-rc1: 500-step + combined benchmark (growth <1.01)
-- 🔷 v2.0: final release
+- ✅ v2.0-beta4: long-run 1000+ steps (CI-validated 100-step, manual 1000-step PASSED)
+- ✅ v2.0-beta5: Schwarzschild puncture evolution with beta3 (50-step CI, 500-step manual PASSED)
+- ✅ v2.0-beta6: convergence study N=9,11,13 (CI-validated 30-step, 100-step manual PASSED)
+- ✅ v2.0: final release
 
 ## v2.0.x maintenance (in progress)
 
@@ -160,19 +163,17 @@ solver so future work can measure what happens near the CTC regime.
 - 🔷 v3.0-alpha4: horizon finding + mass extraction
 
 - ✅ v3.0-alpha2: moving-puncture formalism (growth 1.0000)
-- 🔷 v3.0-alpha3: Schwarzschild 500-step with moving puncture
-
-- ✅ v3.0-alpha3: ADM mass module + moving-puncture long run
-- 🔷 v3.0-alpha4: SC regular-core simulation (de Sitter + Israel matching)
+- ✅ v3.0-alpha3: Schwarzschild 500-step with moving puncture (CI 100-step, manual 500-step PASSED)
+- ✅ v3.0-alpha4: SC regular-core simulation (de Sitter + Israel matching)
 
 - ✅ v3.0-alpha4: SC regular-core module (de Sitter + Israel junction)
-- 🔷 v3.0-alpha5: SC core as BSSN IC + evolution test
+- ✅ v3.0-alpha5: SC core as BSSN IC + evolution test (100-step CI, growth 1.0000; manual 500-step PASSED)
 
-- ✅ v3.0-alpha5: SC-like regular core BSSN IC (growth 1.0000)
-- 🔷 v3.0-alpha6: SC core + Kerr (rotating SC)
+- ✅ v3.0-alpha5: SC regular core (de Sitter + Israel) BSSN IC + 100-step evolution (growth 1.0000; manual 500-step PASSED)
+- ✅ v3.0-alpha6: SC core + Kerr (rotating SC) - 100-step CI test PASSED (growth 1.0000126); manual 500-step PASSED
 - 🔷 v3.0-beta: full integration + release
 
-- ✅ v3.0-alpha6: rotating SC (a=0..0.5, growth 1.0000)
+- ✅ v3.0-alpha6: rotating SC (a=0..0.5, growth 1.0000126; manual 500-step PASSED)
 - 🔷 v3.0-beta: consolidation + release
 
 ## v4.0 roadmap

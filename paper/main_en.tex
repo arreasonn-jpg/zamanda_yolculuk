@@ -121,6 +121,18 @@ and geodesic deviation is resolved at the $10^{-9}$~m level,
 confirming the pipeline operates correctly in both the weak and
 strong regimes.
 
+Two further stages close the source-to-metric validation chain.
+First, the frozen-kernel convergence failure observed for the
+filament-like wire source is traced to source sharpness: introducing
+an effective kernel smoothing radius $a_{\rm wire,eff}=0.08$~m
+restores grid convergence at all tested resolutions
+(Section~\ref{subsec:validation}). Second, the same grid-refinement
+study is repeated against the fully time-retarded solver in place of
+the frozen kernel, with the per-field-point retarded source phase
+explicitly modeled, and passes at $5.8\times10^{-6}$ relative level.
+The source chain (field source $\to$ stress tensor $\to$ linearized
+metric) is therefore numerically closed at the reported accuracy.
+
 \subsection{Closed-form bounds for other mechanisms}
 \label{subsec:other}
 

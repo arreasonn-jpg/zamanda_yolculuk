@@ -2,14 +2,14 @@
 
 Reference: Esa (2026), "Schwarzschild Condensation" — QCD-inspired
 BEC model for non-singular BH interiors. This module implements the
-effective metric:
+effective metric in geometric units (G = c = 1):
 
   Interior (r < R0): de Sitter-like
-    f_in(r)  = 1 - (r/ell)^2,   ell^2 = 3 c^4 / (8 pi G rho_0)
+    f_in(r)  = 1 - (r/ell)^2,   ell^2 = 3 / (8 pi rho_0)
   Exterior (r > R0): Schwarzschild
-    f_out(r) = 1 - 2 G M / (c^2 r)
+    f_out(r) = 1 - 2 M / r
 
-with matching at R0 = R_s (1 + delta).
+with matching at R0 = ell (where f_in = 0).
 
 Curvature diagnostics:
   Ricci scalar R(r), Kretschmann K(r) for the static spherically
@@ -18,17 +18,15 @@ Curvature diagnostics:
 from __future__ import annotations
 import numpy as np
 
-C = 2.99792458e8
-G = 6.67430e-11
-
 
 def schwarzschild_radius(M):
-    return 2.0 * G * M / C**2
+    """Rs = 2M in geometric units."""
+    return 2.0 * M
 
 
 def de_sitter_length(rho0):
-    """ell^2 = 3 c^4 / (8 pi G rho0)."""
-    return np.sqrt(3.0 * C**4 / (8.0 * np.pi * G * rho0))
+    """ell^2 = 3 / (8 pi rho0) in geometric units."""
+    return np.sqrt(3.0 / (8.0 * np.pi * rho0))
 
 
 def f_SC(r, M, R0, ell):
@@ -43,9 +41,9 @@ def f_SC(r, M, R0, ell):
 def rho_SC(r, M, R0, ell):
     """Effective energy density: constant rho0 inside R0, 0 outside.
 
-    rho0 = 3 c^2 / (8 pi G ell^2) from de Sitter relation.
+    rho0 = 3 / (8 pi ell^2) from de Sitter relation.
     """
-    rho0 = 3.0 * C**2 / (8.0 * np.pi * G * ell**2)
+    rho0 = 3.0 / (8.0 * np.pi * ell**2)
     return np.where(np.asarray(r, float) < R0, rho0, 0.0)
 
 
@@ -78,23 +76,21 @@ def junction_surface_density(M, R0, ell):
 
     sigma_sh = -(1/(4 pi G)) ([K] - h [K_ab]) evaluated on shell.
     Simplified form for dS-Sch matching:
-      sigma_sh = -(1/(2 pi G R0)) (sqrt(f_out) - sqrt(f_in))
+      sigma_sh = -(1/(2 pi R0)) (sqrt(f_out) - sqrt(f_in))
     """
     Rs = schwarzschild_radius(M)
     f_in_val = 1.0 - (R0 / ell) ** 2
     f_out_val = 1.0 - Rs / R0
     if f_in_val < 0 or f_out_val < 0:
         return np.nan
-    return -(1.0 / (2.0 * np.pi * G * R0)) * (np.sqrt(f_out_val) - np.sqrt(f_in_val))
+    return -(1.0 / (2.0 * np.pi * R0)) * (np.sqrt(f_out_val) - np.sqrt(f_in_val))
 
 
 def core_parameters(M, rho0):
-    """Return (Rs, R0, ell, delta) given M and interior density rho0."""
+    """Return (Rs, R0, ell, delta) given M and interior density rho0 in geometric units."""
     Rs = schwarzschild_radius(M)
     ell = de_sitter_length(rho0)
-    # Choose R0 so that f_in(R0) ~ f_out(R0) at matching (leading-order)
-    # For small delta: R0 = Rs (1 + delta). Pick delta from continuity:
-    # 1 - (R0/ell)^2 = 0  -> R0 = ell. So matching at R0 = ell.
+    # Matching at R0 = ell where f_in(R0) = 0
     R0 = ell
     delta = R0 / Rs - 1.0
     return {"Rs": Rs, "R0": R0, "ell": ell, "delta": delta}

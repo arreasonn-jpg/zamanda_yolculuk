@@ -8,9 +8,16 @@ from zt005.sc_core import (
 
 
 def test_schwarzschild_radius():
-    M_sun = 1.989e30
-    Rs = schwarzschild_radius(M_sun)
-    assert 2.9e3 < Rs < 3.0e3  # ~2.95 km
+    # In geometric units (G=c=1), Rs = 2M
+    M = 1.0
+    Rs = schwarzschild_radius(M)
+    assert Rs == pytest.approx(2.0)
+    
+    # Test with solar mass in geometric units
+    # M_sun ~ 1.477 km in geometric units
+    M_sun_geo = 1.477  # km
+    Rs = schwarzschild_radius(M_sun_geo)
+    assert Rs == pytest.approx(2.954)
 
 
 def test_de_sitter_length_positive():
@@ -20,9 +27,9 @@ def test_de_sitter_length_positive():
 
 
 def test_f_SC_limits():
-    M = 1.989e30
-    Rs = schwarzschild_radius(M)
-    ell = 1e4
+    # Use geometric units
+    M = 1.0
+    ell = 10.0
     R0 = ell
     # Deep inside: f_in ~ 1 at r=0
     f_center = f_SC(np.array([1e-3]), M, R0, ell)[0]
@@ -53,9 +60,10 @@ def test_kretschmann_finite_at_origin():
 
 
 def test_junction_returns_finite_for_valid_params():
-    M = 1.989e30
-    R0 = 1e4
-    ell = 1e4
+    # Use geometric units
+    M = 1.0
+    R0 = 10.0
+    ell = 10.0
     s = junction_surface_density(M, R0, ell)
     assert np.isfinite(s)
 
