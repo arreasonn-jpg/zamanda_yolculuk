@@ -32,7 +32,8 @@ validation exists on record.
 7. ~~**Phase 11: Experimental apparatus**~~ ✅ completed — sensor suite, safety interlocks, DAQ, enclosure, test program, compliance; papers updated EN/TR, PDFs recompiled.
 8. ~~**v3.0-beta consolidation**~~ ✅ completed — tagged v3.0-beta, all full long-run tests PASSED, all PDFs compiled.
 9. ~~**v4.0-beta consolidation**~~ ✅ completed — BSSN + SC metric + SC matter integration complete (H growth 1.0000 for 100 steps); tagged v4.0-beta, all tests passing.
-10. **v5.0-beta consolidation** — PTUM field module + tachyon condensation; document 100-step stability window for negative-energy configuration.
+10. ~~**v5.0-beta consolidation**~~ ✅ completed — PTUM field module + tachyon condensation + NEC violation (rho_min = -15.6); 100-step stability window documented; tagged v5.0-beta.
+11. **v6.0-beta consolidation** — Complex scalar + PTUM driver; refined PTUM with tachyon backreaction; Ford-Roman quantum inequality diagnostic.
 
 ## Explicitly deferred
 
