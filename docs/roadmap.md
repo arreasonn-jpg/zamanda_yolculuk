@@ -198,32 +198,25 @@ solver so future work can measure what happens near the CTC regime.
 ## v6.0 roadmap
 - ✅ v6.0-alpha1: complex scalar matter module
 - ✅ v6.0-alpha2: RK4 on complex scalar + BSSN
-- 🔷 v6.0-alpha3: constraint-preserving BC
-- 🔷 v6.0-alpha4: AMR-lite (nested grid)
+- ✅ v6.0-alpha3: constraint-preserving BC
+- ✅ v6.0-alpha4: AMR-lite (nested grid)
 
 - ✅ v6.0-alpha3: two-level refinement operators
-- 🔷 v6.0-alpha4: refined BSSN driver (coarse + fine grid coupled)
+- ✅ v6.0-alpha4: refined BSSN driver (coarse + fine grid coupled)
 
 - ✅ v6.0-alpha4: refined scalar field (two-grid coupling)
-- 🔷 v6.0-alpha5: refined BSSN driver (metric + matter on two grids)
+- ✅ v6.0-alpha5: refined BSSN driver (metric + matter on two grids)
 
 - ✅ v6.0-alpha5: refined BSSN driver (two-grid coupling)
-- 🔷 v6.0-alpha6: refined PTUM run (tachyon backreaction with refinement)
+- ✅ v6.0-alpha6: refined PTUM run (tachyon backreaction with refinement)
 
 - ✅ v6.0-alpha6: refined PTUM 200-step stable (v5.0 crash resolved)
-- 🔷 v6.0-beta: consolidation + release
-
 - ✅ v6.0-alpha7: restrict mask-aware; PTUM discharge identified as transient
-- 🔷 v6.0-beta: consolidate with transient-discharge interpretation
-
 - ✅ v6.0-alpha8: Ford-Roman quantum inequality diagnostic
-- 🔷 v6.0-alpha9: PTUM rho(t) sampled and tested against bound
-
+- ✅ v6.0-alpha9: PTUM rho(t) sampled and tested against bound
 - ✅ v6.0-alpha9: 1000-step refined run + Ford-Roman passed (no violation)
-- 🔷 v6.0-beta: consolidate transient-discharge interpretation
-
 - ✅ v6.0-alpha10: massive Ford-Roman (borderline; caveats documented)
-- 🔷 v6.0-beta: consolidate; document open question on massive bound
+- 🔷 v6.0-beta: consolidation + release
 
 ## v6.1 roadmap
 - ✅ v6.1-alpha1: unified framework document (SC + PTUM shared code)
