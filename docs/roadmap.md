@@ -143,6 +143,7 @@ so until an independent ethics/safety review concludes otherwise.
 - ✅ v2.0-beta5: Schwarzschild puncture evolution with beta3 (50-step CI, 500-step manual PASSED)
 - ✅ v2.0-beta6: convergence study N=9,11,13 (CI-validated 30-step, 100-step manual PASSED)
 - ✅ v2.0: final release
+- ✅ v2.0 long-run stability: ALL full tests PASSED (1000-step beta3, 500-step moving puncture, 500-step SC core Kerr, 500-step SC core BSSN, 1000-step v2.0, convergence, Schwarzschild)
 
 ## v2.0.x maintenance (in progress)
 
@@ -174,6 +175,7 @@ solver so future work can measure what happens near the CTC regime.
 - 🔷 v3.0-beta: full integration + release
 
 - ✅ v3.0-alpha6: rotating SC (a=0..0.5, growth 1.0000126; manual 500-step PASSED)
+- ✅ v3.0-alpha6: ALL full long-run tests PASSED (1000-step beta3, 500-step moving puncture, 500-step SC core Kerr, 500-step SC core BSSN, 1000-step v2.0, convergence, Schwarzschild)
 - 🔷 v3.0-beta: consolidation + release
 
 ## v4.0 roadmap
