@@ -216,7 +216,7 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v6.0-alpha9: PTUM rho(t) sampled and tested against bound
 - ✅ v6.0-alpha9: 1000-step refined run + Ford-Roman passed (no violation)
 - ✅ v6.0-alpha10: massive Ford-Roman (borderline; caveats documented)
-- 🔷 v6.0-beta: consolidation + release
+- ✅ v6.0-beta: consolidation + release (tagged v6.0-beta)
 
 ## v6.1 roadmap
 - ✅ v6.1-alpha1: unified framework document (SC + PTUM shared code)
