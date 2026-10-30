@@ -31,7 +31,8 @@ validation exists on record.
 6. ~~**Phase 10: Engineering feasibility**~~ ✅ completed — coil design optimization, thermal analysis, HV/power supply, backpack constraint optimizer; papers updated EN/TR, PDFs recompiled.
 7. ~~**Phase 11: Experimental apparatus**~~ ✅ completed — sensor suite, safety interlocks, DAQ, enclosure, test program, compliance; papers updated EN/TR, PDFs recompiled.
 8. ~~**v3.0-beta consolidation**~~ ✅ completed — tagged v3.0-beta, all full long-run tests PASSED, all PDFs compiled.
-9. **v4.0-beta consolidation** — BSSN + SC metric + SC matter integration complete (H growth 1.0000 for 100 steps); create release notes, tag v4.0-beta.
+9. ~~**v4.0-beta consolidation**~~ ✅ completed — BSSN + SC metric + SC matter integration complete (H growth 1.0000 for 100 steps); tagged v4.0-beta, all tests passing.
+10. **v5.0-beta consolidation** — PTUM field module + tachyon condensation; document 100-step stability window for negative-energy configuration.
 
 ## Explicitly deferred
 
@@ -184,7 +185,7 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v4.0-alpha1: scalar field matter coupling (K ~ A^2, stable)
 - ✅ v4.0-alpha2: SC condensate as matter source (stable)
 - ✅ v4.0-alpha3: BSSN + SC metric + SC matter (full integration, H growth 1.0000)
-- 🔷 v4.0-beta: consolidation + release
+- ✅ v4.0-beta: consolidation + release (tagged v4.0-beta, all tests passing)
 
 ## v5.0 roadmap
 - ✅ v5.0-alpha1: PTUM field module (fuel + proxy)
