@@ -30,6 +30,7 @@ validation exists on record.
 5. ~~**BSSN AMR frontier (v13/v14):**~~ ✅ v14.1 breakthrough with Brill-Lindquist; 50+ stable steps on L_c=200; moving-patch AMR working; projection reduces fine-grid band constraint by ~10-15%.
 6. ~~**Phase 10: Engineering feasibility**~~ ✅ completed — coil design optimization, thermal analysis, HV/power supply, backpack constraint optimizer; papers updated EN/TR, PDFs recompiled.
 7. ~~**Phase 11: Experimental apparatus**~~ ✅ completed — sensor suite, safety interlocks, DAQ, enclosure, test program, compliance; papers updated EN/TR, PDFs recompiled.
+8. **v3.0-beta consolidation** ✅ completed — tagged v3.0-beta, all full long-run tests PASSED, all PDFs compiled.
 
 ## Explicitly deferred
 
@@ -176,7 +177,7 @@ solver so future work can measure what happens near the CTC regime.
 
 - ✅ v3.0-alpha6: rotating SC (a=0..0.5, growth 1.0000126; manual 500-step PASSED)
 - ✅ v3.0-alpha6: ALL full long-run tests PASSED (1000-step beta3, 500-step moving puncture, 500-step SC core Kerr, 500-step SC core BSSN, 1000-step v2.0, convergence, Schwarzschild)
-- 🔷 v3.0-beta: consolidation + release
+- ✅ v3.0-beta: consolidation + release (tagged v3.0-beta, all tests passing, all PDFs compiled)
 
 ## v4.0 roadmap
 - ✅ v4.0-alpha1: scalar field matter coupling (K ~ A^2, stable)
