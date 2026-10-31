@@ -241,23 +241,11 @@ solver so future work can measure what happens near the CTC regime.
 
 ## v6.4 roadmap
 - ✅ v6.4-alpha1: Kerr + SC + PTUM IC
-- 🔷 v6.4-alpha2: full-stack evolution + 50-step test
-
-## paper roadmap
-- ✅ EN paper updated to v6.3
-- ✅ TR scaffold + BSSN section
-- 🔷 TR Introduction + Method (done)
-- 🔷 TR Results, Discussion, Conclusion (pending)
-
-- ✅ TR paper complete (all sections verified)
-- 🔷 Final arXiv packaging (both EN and TR)
-
-- ✅ paper v6.4 update (full-stack note EN+TR)
-- ✅ arXiv v3 package assembled (982 KB)
-- 🔷 Ready for arXiv upload (user decision pending)
-
-- ✅ v6.4-alpha4: full stack SC + PTUM evolution (30-step stable)
-- 🔷 v6.4-beta: consolidate + v6.4.0 release
+- ✅ v6.4-alpha2: full-stack evolution + 30-step test (a=0..0.9, stable)
+- ✅ v6.4-alpha3: refined full stack (2:1 grid, 100 steps, Kmax decreasing)
+- ✅ v6.4-alpha4: full stack SC + PTUM evolution (200-step stable, a=0.9)
+- ✅ v6.4-alpha5: refined full stack strong (A_fuel=3.0, NEC violation, 100-step stable)
+- ✅ v6.4-beta: consolidate + v6.4.0 release
 
 - ✅ v6.5-alpha1: full stack 200-step long run (stable)
 - 🔷 v6.5-alpha2: refined full stack (2:1 grid + SC + PTUM)
