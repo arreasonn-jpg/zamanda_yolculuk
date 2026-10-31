@@ -275,7 +275,7 @@ solver so future work can measure what happens near the CTC regime.
 - 🔷 v7.1-alpha3: Ford-Roman check on new config
 
 - ✅ v7.1-alpha3: Ford-Roman violation detected at strong NEC
-- 🔷 v7.1-beta: consolidate with QFT caveat
+- ✅ v7.1-beta: consolidate with QFT caveat
 
 - ✅ v7.2-alpha1: transient discharge attempt (negative result documented)
 - 🔷 v7.2-beta: consolidate as v7.2.0 release (negative result)
