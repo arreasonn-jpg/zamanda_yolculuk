@@ -287,13 +287,11 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v7.3-beta: paper integration + v7.3.0 release
 
 - ✅ v7.4-alpha1: sub-QFT regime 4-regime structure identified
-- ✅ v7.4-alpha2: figure + paper integration
+- ✅ v7.4-beta: consolidate
 
 - ✅ v7.5-alpha1: discharge duration in QFT-OK window (frozen)
-- 🔷 v7.5-beta: consolidate
-
 - ✅ v7.5-alpha2: Kerr-invariance of QFT-OK window
-- 🔷 v7.5-beta: consolidate
+- ✅ v7.5-beta: consolidate
 
 ## v8.0 roadmap (new physics)
 - ✅ v8.0-alpha1: Brans-Dicke matter module
