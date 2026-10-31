@@ -235,13 +235,9 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v6.2-beta: consolidation + v6.2.0 release (tagged v6.2-beta)
 
 - ✅ v6.3-alpha1: Kerr + SC regular core stable (50 steps, a=0..0.9)
-- 🔷 v6.3-beta: consolidation + v6.3.0 release
-
 - ✅ v6.3-alpha2: Kerr + SC + condensate full integration
-- 🔷 v6.3-beta: consolidation + v6.3.0 release
-
 - ✅ v6.3-alpha3: Kerr + SC 500-step (a=0.9, constraint improves)
-- 🔷 v6.3-beta: consolidation + release
+- ✅ v6.3-beta: consolidation + v6.3.0 release
 
 ## v6.4 roadmap
 - ✅ v6.4-alpha1: Kerr + SC + PTUM IC
