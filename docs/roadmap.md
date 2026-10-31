@@ -278,7 +278,7 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v7.1-beta: consolidate with QFT caveat
 
 - ✅ v7.2-alpha1: transient discharge attempt (negative result documented)
-- 🔷 v7.2-beta: consolidate as v7.2.0 release (negative result)
+- ✅ v7.2-beta: consolidate as v7.2.0 release (negative result)
 
 - ✅ v7.3-alpha1: QFT threshold scan (linear scaling, |rho|<1.27)
 - 🔷 v7.3-alpha2: fine threshold scan + figure
