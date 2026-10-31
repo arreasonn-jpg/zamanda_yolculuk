@@ -220,10 +220,10 @@ solver so future work can measure what happens near the CTC regime.
 
 ## v6.1 roadmap
 - ✅ v6.1-alpha1: unified framework document (SC + PTUM shared code)
-- 🔷 v6.1-alpha2: speculative bridge note (tachyon mechanism common?)
+- ✅ v6.1-alpha2: speculative bridge note (tachyon mechanism common?)
 
 - ✅ v6.1-alpha2: cross-scale phase transition bridge (speculative)
-- 🔷 v6.1-beta: consolidation
+- ✅ v6.1-beta: consolidation (tagged v6.1-beta)
 
 ## v6.2 roadmap
 - ✅ v6.2-alpha1: Kerr + PTUM IC + single-grid baseline (near-crash)
