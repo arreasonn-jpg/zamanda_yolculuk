@@ -319,7 +319,7 @@ solver so future work can measure what happens near the CTC regime.
 - ✅ v8.2-alpha1: Starobinsky f(R) scalar-tensor
 - ✅ v8.2-alpha2: LQC + PTUM density comparison
 - ✅ v8.2-alpha3: LQC QFT window invariance
-- 🔷 v8.2-beta: v8.2.0 release
+- ✅ v8.2-beta: v8.2.0 release
 
 ## v8.3 roadmap
 - ✅ v8.3-alpha1: Hu-Sawicki f(R) dark energy
